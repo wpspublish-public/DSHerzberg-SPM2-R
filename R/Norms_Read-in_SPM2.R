@@ -12,3 +12,7 @@ library(ggrepel) # MORE ggplot2 EXTENSIONS
 
 Adult_Self <-
   suppressMessages(read_csv(here('DATA/SPM-2 Adult ages 1690 Self-Report Questionnaire.csv')))
+
+# Check for duplicate IDnumber.
+
+Adult_Self_dup <- Adult_Self %>% count(IDNumber) %>% filter(n > 1)

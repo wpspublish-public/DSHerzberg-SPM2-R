@@ -5,10 +5,11 @@ library(reshape2) # RESHAPE DATA FROM WIDE TO TALL
 library(broom) # TIDY MODEL OUTPUTS
 library(moderndive) # USER-FRIENDLY LINEAR MODELING, REGRESSION AND CORRELATION TOOLS.
 library(magrittr) # PIPE OPERATORS
-# note use of `suppressWarnings` to silence chatter during interactive session
 suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
+
+# Scale vectors with item names
 
 TOT_items_Adult_Self <- c("q0013", "q0014", "q0016", "q0018", "q0020", "q0021", "q0023", 
                           "q0024", "q0026", "q0027", "q0029", "q0030", "q0031", "q0032", 
@@ -22,6 +23,20 @@ TOT_items_Adult_Self <- c("q0013", "q0014", "q0016", "q0018", "q0020", "q0021", 
                           "q0106", "q0108", "q0111", "q0113", "q0114", "q0115", "q0117", 
                           "q0118", "q0119", "q0122", "q0126", "q0127", "q0128", "q0129", 
                           "q0130", "q0131", "q0132")
+
+SOC_items_Adult_Self <- c("q0013", "q0014", "q0016", "q0018", "q0020", "q0021", "q0023", 
+                          "q0024", "q0026", "q0027")
+
+VIS_items_Adult_Self <- c("q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0036", 
+                          "q0037", "q0040", "q0041")
+
+HEA_items_Adult_Self <- c("q0043", "q0044", "q0046", "q0047", "q0049", "q0050", "q0051", 
+                          "q0053", "q0054", "q0057")
+
+HEA_items_Adult_Self <- c("q0043", "q0044", "q0046", "q0047", "q0049", "q0050", "q0051", 
+                          "q0053", "q0054", "q0057")
+
+# Read in data
 
 Adult_Self <-
   suppressMessages(print(as_tibble(read_csv(

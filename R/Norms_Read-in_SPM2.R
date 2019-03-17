@@ -27,6 +27,8 @@ TOT_items_Adult_Self <- c("q0013", "q0014", "q0016", "q0018", "q0020", "q0021", 
 SOC_items_Adult_Self <- c("q0013", "q0014", "q0016", "q0018", "q0020", "q0021", "q0023", 
                           "q0024", "q0026", "q0027")
 
+SOC_rev_items_Adult_Self <- c("q0013", "q0014", "q0018", "q0020", "q0027")
+
 VIS_items_Adult_Self <- c("q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0036", 
                           "q0037", "q0040", "q0041")
 
@@ -63,13 +65,30 @@ Adult_Self <-
     Region,
     TOT_items_Adult_Self
   ) %>%
-  # recode items from char to num (mutate_at applies funs to columns)
+  # recode items from char to num (mutate_at applies funs to specific columns)
+  mutate_at(
+    TOT_items_Adult_Self,
+    ~ case_when(
+      .x == "Never" ~ 1,
+      .x == "Occasionally" ~ 2,
+      .x == "Frequently" ~ 3,
+      .x == "Always" ~ 4,
+      TRUE ~ NA_real_
+    )
+  ) %>%
+  # recode reverse-scored items
+  mutate_at(
+    SOC_rev_items_Adult_Self,
+    ~ case_when(.x == 4 ~ 1,
+                .x == 3 ~ 2,
+                .x == 2 ~ 3,
+                .x == 1 ~ 4,
+                TRUE ~ NA_real_)
+  ) %>%
+  # Convert scored item vars to integers
   mutate_at(TOT_items_Adult_Self,
-            ~ case_when(.x == "Never" ~ 1, 
-                        .x == "Occasionally" ~ 2,
-                        .x == "Frequently" ~ 3,
-                        .x == "Always" ~ 4,
-                        TRUE ~ NA_real_)) %>% print()
+            ~ as.integer(.x)) %>% print()
+
 
 # Check for duplicate IDnumber.
 

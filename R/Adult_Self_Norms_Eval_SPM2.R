@@ -50,8 +50,7 @@ BAL_items_Adult_Self <- c("q0103", "q0104", "q0105", "q0106", "q0108", "q0111", 
 PLA_items_Adult_Self <- c("q0118", "q0119", "q0122", "q0126", "q0127", "q0128", "q0129", 
                           "q0130", "q0131", "q0132")
 
-# Read data
-
+# Read data, recode item vars, calculate TOT.
 Adult_Self <-
   suppressMessages(as_tibble(read_csv(
     here("DATA/SPM-2 Adult ages 1690 Self-Report Questionnaire.csv")
@@ -87,7 +86,47 @@ Adult_Self <-
   ) %>%
   # Convert scored item vars to integers
   mutate_at(TOT_items_Adult_Self,
-            ~ as.integer(.x)) %>% print()
+            ~ as.integer(.x)) %>% 
+  # Compute TOT raw score. Note use of `rowSums(.[TOT_items_Adult_Self])`: when used 
+  # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
+  # must use wrap the column vector in a column-subsetting expression: `.[]`, where the
+  # dot is a token for the data in the pipe.
+  mutate(TOT_raw = rowSums(.[TOT_items_Adult_Self])) %>% print()
+
+# Create frequency tables for TOT_raw by AgeGroup
+Adult_Self_TOT_freq_AgeGroup <- Adult_Self %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
+  mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
+
+# Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
+Adult_Self_TOT_desc_AgeGroup <-
+  Adult_Self %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
+                                                         median = round(median(TOT_raw), 2),
+                                                         mean = round(mean(TOT_raw), 2),
+                                                         sd = round(sd(TOT_raw), 2)) %>%
+  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:7))
+
+AgeGroup <- Adult_Self_TOT_desc_AgeGroup %>% pull(AgeGroup)
+
+# Plot TOT_raw means, SDs by AgeGroup
+mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
+  geom_point(
+    col = "blue",
+    fill = "blue",
+    alpha = .5,
+    size = 3,
+    shape = 23
+  ) +
+  geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
+  scale_x_continuous(breaks = seq(1, 7, 1), labels = AgeGroup) +
+  scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
+  labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
+  geom_errorbar(
+    aes(ymin = mean - sd, ymax = mean + sd),
+    col = "red",
+    size = 0.2,
+    width = 0.2
+  ) 
+print(mean_plot)
 
 
 # Check for duplicate IDnumber.

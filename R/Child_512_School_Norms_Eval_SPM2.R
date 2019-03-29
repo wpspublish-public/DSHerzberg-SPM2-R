@@ -74,6 +74,14 @@ Child_512_School <-
   # Convert scored item vars to integers
   mutate_at(TOT_items_Child_512_School,
             ~ as.integer(.x)) %>% 
+  # Create `group` var and code so AgeGroup sorts properly.
+  mutate(group = case_when(
+    AgeGroup == "5.00 to 6.99 years" ~ 1,
+    AgeGroup == "7.00 to 8.99 years" ~ 2,
+    AgeGroup == "9.00 to 10.99 years" ~ 3,
+    AgeGroup == "11.00 to 12.99 years" ~ 4,
+    TRUE ~ NA_real_)
+  ) %>% 
   # Compute TOT raw score. Note use of `rowSums(.[TOT_items_Child_512_School])`: when used 
   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
   # must use wrap the column vector in a column-subsetting expression: `.[]`, where the
@@ -86,11 +94,11 @@ Child_512_School_TOT_freq_AgeGroup <- Child_512_School %>% group_by(AgeGroup) %>
 
 # Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
 Child_512_School_TOT_desc_AgeGroup <-
-  Child_512_School %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
-                                                         median = round(median(TOT_raw), 2),
-                                                         mean = round(mean(TOT_raw), 2),
-                                                         sd = round(sd(TOT_raw), 2)) %>%
-  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:4))
+  Child_512_School %>% group_by(group, AgeGroup) %>% arrange(group) %>% summarise(n = n(),
+                                                                                median = round(median(TOT_raw), 2),
+                                                                                mean = round(mean(TOT_raw), 2),
+                                                                                sd = round(sd(TOT_raw), 2)) %>%
+  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2))
 
 AgeGroup <- Child_512_School_TOT_desc_AgeGroup %>% pull(AgeGroup)
 

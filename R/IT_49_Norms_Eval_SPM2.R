@@ -124,3 +124,26 @@ write_csv(IT_49_dup_IDnumber, here("DATA/DATA_CLEANUP_FILES/IT_49_dup_IDnumber.c
 IT_49_missing_AgeInMonths <- IT_49 %>% filter(is.na(AgeInMonths)) %>% select(IDNumber)
 write_csv(IT_49_missing_AgeInMonths, here("DATA/DATA_CLEANUP_FILES/IT_49_missing_AgeInMonths.csv"))
 
+# Regroup into two AgeGroups (AG2): 4-6 mo, 7-9 mo, evaluate these as norm strata.
+
+# Create frequency tables for TOT_raw by AG2
+IT_49_TOT_freq_AG2 <- IT_49 %>% mutate(AG2 = case_when(
+  AgeInMonths <= 6 ~ "4-6 mo",
+  AgeInMonths >= 7 ~ "7-9 mo",
+  TRUE ~ NA_character_
+)) %>% group_by(AG2) %>% count(TOT_raw) %>% 
+  mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
+
+# Compute descriptive statistics, effect sizes for TOT_raw by AG2
+IT_49_TOT_desc_AG2 <-
+  IT_49 %>% mutate(AG2 = case_when(
+    AgeInMonths <= 6 ~ "4-6 mo",
+    AgeInMonths >= 7 ~ "7-9 mo",
+    TRUE ~ NA_character_
+  )) %>% group_by(AG2) %>% arrange(AG2) %>% summarise(n = n(),
+                                                                         median = round(median(TOT_raw), 2),
+                                                                         mean = round(mean(TOT_raw), 2),
+                                                                         sd = round(sd(TOT_raw), 2)) %>%
+  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:2))
+
+

@@ -124,3 +124,25 @@ write_csv(Preschool_25_School_dup_IDnumber, here("DATA/DATA_CLEANUP_FILES/Presch
 Preschool_25_School_missing_AgeGroup <- Preschool_25_School %>% filter(is.na(AgeGroup)) %>% select(IDNumber)
 write_csv(Preschool_25_School_missing_AgeGroup, here("DATA/DATA_CLEANUP_FILES/Preschool_25_School_missing_AgeGroup.csv"))
 
+# Regroup into two AgeGroups (AG2): 2-3 yr, 4-5 yr, evaluate these as norm strata.
+
+# Create frequency tables for TOT_raw by AG2
+Preschool_25_School_TOT_freq_AG2 <- Preschool_25_School %>% mutate(AG2 = case_when(
+  Age <= 3 ~ "2-3 yr",
+  Age >= 4 ~ "4-5 yr",
+  TRUE ~ NA_character_
+)) %>% group_by(AG2) %>% count(TOT_raw) %>% 
+  mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
+
+# Compute descriptive statistics, effect sizes for TOT_raw by AG2
+Preschool_25_School_TOT_desc_AG2 <-
+  Preschool_25_School %>% mutate(AG2 = case_when(
+    Age <= 3 ~ "2-3 yr",
+    Age >= 4 ~ "4-5 yr",
+    TRUE ~ NA_character_
+  )) %>% group_by(AG2) %>% arrange(AG2) %>% summarise(n = n(),
+                                                      median = round(median(TOT_raw), 2),
+                                                      mean = round(mean(TOT_raw), 2),
+                                                      sd = round(sd(TOT_raw), 2)) %>%
+  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:2))
+

@@ -78,7 +78,9 @@ Preschool_25_Home <-
   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
   # must use wrap the column vector in a column-subsetting expression: `.[]`, where the
   # dot is a token for the data in the pipe.
-  mutate(TOT_raw = rowSums(.[TOT_items_Preschool_25_Home])) %>% print()
+  mutate(TOT_raw = rowSums(.[TOT_items_Preschool_25_Home])) %>% 
+  # Exclude outliers on TOT_raw
+  filter(TOT_raw <200) %>% print()
 
 # Create frequency tables for TOT_raw by AgeGroup
 Preschool_25_Home_TOT_freq_AgeGroup <- Preschool_25_Home %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
@@ -115,6 +117,26 @@ mean_plot <- ggplot(data = Preschool_25_Home_TOT_desc_AgeGroup, aes(group, mean)
   ) 
 print(mean_plot)
 
+# generate histograms by agestrat
+Preschool_25_Home_by_AgeGroup <- Preschool_25_Home %>% group_by(AgeGroup)
+
+hist_plot <- ggplot(data = Preschool_25_Home_by_AgeGroup, aes(TOT_raw)) +
+  geom_histogram(
+    binwidth = .2,
+    col = "red"
+  ) +
+  scale_y_continuous(breaks = seq(0, 250, 25)) +
+  labs(title = "Frequency Distribution") +
+  # stat_function(
+  #   fun = function(x, mean, sd, n){
+  #     n * dnorm(x = x, mean = mean, sd = sd)
+  #   },
+  #   args = with(ANTraw_by_agestrat, c(mean = mean(ANT_total), sd = sd(ANT_total), n
+  #                     = length(ANT_total)))
+  # ) +
+  theme(panel.grid.minor=element_blank()) +
+  facet_wrap(~AgeGroup)
+print(hist_plot)
 
 # Check for duplicate IDnumber, missing on AgeGroup.
 
@@ -123,4 +145,26 @@ write_csv(Preschool_25_Home_dup_IDnumber, here("DATA/DATA_CLEANUP_FILES/Preschoo
 
 Preschool_25_Home_missing_AgeGroup <- Preschool_25_Home %>% filter(is.na(AgeGroup)) %>% select(IDNumber)
 write_csv(Preschool_25_Home_missing_AgeGroup, here("DATA/DATA_CLEANUP_FILES/Preschool_25_Home_missing_AgeGroup.csv"))
+
+# Regroup into two AgeGroups (AG2): 2-4 yr, 5 yr, evaluate these as norm strata.
+
+# Create frequency tables for TOT_raw by AG2
+Preschool_25_Home_TOT_freq_AG2 <- Preschool_25_Home %>% mutate(AG2 = case_when(
+  Age <= 4 ~ "2-4 yr",
+  Age >= 5 ~ "5 yr",
+  TRUE ~ NA_character_
+)) %>% group_by(AG2) %>% count(TOT_raw) %>% 
+  mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
+
+# Compute descriptive statistics, effect sizes for TOT_raw by AG2
+Preschool_25_Home_TOT_desc_AG2 <-
+  Preschool_25_Home %>% mutate(AG2 = case_when(
+    Age <= 4 ~ "2-4 yr",
+    Age >= 5 ~ "5 yr",
+    TRUE ~ NA_character_
+  )) %>% group_by(AG2) %>% arrange(AG2) %>% summarise(n = n(),
+                                                      median = round(median(TOT_raw), 2),
+                                                      mean = round(mean(TOT_raw), 2),
+                                                      sd = round(sd(TOT_raw), 2)) %>%
+  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:2))
 

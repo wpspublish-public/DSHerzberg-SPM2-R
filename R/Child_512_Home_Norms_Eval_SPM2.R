@@ -88,6 +88,9 @@ Child_512_Home <-
   # must use wrap the column vector in a column-subsetting expression: `.[]`, where the
   # dot is a token for the data in the pipe.
   mutate(TOT_raw = rowSums(.[TOT_items_Child_512_Home])) %>% print()
+  # Exclude outliers on TOT_raw
+  # filter(TOT_raw < 190) %>% print()
+
 
 # Create frequency tables for TOT_raw by AgeGroup
 Child_512_Home_TOT_freq_AgeGroup <- Child_512_Home %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 

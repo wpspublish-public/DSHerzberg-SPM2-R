@@ -91,7 +91,9 @@ Adult_Self <-
   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
   # must use wrap the column vector in a column-subsetting expression: `.[]`, where the
   # dot is a token for the data in the pipe.
-  mutate(TOT_raw = rowSums(.[TOT_items_Adult_Self])) %>% print()
+  mutate(TOT_raw = rowSums(.[TOT_items_Adult_Self])) %>% #print()
+  # Exclude outliers on TOT_raw
+  filter(TOT_raw <200) %>% print()
 
 # Create frequency tables for TOT_raw by AgeGroup
 Adult_Self_TOT_freq_AgeGroup <- Adult_Self %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
@@ -103,7 +105,7 @@ Adult_Self_TOT_desc_AgeGroup <-
                                                          median = round(median(TOT_raw), 2),
                                                          mean = round(mean(TOT_raw), 2),
                                                          sd = round(sd(TOT_raw), 2)) %>%
-  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:7))
+  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:6))
 
 AgeGroup <- Adult_Self_TOT_desc_AgeGroup %>% pull(AgeGroup)
 
@@ -117,7 +119,7 @@ mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
     shape = 23
   ) +
   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-  scale_x_continuous(breaks = seq(1, 7, 1), labels = AgeGroup) +
+  scale_x_continuous(breaks = seq(1, 6, 1), labels = AgeGroup) +
   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
   labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
   geom_errorbar(
@@ -128,6 +130,27 @@ mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
   ) 
 print(mean_plot)
 
+# # generate histograms by agestrat
+# Adult_Self_by_AgeGroup <- Adult_Self %>% group_by(AgeGroup)
+# 
+# hist_plot <- ggplot(data = Adult_Self_by_AgeGroup, aes(TOT_raw)) +
+#   geom_histogram(
+#     binwidth = .2,
+#     col = "red"
+#   ) +
+#   scale_y_continuous(breaks = seq(0, 250, 25)) +
+#   labs(title = "Frequency Distribution") +
+#   # stat_function(
+#   #   fun = function(x, mean, sd, n){
+#   #     n * dnorm(x = x, mean = mean, sd = sd)
+#   #   },
+#   #   args = with(ANTraw_by_agestrat, c(mean = mean(ANT_total), sd = sd(ANT_total), n
+#   #                     = length(ANT_total)))
+#   # ) +
+#   theme(panel.grid.minor=element_blank()) +
+#   facet_wrap(~AgeGroup)
+# print(hist_plot)
+# 
 
 # Check for duplicate IDnumber.
 

@@ -87,9 +87,9 @@ Child_512_Home <-
   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
   # must use wrap the column vector in a column-subsetting expression: `.[]`, where the
   # dot is a token for the data in the pipe.
-  mutate(TOT_raw = rowSums(.[TOT_items_Child_512_Home])) %>% print()
+  mutate(TOT_raw = rowSums(.[TOT_items_Child_512_Home])) %>% #print()
   # Exclude outliers on TOT_raw
-  # filter(TOT_raw < 190) %>% print()
+  filter(TOT_raw < 200) %>% print()
 
 
 # Create frequency tables for TOT_raw by AgeGroup
@@ -135,4 +135,27 @@ write_csv(Child_512_Home_dup_IDnumber, here("DATA/DATA_CLEANUP_FILES/Child_512_H
 
 Child_512_Home_missing_AgeGroup <- Child_512_Home %>% filter(is.na(AgeGroup)) %>% select(IDNumber)
 write_csv(Child_512_Home_missing_AgeGroup, here("DATA/DATA_CLEANUP_FILES/Child_512_Home_missing_AgeGroup.csv"))
+
+# Regroup into two AgeGroups (AG2): 5-8 yr, 9-12 yr, evaluate these as norm strata.
+
+# Create frequency tables for TOT_raw by AG2
+Child_512_Home_TOT_freq_AG2 <- Child_512_Home %>% mutate(AG2 = case_when(
+  Age <= 8 ~ "5-8 yr",
+  Age >= 9 ~ "9-12 yr",
+  TRUE ~ NA_character_
+)) %>% group_by(AG2) %>% count(TOT_raw) %>% 
+  mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
+
+# Compute descriptive statistics, effect sizes for TOT_raw by AG2
+Child_512_Home_TOT_desc_AG2 <-
+  Child_512_Home %>% mutate(AG2 = case_when(
+    Age <= 8 ~ "5-8 yr",
+    Age >= 9 ~ "9-12 yr",
+    TRUE ~ NA_character_
+  )) %>% group_by(AG2) %>% arrange(AG2) %>% summarise(n = n(),
+                                                      median = round(median(TOT_raw), 2),
+                                                      mean = round(mean(TOT_raw), 2),
+                                                      sd = round(sd(TOT_raw), 2)) %>%
+  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:2))
+
 

@@ -47,7 +47,9 @@ Teen_1221_Home <-
     Gender,
     Ethnicity,
     Region,
-    TOT_items_Teen_1221_Home
+    SOC_items_Teen_1221_Home,
+    TOT_items_Teen_1221_Home,
+    PLA_items_Teen_1221_Home
   ) %>%
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(

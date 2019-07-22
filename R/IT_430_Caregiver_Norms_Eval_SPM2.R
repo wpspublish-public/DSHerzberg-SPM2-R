@@ -48,7 +48,9 @@ IT_430_Caregiver <-
     Gender,
     Ethnicity,
     Region,
-    TOT_items_IT_430_Caregiver
+    SOC_items_IT_430_Caregiver,
+    TOT_items_IT_430_Caregiver,
+    PLA_items_IT_430_Caregiver
   ) %>%
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(

@@ -48,7 +48,9 @@ Adult_Other <-
     HighestEducation,
     Ethnicity,
     Region,
-    TOT_items_Adult_Other
+    SOC_items_Adult_Other,
+    TOT_items_Adult_Other,
+    PLA_items_Adult_Other
   ) %>%
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(

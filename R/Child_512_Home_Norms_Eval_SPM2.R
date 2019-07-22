@@ -48,7 +48,9 @@ Child_512_Home <-
     ParentHighestEducation,
     Ethnicity,
     Region,
-    TOT_items_Child_512_Home
+    SOC_items_Child_512_Home,
+    TOT_items_Child_512_Home,
+    PLA_items_Child_512_Home
   ) %>% rename (AG = AgeGroup) %>% 
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(

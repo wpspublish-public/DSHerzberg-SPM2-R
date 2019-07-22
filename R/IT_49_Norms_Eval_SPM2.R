@@ -47,7 +47,9 @@ IT_49 <-
     Gender,
     Ethnicity,
     Region,
-    TOT_items_IT_49
+    SOC_items_IT_49,
+    TOT_items_IT_49,
+    PLA_items_IT_49
   ) %>%
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(

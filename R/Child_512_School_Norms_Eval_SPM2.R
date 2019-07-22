@@ -47,7 +47,9 @@ Child_512_School <-
     Gender,
     Ethnicity,
     Region,
-    TOT_items_Child_512_School
+    SOC_items_Child_512_School,
+    TOT_items_Child_512_School,
+    PLA_items_Child_512_School
   ) %>% rename (AG = AgeGroup) %>% 
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(

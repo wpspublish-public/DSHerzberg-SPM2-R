@@ -47,7 +47,9 @@ Preschool_25_School <-
     Gender,
     Ethnicity,
     Region,
-    TOT_items_Preschool_25_School
+    SOC_items_Preschool_25_School,
+    TOT_items_Preschool_25_School,
+    PLA_items_Preschool_25_School
   ) %>%
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(

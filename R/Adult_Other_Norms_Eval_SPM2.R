@@ -8,6 +8,7 @@ library(magrittr) # PIPE OPERATORS
 suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
+library(bestNormalize) # NORMALIZATION METHODS
 
 # Scale vectors with item names
 
@@ -145,3 +146,14 @@ print(mean_plot)
 
 Adult_Other_dup <- Adult_Other %>% count(IDNumber) %>% filter(n > 1)
 write_csv(Adult_Other_dup, here("DATA/Adult_Other_dup.csv"))
+
+
+# generate normalized t-scores for each case
+
+# create a bestNormalize model
+TOT_nz <- bestNormalize(Adult_Other$TOT_raw)
+
+# extract and append normalized transformed scores
+Adult_Other$TOT_nr <- TOT_nz$x.t
+
+

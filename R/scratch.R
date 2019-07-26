@@ -205,7 +205,7 @@ Adult_Other$BAL_nz <- BAL_nz_transform$x.t
 Adult_Other$PLA_nz <- PLA_nz_transform$x.t
 
 # caLculate normalized t-scores per case, and truncate the t-score distribution at 25 and 75.
-Adult_Other <- Adult_Other %>% mutate(
+Adult_Other %>% mutate(
   TOT_NT = round((TOT_nz*10)+50)
 ) %>% mutate_at(
   vars(TOT_NT), ~ case_when(
@@ -213,7 +213,8 @@ Adult_Other <- Adult_Other %>% mutate(
     .x > 75 ~ 75,
     TRUE ~ .x
   )
-)
+) %>% 
+  assign('test', ., envir = .GlobalEnv)
 
 # histogram
 MASS::truehist(Adult_Other$TOT_NT, h = 1)

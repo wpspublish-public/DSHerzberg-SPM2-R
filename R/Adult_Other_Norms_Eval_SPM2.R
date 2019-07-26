@@ -150,20 +150,27 @@ write_csv(Adult_Other_dup, here("DATA/Adult_Other_dup.csv"))
 
 # generate normalized t-scores for each case
 
-# create a bestNormalize model to lock down the normalizing function that will be used on repeated runs of the norms.
-TOT_nz_model <- bestNormalize(Adult_Other$TOT_raw)
+# create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
+TOT_nz_obj <- bestNormalize(Adult_Other$TOT_raw)
+
+# print transformation
+TOT_nz_obj$chosen_transform
+
+# Extract transformation type
+chosen_transform <- class(TOT_nz_obj$chosen_transform)[1]
 
 # apply the chosen method to create normalized z-scores for each case.
-TOT_nz_transform <- boxcox(Adult_Other$TOT_raw)
+TOT_nz_transform <- eval(as.name(chosen_transform))(Adult_Other$TOT_raw)
 
 # extract and append normalized transformed z-scores to input table.
-Adult_Other$TOT_nz <- TOT_nz_model$x.t
+Adult_Other$TOT_nz <- TOT_nz_transform$x.t
 
 # caclute normalized t-scores per case, and truncate the t-score distribution at 25 and 75.
-test <- Adult_Other %>% mutate(
+Adult_Other <- Adult_Other %>% mutate(
   TOT_NT = round((TOT_nz*10)+50)
-) %>% 
-  mutate_at(
+)
+  
+Adult_Other <-  Adult_Other %>% mutate_at(
     vars(TOT_NT), ~ case_when(
       .x < 25 ~ 25,
       .x > 75 ~ 75,
@@ -171,4 +178,5 @@ test <- Adult_Other %>% mutate(
     )
   )
     
-
+# histogram
+MASS::truehist(Adult_Other$TOT_NT, h = 1)

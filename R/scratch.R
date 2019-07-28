@@ -183,15 +183,40 @@ write_csv(Adult_Other_dup, here("DATA/Adult_Other_dup.csv"))
 # TOT_nz_transform <- eval(as.name(chosen_transform))(Adult_Other$TOT_raw)
 
 # apply a static, repeatable transformation to create normalized z-scores for each case.
-TOT_nz_transform <- boxcox(Adult_Other$TOT_raw)
-SOC_nz_transform <- boxcox(Adult_Other$SOC_raw)
-VIS_nz_transform <- boxcox(Adult_Other$VIS_raw)
-HEA_nz_transform <- boxcox(Adult_Other$HEA_raw)
-TOU_nz_transform <- boxcox(Adult_Other$TOU_raw)
-TS_nz_transform <- boxcox(Adult_Other$TS_raw)
-BOD_nz_transform <- boxcox(Adult_Other$BOD_raw)
-BAL_nz_transform <- boxcox(Adult_Other$BAL_raw)
-PLA_nz_transform <- boxcox(Adult_Other$PLA_raw)
+
+# create char vec with names for the nine score transformations
+nz_transform_names <- c(paste0(score_names, '_nz_transform'))
+
+# pull nine raw score columns into a list
+raw_score_cols_list <- map(score_names, ~ Adult_Other %>% 
+              pull(
+                !!as.name(paste0(.x, '_raw'))
+              )
+)
+
+# create the nine named objects that contain the normalization for each score
+# distribution. In this call of `purrr::map2()`, the .f calls assign(), because
+# the central purpose of this code is to use assign to create a series of named
+# objects in the global environment. The names for these objects are contained
+# in the .x argument (a char vec). The data to be normalized is in the list of
+# nine raw score columns `raw_score_cols_list`, which as assigned to the .y
+# argument of walk2(), using the dot . shorthand. Within assign(), the value
+# argument allows the boxcox transformation to be applied to the .y data
+raw_score_cols_list %>%
+  walk2(
+    .x = c(nz_transform_names),         # names to assign
+    .y = .,                # object to be assigned
+    .f = ~ assign(x = .x, 
+                  value = boxcox(.y), 
+                  envir = .GlobalEnv)
+  )
+
+########## START HERE
+
+score_col_names <- c(paste0(score_names, '_nz'))
+
+pluck(TOT_nz_transform, 'x.t')
+
 
 # extract and append normalized transformed z-scores to input table.
 Adult_Other$TOT_nz <- TOT_nz_transform$x.t

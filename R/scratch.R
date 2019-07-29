@@ -195,9 +195,10 @@ raw_score_cols_list <- map(score_names, ~ Adult_Other %>%
 )
 
 # create the nine named objects that contain the normalization for each score
-# distribution. In this call of `purrr::map2()`, the .f calls assign(), because
+# distribution. In this call of `purrr::walk2()`, the .f calls assign(), because
 # the central purpose of this code is to use assign to create a series of named
-# objects in the global environment. The names for these objects are contained
+# objects in the global environment. The `walk` functions are used when the
+# output of interest is a side effect. The names for these objects are contained
 # in the .x argument (a char vec). The data to be normalized is in the list of
 # nine raw score columns `raw_score_cols_list`, which as assigned to the .y
 # argument of walk2(), using the dot . shorthand. Within assign(), the value
@@ -211,23 +212,65 @@ raw_score_cols_list %>%
                   envir = .GlobalEnv)
   )
 
-########## START HERE
+# Each of the named objects (normalization for each score) created in the
+# previous smippet is a list. Use base::mget to put these named objects into a
+# list. The argument to mget here is a char vec holding the names of the lists
+# that are to be put into the new list `nz_transform_list`
 
-score_col_names <- c(paste0(score_names, '_nz'))
+nz_transform_list <- mget(nz_transform_names)
 
-pluck(TOT_nz_transform, 'x.t')
+# Create a char vec containing the names of the output objects for the next
+# step. These output objects are single-column named dfs containing the
+# normalized z scores corresponding to the raw score for each case. The objects and the single
+# columns within them have the same names
+nz_names <- c(paste0(score_names, '_nz'))
+
+# Create nine single-column named dataframes, each containing the normalized z
+# scores for each case. The input is the list `nz_transform_list` containing the
+# nine normalization objects (each itself a list). That input is assigned to the
+# .y argument of `walk2()`, while the names of the output objects `nz_names` are
+# assigned to the .x argument. Within assign(), the value argument has as its
+# innermost function `purrr::pluck()`, which extracts an element of a list in
+# the .y input. In this case, what's being extracted is the `x.t`, the vector of
+# normalized z scores. That vector is wrapped in `data.frame`, to coerce it into
+# a data frame, which is then wrapped in `setNames`, which names the column of
+# the resulting data frame using the variable names contained in the .x
+# argument.
+nz_transform_list %>%
+  walk2(
+    .x = c(nz_names),         # names to assign
+    .y = .,                # object to be assigned
+    .f = ~ assign(x = .x, 
+                  value = setNames(data.frame(pluck(.y, 'x.t')), c(.x)),
+                  envir = .GlobalEnv)
+  )
+
+# remove the normalization objects, which are no longer needed
+rm(list = ls(nz_transform_list))
+
+# put the nine single column normalized z-score data frames into a list
+nz_col_list <- mget(nz_names)
+
+# Bind the normalized z-score columns to the table containing raw scores for
+# each case.
+Adult_Other <- Adult_Other %>% bind_cols(nz_col_list)
 
 
-# extract and append normalized transformed z-scores to input table.
-Adult_Other$TOT_nz <- TOT_nz_transform$x.t
-Adult_Other$SOC_nz <- SOC_nz_transform$x.t
-Adult_Other$VIS_nz <- VIS_nz_transform$x.t
-Adult_Other$HEA_nz <- HEA_nz_transform$x.t
-Adult_Other$TOU_nz <- TOU_nz_transform$x.t
-Adult_Other$TS_nz <- TS_nz_transform$x.t
-Adult_Other$BOD_nz <- BOD_nz_transform$x.t
-Adult_Other$BAL_nz <- BAL_nz_transform$x.t
-Adult_Other$PLA_nz <- PLA_nz_transform$x.t
+# Next snippet replaces the normalized z-score with a normalized T-score (and
+# truncates the T-score distribution). This code works for a single score, next
+# map over a vector of scores.
+TOT_nz <- TOT_nz %>% mutate(
+  TOT_NT = round((TOT_nz*10)+50)
+) %>% mutate_at(
+  vars(TOT_NT), ~ case_when(
+    .x < 25 ~ 25,
+    .x > 75 ~ 75,
+    TRUE ~ .x
+  )
+) %>% 
+  select(
+    TOT_NT
+  )
 
 # caLculate normalized t-scores per case, and truncate the t-score distribution at 25 and 75.
 Adult_Other %>% mutate(

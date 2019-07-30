@@ -164,8 +164,8 @@ print(mean_plot)
 
 # Check for duplicate IDnumber.
 
-Adult_Other_dup <- Adult_Other %>% count(IDNumber) %>% filter(n > 1)
-write_csv(Adult_Other_dup, here("DATA/Adult_Other_dup.csv"))
+# Adult_Other_dup <- Adult_Other %>% count(IDNumber) %>% filter(n > 1)
+# write_csv(Adult_Other_dup, here("DATA/Adult_Other_dup.csv"))
 
 
 # generate normalized t-scores for each case
@@ -238,8 +238,8 @@ nz_names <- c(paste0(score_names, '_nz'))
 # argument.
 nz_transform_list %>%
   walk2(
-    .x = c(nz_names),         # names to assign
-    .y = .,                # object to be assigned
+    .x = c(nz_names),
+    .y = .,
     .f = ~ assign(x = .x, 
                   value = setNames(data.frame(pluck(.y, 'x.t')), c(.x)),
                   envir = .GlobalEnv)
@@ -259,18 +259,34 @@ Adult_Other <- Adult_Other %>% bind_cols(nz_col_list)
 # Next snippet replaces the normalized z-score with a normalized T-score (and
 # truncates the T-score distribution). This code works for a single score, next
 # map over a vector of scores.
-TOT_nz <- TOT_nz %>% mutate(
-  TOT_NT = round((TOT_nz*10)+50)
+# TOT_nz <- TOT_nz %>% mutate(
+#   TOT_NT = round((TOT_nz*10)+50)
+# ) %>% mutate_at(
+#   vars(TOT_NT), ~ case_when(
+#     .x < 25 ~ 25,
+#     .x > 75 ~ 75,
+#     TRUE ~ .x
+#   )
+# ) %>%
+#   select(
+#     TOT_NT
+#   )
+
+NT_cols <- map2_dfc(nz_col_list, score_names, ~
+.x %>% mutate(
+  !!as.name(paste0(.y, '_NT')) := round((!!as.name(paste0(.y, '_nz'))*10)+50)
 ) %>% mutate_at(
-  vars(TOT_NT), ~ case_when(
+  vars(paste0(.y, '_NT')), ~ case_when(
     .x < 25 ~ 25,
     .x > 75 ~ 75,
     TRUE ~ .x
   )
-) %>% 
+) %>%
   select(
-    TOT_NT
+    paste0(.y, '_NT')
   )
+)
+
 
 # caLculate normalized t-scores per case, and truncate the t-score distribution at 25 and 75.
 Adult_Other %>% mutate(

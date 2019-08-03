@@ -74,8 +74,13 @@ subscale_lookup <- map(
   ) %>% 
   rename(
     raw = !!as.name(paste0(.x, '_raw'))
-  ) %>% 
-  assign(paste0(.x, '_lookup'), ., envir = .GlobalEnv)
+    ) %>% 
+  mutate_at(
+    vars(!!as.name(paste0(.x, '_NT'))), ~ case_when(
+      raw > 40 ~ NA_real_,
+      TRUE ~ .x
+      )
+    )
 ) %>% 
   reduce(
     left_join, 
@@ -84,42 +89,39 @@ subscale_lookup <- map(
 
 all_lookup <- full_join(TOT_lookup, subscale_lookup, by = 'raw')
 
+all_lookup_col_names <- c(paste0(score_names, '_raw'))
 
-# fill empty raw-to-T lookup with standard scores by age strat.
-raw_to_T_lookup <- raw_to_T_lookup_empty %>%
-  # gather collapses the empty wide rawscore by agestrat table into tall table
-  # with three columns, rawscore, agestrat, and an empty T column. Rawscore
-  # sequence is repeated down its column, once per agestrat, and value of
-  # agestrat column is uniform for the entire rawscore sequence. `-rawscore` is
-  # `dplyr::select` code that drops all vars except rawscore.
-  gather(score, T, -rawscore) %>%
-  # This tall table can now be joined with `final_med_SD`, which contains
-  # smoothed meds and SDs per agestrat, because both tables have an `agestrat`
-  # column that can be used as a `by` var. In the newly-constituted tall table,
-  # `median_sm`, `lo_SD_sm`, and `hi_SD_sm` cols hold the correct values for
-  # each agestrat.
-  left_join(final_med_SD, by = 'agestrat') %>%
-  # calculate T above and below the median. `meidan_SM = NULL` drops this now
-  # unnecessary column from the piped object.
-  mutate(T = case_when(
-    rawscore <= median_sm ~ round(100 + (((rawscore - median_sm) / lo_SD_sm) *15)),
-    TRUE ~ round(100 + (((rawscore - median_sm) / hi_SD_sm) *15))
-  ), median_sm = NULL, lo_SD_sm = NULL, hi_SD_sm = NULL) %>%
-  # truncate T distribution at 40 and 160.
-  mutate_at(
-    vars(T), ~ case_when(
-      .x < 40 ~ 40,
-      .x > 160 ~ 160,
-      TRUE ~ .x
-    )
-  ) %>%
-  # spread converts table back from tall to wide. Resulting table has one row
-  # per `rawscore`. Each value of `agestrat` gets its own column, and each of
-  # these columns is populated with the value of `T` that matches `rawscore`,
-  # within that `agestrat`.
-  spread(agestrat, T) %>%
-  # select reorders vars so to give the correct sequence of `agestrat` going
-  # left-to-right. That order of agestrats is given by the char vec
-  # `c(final_med_SD$agestrat)`.
-  select(rawscore, c(final_med_SD$agestrat))
-
+all_lookup_pub <- all_lookup %>% 
+  # gather collapses wide table into three-column tall table with key-value
+  # pairs: rawscore, score_name(key var, many rows for each score_name), T(value
+  # var, one row for each value of T within each score_name)
+  gather(score_name, T,-raw) %>% 
+  group_by(score_name) %>%
+  # expand the table vertically, adding new rows, so there's a row for every possible T value
+  complete(T = 25:75) %>% 
+  ungroup() %>%
+  # regroup table by two levels
+  group_by(score_name, T) %>%
+  # filter step retains all 1-row groups, and the first and last rows of any
+  # multi-row groups. n() == 1 returns 1-row groups; n() > 1 & row_number()
+  # %in% c(1, n()) returns rows of multi-row groups with the row number of
+  # either 1 (first row), or n() which is the number of rows and also the
+  # number of the last row. The first and last rows hold the min and max
+  # values of raw for that value of T (the grouping variable)
+  filter(n() == 1 | n() > 1 & row_number()  %in% c(1, n())) %>%
+  # Summarise creates a table with one row per group (one row per
+  # possible value of T). For the 1-row groups, str_c simply passes the
+  # value of raw as a string; for the multi-row groups, str_c joins the min
+  # and max values of raw with the '--' separator.
+  summarise(raw = str_c(raw, collapse = '--')) %>%
+  # recode missing values of raw to '-'
+  mutate_at(vars(raw), ~ case_when(is.na(.x) ~ '-', TRUE ~ .x)) %>%
+  # sort on two levels
+  arrange(score_name, desc(T)) %>% 
+  # spread table back to wide, all values of T (one row for each), score_name
+  # columns filled with values of rawscore
+  spread(score_name, raw) %>%
+  # sort descending on T
+  arrange(desc(T)) %>% 
+  # apply desired final column names
+  rename_at(vars(ends_with('_NT')), ~ all_lookup_col_names)

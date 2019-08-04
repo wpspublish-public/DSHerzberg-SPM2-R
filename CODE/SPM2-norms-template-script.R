@@ -51,7 +51,7 @@ score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 Adult_Other <-
   suppressMessages(as_tibble(read_csv(
-    here("DATA/SPM-2 Adult ages 1690 Other Report Questionnaire.csv")
+    here("INPUT-FILES/SPM-2 Adult ages 1690 Other Report Questionnaire.csv")
   ))) %>% select(
     IDNumber,
     Age,
@@ -106,6 +106,9 @@ Adult_Other <-
   #print()
   # Exclude outliers on TOT_raw
   filter(TOT_raw <200) %>% print()
+
+# clean up environment
+rm(list = ls(pattern='.*items_Adult_Other'))
 
 
 # EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
@@ -283,6 +286,9 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
 # each case.
 Adult_Other <- Adult_Other %>% bind_cols(NT_cols)
 
+# clean up environment
+rm(list = ls(pattern='.*_nz'))
+
 # histogram to check normality
 # MASS::truehist(Adult_Other$TOT_NT, h = 1)
 # hist_plot <- ggplot(data = Adult_Other, aes(TOT_NT)) +
@@ -381,6 +387,15 @@ all_lookup <- full_join(TOT_lookup, subscale_lookup, by = 'raw')
 
 all_lookup_col_names <- c(paste0(score_names, '_raw'))
 
+# write final raw-to-T lookup table to .csv
+write_csv(all_lookup, here(
+  paste0(
+    'OUTPUT-FILES/RAW-T-LOOKUP-TABLES/Adult-Other-raw-T-lookup-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+))
+
 
 # generate print pub format raw-to-T table
 all_lookup_pub <- all_lookup %>% 
@@ -417,3 +432,14 @@ all_lookup_pub <- all_lookup %>%
   arrange(desc(T)) %>% 
   # apply desired final column names
   rename_at(vars(ends_with('_NT')), ~ all_lookup_col_names)
+
+# write final print format raw-to-T lookup table to .csv
+write_csv(all_lookup_pub, here(
+  paste0(
+    'OUTPUT-FILES/PRINT-FORMAT-NORMS-TABLES/Adult-Other-print-raw-T-lookup-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+))
+
+

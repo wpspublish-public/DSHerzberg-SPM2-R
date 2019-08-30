@@ -9,68 +9,62 @@ library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
-### AUTOMATION: KEEP ITEM ASSIGNMENTS IN SEPARATE FILE PER FORM, READ INTO TEMPLATE WITH source()
 
-All_items_Adult_Other <- c("q0014", "q0015", "q0016", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027", "q0028",
-                          "q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042", 
-                           "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057", 
-                           "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072", 
-                           "q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087", 
-                           "q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", 
-                           "q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114",
-                          "q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125", "q0129", "q0131")
+All_items_Teen_1221_Home <- c("q0015", "q0016", "q0017", "q0018", "q0019", "q0021", "q0022", "q0024", "q0025", "q0026", 
+                              "q0028", "q0029", "q0030", "q0031", "q0033", "q0034", "q0035", "q0036", "q0037", "q0040", 
+                              "q0041", "q0042", "q0043", "q0044", "q0047", "q0048", "q0049", "q0050", "q0052", "q0053", 
+                              "q0055", "q0056", "q0057", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065", 
+                              "q0067", "q0068", "q0069", "q0071", "q0072", "q0074", "q0076", "q0077", "q0078", "q0079", 
+                              "q0080", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0091", "q0092", 
+                              "q0094", "q0095", "q0096", "q0097", "q0098", "q0099", "q0100", "q0102", "q0103", "q0104",
+                              "q0106", "q0107", "q0108", "q0109", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
 
-TOT_items_Adult_Other <- c("q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042", 
-                           "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057", 
-                           "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072", 
-                           "q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087", 
-                           "q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", 
-                           "q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114")
+TOT_items_Teen_1221_Home <- c("q0028", "q0029", "q0030", "q0031", "q0033", "q0034", "q0035", "q0036", "q0037", "q0040", 
+                              "q0041", "q0042", "q0043", "q0044", "q0047", "q0048", "q0049", "q0050", "q0052", "q0053", 
+                              "q0055", "q0056", "q0057", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065", 
+                              "q0067", "q0068", "q0069", "q0071", "q0072", "q0074", "q0076", "q0077", "q0078", "q0079", 
+                              "q0080", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0091", "q0092", 
+                              "q0094", "q0095", "q0096", "q0097", "q0098", "q0099", "q0100", "q0102", "q0103", "q0104")
 
-SOC_items_Adult_Other <- c("q0014", "q0015", "q0016", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027", "q0028")
+SOC_items_Teen_1221_Home <- c("q0015", "q0016", "q0017", "q0018", "q0019", "q0021", "q0022", "q0024", "q0025", "q0026")
 
-SOC_rev_items_Adult_Other <- c("q0014", "q0015", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027")
+SOC_rev_items_Teen_1221_Home <- c("q0015", "q0016", "q0017", "q0021", "q0022")
 
-VIS_items_Adult_Other <- c("q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042")
+VIS_items_Teen_1221_Home <- c("q0028", "q0029", "q0030", "q0031", "q0033", "q0034", "q0035", "q0036", "q0037", "q0040")
 
-HEA_items_Adult_Other <- c("q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057")
+HEA_items_Teen_1221_Home <- c("q0041", "q0042", "q0043", "q0044", "q0047", "q0048", "q0049", "q0050", "q0052", "q0053")
 
-TOU_items_Adult_Other <- c("q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072")
+TOU_items_Teen_1221_Home <- c("q0055", "q0056", "q0057", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065")
 
-TS_items_Adult_Other <- c("q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087")
+TS_items_Teen_1221_Home <- c("q0067", "q0068", "q0069", "q0071", "q0072", "q0074", "q0076", "q0077", "q0078", "q0079")
 
-BOD_items_Adult_Other <- c("q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100")
+BOD_items_Teen_1221_Home <- c("q0080", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0091", "q0092")
 
-BAL_items_Adult_Other <- c("q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114")
+BAL_items_Teen_1221_Home <- c("q0094", "q0095", "q0096", "q0097", "q0098", "q0099", "q0100", "q0102", "q0103", "q0104")
 
-PLA_items_Adult_Other <- c("q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125", "q0129", "q0131")
+PLA_items_Teen_1221_Home <- c("q0106", "q0107", "q0108", "q0109", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
 
 score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 
 # READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
-### AUTOMATION: INPUT-PARAMETERS FILE INCLUDES INPUT FILE NAME, VARS TO SELECT UPON READ-IN
-### SCORE ID SUFFIX
 
-Adult_Other <-
+Teen_1221_Home <-
   suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/SPM-2 Adult ages 1690 Other Report Questionnaire.csv")
+    here("INPUT-FILES/SPM-2 Teen ages 1221 Home Report Questionnaire.csv")
   ))) %>% select(
     IDNumber,
     Age,
     AgeGroup,
     Gender,
-    HighestEducation,
+    ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Adult_Other
+    All_items_Teen_1221_Home
   ) %>%
-  # filter out youngest age group
-  #### AUTOMATION: TOGGLE AGE FILTER?
-  filter(AgeGroup != "16.00 to 20.99 years") %>% 
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(
-    All_items_Adult_Other,
+    All_items_Teen_1221_Home,
     ~ case_when(
       .x == "Never" ~ 1,
       .x == "Occasionally" ~ 2,
@@ -81,7 +75,7 @@ Adult_Other <-
   ) %>%
   # recode reverse-scored items
   mutate_at(
-    SOC_rev_items_Adult_Other,
+    SOC_rev_items_Teen_1221_Home,
     ~ case_when(.x == 4 ~ 1,
                 .x == 3 ~ 2,
                 .x == 2 ~ 3,
@@ -89,33 +83,32 @@ Adult_Other <-
                 TRUE ~ NA_real_)
   ) %>%
   # Convert scored item vars to integers
-  mutate_at(All_items_Adult_Other,
+  mutate_at(All_items_Teen_1221_Home,
             ~ as.integer(.x)) %>% 
-  # Compute raw scores. Note use of `rowSums(.[TOT_items_Adult_Other])`: when used 
+  # Compute raw scores. Note use of `rowSums(.[TOT_items_Teen_1221_Home])`: when used 
   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
   # must wrap the column vector in a column-subsetting expression: `.[]`, where the
   # dot is a token for the data in the pipe.
   mutate(
-    TOT_raw = rowSums(.[TOT_items_Adult_Other]),
-    SOC_raw = rowSums(.[SOC_items_Adult_Other]),
-    VIS_raw = rowSums(.[VIS_items_Adult_Other]),
-    HEA_raw = rowSums(.[HEA_items_Adult_Other]),
-    TOU_raw = rowSums(.[TOU_items_Adult_Other]),
-    TS_raw = rowSums(.[TS_items_Adult_Other]),
-    BOD_raw = rowSums(.[BOD_items_Adult_Other]),
-    BAL_raw = rowSums(.[BAL_items_Adult_Other]),
-    PLA_raw = rowSums(.[PLA_items_Adult_Other])
-  ) %>%
-  ### AUTOMATION: item_span VEC TO HOLD LO AND HI ITEM NOS. PER FORM
+    TOT_raw = rowSums(.[TOT_items_Teen_1221_Home]),
+    SOC_raw = rowSums(.[SOC_items_Teen_1221_Home]),
+    VIS_raw = rowSums(.[VIS_items_Teen_1221_Home]),
+    HEA_raw = rowSums(.[HEA_items_Teen_1221_Home]),
+    TOU_raw = rowSums(.[TOU_items_Teen_1221_Home]),
+    TS_raw = rowSums(.[TS_items_Teen_1221_Home]),
+    BOD_raw = rowSums(.[BOD_items_Teen_1221_Home]),
+    BAL_raw = rowSums(.[BAL_items_Teen_1221_Home]),
+    PLA_raw = rowSums(.[PLA_items_Teen_1221_Home])
+  ) %>% 
   select(
-    -(q0014:q0131)
+    -(q0015:q0117)
   ) %>% 
   #print()
   # Exclude outliers on TOT_raw
   filter(TOT_raw <200) %>% print()
 
 # clean up environment
-rm(list = ls(pattern='.*items_Adult_Other'))
+rm(list = ls(pattern='.*items_Teen_1221_Home'))
 
 
 # EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
@@ -127,22 +120,22 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 
 
 # Create frequency tables for TOT_raw by AgeGroup
-# Adult_Other_TOT_freq_AgeGroup <- Adult_Other %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
+# Teen_1221_Home_TOT_freq_AgeGroup <- Teen_1221_Home %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
 #   mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
 
 
 # Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-# Adult_Other_TOT_desc_AgeGroup <-
-#   Adult_Other %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
+# Teen_1221_Home_TOT_desc_AgeGroup <-
+#   Teen_1221_Home %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
 #                                                                          median = round(median(TOT_raw), 2),
 #                                                                          mean = round(mean(TOT_raw), 2),
 #                                                                          sd = round(sd(TOT_raw), 2)) %>%
 #   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:6))
 # 
-# AgeGroup <- Adult_Other_TOT_desc_AgeGroup %>% pull(AgeGroup)
+# AgeGroup <- Teen_1221_Home_TOT_desc_AgeGroup %>% pull(AgeGroup)
 
 # Plot TOT_raw means, SDs by AgeGroup
-# mean_plot <- ggplot(data = Adult_Other_TOT_desc_AgeGroup, aes(group, mean)) +
+# mean_plot <- ggplot(data = Teen_1221_Home_TOT_desc_AgeGroup, aes(group, mean)) +
 #   geom_point(
 #     col = "blue",
 #     fill = "blue",
@@ -164,8 +157,8 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 
 # Check for duplicate IDnumber.
 
-# Adult_Other_dup <- Adult_Other %>% count(IDNumber) %>% filter(n > 1)
-# write_csv(Adult_Other_dup, here("DATA/Adult_Other_dup.csv"))
+# Teen_1221_Home_dup <- Teen_1221_Home %>% count(IDNumber) %>% filter(n > 1)
+# write_csv(Teen_1221_Home_dup, here("DATA/Teen_1221_Home_dup.csv"))
 
 
 # DETERMINE BEST NORMALIZATION MODEL --------------------------------------
@@ -173,17 +166,17 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 # (NOTE: THIS SECTION SHOULD BE TOGGLED OFF AFTER SELECTION OF NORMALIZATION
 # MODEL)
 
-# create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
-# TOT_nz_obj <- bestNormalize(Adult_Other$TOT_raw)
-
-# print transformation
+# # create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
+# TOT_nz_obj <- bestNormalize(Teen_1221_Home$TOT_raw)
+# 
+# # print transformation
 # TOT_nz_obj$chosen_transform
-
-# Extract transformation type
+# 
+# # Extract transformation type
 # chosen_transform <- class(TOT_nz_obj$chosen_transform)[1]
-
-# apply the chosen method to create normalized z-scores for each case.
-# TOT_nz_transform <- eval(as.name(chosen_transform))(Adult_Other$TOT_raw)
+# 
+# # apply the chosen method to create normalized z-scores for each case.
+# TOT_nz_transform <- eval(as.name(chosen_transform))(Teen_1221_Home$TOT_raw)
 
 
 # APPLY SELECTED NORMALIZATION MODEL TO CREATE NORMALIZED Z-SCORES --------
@@ -195,7 +188,7 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 nz_transform_names <- c(paste0(score_names, '_nz_transform'))
 
 # pull nine raw score columns into a list
-raw_score_cols_list <- map(score_names, ~ Adult_Other %>% 
+raw_score_cols_list <- map(score_names, ~ Teen_1221_Home %>% 
               pull(
                 !!as.name(paste0(.x, '_raw'))
               )
@@ -213,16 +206,14 @@ raw_score_cols_list <- map(score_names, ~ Adult_Other %>%
 # .y data. 
 
 # NOTE: MUST SUBSITUTE NAMED TRANSFORMATION FROM PREVIOUS STEP IN THIS LINE:
-# value = boxcox(.y), e.g., value = [SELECTED TRANSFORMATION](.y), 
+# value = orderNorm(.y), e.g., value = [SELECTED TRANSFORMATION](.y), 
 
-### AUTOMATION: AT THIS POINT, CHOSEN NORM MODEL IS IN A VEC, FIND WAY TO 
-### READ THIS INTO THE WALK FUNCTION.
 raw_score_cols_list %>%
   walk2(
     .x = c(nz_transform_names),         # names to assign
     .y = .,                # object to be assigned
     .f = ~ assign(x = .x, 
-                  value = boxcox(.y), 
+                  value = orderNorm(.y), 
                   envir = .GlobalEnv)
   )
 
@@ -293,14 +284,14 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
-Adult_Other <- Adult_Other %>% bind_cols(NT_cols)
+Teen_1221_Home <- Teen_1221_Home %>% bind_cols(NT_cols)
 
 # clean up environment
 rm(list = ls(pattern='.*_nz'))
 
 # histogram to check normality
-# MASS::truehist(Adult_Other$TOT_NT, h = 1)
-# hist_plot <- ggplot(data = Adult_Other, aes(TOT_NT)) +
+# MASS::truehist(Teen_1221_Home$TOT_NT, h = 1)
+# hist_plot <- ggplot(data = Teen_1221_Home, aes(TOT_NT)) +
 #   geom_histogram(
 #     binwidth = .2,
 #     col = "red"
@@ -315,7 +306,7 @@ rm(list = ls(pattern='.*_nz'))
 # because each type has different raw score range. Start wtih TOT. Input is
 # stand sample with raw scores and normalized T scores for each case. Group
 # cases by raw score, relationship between raw and T is many-to-one.
-TOT_lookup <- Adult_Other %>% group_by(
+TOT_lookup <- Teen_1221_Home %>% group_by(
   TOT_raw
 ) %>% 
   # Because raw-to-T is many to one, all values of T are identical for each raw,
@@ -360,7 +351,7 @@ subscale_names <- score_names[2:9]
 
 subscale_lookup <- map(
   subscale_names, 
-  ~ Adult_Other %>% group_by(
+  ~ Teen_1221_Home %>% group_by(
     !!as.name(paste0(.x, '_raw'))
   ) %>% 
     summarise(
@@ -399,7 +390,7 @@ all_lookup_col_names <- c(paste0(score_names, '_raw'))
 # write final raw-to-T lookup table to .csv
 write_csv(all_lookup, here(
   paste0(
-    'OUTPUT-FILES/RAW-T-LOOKUP-TABLES/Adult-Other-raw-T-lookup-',
+    'OUTPUT-FILES/RAW-T-LOOKUP-TABLES/Teen-Home-raw-T-lookup-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
@@ -447,7 +438,7 @@ all_lookup_pub <- all_lookup %>%
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(
   paste0(
-    'OUTPUT-FILES/PRINT-FORMAT-NORMS-TABLES/Adult-Other-print-raw-T-lookup-',
+    'OUTPUT-FILES/PRINT-FORMAT-NORMS-TABLES/Teen-Home-print-raw-T-lookup-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )

@@ -54,7 +54,7 @@ score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 Adult_Other <-
   suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/SPM-2 Adult ages 1690 Other Report Questionnaire.csv")
+    here("INPUT-FILES/ADULT/SPM-2 Adult ages 1690 Other Report Questionnaire.csv")
   ))) %>% select(
     IDNumber,
     Age,
@@ -295,6 +295,15 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
 # each case.
 Adult_Other <- Adult_Other %>% bind_cols(NT_cols)
 
+# write T-scores per case table to .csv
+write_csv(Adult_Other, here(
+  paste0(
+    'OUTPUT-FILES/ADULT/T-SCORES-PER-CASE/Adult-Other-T-Scores-per-case-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+))
+
 # clean up environment
 rm(list = ls(pattern='.*_nz'))
 
@@ -399,7 +408,7 @@ all_lookup_col_names <- c(paste0(score_names, '_raw'))
 # write final raw-to-T lookup table to .csv
 write_csv(all_lookup, here(
   paste0(
-    'OUTPUT-FILES/RAW-T-LOOKUP-TABLES/Adult-Other-raw-T-lookup-',
+    'OUTPUT-FILES/ADULT/RAW-T-LOOKUP-TABLES/Adult-Other-raw-T-lookup-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
@@ -447,7 +456,7 @@ all_lookup_pub <- all_lookup %>%
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(
   paste0(
-    'OUTPUT-FILES/PRINT-FORMAT-NORMS-TABLES/Adult-Other-print-raw-T-lookup-',
+    'OUTPUT-FILES/ADULT/PRINT-FORMAT-NORMS-TABLES/Adult-Other-print-raw-T-lookup-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )

@@ -1,0 +1,699 @@
+IDNumber,Age,AgeGroup,Gender,ParentHighestEducation,Ethnicity,Region,TOT_raw,SOC_raw,VIS_raw,HEA_raw,TOU_raw,TS_raw,BOD_raw,BAL_raw,PLA_raw,TOT_NT,SOC_NT,VIS_NT,HEA_NT,TOU_NT,TS_NT,BOD_NT,BAL_NT,PLA_NT
+118017,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,72,15,11,14,11,14,12,10,12,43,46,42,47,40,46,46,40,44
+105026,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,midwest,117,15,21,22,20,16,22,16,21,59,46,58,60,60,50,62,57,60
+137003,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,midwest,83,16,18,13,12,16,12,12,12,48,49,54,46,43,50,46,49,44
+105034,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),White,midwest,110,17,24,13,17,22,19,15,18,57,51,62,46,56,60,59,56,55
+105041,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,midwest,130,19,25,23,18,18,25,21,26,62,56,63,61,57,54,66,63,66
+134004,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,northeast,113,18,22,18,23,16,14,20,19,58,53,60,54,64,50,51,63,57
+105064,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,south,105,19,17,19,16,19,21,13,15,55,56,52,55,54,55,61,52,50
+129013,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,midwest,89,20,16,18,11,16,14,14,18,50,57,51,54,40,50,51,54,55
+105065,18,18.00 to 21.99 years,Female,Bachelor's degree or higher,White,south,73,15,14,12,12,13,11,11,12,43,46,48,43,43,44,43,47,44
+137015,12,12.00 to 13.99,Female,Some college or associate degree,White,midwest,103,19,19,18,15,18,20,13,20,55,56,56,54,52,54,60,52,58
+137009,13,12.00 to 13.99,Female,Some college or associate degree,White,midwest,73,21,14,12,11,14,11,11,12,43,59,48,43,40,46,43,47,44
+105098,15,14.00 to 15.99 years,Male,High school graduate (including GED),Black,midwest,76,17,13,15,10,13,12,13,13,45,51,46,49,34,44,46,52,46
+126004,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Asian,midwest,98,25,17,15,14,31,11,10,17,53,66,52,49,49,74,43,40,54
+126005,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,midwest,108,19,19,18,16,24,17,14,18,56,56,56,54,54,62,56,54,55
+105020,17,16.00 to 17.99 years,Female,Some college or associate degree,Black,midwest,61,11,10,10,11,10,10,10,10,31,36,36,35,40,33,37,40,36
+137007,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,midwest,81,19,13,13,13,16,11,15,13,47,56,46,46,46,50,43,56,46
+105110,19,18.00 to 21.99 years,Male,Some college or associate degree,Black,midwest,147,26,24,22,25,22,27,27,28,67,68,62,60,66,60,68,70,68
+126063,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,west,83,20,18,14,14,13,14,10,14,48,57,54,47,49,44,51,40,48
+126064,20,18.00 to 21.99 years,Female,Some college or associate degree,MultiRacial,west,97,21,26,16,19,12,14,10,17,53,59,65,51,59,41,51,40,54
+129019,12,12.00 to 13.99,Female,Some college or associate degree,MultiRacial,midwest,101,18,18,18,14,15,19,17,17,54,53,54,54,49,48,59,58,54
+137011,13,NA,Female,Some college or associate degree,White,midwest,77,13,13,13,13,15,12,11,12,45,42,46,46,46,48,46,47,44
+106009,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),White,midwest,126,28,20,29,19,19,27,12,22,61,73,57,69,59,55,68,49,61
+105058,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,midwest,66,10,11,12,11,11,10,11,12,39,31,42,43,40,38,37,47,44
+106016,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,Hispanic,midwest,89,19,19,21,11,12,13,13,15,50,56,56,59,40,41,49,52,50
+160011,20,18.00 to 21.99 years,Female,Some college or associate degree,Asian,west,110,14,21,19,20,30,10,10,14,57,44,58,55,60,72,37,40,48
+160012,12,12.00 to 13.99,Female,Bachelor's degree or higher,Asian,west,125,24,26,26,22,23,12,16,28,61,64,65,64,62,61,46,57,68
+160013,20,18.00 to 21.99 years,Female,High school graduate (including GED),Hispanic,west,64,18,12,11,10,10,11,10,11,36,53,44,41,34,33,43,40,42
+160014,20,18.00 to 21.99 years,Female,Bachelor's degree or higher,Asian,west,70,12,15,12,13,10,10,10,14,42,39,49,43,46,33,37,40,48
+160015,20,18.00 to 21.99 years,Female,Bachelor's degree or higher,Black,west,60,11,10,10,10,10,10,10,10,27,36,36,35,34,33,37,40,36
+160016,15,12.00 to 13.99,Male,Bachelor's degree or higher,White,west,113,24,21,28,20,18,15,11,22,58,64,58,67,60,54,53,47,61
+160017,17,16.00 to 17.99 years,Male,High school graduate (including GED),Hispanic,west,79,20,16,16,12,12,12,11,20,46,57,51,51,43,41,46,47,58
+129007,18,18.00 to 21.99 years,Male,Bachelor's degree or higher,White,midwest,81,18,12,13,14,17,14,11,16,47,53,44,46,49,52,51,47,52
+129006,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,midwest,109,17,22,19,12,19,18,19,28,57,51,60,55,43,55,57,61,68
+160018,17,18.00 to 21.99 years,Male,High school graduate (including GED),Hispanic,west,90,21,17,16,14,14,11,18,24,50,59,52,51,49,46,43,60,63
+160019,18,18.00 to 21.99 years,Male,High school graduate (including GED),Hispanic,west,87,23,13,16,16,12,12,18,21,49,62,46,51,54,41,46,60,60
+106010,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),White,midwest,104,21,16,24,20,17,17,10,21,55,59,51,62,60,52,56,40,60
+160020,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,MultiRacial,west,83,14,10,18,12,12,12,19,14,48,44,36,54,43,41,46,61,48
+160021,20,18.00 to 21.99 years,Female,High school graduate (including GED),White,west,75,16,18,13,12,10,11,11,14,44,49,54,46,43,33,43,47,48
+126190,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,west,85,18,16,19,12,17,10,11,13,49,53,51,55,43,52,37,47,46
+126191,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,west,99,16,18,22,13,17,14,15,21,54,49,54,60,46,52,51,56,60
+160022,18,18.00 to 21.99 years,Female,Bachelor's degree or higher,White,west,83,16,13,15,12,21,11,11,12,48,49,46,49,43,58,43,47,44
+160023,20,18.00 to 21.99 years,Male,High school graduate (including GED),NativeHawPacIsl,west,60,10,10,10,10,10,10,10,10,27,31,36,35,34,33,37,40,36
+160024,20,18.00 to 21.99 years,Male,Bachelor's degree or higher,White,west,65,12,12,11,11,11,10,10,13,37,39,44,41,40,38,37,40,46
+160025,20,18.00 to 21.99 years,Female,Bachelor's degree or higher,White,west,75,19,13,14,13,10,12,13,12,44,56,46,47,46,33,46,52,44
+126097,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,west,100,16,16,14,18,25,13,14,15,54,49,51,47,57,64,49,54,50
+126091,13,12.00 to 13.99,Female,Did not complete high school (no diploma),White,northeast,117,20,22,18,20,13,30,14,20,59,57,60,54,60,44,73,54,58
+126228,13,12.00 to 13.99,Female,Bachelor's degree or higher,MultiRacial,west,112,17,21,19,16,18,21,17,19,58,51,58,55,54,54,61,58,57
+106021,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,midwest,108,18,21,16,16,21,17,17,20,56,53,58,51,54,58,56,58,58
+129017,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,midwest,109,19,17,20,17,20,19,16,21,57,56,52,57,56,57,59,57,60
+126196,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,west,82,11,10,18,11,19,12,12,11,48,36,36,54,40,55,46,49,42
+119008,13,12.00 to 13.99,Female,Bachelor's degree or higher,MultiRacial,south,132,21,23,27,18,21,22,21,19,63,59,61,65,57,58,62,63,57
+126009,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,MultiRacial,west,82,18,12,16,13,17,14,10,14,48,53,44,51,46,52,51,40,48
+126010,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,MultiRacial,west,75,19,10,15,14,15,11,10,12,44,56,36,49,49,48,43,40,44
+137010,13,12.00 to 13.99,Male,Did not complete high school (no diploma),White,midwest,131,15,25,17,28,25,21,15,22,63,46,63,52,70,64,61,56,61
+137006,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,midwest,62,13,10,11,10,11,10,10,11,33,42,36,41,34,38,37,40,42
+129020,15,14.00 to 15.99 years,Female,High school graduate (including GED),White,midwest,102,12,17,18,14,19,15,19,17,54,39,52,54,49,55,53,61,54
+119034,15,14.00 to 15.99 years,Female,High school graduate (including GED),White,south,129,23,21,16,24,26,19,23,20,62,62,58,51,65,65,59,65,58
+126096,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,west,72,13,14,16,11,10,11,10,10,43,42,48,51,40,33,43,40,36
+137034,12,12.00 to 13.99,Male,Did not complete high school (no diploma),White,midwest,118,21,19,22,19,20,19,19,24,59,59,56,60,59,57,59,61,63
+137032,15,14.00 to 15.99 years,Female,Some college or associate degree,White,midwest,90,13,17,15,15,16,17,10,14,50,42,52,49,52,50,56,40,48
+126272,12,12.00 to 13.99,Female,Bachelor's degree or higher,White,west,96,19,17,19,14,19,14,13,18,52,56,52,55,49,55,51,52,55
+137018,13,12.00 to 13.99,Female,Some college or associate degree,White,midwest,74,13,13,12,11,11,16,11,14,44,42,46,43,40,38,54,47,48
+126260,13,12.00 to 13.99,Female,Did not complete high school (no diploma),White,south,91,14,17,17,13,18,13,13,14,51,44,52,52,46,54,49,52,48
+129010,12,12.00 to 13.99,Female,Bachelor's degree or higher,White,midwest,139,18,25,28,25,20,21,20,27,65,53,63,67,66,57,61,63,67
+126395,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,south,76,12,12,16,12,13,11,12,12,45,39,44,51,43,44,43,49,44
+132018,19,18.00 to 21.99 years,Male,Some college or associate degree,White,midwest,78,12,14,16,10,13,14,11,14,46,39,48,51,34,44,51,47,48
+132020,18,18.00 to 21.99 years,Female,Some college or associate degree,MultiRacial,midwest,108,19,14,16,12,25,17,24,19,56,56,48,51,43,64,56,66,57
+132021,18,18.00 to 21.99 years,Female,Bachelor's degree or higher,White,midwest,112,16,16,24,21,23,14,14,14,58,49,51,62,61,61,51,54,48
+132023,17,16.00 to 17.99 years,Male,High school graduate (including GED),White,midwest,62,11,11,10,11,10,10,10,12,33,36,42,35,40,33,37,40,44
+132017,13,12.00 to 13.99,Male,Some college or associate degree,White,midwest,96,13,19,17,16,19,12,13,12,52,42,56,52,54,55,46,52,44
+132024,17,16.00 to 17.99 years,Female,Some college or associate degree,White,midwest,102,20,22,23,14,16,17,10,16,54,57,60,61,49,50,56,40,52
+106009,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),White,midwest,135,23,25,30,23,19,23,15,17,64,62,63,71,64,55,63,56,54
+126227,18,18.00 to 21.99 years,Female,Bachelor's degree or higher,MultiRacial,west,96,15,20,21,14,16,14,11,18,52,46,57,59,49,50,51,47,55
+134022,12,12.00 to 13.99,Female,Some college or associate degree,White,west,162,25,30,32,23,30,24,23,31,70,66,71,74,64,72,65,65,72
+126271,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,west,95,14,19,19,14,19,13,11,15,52,44,56,55,49,55,49,47,50
+132019,18,18.00 to 21.99 years,Male,Bachelor's degree or higher,White,midwest,91,18,18,15,13,15,16,14,14,51,53,54,49,46,48,54,54,48
+126310,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,west,61,11,10,10,11,10,10,10,10,31,36,36,35,40,33,37,40,36
+126307,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,midwest,112,21,20,22,15,18,20,17,18,58,59,57,60,52,54,60,58,55
+119071,13,12.00 to 13.99,Male,Did not complete high school (no diploma),Hispanic,south,78,19,13,17,13,12,12,11,14,46,56,46,52,46,41,46,47,48
+119072,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),White,south,79,16,12,19,13,13,12,10,13,46,49,44,55,46,44,46,40,46
+132022,17,16.00 to 17.99 years,Male,High school graduate (including GED),White,midwest,66,18,10,11,11,11,13,10,10,39,53,36,41,40,38,49,40,36
+158044,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,northeast,66,10,11,10,12,13,10,10,10,39,31,42,35,43,44,37,40,36
+158035,21,18.00 to 21.99 years,Female,Some college or associate degree,White,northeast,67,13,12,10,11,14,10,10,11,40,42,44,35,40,46,37,40,42
+158045,14,14.00 to 15.99 years,Male,Some college or associate degree,MultiRacial,northeast,65,12,10,10,13,12,10,10,12,37,39,36,35,46,41,37,40,44
+158037,17,16.00 to 17.99 years,Female,Did not complete high school (no diploma),White,northeast,107,17,17,16,16,24,16,18,18,56,51,52,51,54,62,54,60,55
+158046,14,14.00 to 15.99 years,Female,Did not complete high school (no diploma),White,northeast,79,17,18,14,11,14,11,11,13,46,51,54,47,40,46,43,47,46
+141039,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),White,south,110,21,20,19,20,23,15,13,19,57,59,57,55,60,61,53,52,57
+141035,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,123,18,28,19,19,19,21,17,16,60,53,67,55,59,55,61,58,52
+141036,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,south,113,21,17,21,19,20,18,18,19,58,59,52,59,59,57,57,60,57
+141041,13,12.00 to 13.99,Female,Did not complete high school (no diploma),White,south,84,17,13,15,14,17,11,14,14,48,51,46,49,49,52,43,54,48
+119069,16,16.00 to 17.99 years,Male,Some college or associate degree,White,south,103,20,20,21,16,14,17,15,15,55,57,57,59,54,46,56,56,50
+141044,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,93,11,19,20,16,13,13,12,11,52,36,56,57,54,44,49,49,42
+141045,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,south,89,21,16,10,14,16,18,15,20,50,59,51,35,49,50,57,56,58
+158014,12,12.00 to 13.99,Female,Some college or associate degree,White,northeast,99,13,17,15,19,21,13,14,15,54,42,52,49,59,58,49,54,50
+141057,11,NA,Male,Bachelor's degree or higher,White,south,82,16,13,13,21,12,13,10,15,48,49,46,46,61,41,49,40,50
+141052,11,NA,Male,Bachelor's degree or higher,White,south,88,13,12,16,19,19,12,10,10,50,42,44,51,59,55,46,40,36
+141050,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,110,19,19,21,16,20,18,16,19,57,56,56,59,54,57,57,57,57
+141051,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,south,73,16,13,13,13,11,11,12,13,43,49,46,46,46,38,43,49,46
+141058,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,86,15,14,20,14,12,13,13,17,49,46,48,57,49,41,49,52,54
+141056,16,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,91,15,18,14,14,18,15,12,16,51,46,54,47,49,54,53,49,52
+141049,16,16.00 to 17.99 years,Female,Some college or associate degree,Hispanic,south,87,23,13,18,12,18,13,13,15,49,62,46,54,43,54,49,52,50
+143005,12,12.00 to 13.99,Female,Some college or associate degree,White,northeast,76,11,10,15,11,14,12,14,10,45,36,36,49,40,46,46,54,36
+141048,14,14.00 to 15.99 years,Female,Some college or associate degree,Hispanic,south,89,14,13,17,16,14,14,15,14,50,44,46,52,54,46,51,56,48
+141046,13,12.00 to 13.99,Male,Bachelor's degree or higher,MultiRacial,south,76,18,15,13,15,13,10,10,14,45,53,49,46,52,44,37,40,48
+141054,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,112,20,17,18,21,19,19,18,21,58,57,52,54,61,55,59,60,60
+141037,14,14.00 to 15.99 years,Male,Some college or associate degree,Hispanic,south,91,16,16,13,16,17,14,15,22,51,49,51,46,54,52,51,56,61
+141098,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,south,125,17,23,31,17,20,16,18,21,61,51,61,73,56,57,54,60,60
+158036,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,northeast,85,10,13,14,16,17,14,11,14,49,31,46,47,54,52,51,47,48
+141059,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,south,100,12,17,18,18,14,19,14,15,54,39,52,54,57,46,59,54,50
+141047,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,MultiRacial,south,76,16,13,14,12,13,11,13,11,45,49,46,47,43,44,43,52,42
+141040,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,south,81,15,14,15,12,15,15,10,13,47,46,48,49,43,48,53,40,46
+141043,14,16.00 to 17.99 years,Female,Bachelor's degree or higher,Hispanic,south,110,17,17,18,23,24,16,12,14,57,51,52,54,64,62,54,49,48
+141053,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),MultiRacial,south,79,11,12,17,15,13,12,10,10,46,36,44,52,52,44,46,40,36
+141088,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,Asian,south,75,15,12,12,13,14,14,10,11,44,46,44,43,46,46,51,40,42
+141089,12,12.00 to 13.99,Male,Bachelor's degree or higher,Asian,south,81,19,17,13,12,13,11,15,14,47,56,52,46,43,44,43,56,48
+141038,12,12.00 to 13.99,Male,Some college or associate degree,Hispanic,south,98,16,16,18,19,15,17,13,18,53,49,51,54,59,48,56,52,55
+141124,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,133,24,21,29,27,26,13,17,20,63,64,58,69,69,65,49,58,58
+141125,14,14.00 to 15.99 years,Male,Some college or associate degree,White,south,139,27,17,26,27,27,29,13,15,65,70,52,64,69,67,71,52,50
+141126,16,16.00 to 17.99 years,Female,Some college or associate degree,White,south,107,15,17,21,14,28,14,13,17,56,46,52,59,49,69,51,52,54
+141128,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,south,80,15,14,15,13,13,12,13,13,47,46,48,49,46,44,46,52,46
+158041,12,12.00 to 13.99,Male,Bachelor's degree or higher,MultiRacial,northeast,94,15,13,22,16,18,12,13,17,52,46,46,60,54,54,46,52,54
+158033,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,northeast,68,14,13,10,12,12,11,10,10,41,44,46,35,43,41,43,40,36
+158034,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,northeast,61,10,11,10,10,10,10,10,10,31,31,42,35,34,33,37,40,36
+158047,18,18.00 to 21.99 years,Male,Bachelor's degree or higher,White,northeast,60,10,10,10,10,10,10,10,10,27,31,36,35,34,33,37,40,36
+158031,18,18.00 to 21.99 years,Female,Bachelor's degree or higher,White,northeast,77,16,12,14,13,14,12,12,12,45,49,44,47,46,46,46,49,44
+158032,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,northeast,80,12,15,12,12,17,14,10,13,47,39,49,43,43,52,51,40,46
+158048,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,northeast,63,15,10,10,12,10,11,10,10,35,46,36,35,43,33,43,40,36
+158053,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,Hispanic,northeast,62,10,10,11,10,10,10,11,10,33,31,36,41,34,33,37,47,36
+141060,13,12.00 to 13.99,Male,Some college or associate degree,White,south,81,21,13,14,13,14,15,12,15,47,59,46,47,46,46,53,49,50
+141106,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,88,17,16,16,14,15,14,13,13,50,51,51,51,49,48,51,52,46
+158049,15,14.00 to 15.99 years,Male,Some college or associate degree,White,northeast,81,15,13,14,14,14,14,12,18,47,46,46,47,49,46,51,49,55
+141097,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,98,15,17,19,16,24,11,11,17,53,46,52,55,54,62,43,47,54
+158050,16,16.00 to 17.99 years,Female,Some college or associate degree,White,northeast,63,10,10,10,11,12,10,10,10,35,31,36,35,40,41,37,40,36
+141129,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,south,110,18,17,22,16,21,20,14,20,57,53,52,60,54,58,60,54,58
+141131,12,12.00 to 13.99,Female,Did not complete high school (no diploma),Black,south,112,16,21,19,16,15,23,18,23,58,49,58,55,54,48,63,60,62
+158039,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,northeast,72,13,10,12,11,16,13,10,12,43,42,36,43,40,50,49,40,44
+158038,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,northeast,92,18,18,17,17,15,13,12,16,51,53,54,52,56,48,49,49,52
+141152,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,79,12,14,14,13,14,14,10,14,46,39,48,47,46,46,51,40,48
+143014,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),Hispanic,northeast,84,22,14,12,14,18,16,10,11,48,61,48,43,49,54,54,40,42
+141160,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,113,19,21,24,18,17,17,16,14,58,56,58,62,57,52,56,57,48
+141154,18,18.00 to 21.99 years,Female,Bachelor's degree or higher,White,south,80,14,13,18,11,17,11,10,11,47,44,46,54,40,52,43,40,42
+141132,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,98,16,14,19,18,17,17,13,18,53,49,48,55,57,52,56,52,55
+141127,18,18.00 to 21.99 years,Male,Bachelor's degree or higher,White,south,73,19,10,14,16,12,10,11,18,43,56,36,47,54,41,37,47,55
+141153,11,NA,Male,Bachelor's degree or higher,White,south,115,20,21,20,21,20,19,14,18,59,57,58,57,61,57,59,54,55
+141130,16,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Black,south,107,20,16,16,23,25,13,14,11,56,57,51,51,64,64,49,54,42
+141150,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,131,16,24,26,24,20,19,18,21,63,49,62,64,65,57,59,60,60
+141155,13,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,85,15,12,17,13,16,15,12,15,49,46,44,52,46,50,53,49,50
+141105,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,south,71,13,14,13,11,12,11,10,17,42,42,48,46,40,41,43,40,54
+141156,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,south,103,15,19,16,17,18,16,17,17,55,46,56,51,56,54,54,58,54
+143030,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,northeast,86,20,12,16,14,15,16,13,14,49,57,44,51,49,48,54,52,48
+143031,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,northeast,114,17,23,28,15,21,15,12,16,59,51,61,67,52,58,53,49,52
+141158,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,124,19,29,30,19,14,16,16,25,61,56,69,71,59,46,54,57,64
+141159,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,south,97,20,24,12,14,13,19,15,23,53,57,62,43,49,44,59,56,62
+141157,16,16.00 to 17.99 years,Male,Some college or associate degree,White,south,76,10,10,14,12,16,12,12,14,45,31,36,47,43,50,46,49,48
+141169,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,Asian,south,85,18,14,16,15,17,11,12,16,49,53,48,51,52,52,43,49,52
+141170,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,Asian,south,98,12,16,18,15,17,17,15,18,53,39,51,54,52,52,56,56,55
+141151,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,south,101,24,20,17,17,20,14,13,26,54,64,57,52,56,57,51,52,66
+158043,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,northeast,96,16,16,13,15,20,19,13,15,52,49,51,46,52,57,59,52,50
+158042,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,northeast,82,18,12,11,14,16,14,15,15,48,53,44,41,49,50,51,56,50
+141151,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),White,south,105,19,17,20,16,15,16,21,17,55,56,52,57,54,48,54,63,54
+144015,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,MultiRacial,south,67,10,12,11,10,13,11,10,11,40,31,44,41,34,44,43,40,42
+141055,18,18.00 to 21.99 years,Male,Bachelor's degree or higher,White,south,105,17,23,19,17,17,15,14,22,55,51,61,55,56,52,53,54,61
+141042,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,Hispanic,south,73,16,12,14,13,12,10,12,14,43,49,44,47,46,41,37,49,48
+141178,11,NA,Male,Bachelor's degree or higher,Hispanic,south,99,22,20,19,15,17,14,14,20,54,61,57,55,52,52,51,54,58
+143022,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,northeast,70,20,14,12,11,12,11,10,10,42,57,48,43,40,41,43,40,36
+143021,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,northeast,81,14,13,16,13,15,11,13,13,47,44,46,51,46,48,43,52,46
+119052,13,12.00 to 13.99,Female,Did not complete high school (no diploma),White,south,96,22,21,18,18,15,14,10,18,52,61,58,54,57,48,51,40,55
+119053,16,16.00 to 17.99 years,Female,Did not complete high school (no diploma),MultiRacial,south,82,18,15,15,12,20,10,10,10,48,53,49,49,43,57,37,40,36
+119071,13,12.00 to 13.99,Male,Some college or associate degree,Hispanic,south,88,18,17,16,15,13,16,11,14,50,53,52,51,52,44,54,47,48
+119072,16,16.00 to 17.99 years,Male,Some college or associate degree,White,south,78,16,13,19,13,12,11,10,15,46,49,46,55,46,41,43,40,50
+119075,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,Black,south,84,20,11,17,13,19,11,13,14,48,57,42,52,46,55,43,52,48
+119054,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),White,south,77,19,14,15,15,10,13,10,12,45,56,48,49,52,33,49,40,44
+119074,18,18.00 to 21.99 years,Male,Bachelor's degree or higher,Black,south,66,12,12,10,11,12,10,11,11,39,39,44,35,40,41,37,47,42
+141034,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,122,15,20,25,23,22,17,15,18,60,46,57,63,64,60,56,56,55
+143026,13,12.00 to 13.99,Female,Some college or associate degree,Black,northeast,83,17,15,16,11,13,16,12,22,48,51,49,51,40,44,54,49,61
+132038,12,12.00 to 13.99,Female,Bachelor's degree or higher,White,midwest,114,16,17,22,20,21,17,17,18,59,49,52,60,60,58,56,58,55
+132036,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,midwest,92,14,18,19,14,15,13,13,14,51,44,54,55,49,48,49,52,48
+132037,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,midwest,98,17,19,16,17,19,12,15,19,53,51,56,51,56,55,46,56,57
+132061,13,12.00 to 13.99,Male,Some college or associate degree,White,midwest,65,12,13,11,10,11,10,10,10,37,39,46,41,34,38,37,40,36
+132062,12,12.00 to 13.99,Male,Some college or associate degree,White,midwest,64,10,11,11,11,11,10,10,10,36,31,42,41,40,38,37,40,36
+132055,14,14.00 to 15.99 years,Female,Some college or associate degree,White,midwest,78,15,14,12,12,17,12,11,12,46,46,48,43,43,52,46,47,44
+132057,16,16.00 to 17.99 years,Male,Some college or associate degree,White,midwest,80,15,17,12,13,11,17,10,15,47,46,52,43,46,38,56,40,50
+132056,13,12.00 to 13.99,Male,Some college or associate degree,White,midwest,69,16,10,13,11,14,10,11,10,41,49,36,46,40,46,37,47,36
+203004,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,81,16,16,13,13,12,15,12,12,47,49,51,46,46,41,53,49,44
+203008,16,16.00 to 17.99 years,Female,Some college or associate degree,White,south,134,15,32,26,19,26,20,11,22,63,46,74,64,59,65,60,47,61
+203020,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,139,25,26,22,30,21,22,18,24,65,66,65,60,74,58,62,60,63
+203021,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,south,98,18,21,16,15,18,15,13,17,53,53,58,51,52,54,53,52,54
+193039,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),White,northeast,67,16,11,12,13,11,10,10,13,40,49,42,43,46,38,37,40,46
+193044,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,northeast,89,12,17,13,12,15,19,13,16,50,39,52,46,43,48,59,52,52
+193029,15,16.00 to 17.99 years,Female,Some college or associate degree,MultiRacial,northeast,106,18,21,23,15,20,12,15,16,56,53,58,61,52,57,46,56,52
+203019,11,NA,Male,Bachelor's degree or higher,White,south,120,14,17,19,19,26,23,16,20,60,44,52,55,59,65,63,57,58
+193042,18,18.00 to 21.99 years,Female,Bachelor's degree or higher,White,northeast,96,11,23,15,12,12,22,12,22,52,36,61,49,43,41,62,49,61
+193045,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,northeast,97,21,18,23,15,16,14,11,16,53,59,54,61,52,50,51,47,52
+197002,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,west,72,13,15,12,12,11,10,12,10,43,42,49,43,43,38,37,49,36
+190035,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,west,86,13,14,15,16,15,15,11,11,49,42,48,49,54,48,53,47,42
+190042,13,12.00 to 13.99,Male,Bachelor's degree or higher,Hispanic,west,79,16,17,14,11,10,12,15,14,46,49,52,47,40,33,46,56,48
+190040,13,12.00 to 13.99,Female,Some college or associate degree,White,west,92,15,16,15,13,13,16,19,18,51,46,51,49,46,44,54,61,55
+190043,13,12.00 to 13.99,Male,Bachelor's degree or higher,Asian,west,66,15,10,12,10,11,11,12,13,39,46,36,43,34,38,43,49,46
+214016,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,south,136,19,25,25,20,17,30,19,16,64,56,63,63,60,52,73,61,52
+190052,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,Hispanic,west,92,16,16,17,12,22,14,11,15,51,49,51,52,43,60,51,47,50
+193046,14,12.00 to 13.99,Female,Some college or associate degree,White,northeast,78,16,16,14,11,12,15,10,12,46,49,51,47,40,41,53,40,44
+193049,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,northeast,83,17,14,14,15,17,12,11,11,48,51,48,47,52,52,46,47,42
+214008,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,south,114,17,22,17,19,21,17,18,20,59,51,60,52,59,58,56,60,58
+190041,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,west,86,18,13,15,14,17,15,12,17,49,53,46,49,49,52,53,49,54
+193032,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,northeast,61,15,10,10,11,10,10,10,10,31,46,36,35,40,33,37,40,36
+193031,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,northeast,61,13,10,10,10,11,10,10,10,31,42,36,35,34,38,37,40,36
+193031,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,northeast,94,19,20,19,14,13,15,13,15,52,56,57,55,49,44,53,52,50
+193032,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,northeast,106,20,18,17,19,16,19,17,18,56,57,54,52,59,50,59,58,55
+193038,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,northeast,115,23,23,25,16,22,16,13,21,59,62,61,63,54,60,54,52,60
+214015,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,south,105,17,20,17,18,19,16,15,17,55,51,57,52,57,55,54,56,54
+193050,12,12.00 to 13.99,Female,Bachelor's degree or higher,White,northeast,85,14,12,15,15,17,14,12,14,49,44,44,49,52,52,51,49,48
+212015,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,Asian,west,119,20,23,23,16,21,18,18,23,60,57,61,61,54,58,57,60,62
+193056,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,northeast,76,16,12,12,13,19,10,10,16,45,49,44,43,46,55,37,40,52
+193057,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,northeast,79,15,16,15,12,13,13,10,12,46,46,51,49,43,44,49,40,44
+226006,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,west,88,14,13,16,16,14,16,13,13,50,44,46,51,54,46,54,52,46
+226005,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,west,94,19,17,17,18,18,11,13,16,52,56,52,52,57,54,43,52,52
+178035,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,100,17,17,20,16,19,14,14,15,54,51,52,57,54,55,51,54,50
+178039,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,114,16,21,19,17,17,20,20,22,59,49,58,55,56,52,60,63,61
+178036,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,108,15,24,18,17,20,14,15,17,56,46,62,54,56,57,51,56,54
+178037,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,113,14,18,22,18,28,16,11,18,58,44,54,60,57,69,54,47,55
+189075,17,16.00 to 17.99 years,Female,High school graduate (including GED),White,south,145,24,27,20,24,21,28,25,32,66,64,66,57,65,58,69,67,73
+199040,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),White,midwest,65,10,10,12,10,13,10,10,11,37,31,36,43,34,44,37,40,42
+199039,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),White,midwest,67,10,10,12,11,14,10,10,10,40,31,36,43,40,46,37,40,36
+199038,13,12.00 to 13.99,Female,Did not complete high school (no diploma),White,midwest,104,14,17,14,15,16,22,20,17,55,44,52,47,52,50,62,63,54
+193039,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),White,northeast,71,15,10,12,15,14,10,10,16,42,46,36,43,52,46,37,40,52
+178027,18,18.00 to 21.99 years,Male,Bachelor's degree or higher,MultiRacial,south,101,14,17,18,15,21,17,13,21,54,44,52,54,52,58,56,52,60
+190069,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,west,72,19,12,12,15,13,10,10,14,43,56,44,43,52,44,37,40,48
+193047,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,northeast,100,19,14,17,16,16,19,18,18,54,56,48,52,54,50,59,60,55
+193048,17,16.00 to 17.99 years,Female,Some college or associate degree,White,northeast,130,19,20,29,17,27,16,21,21,62,56,57,69,56,67,54,63,60
+203018,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,105,19,18,19,16,19,17,16,15,55,56,54,55,54,55,56,57,50
+199027,15,14.00 to 15.99 years,Female,Some college or associate degree,White,midwest,75,12,14,13,11,11,11,15,11,44,39,48,46,40,38,43,56,42
+199031,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,Hispanic,midwest,91,17,15,18,15,19,14,10,17,51,51,49,54,52,55,51,40,54
+178041,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,83,14,14,16,15,16,12,10,14,48,44,48,51,52,50,46,40,48
+199032,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,Hispanic,midwest,100,17,16,18,15,17,19,15,18,54,51,51,54,52,52,59,56,55
+203025,14,14.00 to 15.99 years,Female,Some college or associate degree,Black,south,120,23,20,20,23,23,18,16,15,60,62,57,57,64,61,57,57,50
+199034,14,14.00 to 15.99 years,Female,Some college or associate degree,White,midwest,60,13,10,10,10,10,10,10,10,27,42,36,35,34,33,37,40,36
+178032,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,89,15,18,17,17,14,12,11,14,50,46,54,52,56,46,46,47,48
+199036,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,midwest,92,17,18,15,14,20,13,12,14,51,51,54,49,49,57,49,49,48
+199029,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),White,midwest,73,13,12,11,13,15,12,10,10,43,42,44,41,46,48,46,40,36
+199028,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,midwest,78,17,17,12,11,15,13,10,11,46,51,52,43,40,48,49,40,42
+199030,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,midwest,126,13,23,22,20,25,18,18,18,61,42,61,60,60,64,57,60,55
+199037,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,midwest,65,10,11,11,11,12,10,10,10,37,31,42,41,40,41,37,40,36
+189067,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,Hispanic,south,95,19,15,13,17,19,16,15,14,52,56,49,46,56,55,54,56,48
+189068,15,14.00 to 15.99 years,Male,Some college or associate degree,Hispanic,south,85,17,14,17,12,16,13,13,15,49,51,48,52,43,50,49,52,50
+212010,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,Hispanic,west,64,21,10,10,10,13,11,10,10,36,59,36,35,34,44,43,40,36
+199035,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,midwest,65,14,12,10,10,12,11,10,13,37,44,44,35,34,41,43,40,46
+119133,15,16.00 to 17.99 years,Male,Bachelor's degree or higher,Black,south,74,16,11,14,12,16,11,10,11,44,49,42,47,43,50,43,40,42
+199033,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,midwest,68,11,11,12,10,13,11,11,11,41,36,42,43,34,44,43,47,42
+199026,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,midwest,73,11,11,11,14,12,14,11,13,43,36,42,41,49,41,51,47,46
+219004,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,72,12,14,12,11,13,11,11,10,43,39,48,43,40,44,43,47,36
+189066,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,133,15,24,24,20,28,19,18,18,63,46,62,62,60,69,59,60,55
+189066,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,123,14,21,22,21,25,15,19,18,60,44,58,60,61,64,53,61,55
+189069,18,18.00 to 21.99 years,Male,High school graduate (including GED),White,south,122,22,26,23,21,18,18,16,22,60,61,65,61,61,54,57,57,61
+203029,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,106,16,20,19,15,18,17,17,18,56,49,57,55,52,54,56,58,55
+226001,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,Hispanic,west,85,16,15,17,13,11,13,16,16,49,49,49,52,46,38,49,57,52
+190088,13,12.00 to 13.99,Male,Bachelor's degree or higher,Asian,west,61,11,10,10,10,10,11,10,10,31,36,36,35,34,33,43,40,36
+193066,17,16.00 to 17.99 years,Female,Some college or associate degree,White,northeast,96,16,18,14,18,17,14,15,14,52,49,54,47,57,52,51,56,48
+178033,17,16.00 to 17.99 years,Male,Some college or associate degree,White,south,91,15,16,15,17,19,14,10,13,51,46,51,49,56,55,51,40,46
+190087,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,west,89,21,13,17,14,16,16,13,17,50,59,46,52,49,50,54,52,54
+193065,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,northeast,110,17,19,18,16,21,18,18,18,57,51,56,54,54,58,57,60,55
+190091,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,west,93,14,17,15,13,14,19,15,14,52,44,52,49,46,46,59,56,48
+193063,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,northeast,101,15,15,20,20,18,14,14,17,54,46,49,57,60,54,51,54,54
+193062,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,northeast,82,15,16,21,12,11,11,11,10,48,46,51,59,43,38,43,47,36
+197003,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,west,134,18,17,19,24,24,26,24,26,63,53,52,55,65,62,67,66,66
+193064,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,northeast,111,19,19,18,14,24,18,18,20,58,56,56,54,49,62,57,60,58
+203029,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,82,18,16,14,16,12,13,11,15,48,53,51,47,54,41,49,47,50
+190065,12,12.00 to 13.99,Male,Did not complete high school (no diploma),Hispanic,west,117,17,25,24,17,16,19,16,23,59,51,63,62,56,50,59,57,62
+190064,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,Hispanic,west,116,17,21,24,17,22,15,17,21,59,51,58,62,56,60,53,58,60
+190089,13,12.00 to 13.99,Male,Bachelor's degree or higher,Asian,west,120,20,24,21,16,24,19,16,17,60,57,62,59,54,62,59,57,54
+178038,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,south,112,22,16,22,19,18,25,12,17,58,61,51,60,59,54,66,49,54
+190090,13,12.00 to 13.99,Male,Bachelor's degree or higher,Hispanic,west,81,13,10,16,14,17,14,10,11,47,42,36,51,49,52,51,40,42
+226003,11,NA,Male,Bachelor's degree or higher,White,west,117,14,19,17,21,23,18,19,27,59,44,56,52,61,61,57,61,67
+226002,13,12.00 to 13.99,Male,Some college or associate degree,White,west,127,16,21,20,24,34,14,14,24,61,49,58,57,65,75,51,54,63
+193067,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,northeast,94,16,22,17,13,19,12,11,11,52,49,60,52,46,55,46,47,42
+193072,13,12.00 to 13.99,Male,Some college or associate degree,White,northeast,104,20,23,17,15,15,17,17,22,55,57,61,52,52,48,56,58,61
+178040,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,Hispanic,south,135,26,29,33,17,22,21,13,22,64,68,69,75,56,60,61,52,61
+190093,12,12.00 to 13.99,Male,Bachelor's degree or higher,Other,west,70,13,12,11,11,14,11,11,11,42,42,44,41,40,46,43,47,42
+178043,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,south,89,16,18,21,14,13,10,13,14,50,49,54,59,49,44,37,52,48
+190095,13,12.00 to 13.99,Male,Bachelor's degree or higher,MultiRacial,west,144,21,29,26,22,19,23,25,26,66,59,69,64,62,55,63,67,66
+230024,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,midwest,75,12,10,12,12,17,12,12,12,44,39,36,43,43,52,46,49,44
+230025,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,midwest,99,17,17,16,16,19,18,13,16,54,51,52,51,54,55,57,52,52
+119136,15,14.00 to 15.99 years,Male,High school graduate (including GED),White,south,64,25,11,10,11,10,12,10,10,36,66,42,35,40,33,46,40,36
+230026,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,midwest,87,15,15,17,15,13,15,12,12,49,46,49,52,52,44,53,49,44
+230027,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,midwest,79,15,14,13,13,13,13,13,14,46,46,48,46,46,44,49,52,48
+189070,13,12.00 to 13.99,Male,Did not complete high school (no diploma),Hispanic,south,127,19,20,22,21,29,21,14,22,61,56,57,60,61,70,61,54,61
+119135,16,16.00 to 17.99 years,Male,High school graduate (including GED),Black,south,117,22,20,20,17,20,20,20,22,59,61,57,57,56,57,60,63,61
+230023,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,midwest,91,15,13,15,14,22,13,14,16,51,46,46,49,49,60,49,54,52
+178045,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,Hispanic,south,95,19,18,16,14,20,14,13,17,52,56,54,51,49,57,51,52,54
+190107,13,12.00 to 13.99,Female,Bachelor's degree or higher,MultiRacial,west,104,14,19,21,15,21,14,14,16,55,44,56,59,52,58,51,54,52
+190094,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,west,127,19,25,23,17,21,24,17,18,61,56,63,61,56,58,65,58,55
+190099,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,west,108,17,21,19,16,19,17,16,20,56,51,58,55,54,55,56,57,58
+241009,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,northeast,109,17,22,19,19,22,14,13,12,57,51,60,55,59,60,51,52,44
+241011,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,northeast,104,15,18,23,18,18,14,13,18,55,46,54,61,57,54,51,52,55
+190115,13,12.00 to 13.99,Male,Bachelor's degree or higher,Hispanic,west,101,21,18,16,19,21,16,11,26,54,59,54,51,59,58,54,47,66
+190114,13,12.00 to 13.99,Female,Bachelor's degree or higher,Hispanic,west,91,17,16,16,18,17,12,12,18,51,51,51,51,57,52,46,49,55
+212010,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,Hispanic,west,65,13,10,11,11,11,12,10,10,37,42,36,41,40,38,46,40,36
+190116,13,12.00 to 13.99,Female,Bachelor's degree or higher,Hispanic,west,94,14,18,16,13,17,15,15,16,52,44,54,51,46,52,53,56,52
+190117,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,west,104,13,22,24,12,15,17,14,16,55,42,60,62,43,48,56,54,52
+178031,18,18.00 to 21.99 years,Female,Some college or associate degree,White,south,108,18,20,20,16,19,19,14,16,56,53,57,57,54,55,59,54,52
+178034,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),White,south,78,17,15,14,12,16,10,11,13,46,51,49,47,43,50,37,47,46
+190124,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,west,85,14,14,16,14,16,14,11,11,49,44,48,51,49,50,51,47,42
+241014,13,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,northeast,87,13,19,17,14,13,14,10,12,49,42,56,52,49,44,51,40,44
+190126,13,12.00 to 13.99,Female,Bachelor's degree or higher,MultiRacial,west,135,17,29,28,16,19,21,22,25,64,51,69,67,54,55,61,64,64
+190127,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,west,113,16,19,19,19,22,19,15,17,58,49,56,55,59,60,59,56,54
+190125,16,16.00 to 17.99 years,Female,Some college or associate degree,White,west,69,18,12,11,13,12,11,10,11,41,53,44,41,46,41,43,40,42
+241021,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,northeast,80,10,14,12,11,20,11,12,15,47,31,48,43,40,57,43,49,50
+171013,17,16.00 to 17.99 years,Female,Some college or associate degree,White,northeast,139,22,24,22,23,24,28,18,20,65,61,62,60,64,62,69,60,58
+921144,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,west,77,12,15,15,14,11,12,10,11,45,39,49,49,49,38,46,40,42
+241010,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,northeast,69,11,10,11,12,16,10,10,11,41,36,36,41,43,50,37,40,42
+241030,13,12.00 to 13.99,Female,Some college or associate degree,White,northeast,80,20,13,12,15,18,11,11,16,47,57,46,43,52,54,43,47,52
+241033,15,14.00 to 15.99 years,Male,High school graduate (including GED),White,northeast,76,21,16,12,11,11,15,11,23,45,59,51,43,40,38,53,47,62
+241038,13,12.00 to 13.99,Male,Did not complete high school (no diploma),White,northeast,70,17,11,11,15,12,11,10,15,42,51,42,41,52,41,43,40,50
+241036,12,12.00 to 13.99,Female,Bachelor's degree or higher,Black,northeast,91,18,16,15,14,17,16,13,17,51,53,51,49,49,52,54,52,54
+241039,14,14.00 to 15.99 years,Female,Did not complete high school (no diploma),Black,northeast,68,15,12,10,11,13,12,10,14,41,46,44,35,40,44,46,40,48
+241047,14,14.00 to 15.99 years,Male,High school graduate (including GED),White,northeast,107,16,17,20,16,22,20,12,21,56,49,52,57,54,60,60,49,60
+921145,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,west,69,12,11,14,12,11,11,10,10,41,39,42,47,43,38,43,40,36
+241037,13,12.00 to 13.99,Male,Did not complete high school (no diploma),White,northeast,132,24,28,20,23,23,23,15,15,63,64,67,57,64,61,63,56,50
+241048,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,northeast,71,13,13,12,12,12,12,10,14,42,42,46,43,43,41,46,40,48
+241028,13,12.00 to 13.99,Male,High school graduate (including GED),Black,northeast,72,12,10,15,11,14,12,10,12,43,39,36,49,40,46,46,40,44
+241050,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,MultiRacial,northeast,61,18,10,10,10,11,10,10,10,31,53,36,35,34,38,37,40,36
+241031,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,northeast,110,19,16,17,17,24,22,14,18,57,56,51,52,56,62,62,54,55
+241032,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,northeast,90,15,14,20,13,13,15,15,20,50,46,48,57,46,44,53,56,58
+241043,14,14.00 to 15.99 years,Female,Did not complete high school (no diploma),White,northeast,125,21,15,20,15,24,33,18,15,61,59,49,57,52,62,75,60,50
+141265,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,south,96,14,18,18,18,16,13,13,19,52,44,54,54,57,50,49,52,57
+241052,13,12.00 to 13.99,Male,Some college or associate degree,White,northeast,80,13,11,13,13,16,14,13,11,47,42,42,46,46,50,51,52,42
+241056,13,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,northeast,76,13,11,11,11,18,14,11,13,45,42,42,41,40,54,51,47,46
+141266,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,104,17,19,20,14,19,18,14,18,55,51,56,57,49,55,57,54,55
+141280,16,16.00 to 17.99 years,Female,Some college or associate degree,White,south,69,12,10,11,13,13,12,10,11,41,39,36,41,46,44,46,40,42
+141281,18,18.00 to 21.99 years,Male,Some college or associate degree,White,south,76,12,12,12,16,15,11,10,12,45,39,44,43,54,48,43,40,44
+141286,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,69,10,11,12,11,11,14,10,12,41,31,42,43,40,38,51,40,44
+241057,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,northeast,60,10,10,10,10,10,10,10,10,27,31,36,35,34,33,37,40,36
+241053,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,northeast,88,10,11,14,13,25,13,12,14,50,31,42,47,46,64,49,49,48
+141292,17,16.00 to 17.99 years,Female,Some college or associate degree,White,south,74,18,11,13,13,13,13,11,12,44,53,42,46,46,44,49,47,44
+141270,13,12.00 to 13.99,Male,Did not complete high school (no diploma),White,south,111,15,14,20,16,25,20,16,15,58,46,48,57,54,64,60,57,50
+141272,14,14.00 to 15.99 years,Female,Some college or associate degree,Hispanic,south,88,15,14,16,16,17,12,13,14,50,46,48,51,54,52,46,52,48
+141271,13,12.00 to 13.99,Male,Some college or associate degree,Hispanic,south,89,16,16,16,15,17,13,12,17,50,49,51,51,52,52,49,49,54
+241051,14,14.00 to 15.99 years,Female,Some college or associate degree,White,northeast,97,16,18,14,14,18,19,14,16,53,49,54,47,49,54,59,54,52
+141267,15,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,south,91,11,15,18,13,16,15,14,14,51,36,49,54,46,50,53,54,48
+141268,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,89,17,15,18,15,18,11,12,11,50,51,49,54,52,54,43,49,42
+141286,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,106,18,18,20,17,17,20,14,15,56,53,54,57,56,52,60,54,50
+141279,13,12.00 to 13.99,Male,Some college or associate degree,White,south,103,21,17,16,19,16,18,17,17,55,59,52,51,59,50,57,58,54
+141277,13,12.00 to 13.99,Female,Some college or associate degree,White,south,83,18,12,13,14,17,15,12,15,48,53,44,46,49,52,53,49,50
+141276,15,14.00 to 15.99 years,Female,Some college or associate degree,White,south,127,18,23,27,16,20,21,20,15,61,53,61,65,54,57,61,63,50
+241049,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),White,northeast,91,12,12,17,19,16,16,11,23,51,39,44,52,59,50,54,47,62
+141285,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,104,14,17,23,17,24,13,10,19,55,44,52,61,56,62,49,40,57
+141294,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,66,12,11,12,10,13,10,10,11,39,39,42,43,34,44,37,40,42
+241055,13,12.00 to 13.99,Female,Bachelor's degree or higher,White,northeast,129,22,24,26,24,23,17,15,20,62,61,62,64,65,61,56,56,58
+141282,13,12.00 to 13.99,Male,Did not complete high school (no diploma),White,south,81,14,13,13,15,13,15,12,17,47,44,46,46,52,44,53,49,54
+141303,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,south,82,14,15,14,13,14,13,13,16,48,44,49,47,46,46,49,52,52
+141302,12,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,108,20,15,20,19,17,19,18,16,56,57,49,57,59,52,59,60,52
+141296,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,south,89,18,17,20,12,13,16,11,14,50,53,52,57,43,44,54,47,48
+141300,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),Hispanic,south,62,16,10,10,10,11,11,10,11,33,49,36,35,34,38,43,40,42
+141298,12,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,83,12,10,14,14,22,12,11,10,48,39,36,47,49,60,46,47,36
+141275,18,18.00 to 21.99 years,Female,Bachelor's degree or higher,White,south,66,10,10,10,11,14,11,10,10,39,31,36,35,40,46,43,40,36
+141273,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),White,south,103,20,22,20,20,13,13,15,16,55,57,60,57,60,44,49,56,52
+141287,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,102,23,18,17,17,15,21,14,17,54,62,54,52,56,48,61,54,54
+141289,17,16.00 to 17.99 years,Female,Some college or associate degree,White,south,100,13,19,19,16,20,12,14,15,54,42,56,55,54,57,46,54,50
+141295,18,18.00 to 21.99 years,Female,Some college or associate degree,White,south,71,14,14,12,11,14,10,10,10,42,44,48,43,40,46,37,40,36
+141290,12,12.00 to 13.99,Male,Some college or associate degree,White,south,108,18,20,20,23,17,15,13,20,56,53,57,57,64,52,53,52,58
+141305,13,12.00 to 13.99,Female,Did not complete high school (no diploma),White,south,138,25,27,27,23,21,22,18,24,65,66,66,65,64,58,62,60,63
+141284,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,73,13,11,13,15,13,11,10,11,43,42,42,46,52,44,43,40,42
+141269,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),White,south,142,25,25,23,23,25,24,22,25,66,66,63,61,64,64,65,64,64
+141297,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,83,20,16,17,10,13,15,12,17,48,57,51,52,34,44,53,49,54
+119139,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,south,65,11,10,10,12,13,10,10,10,37,36,36,35,43,44,37,40,36
+141293,12,12.00 to 13.99,Female,Did not complete high school (no diploma),White,south,66,10,13,10,10,11,10,12,10,39,31,46,35,34,38,37,49,36
+141288,13,12.00 to 13.99,Female,Did not complete high school (no diploma),White,south,91,13,12,13,14,30,10,12,11,51,42,44,46,49,72,37,49,42
+141278,17,16.00 to 17.99 years,Male,Some college or associate degree,White,south,99,12,16,16,18,18,17,14,19,54,39,51,51,57,54,56,54,57
+119140,16,16.00 to 17.99 years,Female,Some college or associate degree,Black,south,77,18,11,11,14,16,12,13,13,45,53,42,41,49,50,46,52,46
+119141,13,12.00 to 13.99,Female,Some college or associate degree,Black,south,77,17,13,12,14,16,12,10,15,45,51,46,43,49,50,46,40,50
+282012,12,12.00 to 13.99,Female,Did not complete high school (no diploma),White,midwest,99,14,14,19,18,17,19,12,19,54,44,48,55,57,52,59,49,57
+282009,14,14.00 to 15.99 years,Female,Some college or associate degree,White,midwest,132,21,29,25,19,20,17,22,26,63,59,69,63,59,57,56,64,66
+282010,17,16.00 to 17.99 years,Male,High school graduate (including GED),White,midwest,101,24,18,20,16,14,14,19,20,54,64,54,57,54,46,51,61,58
+282006,19,18.00 to 21.99 years,Male,High school graduate (including GED),White,midwest,93,15,13,16,17,17,14,16,19,52,46,46,51,56,52,51,57,57
+282005,13,12.00 to 13.99,Female,High school graduate (including GED),Hispanic,midwest,102,17,22,19,15,17,15,14,26,54,51,60,55,52,52,53,54,66
+282008,14,14.00 to 15.99 years,Male,High school graduate (including GED),Hispanic,midwest,113,18,19,20,20,20,17,17,21,58,53,56,57,60,57,56,58,60
+283001,21,18.00 to 21.99 years,Female,Some college or associate degree,Hispanic,midwest,73,12,14,12,12,13,12,10,10,43,39,48,43,43,44,46,40,36
+283004,13,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,121,14,27,17,26,14,18,19,21,60,44,66,52,67,46,57,61,60
+283007,12,12.00 to 13.99,Male,High school graduate (including GED),Black,midwest,84,23,13,15,14,15,13,14,16,48,62,46,49,49,48,49,54,52
+283009,13,12.00 to 13.99,Male,High school graduate (including GED),Black,midwest,86,18,17,16,14,12,14,13,16,49,53,52,51,49,41,51,52,52
+178030,12,12.00 to 13.99,Female,Bachelor's degree or higher,Hispanic,south,99,22,23,21,13,18,14,10,16,54,61,61,59,46,54,51,40,52
+178028,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,south,108,20,20,15,16,18,24,15,22,56,57,57,49,54,54,65,56,61
+275023,19,18.00 to 21.99 years,Female,High school graduate (including GED),White,northeast,81,14,18,14,14,13,12,10,15,47,44,54,47,49,44,46,40,50
+275020,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,MultiRacial,northeast,90,13,16,13,17,19,14,11,18,50,42,51,46,56,55,51,47,55
+293007,13,12.00 to 13.99,Male,Some college or associate degree,Black,midwest,64,16,11,11,10,12,10,10,12,36,49,42,41,34,41,37,40,44
+293008,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,62,17,10,10,10,11,11,10,11,33,51,36,35,34,38,43,40,42
+293009,13,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,60,15,10,10,10,10,10,10,10,27,46,36,35,34,33,37,40,36
+293011,13,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,62,15,10,10,10,12,10,10,10,33,46,36,35,34,41,37,40,36
+294036,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,69,12,11,10,10,15,11,12,14,41,39,42,35,34,48,43,49,48
+294037,13,12.00 to 13.99,Male,High school graduate (including GED),Black,midwest,65,12,13,11,11,10,10,10,14,37,39,46,41,40,33,37,40,48
+294038,13,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,73,10,10,11,14,18,10,10,11,43,31,36,41,49,54,37,40,42
+294039,17,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Hispanic,midwest,82,15,11,15,13,16,13,14,14,48,46,42,49,46,50,49,54,48
+293012,13,12.00 to 13.99,Male,Some college or associate degree,Black,midwest,62,13,11,10,10,10,11,10,10,33,42,42,35,34,33,43,40,36
+294040,17,16.00 to 17.99 years,Female,High school graduate (including GED),Black,midwest,75,10,10,12,14,19,10,10,12,44,31,36,43,49,55,37,40,44
+293013,12,12.00 to 13.99,Male,Some college or associate degree,Black,midwest,60,15,10,10,10,10,10,10,11,27,46,36,35,34,33,37,40,42
+292036,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,south,90,17,18,15,13,16,14,14,16,50,51,54,49,46,50,51,54,52
+292037,16,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Black,south,86,12,19,14,13,16,14,10,16,49,39,56,47,46,50,51,40,52
+293017,12,12.00 to 13.99,Male,High school graduate (including GED),Black,midwest,62,17,10,11,11,10,10,10,10,33,51,36,41,40,33,37,40,36
+292038,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),Hispanic,south,75,11,13,17,11,11,10,13,15,44,36,46,52,40,38,37,52,50
+294042,17,16.00 to 17.99 years,Female,High school graduate (including GED),Black,midwest,120,21,20,20,20,20,20,20,20,60,59,57,57,60,57,60,63,58
+294043,17,16.00 to 17.99 years,Male,High school graduate (including GED),Black,midwest,90,19,21,13,17,16,13,10,22,50,56,58,46,56,50,49,40,61
+294041,14,14.00 to 15.99 years,Male,High school graduate (including GED),Black,midwest,62,11,11,10,10,11,10,10,12,33,36,42,35,34,38,37,40,44
+294044,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,98,14,21,12,19,18,16,12,19,53,44,58,43,59,54,54,49,57
+293021,12,12.00 to 13.99,Female,Some college or associate degree,Black,midwest,63,16,10,10,10,12,11,10,10,35,49,36,35,34,41,43,40,36
+293025,13,12.00 to 13.99,Male,High school graduate (including GED),Black,midwest,60,11,10,10,10,10,10,10,10,27,36,36,35,34,33,37,40,36
+294045,13,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,91,16,17,17,14,16,14,13,18,51,49,52,52,49,50,51,52,55
+294026,15,14.00 to 15.99 years,Male,High school graduate (including GED),Black,midwest,62,10,11,10,10,10,11,10,10,33,31,42,35,34,33,43,40,36
+294027,14,14.00 to 15.99 years,Male,High school graduate (including GED),Black,midwest,65,13,10,10,10,15,10,10,10,37,42,36,35,34,48,37,40,36
+298011,17,16.00 to 17.99 years,Male,High school graduate (including GED),AmericanIndAlaskanNat,south,162,20,27,27,27,26,28,27,26,70,57,66,65,69,65,69,70,66
+298005,19,16.00 to 17.99 years,Female,High school graduate (including GED),Black,south,72,16,11,10,10,11,20,10,10,43,49,42,35,34,38,60,40,36
+294048,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,67,15,11,11,10,14,11,10,13,40,46,42,41,34,46,43,40,46
+294049,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,66,10,10,12,11,13,10,10,11,39,31,36,43,40,44,37,40,42
+298016,21,18.00 to 21.99 years,Male,High school graduate (including GED),Hispanic,south,88,18,18,16,13,17,12,12,16,50,53,54,51,46,52,46,49,52
+294050,15,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,89,18,15,16,13,20,12,13,21,50,53,49,51,46,57,46,52,60
+315003,13,12.00 to 13.99,Male,Did not complete high school (no diploma),White,south,78,15,15,12,14,12,14,11,12,46,46,49,43,49,41,51,47,44
+294051,15,14.00 to 15.99 years,Male,High school graduate (including GED),Black,midwest,63,10,10,10,11,12,10,10,10,35,31,36,35,40,41,37,40,36
+298033,16,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Hispanic,south,65,10,10,11,10,13,11,10,10,37,31,36,41,34,44,43,40,36
+298039,19,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,150,24,21,24,25,27,26,27,24,67,64,58,62,66,67,67,70,63
+298041,16,16.00 to 17.99 years,Male,High school graduate (including GED),Black,south,147,26,29,23,26,23,26,20,29,67,68,69,61,67,61,67,63,70
+315008,17,16.00 to 17.99 years,Male,Some college or associate degree,Black,south,70,11,10,12,11,15,12,10,11,42,36,36,43,40,48,46,40,42
+294052,18,18.00 to 21.99 years,Male,High school graduate (including GED),Black,midwest,61,12,10,11,10,10,10,10,13,31,39,36,41,34,33,37,40,46
+294053,17,16.00 to 17.99 years,Female,High school graduate (including GED),MultiRacial,midwest,75,12,10,14,15,14,10,12,11,44,39,36,47,52,46,37,49,42
+294054,16,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Black,midwest,64,12,10,11,10,13,10,10,10,36,39,36,41,34,44,37,40,36
+293041,13,14.00 to 15.99 years,Male,High school graduate (including GED),Black,midwest,60,14,10,10,10,10,10,10,10,27,44,36,35,34,33,37,40,36
+293042,12,12.00 to 13.99,Male,Some college or associate degree,Black,midwest,60,16,10,10,10,10,10,10,10,27,49,36,35,34,33,37,40,36
+293043,12,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,60,15,10,10,10,10,10,10,12,27,46,36,35,34,33,37,40,44
+294056,16,16.00 to 17.99 years,Female,High school graduate (including GED),Black,midwest,69,10,12,10,13,14,10,10,11,41,31,44,35,46,46,37,40,42
+294057,15,14.00 to 15.99 years,Male,High school graduate (including GED),Black,midwest,65,11,10,10,10,14,11,10,11,37,36,36,35,34,46,43,40,42
+294055,17,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Hispanic,midwest,66,13,10,10,12,14,10,10,11,39,42,36,35,43,46,37,40,42
+294058,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,midwest,65,11,11,11,11,12,10,10,12,37,36,42,41,40,41,37,40,44
+294059,18,18.00 to 21.99 years,Female,High school graduate (including GED),Black,midwest,66,12,10,14,10,11,11,10,13,39,39,36,47,34,38,43,40,46
+294060,18,18.00 to 21.99 years,Male,High school graduate (including GED),Black,midwest,62,10,11,11,10,10,10,10,10,33,31,42,41,34,33,37,40,36
+309029,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),Hispanic,west,129,19,24,22,23,24,23,13,25,62,56,62,60,64,62,63,52,64
+309030,13,12.00 to 13.99,Male,Did not complete high school (no diploma),Hispanic,west,100,15,19,19,19,18,13,12,16,54,46,56,55,59,54,49,49,52
+309027,13,12.00 to 13.99,Male,High school graduate (including GED),Hispanic,west,93,21,18,13,15,12,24,11,15,52,59,54,46,52,41,65,47,50
+293044,18,18.00 to 21.99 years,Female,High school graduate (including GED),Black,midwest,60,13,10,10,10,10,10,10,10,27,42,36,35,34,33,37,40,36
+293045,14,14.00 to 15.99 years,Female,Some college or associate degree,Black,midwest,60,18,10,10,10,10,10,10,10,27,53,36,35,34,33,37,40,36
+298024,17,16.00 to 17.99 years,Female,High school graduate (including GED),MultiRacial,south,63,13,10,12,10,11,10,10,13,35,42,36,43,34,38,37,40,46
+298033,17,16.00 to 17.99 years,Female,High school graduate (including GED),Hispanic,south,63,12,10,10,10,13,10,10,11,35,39,36,35,34,44,37,40,42
+298007,21,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,154,24,23,27,27,28,25,24,23,68,64,61,65,69,69,66,66,62
+298012,19,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,167,28,24,28,32,27,29,27,25,71,73,62,67,75,67,71,70,64
+298021,21,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,155,26,26,26,25,26,26,26,28,68,68,65,64,66,65,67,68,68
+298022,19,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,154,28,28,26,23,28,24,25,28,68,73,67,64,64,69,65,67,68
+298008,20,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,152,21,25,29,23,27,22,26,28,67,59,63,69,64,67,62,68,68
+298015,20,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,158,27,23,27,29,27,23,29,27,69,70,61,65,72,67,63,74,67
+298030,20,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,158,31,27,26,22,29,26,28,32,69,75,66,64,62,70,67,73,73
+298031,20,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,171,26,31,29,25,27,30,29,32,72,68,72,69,66,67,73,74,73
+298032,21,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,160,28,27,36,26,24,22,25,29,69,73,66,75,67,62,62,67,70
+298006,21,18.00 to 21.99 years,Female,High school graduate (including GED),Black,south,152,23,24,24,25,26,26,27,26,67,62,62,62,66,65,67,70,66
+298009,19,18.00 to 21.99 years,Female,High school graduate (including GED),Black,south,128,22,24,19,21,21,22,21,25,62,61,62,55,61,58,62,63,64
+298010,18,18.00 to 21.99 years,Female,High school graduate (including GED),Black,south,139,22,26,21,20,23,24,25,25,65,61,65,59,60,61,65,67,64
+298013,14,14.00 to 15.99 years,Male,High school graduate (including GED),Black,south,133,26,24,21,21,24,24,19,21,63,68,62,59,61,62,65,61,60
+298017,21,18.00 to 21.99 years,Female,High school graduate (including GED),Black,south,152,26,23,27,29,23,25,25,21,67,68,61,65,72,61,66,67,60
+298018,18,18.00 to 21.99 years,Male,High school graduate (including GED),Black,south,134,17,23,26,24,22,17,22,24,63,51,61,64,65,60,56,64,63
+298019,18,18.00 to 21.99 years,Female,High school graduate (including GED),Black,south,144,19,23,24,25,20,27,25,28,66,56,61,62,66,57,68,67,68
+298020,14,14.00 to 15.99 years,Male,High school graduate (including GED),Black,south,169,21,30,30,28,25,29,27,25,72,59,71,71,70,64,71,70,64
+298040,20,NA,Male,High school graduate (including GED),Black,south,160,24,28,28,28,27,24,25,20,69,64,67,67,70,67,65,67,58
+298002,21,18.00 to 21.99 years,Female,Some college or associate degree,Black,south,135,28,23,28,23,21,22,18,21,64,73,61,67,64,58,62,60,60
+298023,21,18.00 to 21.99 years,Female,High school graduate (including GED),Black,south,150,24,26,23,29,24,26,22,23,67,64,65,61,72,62,67,64,62
+315011,17,16.00 to 17.99 years,Female,Some college or associate degree,White,south,134,28,29,26,17,21,24,17,21,63,73,69,64,56,58,65,58,60
+309028,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),Hispanic,west,87,12,14,15,15,17,13,13,16,49,39,48,49,52,52,49,52,52
+309039,13,12.00 to 13.99,Female,High school graduate (including GED),Hispanic,west,131,26,22,17,24,17,32,19,20,63,68,60,52,65,52,75,61,58
+298033,16,16.00 to 17.99 years,Female,High school graduate (including GED),Hispanic,south,62,13,10,10,10,10,11,11,10,33,42,36,35,34,33,43,47,36
+309032,13,12.00 to 13.99,Female,Did not complete high school (no diploma),Hispanic,west,135,21,18,25,26,24,24,18,20,64,59,54,63,67,62,65,60,58
+309044,13,12.00 to 13.99,Male,Did not complete high school (no diploma),Hispanic,west,92,22,16,17,18,16,13,12,12,51,61,51,52,57,50,49,49,44
+309043,13,12.00 to 13.99,Female,Did not complete high school (no diploma),Hispanic,west,130,22,23,23,27,25,16,16,20,62,61,61,61,69,64,54,57,58
+309045,14,14.00 to 15.99 years,Male,Some college or associate degree,Hispanic,west,93,18,15,21,15,17,13,12,16,52,53,49,59,52,52,49,49,52
+309046,13,12.00 to 13.99,Male,Some college or associate degree,Hispanic,west,104,19,12,16,22,24,16,14,17,55,56,44,51,62,62,54,54,54
+309056,14,14.00 to 15.99 years,Male,High school graduate (including GED),Black,west,82,21,13,13,20,12,11,13,16,48,59,46,46,60,41,43,52,52
+309052,13,12.00 to 13.99,Female,High school graduate (including GED),Hispanic,west,66,10,10,10,13,13,10,10,10,39,31,36,35,46,44,37,40,36
+309031,14,14.00 to 15.99 years,Male,High school graduate (including GED),Hispanic,west,95,17,14,17,19,20,12,13,17,52,51,48,52,59,57,46,52,54
+309047,14,14.00 to 15.99 years,Male,High school graduate (including GED),Hispanic,west,140,28,26,28,22,23,19,22,23,65,73,65,67,62,61,59,64,62
+309048,13,12.00 to 13.99,Female,High school graduate (including GED),Hispanic,west,179,22,33,31,32,27,29,27,30,75,61,75,73,75,67,71,70,71
+309051,15,14.00 to 15.99 years,Male,Did not complete high school (no diploma),Hispanic,west,106,14,22,20,19,15,14,16,21,56,44,60,57,59,48,51,57,60
+309053,13,12.00 to 13.99,Male,Some college or associate degree,Hispanic,west,110,27,25,16,12,25,15,17,19,57,70,63,51,43,64,53,58,57
+309055,12,12.00 to 13.99,Male,Some college or associate degree,Hispanic,west,89,17,24,21,10,13,10,11,10,50,51,62,59,34,44,37,47,36
+309054,12,12.00 to 13.99,Female,Did not complete high school (no diploma),Hispanic,west,129,17,15,17,26,20,25,26,22,62,51,49,52,67,57,66,68,61
+315026,15,14.00 to 15.99 years,Male,Some college or associate degree,Black,south,80,18,13,13,14,19,11,10,12,47,53,46,46,49,55,43,40,44
+315032,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,Black,south,88,21,17,18,13,15,14,11,15,50,59,52,54,46,48,51,47,50
+319001,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,114,14,28,19,21,17,11,18,19,59,44,67,55,61,52,43,60,57
+317004,18,18.00 to 21.99 years,Male,High school graduate (including GED),White,west,79,18,12,14,12,16,12,13,22,46,53,44,47,43,50,46,52,61
+317001,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Hispanic,west,129,20,29,21,22,15,21,21,25,62,57,69,59,62,48,61,63,64
+315025,13,12.00 to 13.99,Female,Some college or associate degree,Black,south,82,17,12,13,14,22,11,10,19,48,51,44,46,49,60,43,40,57
+319002,12,12.00 to 13.99,Male,Some college or associate degree,White,south,94,15,18,15,15,16,16,14,17,52,46,54,49,52,50,54,54,54
+315027,15,14.00 to 15.99 years,Male,Some college or associate degree,Black,south,76,12,13,14,12,13,13,11,13,45,39,46,47,43,44,49,47,46
+317002,14,14.00 to 15.99 years,Female,High school graduate (including GED),Other,west,109,24,17,17,19,22,20,14,17,57,64,52,52,59,60,60,54,54
+317005,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,west,130,24,19,28,22,26,16,19,20,62,64,56,67,62,65,54,61,58
+317015,16,16.00 to 17.99 years,Female,High school graduate (including GED),Black,west,70,17,10,10,13,16,11,10,15,42,51,36,35,46,50,43,40,50
+317016,15,14.00 to 15.99 years,Female,High school graduate (including GED),Black,west,65,11,10,11,13,11,10,10,11,37,36,36,41,46,38,37,40,42
+317017,15,14.00 to 15.99 years,Male,Did not complete high school (no diploma),White,west,66,17,10,10,13,10,13,10,10,39,51,36,35,46,33,49,40,36
+317018,15,14.00 to 15.99 years,Male,High school graduate (including GED),White,west,68,12,10,10,14,12,12,10,11,41,39,36,35,49,41,46,40,42
+317019,15,14.00 to 15.99 years,Male,High school graduate (including GED),Hispanic,west,63,13,10,10,10,12,11,10,10,35,42,36,35,34,41,43,40,36
+317020,17,16.00 to 17.99 years,Male,High school graduate (including GED),Hispanic,west,65,10,10,11,10,12,12,10,10,37,31,36,41,34,41,46,40,36
+317012,15,14.00 to 15.99 years,Male,High school graduate (including GED),White,west,68,18,11,11,13,12,11,10,10,41,53,42,41,46,41,43,40,36
+317022,16,16.00 to 17.99 years,Female,High school graduate (including GED),White,west,69,16,12,10,13,12,12,10,13,41,49,44,35,46,41,46,40,46
+317023,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,west,67,20,12,10,12,13,10,10,10,40,57,44,35,43,44,37,40,36
+317024,14,14.00 to 15.99 years,Male,High school graduate (including GED),Black,west,60,12,10,10,10,10,10,10,13,27,39,36,35,34,33,37,40,46
+317025,16,16.00 to 17.99 years,Male,High school graduate (including GED),White,west,64,14,10,10,10,11,13,10,10,36,44,36,35,34,38,49,40,36
+317026,16,16.00 to 17.99 years,Male,High school graduate (including GED),Hispanic,west,72,21,10,10,13,17,12,10,10,43,59,36,35,46,52,46,40,36
+317027,14,14.00 to 15.99 years,Female,High school graduate (including GED),Hispanic,west,69,15,14,11,14,10,10,10,10,41,46,48,41,49,33,37,40,36
+319004,14,14.00 to 15.99 years,Male,Some college or associate degree,Black,south,118,20,21,20,23,24,15,15,20,59,57,58,57,64,62,53,56,58
+319005,14,12.00 to 13.99,Female,Some college or associate degree,Black,south,83,16,17,13,14,13,14,12,15,48,49,52,46,49,44,51,49,50
+319003,13,12.00 to 13.99,Male,Some college or associate degree,White,south,83,14,11,15,14,12,20,11,12,48,44,42,49,49,41,60,47,44
+319006,15,14.00 to 15.99 years,Female,Some college or associate degree,Hispanic,south,97,14,14,18,18,19,14,14,16,53,44,48,54,57,55,51,54,52
+319007,13,12.00 to 13.99,Female,Some college or associate degree,Hispanic,south,123,19,23,19,20,20,19,22,20,60,56,61,55,60,57,59,64,58
+317003,15,14.00 to 15.99 years,Male,High school graduate (including GED),Hispanic,west,66,12,10,11,12,12,11,10,13,39,39,36,41,43,41,43,40,46
+318041,13,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,73,10,10,13,13,17,10,10,10,43,31,36,46,46,52,37,40,36
+317006,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,west,70,16,13,13,10,10,14,10,11,42,49,46,46,34,33,51,40,42
+315013,15,14.00 to 15.99 years,Female,High school graduate (including GED),White,south,72,11,11,12,12,15,11,11,10,43,36,42,43,43,48,43,47,36
+315014,12,12.00 to 13.99,Female,Some college or associate degree,White,south,82,13,14,13,15,13,14,13,18,48,42,48,46,52,44,51,52,55
+318042,15,14.00 to 15.99 years,Male,High school graduate (including GED),Black,midwest,64,10,10,11,10,13,10,10,10,36,31,36,41,34,44,37,40,36
+317014,15,14.00 to 15.99 years,Male,High school graduate (including GED),Hispanic,west,68,13,10,10,12,13,12,11,13,41,42,36,35,43,44,46,47,46
+317029,18,18.00 to 21.99 years,Female,High school graduate (including GED),White,west,76,17,12,11,17,12,14,10,10,45,51,44,41,56,41,51,40,36
+317028,15,14.00 to 15.99 years,Male,High school graduate (including GED),Other,west,67,21,10,10,14,13,10,10,17,40,59,36,35,49,44,37,40,54
+317030,17,16.00 to 17.99 years,Female,High school graduate (including GED),Black,west,84,21,16,12,16,20,10,10,12,48,59,51,43,54,57,37,40,44
+321016,12,12.00 to 13.99,Female,Bachelor's degree or higher,Hispanic,south,88,15,13,16,16,18,12,13,12,50,46,46,51,54,54,46,52,44
+321015,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,Hispanic,south,99,18,15,17,16,23,13,15,13,54,53,49,52,54,61,49,56,46
+321014,18,18.00 to 21.99 years,Female,Bachelor's degree or higher,Hispanic,south,106,17,19,17,17,17,18,18,19,56,51,56,52,56,52,57,60,57
+318044,16,16.00 to 17.99 years,Male,High school graduate (including GED),Black,midwest,78,13,11,12,14,21,10,10,11,46,42,42,43,49,58,37,40,42
+318045,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,105,20,19,22,16,16,16,16,20,55,57,56,60,54,50,54,57,58
+321024,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,south,84,12,11,16,14,18,15,10,12,48,39,42,51,49,54,53,40,44
+321001,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,south,93,17,18,17,16,17,12,13,17,52,51,54,52,54,52,46,52,54
+319008,12,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,110,20,25,19,16,19,18,13,18,57,57,63,55,54,55,57,52,55
+321010,12,12.00 to 13.99,Male,Bachelor's degree or higher,Hispanic,south,77,13,10,11,14,16,15,11,10,45,42,36,41,49,50,53,47,36
+321002,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,126,17,26,16,21,24,18,21,27,61,51,65,51,61,62,57,63,67
+319009,15,14.00 to 15.99 years,Male,Did not complete high school (no diploma),White,south,85,13,16,16,12,14,14,13,18,49,42,51,51,43,46,51,52,55
+320030,19,18.00 to 21.99 years,Male,Some college or associate degree,Hispanic,midwest,67,12,10,10,10,16,11,10,10,40,39,36,35,34,50,43,40,36
+318047,17,16.00 to 17.99 years,Male,High school graduate (including GED),Black,midwest,68,11,10,13,11,13,11,10,13,41,36,36,46,40,44,43,40,46
+321022,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),White,south,108,16,21,20,18,21,14,14,18,56,49,58,57,57,58,51,54,55
+318048,13,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,63,11,10,10,10,12,11,10,11,35,36,36,35,34,41,43,40,42
+322005,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),Hispanic,south,99,16,15,20,22,21,10,11,11,54,49,49,57,62,58,37,47,42
+318046,16,16.00 to 17.99 years,Male,Some college or associate degree,Black,midwest,64,11,10,10,10,11,13,10,10,36,36,36,35,34,38,49,40,36
+320038,12,12.00 to 13.99,Male,High school graduate (including GED),Black,midwest,103,13,28,13,19,18,15,10,10,55,42,67,46,59,54,53,40,36
+317007,16,16.00 to 17.99 years,Male,High school graduate (including GED),AmericanIndAlaskanNat,west,71,20,11,12,13,14,11,10,11,42,57,42,43,46,46,43,40,42
+317008,14,14.00 to 15.99 years,Male,High school graduate (including GED),Hispanic,west,62,12,12,10,10,10,10,10,12,33,39,44,35,34,33,37,40,44
+317009,14,14.00 to 15.99 years,Male,High school graduate (including GED),White,west,67,23,10,12,10,15,10,10,10,40,62,36,43,34,48,37,40,36
+317010,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Hispanic,west,62,10,10,10,10,12,10,10,20,33,31,36,35,34,41,37,40,58
+317011,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Hispanic,west,64,16,10,10,14,10,10,10,17,36,49,36,35,49,33,37,40,54
+317013,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),Hispanic,west,67,20,13,11,10,11,12,10,10,40,57,46,41,34,38,46,40,36
+317021,15,14.00 to 15.99 years,Male,High school graduate (including GED),White,west,75,18,13,13,14,15,10,10,15,44,53,46,46,49,48,37,40,50
+318049,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,76,15,11,11,14,16,12,12,14,45,46,42,41,49,50,46,49,48
+320041,16,16.00 to 17.99 years,Female,High school graduate (including GED),Black,midwest,79,12,17,12,15,15,10,10,14,46,39,52,43,52,48,37,40,48
+322006,14,14.00 to 15.99 years,Female,Did not complete high school (no diploma),Hispanic,south,77,16,14,11,15,15,10,12,15,45,49,48,41,52,48,37,49,50
+319010,16,16.00 to 17.99 years,Female,Some college or associate degree,White,south,122,21,25,28,20,14,20,15,22,60,59,63,67,60,46,60,56,61
+319011,12,12.00 to 13.99,Male,Did not complete high school (no diploma),White,south,113,16,18,20,18,22,21,14,18,58,49,54,57,57,60,61,54,55
+321021,15,14.00 to 15.99 years,Male,Did not complete high school (no diploma),White,south,72,13,12,14,11,13,11,11,12,43,42,44,47,40,44,43,47,44
+318050,15,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,76,16,10,12,15,16,11,12,14,45,49,36,43,52,50,43,49,48
+320033,15,14.00 to 15.99 years,Male,High school graduate (including GED),Black,midwest,92,13,20,19,14,15,14,10,10,51,42,57,55,49,48,51,40,36
+318043,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,100,25,15,22,16,17,16,14,28,54,66,49,60,54,52,54,54,68
+320026,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,112,19,29,23,18,17,15,10,24,58,56,69,61,57,52,53,40,63
+320027,12,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,103,17,11,28,13,20,11,20,11,55,51,42,67,46,57,43,63,42
+320028,16,16.00 to 17.99 years,Male,High school graduate (including GED),Black,midwest,60,13,10,10,10,10,10,10,10,27,42,36,35,34,33,37,40,36
+320029,17,16.00 to 17.99 years,Female,High school graduate (including GED),Black,midwest,65,13,10,15,10,10,10,10,10,37,42,36,49,34,33,37,40,36
+320034,13,12.00 to 13.99,Female,High school graduate (including GED),Hispanic,midwest,72,13,14,10,14,14,10,10,10,43,42,48,35,49,46,37,40,36
+320035,12,12.00 to 13.99,Male,High school graduate (including GED),Hispanic,midwest,64,25,10,10,11,10,13,10,10,36,66,36,35,40,33,49,40,36
+321027,12,12.00 to 13.99,Female,Did not complete high school (no diploma),MultiRacial,south,78,16,13,16,11,13,13,12,15,46,49,46,51,40,44,49,49,50
+318051,17,16.00 to 17.99 years,Female,High school graduate (including GED),Black,midwest,114,27,15,21,14,29,18,17,17,59,70,49,59,49,70,57,58,54
+318053,13,12.00 to 13.99,Male,Did not complete high school (no diploma),Black,midwest,101,21,22,11,16,18,15,19,15,54,59,60,41,54,54,53,61,50
+318052,14,14.00 to 15.99 years,Male,Did not complete high school (no diploma),Black,midwest,123,21,16,24,19,22,19,23,23,60,59,51,62,59,60,59,65,62
+320036,18,16.00 to 17.99 years,Female,High school graduate (including GED),Hispanic,midwest,146,16,21,22,22,29,25,27,26,66,49,58,60,62,70,66,70,66
+321017,12,12.00 to 13.99,Male,Bachelor's degree or higher,Hispanic,south,112,19,16,20,19,23,14,20,18,58,56,51,57,59,61,51,63,55
+321030,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,MultiRacial,south,125,18,24,22,16,22,20,21,22,61,53,62,60,54,60,60,63,61
+321006,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,White,south,81,17,16,15,14,15,11,10,17,47,51,51,49,49,48,43,40,54
+321029,17,16.00 to 17.99 years,Female,Bachelor's degree or higher,Hispanic,south,142,26,26,28,22,22,23,21,24,66,68,65,67,62,60,63,63,63
+318062,20,18.00 to 21.99 years,Male,Did not complete high school (no diploma),Black,midwest,163,28,33,18,28,27,30,27,32,71,73,75,54,70,67,73,70,73
+320031,17,16.00 to 17.99 years,Female,High school graduate (including GED),Black,midwest,80,10,12,13,16,15,14,10,16,47,31,44,46,54,48,51,40,52
+320032,13,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,67,15,10,10,17,10,10,10,10,40,46,36,35,56,33,37,40,36
+319013,12,12.00 to 13.99,Male,Did not complete high school (no diploma),White,south,71,17,17,10,12,12,10,10,11,42,51,52,35,43,41,37,40,42
+318058,17,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Black,midwest,90,26,16,13,13,22,10,16,15,50,68,51,46,46,60,37,57,50
+318061,19,18.00 to 21.99 years,Female,High school graduate (including GED),Black,midwest,176,24,31,29,33,31,27,25,26,74,64,72,69,75,74,68,67,66
+318063,19,18.00 to 21.99 years,Male,Did not complete high school (no diploma),Black,midwest,96,27,13,12,12,37,12,10,19,52,70,46,43,43,75,46,40,57
+320052,16,16.00 to 17.99 years,Female,High school graduate (including GED),Black,midwest,65,13,10,11,13,11,10,10,10,37,42,36,41,46,38,37,40,36
+321019,13,12.00 to 13.99,Female,Bachelor's degree or higher,Hispanic,south,128,11,26,27,21,18,18,18,18,62,36,65,65,61,54,57,60,55
+321018,13,12.00 to 13.99,Male,Bachelor's degree or higher,Hispanic,south,93,15,13,21,17,20,11,11,10,52,46,46,59,56,57,43,47,36
+318054,13,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,137,16,21,27,19,26,21,23,27,64,49,58,65,59,65,61,65,67
+318055,18,18.00 to 21.99 years,Male,High school graduate (including GED),Black,midwest,63,12,10,11,10,10,12,10,12,35,39,36,41,34,33,46,40,44
+318060,14,14.00 to 15.99 years,Female,Did not complete high school (no diploma),Black,midwest,79,16,15,10,15,13,11,15,10,46,49,49,35,52,44,43,56,36
+319014,13,12.00 to 13.99,Female,Did not complete high school (no diploma),Black,midwest,74,18,10,11,18,13,11,11,13,44,53,36,41,57,44,43,47,46
+319015,15,14.00 to 15.99 years,Male,High school graduate (including GED),Black,midwest,97,15,16,16,16,17,17,15,14,53,46,51,51,54,52,56,56,48
+318064,17,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Black,midwest,67,25,12,11,11,11,10,12,11,40,66,44,41,40,38,37,49,42
+319016,12,12.00 to 13.99,Male,High school graduate (including GED),White,midwest,117,17,20,21,15,19,24,18,22,59,51,57,59,52,55,65,60,61
+318065,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,midwest,129,21,27,21,15,17,22,27,25,62,59,66,59,52,52,62,70,64
+319018,14,14.00 to 15.99 years,Female,Did not complete high school (no diploma),Black,midwest,77,15,12,22,12,11,10,10,12,45,46,44,60,43,38,37,40,44
+319017,13,12.00 to 13.99,Female,High school graduate (including GED),White,midwest,124,22,20,21,20,17,21,25,31,61,61,57,59,60,52,61,67,72
+319019,12,12.00 to 13.99,Male,Did not complete high school (no diploma),White,midwest,79,18,14,14,13,16,12,10,17,46,53,48,47,46,50,46,40,54
+319021,12,12.00 to 13.99,Female,Did not complete high school (no diploma),White,midwest,97,20,14,19,16,21,14,13,15,53,57,48,55,54,58,51,52,50
+319020,13,12.00 to 13.99,Male,Some college or associate degree,MultiRacial,south,97,26,16,14,13,19,21,14,17,53,68,51,47,46,55,61,54,54
+318057,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,midwest,95,15,18,16,16,16,12,17,15,52,46,54,51,54,50,46,58,50
+318056,18,18.00 to 21.99 years,Male,High school graduate (including GED),Black,midwest,73,16,11,13,13,15,11,10,12,43,49,42,46,46,48,43,40,44
+318066,17,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Black,midwest,158,23,25,30,25,22,29,27,21,69,62,63,71,66,60,71,70,60
+318067,18,18.00 to 21.99 years,Male,Did not complete high school (no diploma),Black,midwest,156,25,28,27,26,24,26,25,29,68,66,67,65,67,62,67,67,70
+319023,13,12.00 to 13.99,Female,Did not complete high school (no diploma),White,midwest,72,16,13,11,14,12,11,11,14,43,49,46,41,49,41,43,47,48
+319025,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),White,midwest,86,11,14,17,14,17,11,13,14,49,36,48,52,49,52,43,52,48
+319027,13,12.00 to 13.99,Male,Did not complete high school (no diploma),Black,midwest,67,14,10,10,13,12,11,11,14,40,44,36,35,46,41,43,47,48
+319024,13,12.00 to 13.99,Male,Did not complete high school (no diploma),White,midwest,79,21,15,15,13,12,11,13,13,46,59,49,49,46,41,43,52,46
+319028,18,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,midwest,109,24,20,22,17,17,18,15,21,57,64,57,60,56,52,57,56,60
+319022,14,14.00 to 15.99 years,Male,Some college or associate degree,AmericanIndAlaskanNat,west,166,25,27,27,29,26,29,28,30,71,66,66,65,72,65,71,73,71
+318059,18,18.00 to 21.99 years,Female,Did not complete high school (no diploma),Black,midwest,161,27,32,25,28,30,23,23,23,70,70,74,63,70,72,63,65,62
+318069,18,18.00 to 21.99 years,Female,Did not complete high school (no diploma),Black,midwest,136,27,22,25,22,23,25,19,27,64,70,60,63,62,61,66,61,67
+318070,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,midwest,112,22,27,19,20,18,14,14,14,58,61,66,55,60,54,51,54,48
+318068,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,midwest,157,25,29,29,25,23,24,27,28,68,66,69,69,66,61,65,70,68
+319029,14,14.00 to 15.99 years,Female,Did not complete high school (no diploma),Black,midwest,70,10,12,12,12,12,11,11,12,42,31,44,43,43,41,43,47,44
+320053,12,12.00 to 13.99,Male,High school graduate (including GED),Black,midwest,68,22,10,11,11,10,12,14,19,41,61,36,41,40,33,46,54,57
+320054,19,18.00 to 21.99 years,Female,High school graduate (including GED),Black,midwest,73,19,10,15,13,10,12,13,13,43,56,36,49,46,33,46,52,46
+320055,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,67,19,17,10,10,10,10,10,10,40,56,52,35,34,33,37,40,36
+320037,17,16.00 to 17.99 years,Male,High school graduate (including GED),Black,midwest,77,25,10,10,15,22,10,10,10,45,66,36,35,52,60,37,40,36
+319026,14,14.00 to 15.99 years,Male,Some college or associate degree,Hispanic,midwest,120,28,19,21,21,21,19,19,23,60,73,56,59,61,58,59,61,62
+321008,12,12.00 to 13.99,Female,Bachelor's degree or higher,White,south,104,22,21,21,15,14,17,16,16,55,61,58,59,52,46,56,57,52
+321009,14,14.00 to 15.99 years,Male,Bachelor's degree or higher,White,south,93,18,13,20,12,14,20,14,16,52,53,46,57,43,46,60,54,52
+319031,16,16.00 to 17.99 years,Female,High school graduate (including GED),Hispanic,midwest,108,21,18,20,16,20,17,17,19,56,59,54,57,54,57,56,58,57
+319030,13,12.00 to 13.99,Male,Some college or associate degree,Black,northeast,177,21,28,30,30,29,31,29,31,74,59,67,71,74,70,75,74,72
+319035,15,14.00 to 15.99 years,Female,High school graduate (including GED),White,midwest,102,17,17,18,17,18,16,16,20,54,51,52,54,56,54,54,57,58
+319037,13,12.00 to 13.99,Female,Did not complete high school (no diploma),Black,midwest,67,17,10,12,12,12,10,11,10,40,51,36,43,43,41,37,47,36
+319036,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),White,midwest,68,15,12,10,13,12,10,11,15,41,46,44,35,46,41,37,47,50
+319038,16,16.00 to 17.99 years,Female,High school graduate (including GED),White,midwest,67,14,11,11,13,12,10,10,11,40,44,42,41,46,41,37,40,42
+319034,15,14.00 to 15.99 years,Female,Some college or associate degree,MultiRacial,midwest,174,24,32,29,27,31,28,27,28,73,64,74,69,69,74,69,70,68
+319032,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,AmericanIndAlaskanNat,midwest,187,22,32,33,29,29,32,32,34,75,61,74,75,72,70,75,75,75
+319033,13,12.00 to 13.99,Male,Some college or associate degree,Black,west,183,23,29,34,30,31,30,29,33,75,62,69,75,74,74,73,74,75
+319040,14,14.00 to 15.99 years,Female,High school graduate (including GED),White,midwest,109,19,17,19,15,19,20,19,19,57,56,52,55,52,55,60,61,57
+319039,15,14.00 to 15.99 years,Male,High school graduate (including GED),White,midwest,65,11,10,10,12,12,11,10,13,37,36,36,35,43,41,43,40,46
+321026,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,south,88,15,16,16,16,15,14,11,14,50,46,51,51,54,48,51,47,48
+319012,13,12.00 to 13.99,Male,Some college or associate degree,White,south,88,15,17,17,16,16,12,10,10,50,46,52,52,54,50,46,40,36
+319042,13,12.00 to 13.99,Male,High school graduate (including GED),Hispanic,midwest,81,15,10,13,14,17,14,13,16,47,46,36,46,49,52,51,52,52
+319041,15,14.00 to 15.99 years,Female,Some college or associate degree,Hispanic,west,182,25,31,31,31,28,29,32,35,75,66,72,73,75,69,71,75,75
+319044,13,12.00 to 13.99,Female,Some college or associate degree,MultiRacial,midwest,80,14,14,14,15,13,12,12,17,47,44,48,47,52,44,46,49,54
+320039,15,14.00 to 15.99 years,Male,High school graduate (including GED),Hispanic,midwest,68,22,13,13,12,10,10,10,10,41,61,46,46,43,33,37,40,36
+320040,13,12.00 to 13.99,Female,High school graduate (including GED),Hispanic,midwest,83,22,21,13,10,17,12,10,13,48,61,58,46,34,52,46,40,46
+320042,18,18.00 to 21.99 years,Female,High school graduate (including GED),Hispanic,midwest,71,13,13,10,10,18,10,10,12,42,42,46,35,34,54,37,40,44
+320043,11,NA,Female,High school graduate (including GED),Hispanic,midwest,61,10,10,10,11,10,10,10,14,31,31,36,35,40,33,37,40,48
+320044,17,16.00 to 17.99 years,Female,High school graduate (including GED),Hispanic,midwest,60,17,10,10,10,10,10,10,10,27,51,36,35,34,33,37,40,36
+319045,17,16.00 to 17.99 years,Female,High school graduate (including GED),White,midwest,78,10,11,11,15,16,13,12,10,46,31,42,41,52,50,49,49,36
+319043,13,12.00 to 13.99,Male,Some college or associate degree,White,west,172,23,27,29,28,31,29,28,33,73,62,66,69,70,74,71,73,75
+321028,14,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,135,17,29,25,19,26,20,16,18,64,51,69,63,59,65,60,57,55
+319047,14,14.00 to 15.99 years,Male,Some college or associate degree,Hispanic,south,131,18,21,21,21,23,23,22,19,63,53,58,59,61,61,63,64,57
+319046,16,16.00 to 17.99 years,Male,Some college or associate degree,Black,south,154,23,27,25,26,27,23,26,26,68,62,66,63,67,67,63,68,66
+319049,13,12.00 to 13.99,Male,High school graduate (including GED),White,midwest,65,10,10,11,10,12,11,11,10,37,31,36,41,34,41,43,47,36
+319048,14,14.00 to 15.99 years,Female,Some college or associate degree,AmericanIndAlaskanNat,west,143,24,24,24,24,25,23,23,24,66,64,62,62,65,64,63,65,63
+319050,13,12.00 to 13.99,Female,Some college or associate degree,AmericanIndAlaskanNat,south,140,24,24,26,21,25,21,23,20,65,64,62,64,61,64,61,65,58
+321013,16,16.00 to 17.99 years,Female,Bachelor's degree or higher,MultiRacial,south,97,15,19,18,16,15,15,14,15,53,46,56,54,54,48,53,54,50
+321011,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),White,south,144,19,22,22,26,26,23,25,26,66,56,60,60,67,65,63,67,66
+321025,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,106,16,14,20,15,22,23,12,17,56,49,48,57,52,60,63,49,54
+321012,14,14.00 to 15.99 years,Female,Some college or associate degree,White,south,82,14,13,15,13,16,12,13,12,48,44,46,49,46,50,46,52,44
+322019,16,16.00 to 17.99 years,Male,High school graduate (including GED),Hispanic,south,63,10,10,10,11,12,10,10,10,35,31,36,35,40,41,37,40,36
+321023,16,16.00 to 17.99 years,Female,Did not complete high school (no diploma),White,south,119,19,19,32,14,21,19,14,15,60,56,56,74,49,58,59,54,50
+321005,12,12.00 to 13.99,Male,Bachelor's degree or higher,White,midwest,68,16,11,11,11,13,11,11,13,41,49,42,41,40,44,43,47,46
+323023,14,14.00 to 15.99 years,Male,High school graduate (including GED),Black,south,68,12,10,12,11,15,10,10,10,41,39,36,43,40,48,37,40,36
+323024,15,14.00 to 15.99 years,Male,High school graduate (including GED),Black,south,67,15,10,11,12,14,10,10,11,40,46,36,41,43,46,37,40,42
+323025,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,Black,south,67,12,10,10,12,15,10,10,10,40,39,36,35,43,48,37,40,36
+323026,16,16.00 to 17.99 years,Male,High school graduate (including GED),Black,south,65,10,10,11,11,12,11,10,10,37,31,36,41,40,41,43,40,36
+323028,15,14.00 to 15.99 years,Male,High school graduate (including GED),Black,south,71,16,10,11,14,16,10,10,12,42,49,36,41,49,50,37,40,44
+323029,15,14.00 to 15.99 years,Female,Did not complete high school (no diploma),Other,south,63,11,10,11,10,12,10,10,11,35,36,36,41,34,41,37,40,42
+323030,13,12.00 to 13.99,Female,Did not complete high school (no diploma),MultiRacial,south,73,14,11,12,13,17,10,10,11,43,44,42,43,46,52,37,40,42
+323031,13,12.00 to 13.99,Female,High school graduate (including GED),Black,south,70,17,11,11,11,16,11,10,11,42,51,42,41,40,50,43,40,42
+321020,15,14.00 to 15.99 years,Female,Bachelor's degree or higher,White,south,65,10,14,10,11,10,10,10,10,37,31,48,35,40,33,37,40,36
+321007,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Hispanic,south,86,19,12,13,18,15,16,12,15,49,56,44,46,57,48,54,49,50
+320045,17,16.00 to 17.99 years,Female,High school graduate (including GED),Black,midwest,60,10,10,10,10,10,10,10,10,27,31,36,35,34,33,37,40,36
+320046,13,12.00 to 13.99,Female,High school graduate (including GED),Black,midwest,65,19,10,10,10,10,13,12,11,37,56,36,35,34,33,49,49,42
+320047,14,14.00 to 15.99 years,Female,High school graduate (including GED),Black,midwest,90,25,40,10,10,10,10,10,10,50,66,75,35,34,33,37,40,36
+323027,15,14.00 to 15.99 years,Female,High school graduate (including GED),Black,south,73,11,10,12,13,16,10,12,10,43,36,36,43,46,50,37,49,36
+349001,13,12.00 to 13.99,Male,Did not complete high school (no diploma),White,west,91,24,19,14,15,13,17,13,17,51,64,56,47,52,44,56,52,54
+349003,15,14.00 to 15.99 years,Male,Did not complete high school (no diploma),Hispanic,west,67,16,12,10,12,13,10,10,12,40,49,44,35,43,44,37,40,44
+349004,15,14.00 to 15.99 years,Male,Some college or associate degree,Hispanic,west,127,23,21,24,18,21,24,19,19,61,62,58,62,57,58,65,61,57
+349006,13,12.00 to 13.99,Male,Some college or associate degree,Hispanic,west,105,22,20,15,18,19,14,19,14,55,61,57,49,57,55,51,61,48
+349008,13,12.00 to 13.99,Male,Bachelor's degree or higher,White,west,109,16,22,16,15,16,18,22,28,57,49,60,51,52,50,57,64,68
+349010,16,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Hispanic,west,98,24,18,20,12,18,20,10,15,53,64,54,57,43,54,60,40,50
+349012,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,Asian,west,99,20,15,21,13,20,16,14,14,54,57,49,59,46,57,54,54,48
+349016,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,west,124,25,22,19,23,20,20,20,20,61,66,60,55,64,57,60,63,58
+349018,16,16.00 to 17.99 years,Male,Bachelor's degree or higher,Other,west,87,17,14,17,12,14,17,13,16,49,51,48,52,43,46,56,52,52
+349019,16,16.00 to 17.99 years,Female,Did not complete high school (no diploma),White,west,109,18,18,20,16,20,20,15,19,57,53,54,57,54,57,60,56,57
+349022,17,16.00 to 17.99 years,Male,High school graduate (including GED),Hispanic,west,66,18,12,13,11,10,10,10,10,39,53,44,46,40,33,37,40,36
+349023,17,16.00 to 17.99 years,Male,High school graduate (including GED),Hispanic,west,82,19,15,14,11,17,13,12,16,48,56,49,47,40,52,49,49,52
+349024,13,12.00 to 13.99,Male,Bachelor's degree or higher,Other,west,109,15,16,17,16,18,25,17,16,57,46,51,52,54,54,66,58,52
+349026,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),White,west,101,23,17,15,21,22,16,10,14,54,62,52,49,61,60,54,40,48
+349027,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,Hispanic,west,112,17,23,13,20,19,17,20,17,58,51,61,46,60,55,56,63,54
+349028,17,16.00 to 17.99 years,Female,Did not complete high school (no diploma),MultiRacial,west,116,15,19,23,18,18,20,18,27,59,46,56,61,57,54,60,60,67
+349029,17,16.00 to 17.99 years,Female,High school graduate (including GED),White,west,117,26,18,24,17,27,18,13,15,59,68,54,62,56,67,57,52,50
+349030,18,18.00 to 21.99 years,Male,High school graduate (including GED),Hispanic,west,91,15,17,13,13,16,16,16,21,51,46,52,46,46,50,54,57,60
+349031,19,18.00 to 21.99 years,Female,Did not complete high school (no diploma),White,west,101,19,22,19,18,13,16,13,16,54,56,60,55,57,44,54,52,52
+349032,18,18.00 to 21.99 years,Male,Bachelor's degree or higher,White,west,95,17,19,17,15,12,17,15,18,52,51,56,52,52,41,56,56,55
+349033,16,16.00 to 17.99 years,Female,Some college or associate degree,Hispanic,west,120,24,19,21,17,27,22,14,23,60,64,56,59,56,67,62,54,62
+349035,17,16.00 to 17.99 years,Male,Some college or associate degree,MultiRacial,west,112,19,20,22,16,21,16,17,16,58,56,57,60,54,58,54,58,52
+349036,16,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Hispanic,west,73,13,11,13,11,14,11,13,10,43,42,42,46,40,46,43,52,36
+349037,17,16.00 to 17.99 years,Male,High school graduate (including GED),Black,west,95,29,26,18,14,13,12,12,18,52,75,65,54,49,44,46,49,55
+349041,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,west,90,15,16,15,15,18,13,13,14,50,46,51,49,52,54,49,52,48
+349042,17,16.00 to 17.99 years,Male,High school graduate (including GED),Hispanic,west,91,14,15,14,12,12,20,18,18,51,44,49,47,43,41,60,60,55
+349043,16,16.00 to 17.99 years,Male,Some college or associate degree,MultiRacial,west,89,17,15,15,14,19,13,13,15,50,51,49,49,49,55,49,52,50
+349044,18,18.00 to 21.99 years,Female,Did not complete high school (no diploma),MultiRacial,west,103,26,22,18,16,17,13,17,18,55,68,60,54,54,52,49,58,55
+349045,16,16.00 to 17.99 years,Male,High school graduate (including GED),Hispanic,west,109,20,23,16,16,20,14,20,20,57,57,61,51,54,57,51,63,58
+349048,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),Black,west,137,25,26,30,20,27,16,18,17,64,66,65,71,60,67,54,60,54
+349049,18,18.00 to 21.99 years,Male,Some college or associate degree,Hispanic,west,84,18,14,15,13,16,13,13,15,48,53,48,49,46,50,49,52,50
+349050,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),White,west,78,17,16,13,14,12,10,13,13,46,51,51,46,49,41,37,52,46
+349051,16,16.00 to 17.99 years,Male,High school graduate (including GED),Hispanic,west,98,20,20,16,14,22,14,12,21,53,57,57,51,49,60,51,49,60
+349052,17,16.00 to 17.99 years,Female,Did not complete high school (no diploma),Hispanic,west,98,18,17,15,16,23,17,10,13,53,53,52,49,54,61,56,40,46
+349053,18,18.00 to 21.99 years,Female,Did not complete high school (no diploma),Hispanic,west,65,15,12,10,10,12,11,10,10,37,46,44,35,34,41,43,40,36
+349055,18,18.00 to 21.99 years,Male,High school graduate (including GED),Hispanic,west,77,11,10,11,12,20,14,10,13,45,36,36,41,43,57,51,40,46
+349057,17,16.00 to 17.99 years,Male,Did not complete high school (no diploma),MultiRacial,west,89,13,15,16,12,18,14,14,15,50,42,49,51,43,54,51,54,50
+349059,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,White,west,127,16,17,26,22,24,22,16,21,61,49,52,64,62,62,62,57,60
+349064,17,16.00 to 17.99 years,Male,Bachelor's degree or higher,Hispanic,west,88,15,14,19,16,16,13,10,13,50,46,48,55,54,50,49,40,46
+349066,17,16.00 to 17.99 years,Female,High school graduate (including GED),Hispanic,west,93,12,19,16,12,16,14,16,14,52,39,56,51,43,50,51,57,48

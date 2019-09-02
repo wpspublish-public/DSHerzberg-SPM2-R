@@ -1,0 +1,189 @@
+IDNumber,AgeInMonths,AgeGroup,Gender,ParentHighestEducation,Ethnicity,Region,TOT_raw,SOC_raw,VIS_raw,HEA_raw,TOU_raw,TS_raw,BOD_raw,BAL_raw,PLA_raw,TOT_NT,SOC_NT,VIS_NT,HEA_NT,TOU_NT,TS_NT,BOD_NT,BAL_NT,PLA_NT
+118024,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,MultiRacial,south,94,18,17,16,14,14,16,17,27,55,57,43,57,49,61,56,59,62
+118021,6,4.00 to 9.99 months,Male,Some college or associate degree,Hispanic,south,62,12,10,10,10,11,11,10,17,29,42,26,30,31,50,35,35,48
+137001,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,Hispanic,midwest,66,16,12,10,11,10,11,12,15,32,52,32,30,37,41,35,44,45
+118041,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,86,16,19,16,13,12,16,10,12,48,52,49,57,45,55,56,35,40
+118050,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,99,13,24,15,15,11,18,16,20,59,45,60,53,53,50,62,56,52
+105007,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,102,18,26,15,17,14,13,17,29,62,57,66,53,59,61,44,59,66
+105013,4,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,88,19,25,14,12,10,12,15,24,50,60,63,49,41,41,39,54,58
+118068,8,4.00 to 9.99 months,Male,Some college or associate degree,White,south,101,15,18,17,17,13,19,17,22,61,50,46,59,59,59,65,59,55
+105029,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,61,10,10,10,10,10,11,10,10,25,31,26,30,31,41,35,35,35
+118036,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,111,14,27,19,20,13,14,18,23,68,48,68,63,68,59,48,62,57
+105019,5,4.00 to 9.99 months,Female,Some college or associate degree,Hispanic,northeast,96,17,20,15,17,13,16,15,18,57,55,51,53,59,59,56,54,50
+105036,4,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,91,17,22,13,14,10,13,19,12,53,55,55,46,49,41,44,65,40
+118033,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,90,23,21,15,15,10,13,16,19,52,68,53,53,53,41,44,56,51
+131007,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,100,18,24,16,17,11,16,16,22,60,57,60,57,59,50,56,56,55
+118073,8,4.00 to 9.99 months,Female,Some college or associate degree,White,south,92,14,19,16,16,11,17,13,20,54,48,49,57,56,50,59,48,52
+133003,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,87,10,27,12,13,11,14,10,10,49,31,68,41,45,50,48,35,35
+118053,7,4.00 to 9.99 months,Female,Some college or associate degree,White,south,84,10,19,12,11,10,17,15,14,45,31,49,41,37,41,59,54,43
+131004,6,4.00 to 9.99 months,Female,Bachelor's degree or higher,Hispanic,west,86,15,22,14,14,10,14,12,23,48,50,55,49,49,41,48,44,57
+105062,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,94,13,21,14,18,13,15,13,22,55,45,53,49,62,59,53,48,55
+131010,4,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,104,10,27,16,15,10,18,18,30,63,31,68,57,53,41,62,62,69
+105077,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,81,19,19,15,12,10,13,12,19,42,60,49,53,41,41,44,44,51
+105078,4,4.00 to 9.99 months,Female,High school graduate (including GED),Black,midwest,87,24,20,15,12,11,15,14,27,49,70,51,53,41,50,53,51,62
+105082,9,4.00 to 9.99 months,Female,Some college or associate degree,White,south,75,11,18,12,13,11,11,10,13,37,38,46,41,45,50,35,35,42
+105079,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,83,12,20,11,13,10,15,14,20,44,42,51,36,45,41,53,51,52
+105103,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,100,10,30,14,19,11,15,11,12,60,31,71,49,65,50,53,41,40
+105080,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,85,12,18,13,14,10,15,15,22,47,42,46,46,49,41,53,54,55
+105104,4,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,104,22,24,16,17,11,16,20,28,63,67,60,57,59,50,56,68,64
+133010,9,10.00 to 30.99 months,Male,Bachelor's degree or higher,MultiRacial,west,72,15,14,12,12,11,13,10,15,35,50,37,41,41,50,44,35,45
+105086,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,84,12,22,13,12,12,11,14,14,45,42,55,46,41,55,35,51,43
+126015,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,82,10,23,14,12,10,12,11,21,43,31,58,49,41,41,39,41,53
+131014,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,94,14,24,14,16,12,18,10,28,55,48,60,49,56,55,62,35,64
+126012,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,98,19,23,15,19,12,16,13,22,58,60,58,53,65,55,56,48,55
+126016,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,87,18,22,13,14,10,17,11,10,49,57,55,46,49,41,59,41,35
+134007,6,4.00 to 9.99 months,Female,Some college or associate degree,Other,west,100,16,28,14,14,10,17,17,24,60,52,69,49,49,41,59,59,58
+126034,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,88,19,20,12,15,12,18,11,18,50,60,51,41,53,55,62,41,50
+118080,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,Black,south,87,18,18,11,18,10,14,16,20,49,57,46,36,62,41,48,56,52
+138004,4,4.00 to 9.99 months,Female,Some college or associate degree,White,west,89,12,15,16,16,13,13,16,15,51,42,39,57,56,59,44,56,45
+131016,5,4.00 to 9.99 months,Female,Some college or associate degree,White,west,90,11,25,15,11,11,14,14,14,52,38,63,53,37,50,48,51,43
+105108,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,72,13,15,11,11,10,14,11,21,35,45,39,36,37,41,48,41,53
+126043,9,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,85,20,18,13,14,12,13,15,12,47,63,46,46,49,55,44,54,40
+126066,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,65,17,11,10,10,10,13,11,22,31,55,30,30,31,41,44,41,55
+126079,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,101,10,20,20,16,12,20,13,27,61,31,51,66,56,55,67,48,62
+126082,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,85,18,21,13,12,10,14,15,23,47,57,53,46,41,41,48,54,57
+136004,9,4.00 to 9.99 months,Female,Some college or associate degree,MultiRacial,west,78,15,17,14,13,11,10,13,14,40,50,43,49,45,50,29,48,43
+105113,8,4.00 to 9.99 months,Female,Some college or associate degree,White,midwest,84,19,21,12,14,10,14,13,10,45,60,53,41,49,41,48,48,35
+126028,9,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,75,16,15,12,13,11,14,10,17,37,52,39,41,45,50,48,35,48
+133009,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,84,12,19,12,14,13,14,12,19,45,42,49,41,49,59,48,44,51
+105115,6,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,89,20,19,15,14,13,14,14,17,51,63,49,53,49,59,48,51,48
+118039,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,87,15,18,13,19,11,15,11,10,49,50,46,46,65,50,53,41,35
+106015,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,76,17,14,12,13,10,14,13,14,38,55,37,41,45,41,48,48,43
+126144,4,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,77,14,15,11,13,10,14,14,21,39,48,39,36,45,41,48,51,53
+131018,6,4.00 to 9.99 months,Female,Some college or associate degree,Hispanic,west,88,10,25,13,15,10,13,12,16,50,31,63,46,53,41,44,44,46
+136008,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,Asian,south,87,13,20,13,15,11,15,13,18,49,45,51,46,53,50,53,48,50
+106002,6,4.00 to 9.99 months,Female,Bachelor's degree or higher,Hispanic,midwest,97,11,19,17,14,14,14,19,26,58,38,49,59,49,61,48,65,61
+119045,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,72,11,18,12,11,10,11,10,14,35,38,46,41,37,41,35,35,43
+126139,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,89,17,22,14,15,11,13,14,25,51,55,55,49,53,50,44,51,60
+136009,4,NA,Female,Some college or associate degree,White,west,90,13,22,19,12,11,14,12,10,52,45,55,63,41,50,48,44,35
+119056,4,NA,Female,Some college or associate degree,White,south,84,18,19,13,12,11,13,16,32,45,57,49,46,41,50,44,56,72
+119057,9,4.00 to 9.99 months,Female,Some college or associate degree,White,south,106,11,22,12,18,16,20,18,18,64,38,55,41,62,67,67,62,50
+131022,6,4.00 to 9.99 months,Female,Some college or associate degree,White,west,103,11,22,16,19,14,15,17,10,62,38,55,57,65,61,53,59,35
+134020,6,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,87,21,19,15,14,10,16,13,13,49,65,49,53,49,41,56,48,42
+131025,4,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,89,13,18,16,14,10,13,18,21,51,45,46,57,49,41,44,62,53
+126130,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,90,17,14,17,14,11,14,20,24,52,55,37,59,49,50,48,68,58
+119058,6,4.00 to 9.99 months,Female,Some college or associate degree,MultiRacial,south,121,13,24,14,22,16,23,22,19,71,45,60,49,71,67,71,71,51
+126308,9,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,78,13,16,13,13,10,14,12,16,40,45,41,46,45,41,48,44,46
+126303,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,94,20,20,16,17,11,13,17,21,55,63,51,57,59,50,44,59,53
+119055,4,4.00 to 9.99 months,Female,Bachelor's degree or higher,Black,south,85,18,22,15,14,10,10,14,10,47,57,55,53,49,41,29,51,35
+138007,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,Hispanic,west,90,12,20,15,16,13,13,13,18,52,42,51,53,56,59,44,48,50
+126360,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,84,20,17,15,12,12,11,17,22,45,63,43,53,41,55,35,59,55
+126334,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,81,13,20,13,10,10,13,15,25,42,45,51,46,31,41,44,54,60
+131023,7,4.00 to 9.99 months,Male,Some college or associate degree,White,west,95,17,24,14,19,12,11,15,21,56,55,60,49,65,55,35,54,53
+126178,6,4.00 to 9.99 months,Female,Bachelor's degree or higher,Hispanic,midwest,86,11,26,11,14,12,12,11,14,48,38,66,36,49,55,39,41,43
+119064,6,4.00 to 9.99 months,Female,Some college or associate degree,Black,south,84,18,19,17,14,11,10,13,11,45,57,49,59,49,50,29,48,39
+126336,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,83,14,16,15,13,10,17,12,25,44,48,41,53,45,41,59,44,60
+136003,9,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,82,12,20,13,14,10,13,12,13,43,42,51,46,49,41,44,44,42
+126394,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,Asian,west,90,13,23,15,11,15,13,13,23,52,45,58,53,37,64,44,48,57
+131020,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,Hispanic,west,92,17,18,15,17,10,15,17,28,54,55,46,53,59,41,53,59,64
+126230,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,101,16,20,19,16,15,16,15,27,61,52,51,63,56,64,56,54,62
+126384,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,90,11,21,14,15,10,14,16,22,52,38,53,49,53,41,48,56,55
+120013,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,Hispanic,west,87,15,21,15,14,10,14,13,18,49,50,53,53,49,41,48,48,50
+119043,9,4.00 to 9.99 months,Female,High school graduate (including GED),White,south,70,15,10,12,12,10,16,10,22,34,50,26,41,41,41,56,35,55
+126318,6,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,101,12,22,15,16,14,16,18,28,61,42,55,53,56,61,56,62,64
+131024,4,NA,Male,Some college or associate degree,White,west,107,16,24,18,18,12,17,18,23,65,52,60,61,62,55,59,62,57
+126399,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,81,18,14,13,14,14,13,13,14,42,57,37,46,49,61,44,48,43
+134005,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,96,11,22,16,17,11,16,14,18,57,38,55,57,59,50,56,51,50
+141016,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,105,14,23,14,18,17,19,14,24,64,48,58,49,62,69,65,51,58
+141087,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,89,17,20,14,19,11,12,13,10,51,55,51,49,65,50,39,48,35
+141101,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,97,17,18,16,19,13,12,19,28,58,55,46,57,65,59,39,65,64
+143004,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,northeast,86,16,24,12,11,10,14,15,16,48,52,60,41,37,41,48,54,46
+141100,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,98,21,17,14,17,15,16,19,17,58,65,43,49,59,64,56,65,48
+141090,6,4.00 to 9.99 months,Male,Bachelor's degree or higher,Hispanic,south,101,13,22,15,17,12,19,16,16,61,45,55,53,59,55,65,56,46
+158054,8,4.00 to 9.99 months,Female,High school graduate (including GED),White,northeast,72,10,16,12,11,10,12,11,13,35,31,41,41,37,41,39,41,42
+158051,9,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,northeast,86,13,16,13,17,12,15,13,15,48,45,41,46,59,55,53,48,45
+143017,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,Hispanic,northeast,86,12,21,12,15,12,14,12,17,48,42,53,41,53,55,48,44,48
+143036,4,4.00 to 9.99 months,Female,High school graduate (including GED),Hispanic,northeast,87,20,17,19,12,11,13,15,25,49,63,43,63,41,50,44,54,60
+143041,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,northeast,84,15,18,15,12,12,13,14,18,45,50,46,53,41,55,44,51,50
+143035,9,10.00 to 30.99 months,Female,High school graduate (including GED),White,northeast,79,12,16,12,13,10,15,13,14,40,42,41,41,45,41,53,48,43
+119086,5,4.00 to 9.99 months,Female,Some college or associate degree,Other,south,79,10,20,10,13,10,15,11,10,40,31,51,30,45,41,53,41,35
+119080,5,4.00 to 9.99 months,Female,Some college or associate degree,Black,south,87,16,17,12,15,15,11,17,25,49,52,43,41,53,64,35,59,60
+146005,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,85,14,18,12,16,12,15,12,15,47,48,46,41,56,55,53,44,45
+209003,6,4.00 to 9.99 months,Female,High school graduate (including GED),White,south,85,12,26,14,10,10,13,12,10,47,42,66,49,31,41,44,44,35
+209014,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,Black,south,77,12,17,11,11,10,14,14,17,39,42,43,36,37,41,48,51,48
+209017,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,MultiRacial,south,93,21,19,17,15,11,17,14,13,55,65,49,59,53,50,59,51,42
+189005,4,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,100,14,25,19,14,10,19,13,29,60,48,63,63,49,41,65,48,66
+209022,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,81,12,22,12,14,10,13,10,10,42,42,55,41,49,41,44,35,35
+189003,9,10.00 to 30.99 months,Female,Bachelor's degree or higher,White,south,92,16,18,15,17,12,15,15,17,54,52,46,53,59,55,53,54,48
+216016,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,Hispanic,midwest,110,18,24,19,17,10,22,18,21,66,57,60,63,59,41,70,62,53
+214005,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,91,12,23,15,12,13,17,11,15,53,42,58,53,41,59,59,41,45
+178002,5,4.00 to 9.99 months,Female,Some college or associate degree,White,south,78,16,17,11,13,10,13,14,10,40,52,43,36,45,41,44,51,35
+189004,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,78,16,18,16,12,11,11,10,14,40,52,46,57,41,50,35,35,43
+212001,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,Hispanic,west,104,14,21,16,19,10,21,17,23,63,48,53,57,65,41,69,59,57
+230007,9,4.00 to 9.99 months,Male,Some college or associate degree,White,midwest,102,19,22,16,17,15,17,15,21,62,60,55,57,59,64,59,54,53
+224023,4,4.00 to 9.99 months,Female,Some college or associate degree,Hispanic,northeast,101,20,25,21,15,10,15,15,24,61,63,63,69,53,41,53,54,58
+209046,6,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,100,19,20,18,16,11,19,16,15,60,60,51,61,56,50,65,56,45
+189001,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,95,20,18,16,17,11,15,18,22,56,63,46,57,59,50,53,62,55
+209047,4,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,98,11,23,14,16,14,15,16,21,58,38,58,49,56,61,53,56,53
+189002,6,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,81,19,17,13,15,10,12,14,13,42,60,43,46,53,41,39,51,42
+189006,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,80,11,19,13,12,10,11,15,10,41,38,49,46,41,41,35,54,35
+214022,4,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,92,21,23,14,17,10,13,15,16,54,65,58,49,59,41,44,54,46
+214023,4,4.00 to 9.99 months,Female,Some college or associate degree,White,south,90,13,25,14,14,10,12,15,10,52,45,63,49,49,41,39,54,35
+119088,6,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,80,12,20,12,13,10,14,11,16,41,42,51,41,45,41,48,41,46
+216055,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,88,14,15,16,14,11,15,17,21,50,48,39,57,49,50,53,59,53
+212021,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,west,98,16,17,16,17,15,15,18,21,58,52,43,57,59,64,53,62,53
+216050,4,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,87,17,18,13,14,16,12,14,30,49,55,46,46,49,67,39,51,69
+209048,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,72,12,13,11,11,11,16,10,19,35,42,34,36,37,50,56,35,51
+209049,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,86,11,19,15,15,10,17,10,13,48,38,49,53,53,41,59,35,42
+209050,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,87,15,15,15,17,11,15,14,20,49,50,39,53,59,50,53,51,52
+236011,4,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,111,23,26,20,19,10,17,19,29,68,68,66,66,65,41,59,65,66
+216058,9,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,88,16,17,19,13,15,13,11,19,50,52,43,63,45,64,44,41,51
+209051,6,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,84,12,19,12,15,11,15,12,21,45,42,49,41,53,50,53,44,53
+178009,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,93,12,24,13,16,13,16,11,12,55,42,60,46,56,59,56,41,40
+216066,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,midwest,83,21,16,14,14,10,13,16,20,44,65,41,49,49,41,44,56,52
+224014,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,northeast,84,13,22,18,10,10,13,11,12,45,45,55,61,31,41,44,41,40
+216065,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,96,16,17,16,20,13,14,16,16,57,52,43,57,68,59,48,56,46
+230030,4,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,93,19,23,17,13,10,15,15,23,55,60,58,59,45,41,53,54,57
+230031,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,midwest,108,19,25,18,16,12,23,14,23,65,60,63,61,56,55,71,51,57
+190098,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,west,84,17,15,13,16,13,15,12,26,45,55,39,46,56,59,53,44,61
+219020,4,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,93,19,19,20,14,10,15,15,28,55,60,49,66,49,41,53,54,64
+212034,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,Asian,west,93,18,25,16,15,11,14,12,29,55,57,63,57,53,50,48,44,66
+119089,5,4.00 to 9.99 months,Female,Bachelor's degree or higher,Hispanic,south,62,18,12,10,10,10,10,10,10,29,57,32,30,31,41,29,35,35
+141217,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,83,11,14,14,15,10,16,14,16,44,38,37,49,53,41,56,51,46
+141220,9,4.00 to 9.99 months,Female,Bachelor's degree or higher,Hispanic,south,84,14,22,12,11,12,13,14,22,45,48,55,41,37,55,44,51,55
+141221,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,83,15,17,13,12,10,18,13,23,44,50,43,46,41,41,62,48,57
+141223,4,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,97,17,28,15,12,12,15,15,26,58,55,69,53,41,55,53,54,61
+141231,4,4.00 to 9.99 months,Female,Some college or associate degree,White,south,87,13,20,16,13,10,15,13,26,49,45,51,57,45,41,53,48,61
+141218,5,4.00 to 9.99 months,Female,Some college or associate degree,White,south,96,16,24,15,15,10,16,16,17,57,52,60,53,53,41,56,56,48
+141227,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,Hispanic,south,96,17,19,15,14,16,19,13,19,57,55,49,53,49,67,65,48,51
+141228,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,77,13,15,13,13,12,13,11,25,39,45,39,46,45,55,44,41,60
+141225,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,76,14,15,11,16,10,14,10,14,38,48,39,36,56,41,48,35,43
+141233,4,4.00 to 9.99 months,Female,Some college or associate degree,Hispanic,south,99,24,22,19,15,11,13,19,31,59,70,55,63,53,50,44,65,71
+141229,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,Hispanic,south,88,13,19,13,14,18,13,11,15,50,45,49,46,49,70,44,41,45
+141219,9,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,83,11,14,16,12,12,19,10,22,44,38,37,57,41,55,65,35,55
+141230,6,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,97,19,23,15,16,11,15,17,26,58,60,58,53,56,50,53,59,61
+141232,4,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,92,17,19,13,15,12,17,16,24,54,55,49,46,53,55,59,56,58
+141242,5,4.00 to 9.99 months,Female,Some college or associate degree,White,south,88,13,21,13,14,10,15,15,27,50,45,53,46,49,41,53,54,62
+141244,7,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,91,14,24,17,12,12,14,12,18,53,48,60,59,41,55,48,44,50
+141245,6,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,80,17,15,14,14,11,14,12,17,41,55,39,49,49,50,48,44,48
+141243,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,85,11,19,11,17,10,13,15,10,47,38,49,36,59,41,44,54,35
+141283,7,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,88,13,17,12,15,13,16,15,16,50,45,43,41,53,59,56,54,46
+141226,5,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,96,10,33,12,13,11,14,13,34,57,31,74,41,45,50,48,48,74
+250045,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,Black,south,82,14,14,11,19,10,18,10,10,43,48,37,36,65,41,62,35,35
+250068,4,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,85,20,17,20,12,10,13,13,13,47,63,43,66,41,41,44,48,42
+250069,9,4.00 to 9.99 months,Female,Bachelor's degree or higher,Hispanic,south,79,12,17,12,13,11,15,11,12,40,42,43,41,45,50,53,41,40
+250056,9,4.00 to 9.99 months,Female,Bachelor's degree or higher,White,south,84,10,19,13,12,11,17,12,16,45,31,49,46,41,50,59,44,46
+119090,8,4.00 to 9.99 months,Male,Bachelor's degree or higher,White,south,77,13,13,10,13,15,15,11,17,39,45,34,30,45,64,53,41,48
+275003,6,4.00 to 9.99 months,Female,High school graduate (including GED),White,northeast,80,16,14,12,12,10,18,14,16,41,52,37,41,41,41,62,51,46
+119091,4,4.00 to 9.99 months,Male,Some college or associate degree,Black,south,73,14,16,12,10,11,12,12,10,36,48,41,41,31,50,39,44,35
+275027,6,4.00 to 9.99 months,Male,High school graduate (including GED),Hispanic,northeast,90,15,19,13,12,11,18,17,21,52,50,49,46,41,50,62,59,53
+275029,9,4.00 to 9.99 months,Female,Did not complete high school (no diploma),Black,northeast,112,20,25,21,16,12,18,20,19,69,63,63,69,56,55,62,68,51
+294002,7,4.00 to 9.99 months,Male,High school graduate (including GED),MultiRacial,midwest,80,16,16,18,14,10,12,10,19,41,52,41,61,49,41,39,35,51
+292003,8,4.00 to 9.99 months,Female,High school graduate (including GED),Black,south,96,24,18,19,15,12,20,12,23,57,70,46,63,53,55,67,44,57
+292007,6,4.00 to 9.99 months,Male,Did not complete high school (no diploma),Black,south,106,25,24,21,14,11,18,18,30,64,72,60,69,49,50,62,62,69
+298049,9,4.00 to 9.99 months,Male,Some college or associate degree,Black,south,97,19,19,17,14,11,17,19,19,58,60,49,59,49,50,59,65,51
+298050,6,4.00 to 9.99 months,Female,Some college or associate degree,Black,south,110,16,20,20,21,12,18,19,11,66,52,51,66,69,55,62,65,39
+298048,9,4.00 to 9.99 months,Female,Some college or associate degree,Black,south,120,17,22,23,22,19,15,19,11,70,55,55,72,71,72,53,65,39
+309002,5,4.00 to 9.99 months,Female,High school graduate (including GED),Hispanic,west,90,14,22,15,15,11,14,13,29,52,48,55,53,53,50,48,48,66
+294003,9,4.00 to 9.99 months,Male,High school graduate (including GED),Black,midwest,83,14,13,16,13,13,14,14,18,44,48,34,57,45,59,48,51,50
+294004,8,4.00 to 9.99 months,Female,High school graduate (including GED),Black,midwest,111,12,23,19,16,15,17,21,16,68,42,58,63,56,64,59,69,46
+294005,8,4.00 to 9.99 months,Female,High school graduate (including GED),Black,midwest,110,13,23,18,18,15,14,22,17,66,45,58,61,62,64,48,71,48
+309001,8,4.00 to 9.99 months,Male,Some college or associate degree,Hispanic,west,76,12,23,10,10,11,12,10,10,38,42,58,30,31,50,39,35,35
+294006,9,4.00 to 9.99 months,Male,Did not complete high school (no diploma),Black,midwest,95,12,18,20,13,15,12,17,11,56,42,46,66,45,64,39,59,39
+298044,8,4.00 to 9.99 months,Male,Did not complete high school (no diploma),Black,south,66,20,12,13,11,10,10,10,10,32,63,32,46,37,41,29,35,35
+298043,5,4.00 to 9.99 months,Male,Did not complete high school (no diploma),Black,south,69,17,13,13,12,10,11,10,10,33,55,34,46,41,41,35,35,35
+318087,9,4.00 to 9.99 months,Male,High school graduate (including GED),Black,midwest,64,16,12,11,10,11,10,10,16,30,52,32,36,31,50,29,35,46
+318088,8,4.00 to 9.99 months,Female,High school graduate (including GED),Black,midwest,61,18,11,10,10,10,10,10,10,25,57,30,30,31,41,29,35,35
+318102,5,4.00 to 9.99 months,Female,High school graduate (including GED),Black,midwest,133,28,32,21,21,18,20,21,21,72,74,72,69,69,70,67,69,53
+318103,5,NA,Female,High school graduate (including GED),Black,midwest,157,19,25,28,26,23,27,28,24,74,60,63,74,74,74,74,74,58
+324001,8,4.00 to 9.99 months,Female,Bachelor's degree or higher,Hispanic,south,75,11,15,12,13,11,13,11,14,37,38,39,41,45,50,44,41,43

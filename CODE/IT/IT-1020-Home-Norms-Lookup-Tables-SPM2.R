@@ -10,7 +10,7 @@ library(bestNormalize) # NORMALIZATION METHODS
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
 
-All_items_IT_1030_Home <- c("q0011", "q0012", "q0013", "q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0022", 
+All_items_IT_1020_Home <- c("q0011", "q0012", "q0013", "q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0022", 
                             "q0024", "q0025", "q0026", "q0027", "q0028", "q0029", "q0032", "q0034", "q0035", "q0036", 
                             "q0037", "q0038", "q0039", "q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046", 
                             "q0052", "q0054", "q0055", "q0056", "q0061", "q0062", "q0063", "q0066", "q0067", "q0068", 
@@ -19,52 +19,55 @@ All_items_IT_1030_Home <- c("q0011", "q0012", "q0013", "q0014", "q0015", "q0016"
                             "q0100", "q0101", "q0102", "q0103", "q0104", "q0105", "q0106", "q0107", "q0110", "q0112", 
                             "q0114", "q0117", "q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125")
 
-TOT_items_IT_1030_Home <- c("q0024", "q0025", "q0026", "q0027", "q0028", "q0029", "q0032", "q0034", "q0035", "q0036", 
+TOT_items_IT_1020_Home <- c("q0024", "q0025", "q0026", "q0027", "q0028", "q0029", "q0032", "q0034", "q0035", "q0036", 
                             "q0037", "q0038", "q0039", "q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046", 
                             "q0052", "q0054", "q0055", "q0056", "q0061", "q0062", "q0063", "q0066", "q0067", "q0068", 
                             "q0069", "q0071", "q0073", "q0075", "q0076", "q0077", "q0079", "q0080", "q0081", "q0082", 
                             "q0086", "q0087", "q0088", "q0089", "q0091", "q0093", "q0095", "q0096", "q0097", "q0098", 
                             "q0100", "q0101", "q0102", "q0103", "q0104", "q0105", "q0106", "q0107", "q0110", "q0112")
 
-SOC_items_IT_1030_Home <- c("q0011", "q0012", "q0013", "q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0022")
+SOC_items_IT_1020_Home <- c("q0011", "q0012", "q0013", "q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0022")
 
-SOC_rev_items_IT_1030_Home <- c("q0011", "q0012", "q0013", "q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0022")
+SOC_rev_items_IT_1020_Home <- c("q0011", "q0012", "q0013", "q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0022")
 
-VIS_items_IT_1030_Home <- c("q0024", "q0025", "q0026", "q0027", "q0028", "q0029", "q0032", "q0034", "q0035", "q0036")
+VIS_items_IT_1020_Home <- c("q0024", "q0025", "q0026", "q0027", "q0028", "q0029", "q0032", "q0034", "q0035", "q0036")
 
-HEA_items_IT_1030_Home <- c("q0037", "q0038", "q0039", "q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046")
+HEA_items_IT_1020_Home <- c("q0037", "q0038", "q0039", "q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046")
 
-TOU_items_IT_1030_Home <- c("q0052", "q0054", "q0055", "q0056", "q0061", "q0062", "q0063", "q0066", "q0067", "q0068")
+TOU_items_IT_1020_Home <- c("q0052", "q0054", "q0055", "q0056", "q0061", "q0062", "q0063", "q0066", "q0067", "q0068")
 
-TS_items_IT_1030_Home <- c("q0069", "q0071", "q0073", "q0075", "q0076", "q0077", "q0079", "q0080", "q0081", "q0082")
+TS_items_IT_1020_Home <- c("q0069", "q0071", "q0073", "q0075", "q0076", "q0077", "q0079", "q0080", "q0081", "q0082")
 
-BOD_items_IT_1030_Home <- c("q0086", "q0087", "q0088", "q0089", "q0091", "q0093", "q0095", "q0096", "q0097", "q0098")
+BOD_items_IT_1020_Home <- c("q0086", "q0087", "q0088", "q0089", "q0091", "q0093", "q0095", "q0096", "q0097", "q0098")
 
-BAL_items_IT_1030_Home <- c("q0100", "q0101", "q0102", "q0103", "q0104", "q0105", "q0106", "q0107", "q0110", "q0112")
+BAL_items_IT_1020_Home <- c("q0100", "q0101", "q0102", "q0103", "q0104", "q0105", "q0106", "q0107", "q0110", "q0112")
 
-PLA_items_IT_1030_Home <- c("q0114", "q0117", "q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125")
+PLA_items_IT_1020_Home <- c("q0114", "q0117", "q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125")
 
 score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 
 # READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
 
-IT_1030_Home <-
+IT_1020_Home <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/IT/SPM-2 InfantToddler 1030 Months.csv")
   ))) %>% select(
     IDNumber,
     AgeInMonths,
-    AgeGroup,
     Gender,
     ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_IT_1030_Home
+    All_items_IT_1020_Home
   ) %>%
+  # filter for age stratification
+  filter(AgeInMonths %in% c(10:20)) %>%
+  mutate(agestrat = "10-20 mo") %>%
+  select(IDNumber, AgeInMonths, agestrat, everything()) %>% 
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(
-    All_items_IT_1030_Home,
+    All_items_IT_1020_Home,
     ~ case_when(
       .x == "Never" ~ 1,
       .x == "Occasionally" ~ 2,
@@ -75,7 +78,7 @@ IT_1030_Home <-
   ) %>%
   # recode reverse-scored items
   mutate_at(
-    SOC_rev_items_IT_1030_Home,
+    SOC_rev_items_IT_1020_Home,
     ~ case_when(.x == 4 ~ 1,
                 .x == 3 ~ 2,
                 .x == 2 ~ 3,
@@ -83,22 +86,22 @@ IT_1030_Home <-
                 TRUE ~ NA_real_)
   ) %>%
   # Convert scored item vars to integers
-  mutate_at(All_items_IT_1030_Home,
+  mutate_at(All_items_IT_1020_Home,
             ~ as.integer(.x)) %>% 
-  # Compute raw scores. Note use of `rowSums(.[TOT_items_IT_1030_Home])`: when used 
+  # Compute raw scores. Note use of `rowSums(.[TOT_items_IT_1020_Home])`: when used 
   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
   # must wrap the column vector in a column-subsetting expression: `.[]`, where the
   # dot is a token for the data in the pipe.
   mutate(
-    TOT_raw = rowSums(.[TOT_items_IT_1030_Home]),
-    SOC_raw = rowSums(.[SOC_items_IT_1030_Home]),
-    VIS_raw = rowSums(.[VIS_items_IT_1030_Home]),
-    HEA_raw = rowSums(.[HEA_items_IT_1030_Home]),
-    TOU_raw = rowSums(.[TOU_items_IT_1030_Home]),
-    TS_raw = rowSums(.[TS_items_IT_1030_Home]),
-    BOD_raw = rowSums(.[BOD_items_IT_1030_Home]),
-    BAL_raw = rowSums(.[BAL_items_IT_1030_Home]),
-    PLA_raw = rowSums(.[PLA_items_IT_1030_Home])
+    TOT_raw = rowSums(.[TOT_items_IT_1020_Home]),
+    SOC_raw = rowSums(.[SOC_items_IT_1020_Home]),
+    VIS_raw = rowSums(.[VIS_items_IT_1020_Home]),
+    HEA_raw = rowSums(.[HEA_items_IT_1020_Home]),
+    TOU_raw = rowSums(.[TOU_items_IT_1020_Home]),
+    TS_raw = rowSums(.[TS_items_IT_1020_Home]),
+    BOD_raw = rowSums(.[BOD_items_IT_1020_Home]),
+    BAL_raw = rowSums(.[BAL_items_IT_1020_Home]),
+    PLA_raw = rowSums(.[PLA_items_IT_1020_Home])
   ) %>% 
   select(
     -(q0011:q0125)
@@ -108,7 +111,7 @@ IT_1030_Home <-
   filter(TOT_raw <200) %>% print()
 
 # clean up environment
-rm(list = ls(pattern='.*items_IT_1030_Home'))
+rm(list = ls(pattern='.*items_IT_1020_Home'))
 
 
 # EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
@@ -119,23 +122,23 @@ rm(list = ls(pattern='.*items_IT_1030_Home'))
 # can be commented off.
 
 
-# Create frequency tables for TOT_raw by AgeGroup
-# IT_1030_Home_TOT_freq_AgeGroup <- IT_1030_Home %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
+# Create frequency tables for TOT_raw by agestrat
+# IT_1020_Home_TOT_freq_agestrat <- IT_1020_Home %>% group_by(agestrat) %>% count(TOT_raw) %>% 
 #   mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
 
 
-# Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-# IT_1030_Home_TOT_desc_AgeGroup <-
-#   IT_1030_Home %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
+# Compute descriptive statistics, effect sizes for TOT_raw by agestrat
+# IT_1020_Home_TOT_desc_agestrat <-
+#   IT_1020_Home %>% group_by(agestrat) %>% arrange(agestrat) %>% summarise(n = n(),
 #                                                                          median = round(median(TOT_raw), 2),
 #                                                                          mean = round(mean(TOT_raw), 2),
 #                                                                          sd = round(sd(TOT_raw), 2)) %>%
 #   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:6))
 # 
-# AgeGroup <- IT_1030_Home_TOT_desc_AgeGroup %>% pull(AgeGroup)
+# agestrat <- IT_1020_Home_TOT_desc_agestrat %>% pull(agestrat)
 
-# Plot TOT_raw means, SDs by AgeGroup
-# mean_plot <- ggplot(data = IT_1030_Home_TOT_desc_AgeGroup, aes(group, mean)) +
+# Plot TOT_raw means, SDs by agestrat
+# mean_plot <- ggplot(data = IT_1020_Home_TOT_desc_agestrat, aes(group, mean)) +
 #   geom_point(
 #     col = "blue",
 #     fill = "blue",
@@ -144,9 +147,9 @@ rm(list = ls(pattern='.*items_IT_1030_Home'))
 #     shape = 23
 #   ) +
 #   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-#   scale_x_continuous(breaks = seq(1, 6, 1), labels = AgeGroup) +
+#   scale_x_continuous(breaks = seq(1, 6, 1), labels = agestrat) +
 #   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
-#   labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
+#   labs(title = "Raw Score Means (with SDs)", x = "agestrat", y = "TOT") +
 #   geom_errorbar(
 #     aes(ymin = mean - sd, ymax = mean + sd),
 #     col = "red",
@@ -157,8 +160,8 @@ rm(list = ls(pattern='.*items_IT_1030_Home'))
 
 # Check for duplicate IDnumber.
 
-# IT_1030_Home_dup <- IT_1030_Home %>% count(IDNumber) %>% filter(n > 1)
-# write_csv(IT_1030_Home_dup, here("DATA/IT_1030_Home_dup.csv"))
+# IT_1020_Home_dup <- IT_1020_Home %>% count(IDNumber) %>% filter(n > 1)
+# write_csv(IT_1020_Home_dup, here("DATA/IT_1020_Home_dup.csv"))
 
 
 # DETERMINE BEST NORMALIZATION MODEL --------------------------------------
@@ -167,7 +170,7 @@ rm(list = ls(pattern='.*items_IT_1030_Home'))
 # MODEL)
 
 # # create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
-# TOT_nz_obj <- bestNormalize(IT_1030_Home$TOT_raw)
+# TOT_nz_obj <- bestNormalize(IT_1020_Home$TOT_raw)
 # 
 # # print transformation
 # TOT_nz_obj$chosen_transform
@@ -176,7 +179,7 @@ rm(list = ls(pattern='.*items_IT_1030_Home'))
 # chosen_transform <- class(TOT_nz_obj$chosen_transform)[1]
 # 
 # # apply the chosen method to create normalized z-scores for each case.
-# TOT_nz_transform <- eval(as.name(chosen_transform))(IT_1030_Home$TOT_raw)
+# TOT_nz_transform <- eval(as.name(chosen_transform))(IT_1020_Home$TOT_raw)
 
 
 # APPLY SELECTED NORMALIZATION MODEL TO CREATE NORMALIZED Z-SCORES --------
@@ -188,7 +191,7 @@ rm(list = ls(pattern='.*items_IT_1030_Home'))
 nz_transform_names <- c(paste0(score_names, '_nz_transform'))
 
 # pull nine raw score columns into a list
-raw_score_cols_list <- map(score_names, ~ IT_1030_Home %>% 
+raw_score_cols_list <- map(score_names, ~ IT_1020_Home %>% 
               pull(
                 !!as.name(paste0(.x, '_raw'))
               )
@@ -284,12 +287,12 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
-IT_1030_Home <- IT_1030_Home %>% bind_cols(NT_cols)
+IT_1020_Home <- IT_1020_Home %>% bind_cols(NT_cols)
 
 # write T-scores per case table to .csv
-write_csv(IT_1030_Home, here(
+write_csv(IT_1020_Home, here(
   paste0(
-    'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1030-Home-T-Scores-per-case-',
+    'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-T-Scores-per-case-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
@@ -299,8 +302,8 @@ write_csv(IT_1030_Home, here(
 rm(list = ls(pattern='.*_nz'))
 
 # histogram to check normality
-# MASS::truehist(IT_1030_Home$TOT_NT, h = 1)
-# hist_plot <- ggplot(data = IT_1030_Home, aes(TOT_NT)) +
+# MASS::truehist(IT_1020_Home$TOT_NT, h = 1)
+# hist_plot <- ggplot(data = IT_1020_Home, aes(TOT_NT)) +
 #   geom_histogram(
 #     binwidth = .2,
 #     col = "red"
@@ -315,7 +318,7 @@ rm(list = ls(pattern='.*_nz'))
 # because each type has different raw score range. Start wtih TOT. Input is
 # stand sample with raw scores and normalized T scores for each case. Group
 # cases by raw score, relationship between raw and T is many-to-one.
-TOT_lookup <- IT_1030_Home %>% group_by(
+TOT_lookup <- IT_1020_Home %>% group_by(
   TOT_raw
 ) %>% 
   # Because raw-to-T is many to one, all values of T are identical for each raw,
@@ -360,7 +363,7 @@ subscale_names <- score_names[2:9]
 
 subscale_lookup <- map(
   subscale_names, 
-  ~ IT_1030_Home %>% group_by(
+  ~ IT_1020_Home %>% group_by(
     !!as.name(paste0(.x, '_raw'))
   ) %>% 
     summarise(
@@ -399,7 +402,7 @@ all_lookup_col_names <- c(paste0(score_names, '_raw'))
 # write final raw-to-T lookup table to .csv
 write_csv(all_lookup, here(
   paste0(
-    'OUTPUT-FILES/IT/RAW-T-LOOKUP-TABLES/IT-1030-Home-raw-T-lookup-',
+    'OUTPUT-FILES/IT/RAW-T-LOOKUP-TABLES/IT-1020-Home-raw-T-lookup-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
@@ -447,7 +450,7 @@ all_lookup_pub <- all_lookup %>%
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(
   paste0(
-    'OUTPUT-FILES/IT/PRINT-FORMAT-NORMS-TABLES/IT-1030-Home-print-raw-T-lookup-',
+    'OUTPUT-FILES/IT/PRINT-FORMAT-NORMS-TABLES/IT-1020-Home-print-raw-T-lookup-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )

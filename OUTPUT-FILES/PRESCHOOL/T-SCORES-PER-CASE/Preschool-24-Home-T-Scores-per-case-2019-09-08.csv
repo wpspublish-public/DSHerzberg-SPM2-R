@@ -1,0 +1,454 @@
+IDNumber,Age,agestrat,Gender,ParentHighestEducation,Ethnicity,Region,TOT_raw,SOC_raw,VIS_raw,HEA_raw,TOU_raw,TS_raw,BOD_raw,BAL_raw,PLA_raw,TOT_NT,SOC_NT,VIS_NT,HEA_NT,TOU_NT,TS_NT,BOD_NT,BAL_NT,PLA_NT
+118002,2,2-4 yr,Male,Bachelor's degree or higher,Black,south,70,16,11,11,14,10,14,10,10,40,45,38,39,52,37,47,39,35
+118003,3,2-4 yr,Male,Some college or associate degree,Hispanic,south,82,22,12,16,12,12,17,13,12,49,56,41,54,45,46,55,52,42
+118026,3,2-4 yr,Male,Bachelor's degree or higher,White,south,92,20,11,22,16,11,21,11,18,55,53,38,66,58,42,63,44,58
+118027,3,2-4 yr,Female,Some college or associate degree,White,south,88,20,16,12,16,14,16,14,15,52,53,53,43,58,54,52,55,51
+118029,4,2-4 yr,Female,Bachelor's degree or higher,White,south,95,21,19,20,13,11,15,17,18,56,55,60,63,48,42,50,65,58
+118030,3,2-4 yr,Male,Some college or associate degree,White,south,84,14,15,12,14,13,17,13,13,50,40,50,43,52,50,55,52,45
+118056,4,2-4 yr,Male,Bachelor's degree or higher,White,south,78,20,12,14,12,12,14,14,14,46,53,41,49,45,46,47,55,48
+118030,4,2-4 yr,Male,Some college or associate degree,White,south,103,21,14,15,13,14,19,28,34,61,55,48,51,48,54,59,75,75
+129005,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,116,20,16,21,25,17,22,15,14,67,53,53,65,75,63,65,59,48
+105021,4,2-4 yr,Female,Bachelor's degree or higher,White,south,65,10,10,10,11,12,10,12,16,36,27,34,36,41,46,34,48,53
+105028,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,61,10,10,10,10,10,10,11,10,33,27,34,36,36,37,34,44,35
+103031,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,118,27,14,26,15,16,28,19,24,68,64,48,73,55,60,74,70,69
+118078,4,2-4 yr,Female,High school graduate (including GED),White,south,79,19,14,13,11,13,16,12,12,47,51,48,46,41,50,52,48,42
+105049,2,2-4 yr,Male,Bachelor's degree or higher,White,midwest,98,20,19,17,15,10,23,14,22,58,53,60,56,55,37,66,55,66
+105050,2,2-4 yr,Female,Bachelor's degree or higher,White,midwest,90,21,17,13,14,13,19,14,20,53,55,55,46,52,50,59,55,62
+105051,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,76,18,10,13,10,11,20,12,15,44,49,34,46,36,42,61,48,51
+118072,3,2-4 yr,Female,Bachelor's degree or higher,White,south,97,12,18,13,16,14,21,15,19,58,34,58,46,58,54,63,59,60
+133056,3,2-4 yr,Male,Bachelor's degree or higher,White,west,73,13,11,13,10,13,14,12,15,42,37,38,46,36,50,47,48,51
+118069,4,2-4 yr,Male,Some college or associate degree,White,south,147,26,33,34,25,23,15,17,22,75,63,75,75,75,75,50,65,66
+133055,4,2-4 yr,Female,Some college or associate degree,MultiRacial,west,98,24,17,15,17,13,22,14,22,58,60,55,51,60,50,65,55,66
+133057,4,2-4 yr,Male,Bachelor's degree or higher,White,west,86,15,14,13,16,15,16,12,15,51,42,48,46,58,57,52,48,51
+105063,3,2-4 yr,Male,Bachelor's degree or higher,White,south,92,19,22,15,14,14,14,13,14,55,51,66,51,52,54,47,52,48
+105054,4,2-4 yr,Female,Bachelor's degree or higher,White,midwest,60,10,10,10,10,10,10,10,10,32,27,34,36,36,37,34,39,35
+137014,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,78,20,12,17,13,12,13,11,11,46,53,41,56,48,46,44,44,38
+137013,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,96,19,16,19,13,15,21,12,13,57,51,53,61,48,57,63,48,45
+133058,2,2-4 yr,Male,Some college or associate degree,White,west,74,17,12,12,11,14,14,11,13,43,47,41,43,41,54,47,44,45
+105040,3,2-4 yr,Female,Bachelor's degree or higher,White,west,69,14,11,11,11,10,14,12,15,39,40,38,39,41,37,47,48,51
+137019,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,97,23,16,13,16,20,19,13,15,58,58,53,46,58,71,59,52,51
+133059,3,2-4 yr,Male,Bachelor's degree or higher,White,west,85,16,15,17,13,11,18,11,15,50,45,50,56,48,42,57,44,51
+105091,4,2-4 yr,Male,Bachelor's degree or higher,MultiRacial,south,94,22,11,18,15,12,24,14,11,56,56,38,59,55,46,68,55,38
+134011,4,2-4 yr,Male,Bachelor's degree or higher,MultiRacial,west,62,13,10,10,10,12,10,10,11,34,37,34,36,36,46,34,39,38
+126008,3,2-4 yr,Female,Bachelor's degree or higher,White,west,69,10,12,14,12,11,10,10,10,39,27,41,49,45,42,34,39,35
+126017,2,2-4 yr,Female,Bachelor's degree or higher,White,west,89,20,16,13,18,12,16,14,15,53,53,53,46,63,46,52,55,51
+119028,4,2-4 yr,Male,Bachelor's degree or higher,White,south,69,12,11,10,12,13,12,11,12,39,34,38,36,45,50,41,44,42
+105095,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,79,20,13,14,15,11,15,11,15,47,53,45,49,55,42,50,44,51
+119022,4,2-4 yr,Male,Some college or associate degree,Black,south,143,34,23,22,23,17,35,23,27,75,73,68,66,74,63,75,75,74
+105107,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,72,17,15,14,12,11,10,10,11,42,47,50,49,45,42,34,39,38
+126003,4,2-4 yr,Male,Bachelor's degree or higher,White,west,85,21,14,14,13,11,21,12,14,50,55,48,49,48,42,63,48,48
+126014,2,2-4 yr,Male,Bachelor's degree or higher,White,west,74,22,11,12,12,12,15,12,14,43,56,38,43,45,46,50,48,48
+133073,4,2-4 yr,Male,Bachelor's degree or higher,White,west,82,14,16,13,11,13,15,14,13,49,40,53,46,41,50,50,55,45
+126192,4,2-4 yr,Female,Bachelor's degree or higher,White,south,109,22,22,21,14,17,20,15,19,64,56,66,65,52,63,61,59,60
+126046,2,2-4 yr,Female,Bachelor's degree or higher,White,south,75,23,17,13,10,10,13,12,17,44,58,55,46,36,37,44,48,55
+126045,3,2-4 yr,Male,Bachelor's degree or higher,White,south,101,20,18,15,15,18,21,14,11,60,53,58,51,55,66,63,55,38
+105111,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,85,10,18,12,13,14,15,13,14,50,27,58,43,48,54,50,52,48
+105109,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,79,13,13,16,16,10,12,12,11,47,37,45,54,58,37,41,48,38
+126194,4,2-4 yr,Male,Bachelor's degree or higher,White,south,86,14,14,14,14,17,14,13,16,51,40,48,49,52,63,47,52,53
+126033,2,2-4 yr,Male,Bachelor's degree or higher,White,south,87,24,16,12,14,14,20,11,18,52,60,53,43,52,54,61,44,58
+106014,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,81,23,11,15,15,13,17,10,11,48,58,38,51,55,50,55,39,38
+106012,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,71,10,11,13,11,11,13,12,13,41,27,38,46,41,42,44,48,45
+129011,4,2-4 yr,Female,Bachelor's degree or higher,White,midwest,74,12,12,15,10,11,13,13,13,43,34,41,51,36,42,44,52,45
+126067,2,2-4 yr,Female,Bachelor's degree or higher,White,west,87,20,14,16,13,11,20,13,16,52,53,48,54,48,42,61,52,53
+129016,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,101,21,15,14,17,18,17,20,17,60,55,50,49,60,66,55,73,55
+126077,4,2-4 yr,Male,Bachelor's degree or higher,White,south,88,16,15,14,12,20,16,11,16,52,45,50,49,45,71,52,44,53
+118083,3,2-4 yr,Male,Some college or associate degree,White,south,84,23,12,15,15,17,15,10,17,50,58,41,51,55,63,50,39,55
+105112,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,66,18,11,11,10,11,11,12,12,37,49,38,39,36,42,38,48,42
+126206,4,2-4 yr,Male,Bachelor's degree or higher,MultiRacial,west,101,18,18,17,16,16,19,15,16,60,49,58,56,58,60,59,59,53
+126185,2,2-4 yr,Male,Bachelor's degree or higher,White,midwest,100,24,18,20,16,12,16,18,21,59,60,58,63,58,46,52,68,64
+126169,2,2-4 yr,Female,Bachelor's degree or higher,White,west,98,20,18,16,16,11,22,15,26,58,53,58,54,58,42,65,59,72
+119037,2,2-4 yr,Female,Bachelor's degree or higher,White,south,106,24,16,17,22,13,18,20,23,62,60,53,56,72,50,57,73,67
+126011,3,2-4 yr,Female,Bachelor's degree or higher,White,west,103,20,17,21,17,14,13,21,21,61,53,55,65,60,54,44,75,64
+119010,4,2-4 yr,Female,Some college or associate degree,Black,south,73,16,13,13,10,10,16,11,16,42,45,45,46,36,37,52,44,53
+106005,4,2-4 yr,Male,Bachelor's degree or higher,Hispanic,midwest,88,20,15,13,15,16,16,13,15,52,53,50,46,55,60,52,52,51
+126143,2,2-4 yr,Female,Bachelor's degree or higher,White,west,67,18,12,10,11,11,12,11,17,38,49,41,36,41,42,41,44,55
+126216,3,2-4 yr,Female,Bachelor's degree or higher,White,west,73,18,10,10,12,12,13,16,21,42,49,34,36,45,46,44,62,64
+126118,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,67,16,16,10,10,10,11,10,10,38,45,53,36,36,37,38,39,35
+105118,2,2-4 yr,Female,Some college or associate degree,White,midwest,78,17,15,15,13,11,13,11,14,46,47,50,51,48,42,44,44,48
+126182,2,2-4 yr,Female,Bachelor's degree or higher,White,midwest,95,27,17,15,18,12,19,14,16,56,64,55,51,63,46,59,55,53
+106001,2,2-4 yr,Male,Bachelor's degree or higher,White,midwest,84,19,14,14,13,11,19,13,19,50,51,48,49,48,42,59,52,60
+126088,4,2-4 yr,Female,Bachelor's degree or higher,White,west,79,13,11,15,10,17,15,11,12,47,37,38,51,36,63,50,44,42
+134008,4,2-4 yr,Female,Some college or associate degree,Black,west,106,22,16,16,16,21,23,14,13,62,56,53,54,58,74,66,55,45
+126117,4,2-4 yr,Female,Bachelor's degree or higher,White,west,65,14,13,11,11,10,10,10,10,36,40,45,39,41,37,34,39,35
+134014,3,2-4 yr,Female,Bachelor's degree or higher,White,west,61,11,10,10,11,10,10,10,11,33,31,34,36,41,37,34,39,38
+133051,2,2-4 yr,Female,Bachelor's degree or higher,Hispanic,west,69,16,12,10,13,11,12,11,14,39,45,41,36,48,42,41,44,48
+126067,2,2-4 yr,Female,Bachelor's degree or higher,White,west,81,23,14,13,14,12,16,12,19,48,58,48,46,52,46,52,48,60
+134014,3,2-4 yr,Female,Bachelor's degree or higher,White,west,62,11,10,11,11,10,10,10,10,34,31,34,39,41,37,34,39,35
+126194,4,2-4 yr,Male,Bachelor's degree or higher,White,south,93,16,16,17,14,14,18,14,19,55,45,53,56,52,54,57,55,60
+126159,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,80,14,23,13,11,11,11,11,12,47,40,68,46,41,42,38,44,42
+126057,4,2-4 yr,Male,Bachelor's degree or higher,Asian,west,97,20,18,18,14,12,15,20,18,58,53,58,59,52,46,50,73,58
+119039,3,2-4 yr,Female,Bachelor's degree or higher,White,south,77,14,12,14,11,15,11,14,11,45,40,41,49,41,57,38,55,38
+105031,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,108,20,16,25,14,12,27,14,18,63,53,53,72,52,46,73,55,58
+126050,4,2-4 yr,Male,Bachelor's degree or higher,Hispanic,west,86,22,15,14,15,14,18,10,19,51,56,50,49,55,54,57,39,60
+126208,3,2-4 yr,Male,Some college or associate degree,Hispanic,west,108,26,17,21,21,22,15,12,16,63,63,55,65,70,75,50,48,53
+120002,2,2-4 yr,Male,Bachelor's degree or higher,White,west,72,21,12,11,12,12,15,10,11,42,55,41,39,45,46,50,39,38
+119041,4,2-4 yr,Male,Bachelor's degree or higher,Black,south,69,10,13,10,13,10,12,11,11,39,27,45,36,48,37,41,44,38
+119042,3,2-4 yr,Female,Bachelor's degree or higher,Black,south,69,10,13,10,12,11,13,10,11,39,27,45,36,45,42,44,39,38
+134017,3,2-4 yr,Female,Bachelor's degree or higher,White,west,69,12,12,12,11,11,12,11,14,39,34,41,43,41,42,41,44,48
+105121,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,68,10,10,10,12,15,10,11,10,38,27,34,36,45,57,34,44,35
+132003,4,2-4 yr,Male,Some college or associate degree,White,midwest,84,19,16,13,17,12,15,11,11,50,51,53,46,60,46,50,44,38
+126263,2,2-4 yr,Male,Bachelor's degree or higher,White,south,79,23,15,16,12,11,14,11,11,47,58,50,54,45,42,47,44,38
+132014,2,2-4 yr,Female,Bachelor's degree or higher,White,midwest,94,21,16,16,12,14,19,17,20,56,55,53,54,45,54,59,65,62
+132015,4,2-4 yr,Female,Bachelor's degree or higher,White,midwest,86,18,16,18,12,11,15,14,17,51,49,53,59,45,42,50,55,55
+132013,4,2-4 yr,Female,High school graduate (including GED),White,midwest,73,24,14,13,12,10,14,10,11,42,60,48,46,45,37,47,39,38
+126325,3,2-4 yr,Male,Bachelor's degree or higher,White,south,76,13,15,12,13,10,16,10,16,44,37,50,43,48,37,52,39,53
+126299,3,2-4 yr,Female,Bachelor's degree or higher,Other,west,67,17,12,13,10,11,11,10,11,38,47,41,46,36,42,38,39,38
+132011,4,2-4 yr,Female,High school graduate (including GED),MultiRacial,midwest,93,21,18,15,14,14,14,18,18,55,55,58,51,52,54,47,68,58
+126359,3,2-4 yr,Male,Bachelor's degree or higher,White,west,110,24,18,21,21,16,17,17,24,64,60,58,65,70,60,55,65,69
+134006,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,98,29,14,14,14,20,21,15,15,58,67,48,49,52,71,63,59,51
+119037,2,2-4 yr,Female,Bachelor's degree or higher,White,south,100,26,13,19,18,11,21,18,21,59,63,45,61,63,42,63,68,64
+132025,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,88,16,14,10,14,17,21,12,10,52,45,48,36,52,63,63,48,35
+126346,3,2-4 yr,Male,Bachelor's degree or higher,MultiRacial,south,111,30,22,16,22,18,19,14,22,65,68,66,54,72,66,59,55,66
+106001,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,93,20,14,16,14,14,21,14,19,55,53,48,54,52,54,63,55,60
+126340,4,2-4 yr,Female,Bachelor's degree or higher,White,midwest,76,19,10,15,12,11,15,13,16,44,51,34,51,45,42,50,52,53
+126231,4,2-4 yr,Female,Bachelor's degree or higher,Hispanic,west,102,19,24,24,17,11,15,11,14,60,51,70,70,60,42,50,44,48
+126223,4,2-4 yr,Male,Bachelor's degree or higher,Hispanic,west,149,16,23,25,23,22,30,26,32,75,45,68,72,74,75,75,75,75
+134018,4,2-4 yr,Female,Bachelor's degree or higher,White,west,75,15,13,16,12,11,11,12,14,44,42,45,54,45,42,38,48,48
+126288,4,2-4 yr,Female,Bachelor's degree or higher,Hispanic,west,102,18,19,19,11,16,19,18,13,60,49,60,61,41,60,59,68,45
+126391,3,2-4 yr,Male,Bachelor's degree or higher,White,west,71,15,13,15,11,10,11,11,10,41,42,45,51,41,37,38,44,35
+126393,2,2-4 yr,Male,Bachelor's degree or higher,Asian,west,110,21,26,27,12,14,13,18,18,64,55,73,75,45,54,44,68,58
+126387,4,2-4 yr,Female,Bachelor's degree or higher,White,west,103,23,20,19,20,19,13,12,15,61,58,62,61,68,69,44,48,51
+126385,2,2-4 yr,Female,Bachelor's degree or higher,White,west,100,18,18,17,19,16,17,13,11,59,49,58,56,65,60,55,52,38
+119022,4,2-4 yr,Male,Some college or associate degree,Black,south,129,36,25,24,18,16,27,19,26,73,75,71,70,63,60,73,70,72
+119062,2,2-4 yr,Male,Some college or associate degree,Black,south,123,37,27,16,18,15,25,22,26,70,75,74,54,63,57,70,75,72
+119059,3,2-4 yr,Female,High school graduate (including GED),White,south,106,33,21,14,15,11,29,16,27,62,72,64,49,55,42,75,62,74
+118084,3,2-4 yr,Male,Some college or associate degree,White,south,96,22,17,20,14,16,19,10,15,57,56,55,63,52,60,59,39,51
+126396,3,2-4 yr,Female,Bachelor's degree or higher,White,west,95,15,22,19,15,16,13,10,16,56,42,66,61,55,60,44,39,53
+132028,4,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,midwest,70,10,11,10,15,12,11,11,13,40,27,38,36,55,46,38,44,45
+158009,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,81,19,12,12,11,12,21,13,18,48,51,41,43,41,46,63,52,58
+158002,2,2-4 yr,Male,Bachelor's degree or higher,White,northeast,82,24,10,13,13,12,22,12,24,49,60,34,46,48,46,65,48,69
+141064,2,2-4 yr,Female,Bachelor's degree or higher,Hispanic,south,87,19,15,16,15,12,18,11,15,52,51,50,54,55,46,57,44,51
+141078,3,2-4 yr,Male,Bachelor's degree or higher,White,south,90,20,20,16,13,12,17,12,16,53,53,62,54,48,46,55,48,53
+141071,4,2-4 yr,Male,High school graduate (including GED),White,south,79,22,14,11,11,10,19,14,16,47,56,48,39,41,37,59,55,53
+141075,3,2-4 yr,Female,Bachelor's degree or higher,White,south,103,17,19,16,16,14,20,18,11,61,47,60,54,58,54,61,68,38
+141073,4,2-4 yr,Female,Bachelor's degree or higher,White,south,84,21,14,22,11,10,15,12,16,50,55,48,66,41,37,50,48,53
+141079,2,2-4 yr,Male,Bachelor's degree or higher,White,south,97,19,18,14,17,15,21,12,16,58,51,58,49,60,57,63,48,53
+141063,4,2-4 yr,Male,Bachelor's degree or higher,White,south,71,13,11,11,11,10,17,11,13,41,37,38,39,41,37,55,44,45
+141069,2,2-4 yr,Male,Bachelor's degree or higher,White,south,82,19,17,14,12,11,17,11,16,49,51,55,49,45,42,55,44,53
+141085,3,2-4 yr,Male,Some college or associate degree,White,south,102,24,16,20,15,15,20,16,15,60,60,53,63,55,57,61,62,51
+141086,3,2-4 yr,Male,Some college or associate degree,White,south,91,19,12,19,12,12,20,16,17,54,51,41,61,45,46,61,62,55
+141077,2,2-4 yr,Female,Bachelor's degree or higher,White,south,87,17,15,16,14,15,15,12,17,52,47,50,54,52,57,50,48,55
+141091,4,2-4 yr,Male,Bachelor's degree or higher,White,south,80,22,17,12,12,12,15,12,17,47,56,55,43,45,46,50,48,55
+141093,3,2-4 yr,Male,Bachelor's degree or higher,White,south,92,21,18,18,14,14,15,13,13,55,55,58,59,52,54,50,52,45
+141092,3,2-4 yr,Female,Bachelor's degree or higher,White,south,75,16,14,13,12,11,14,11,15,44,45,48,46,45,42,47,44,51
+141096,4,2-4 yr,Female,Bachelor's degree or higher,White,south,77,23,14,16,11,12,12,12,14,45,58,48,54,41,46,41,48,48
+141099,2,2-4 yr,Female,Bachelor's degree or higher,White,south,78,18,14,11,13,14,12,14,19,46,49,48,39,48,54,41,55,60
+141068,4,2-4 yr,Male,Bachelor's degree or higher,White,south,110,23,19,26,17,16,16,16,14,64,58,60,73,60,60,52,62,48
+143003,4,2-4 yr,Female,High school graduate (including GED),White,northeast,92,22,18,17,16,12,16,13,12,55,56,58,56,58,46,52,52,42
+141070,4,2-4 yr,Female,Bachelor's degree or higher,White,south,74,17,17,11,10,11,15,10,13,43,47,55,39,36,42,50,39,45
+141108,4,2-4 yr,Male,Bachelor's degree or higher,White,south,74,13,15,11,11,11,14,12,13,43,37,50,39,41,42,47,48,45
+141104,2,2-4 yr,Female,Bachelor's degree or higher,White,south,101,18,20,15,17,12,23,14,18,60,49,62,51,60,46,66,55,58
+141121,2,2-4 yr,Male,Bachelor's degree or higher,White,south,70,20,11,10,13,12,14,10,12,40,53,38,36,48,46,47,39,42
+141120,4,2-4 yr,Male,Bachelor's degree or higher,White,south,66,20,11,10,11,12,12,10,10,37,53,38,36,41,46,41,39,35
+141107,4,2-4 yr,Female,Bachelor's degree or higher,White,south,72,12,12,11,13,13,12,11,10,42,34,41,39,48,50,41,44,35
+141123,3,2-4 yr,Male,Bachelor's degree or higher,White,south,85,26,12,16,13,12,20,12,21,50,63,41,54,48,46,61,48,64
+141095,3,2-4 yr,Female,Bachelor's degree or higher,White,south,79,15,14,13,16,13,13,10,13,47,42,48,46,58,50,44,39,45
+143010,4,2-4 yr,Male,Bachelor's degree or higher,Black,northeast,86,18,21,14,11,15,15,10,12,51,49,64,49,41,57,50,39,42
+158007,3,2-4 yr,Male,Some college or associate degree,White,northeast,79,20,13,11,14,12,17,12,19,47,53,45,39,52,46,55,48,60
+158008,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,66,12,10,11,11,12,12,10,10,37,34,34,39,41,46,41,39,35
+158004,4,2-4 yr,Female,High school graduate (including GED),White,northeast,63,11,10,11,11,10,10,11,11,34,31,34,39,41,37,34,44,38
+158005,4,2-4 yr,Male,Some college or associate degree,White,northeast,64,11,11,11,10,10,12,10,11,35,31,38,39,36,37,41,39,38
+158006,2,2-4 yr,Male,High school graduate (including GED),White,northeast,69,13,12,10,14,11,11,11,14,39,37,41,36,52,42,38,44,48
+158003,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,88,24,14,18,13,13,13,17,19,52,60,48,59,48,50,44,65,60
+141119,4,2-4 yr,Female,Bachelor's degree or higher,White,south,89,14,20,15,13,11,16,14,19,53,40,62,51,48,42,52,55,60
+141133,2,2-4 yr,Male,Bachelor's degree or higher,White,south,97,19,18,15,16,16,18,14,17,58,51,58,51,58,60,57,55,55
+141165,4,2-4 yr,Female,Bachelor's degree or higher,White,south,81,17,12,13,12,17,14,13,13,48,47,41,46,45,63,47,52,45
+144006,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,69,14,14,11,10,13,11,10,12,39,40,48,39,36,50,38,39,42
+141176,4,2-4 yr,Male,Bachelor's degree or higher,White,south,89,20,14,14,14,11,22,14,15,53,53,48,49,52,42,65,55,51
+143020,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,119,28,23,21,22,18,20,15,21,68,65,68,65,72,66,61,59,64
+141072,4,2-4 yr,Female,Bachelor's degree or higher,White,south,76,21,14,15,10,12,12,13,17,44,55,48,51,36,46,41,52,55
+144041,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,78,18,15,12,15,11,13,12,21,46,49,50,43,55,42,44,48,64
+141181,4,2-4 yr,Female,Bachelor's degree or higher,White,south,98,19,18,17,13,15,21,14,19,58,51,58,56,48,57,63,55,60
+144040,3,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,northeast,70,16,12,12,13,12,11,10,11,40,45,41,43,48,46,38,39,38
+132044,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,110,22,18,20,15,20,20,17,18,64,56,58,63,55,71,61,65,58
+132041,4,2-4 yr,Male,Bachelor's degree or higher,Hispanic,midwest,78,18,13,13,13,10,18,11,16,46,49,45,46,48,37,57,44,53
+144005,2,2-4 yr,Female,Some college or associate degree,White,northeast,81,17,15,17,15,11,13,10,13,48,47,50,56,55,42,44,39,45
+141186,4,2-4 yr,Female,Bachelor's degree or higher,White,south,166,33,29,33,32,23,27,22,26,75,72,75,75,75,75,73,75,72
+132043,4,2-4 yr,Male,Some college or associate degree,White,midwest,67,19,12,10,11,11,13,10,13,38,51,41,36,41,42,44,39,45
+141188,4,2-4 yr,Male,Bachelor's degree or higher,White,south,70,21,14,13,10,10,12,11,10,40,55,48,46,36,37,41,44,35
+141189,4,2-4 yr,Female,Bachelor's degree or higher,White,west,77,14,15,14,11,11,13,13,14,45,40,50,49,41,42,44,52,48
+143037,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,84,17,16,14,11,13,18,12,14,50,47,53,49,41,50,57,48,48
+143024,3,2-4 yr,Male,Bachelor's degree or higher,White,northeast,105,19,22,19,14,15,18,17,16,62,51,66,61,52,57,57,65,53
+143025,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,88,29,17,20,12,14,14,11,12,52,67,55,63,45,54,47,44,42
+143042,2,2-4 yr,Male,Some college or associate degree,Hispanic,northeast,82,25,14,12,16,14,11,15,20,49,61,48,43,58,54,38,59,62
+143043,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,62,14,10,10,11,11,10,10,10,34,40,34,36,41,42,34,39,35
+143050,3,2-4 yr,Male,Bachelor's degree or higher,Other,northeast,98,23,17,17,17,15,21,11,21,58,58,55,56,60,57,63,44,64
+143046,4,2-4 yr,Male,Bachelor's degree or higher,Asian,northeast,82,14,16,13,15,15,12,11,13,49,40,53,46,55,57,41,44,45
+143054,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,74,18,10,15,10,12,14,13,16,43,49,34,51,36,46,47,52,53
+169046,4,2-4 yr,Male,Bachelor's degree or higher,Hispanic,west,87,21,16,15,14,15,16,11,15,52,55,53,51,52,57,52,44,51
+141190,4,2-4 yr,Male,Bachelor's degree or higher,White,south,115,17,20,26,20,15,17,17,23,67,47,62,73,68,57,55,65,67
+141193,2,2-4 yr,Male,Bachelor's degree or higher,White,south,80,22,14,15,11,10,20,10,10,47,56,48,51,41,37,61,39,35
+143051,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,62,13,11,10,10,11,10,10,16,34,37,38,36,36,42,34,39,53
+143034,3,2-4 yr,Female,High school graduate (including GED),White,northeast,84,21,16,14,10,13,15,16,15,50,55,53,49,36,50,50,62,51
+143043,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,64,11,10,10,12,11,11,10,10,35,31,34,36,45,42,38,39,35
+143048,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,88,20,17,14,13,11,17,16,14,52,53,55,49,48,42,55,62,48
+143060,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,84,15,14,18,12,17,11,12,10,50,42,48,59,45,63,38,48,35
+143059,4,2-4 yr,Male,Bachelor's degree or higher,Asian,northeast,91,14,15,13,20,17,12,14,12,54,40,50,46,68,63,41,55,42
+143054,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,63,13,10,10,10,10,12,11,13,34,37,34,36,36,37,41,44,45
+144006,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,72,11,12,13,11,12,13,11,10,42,31,41,46,41,46,44,44,35
+169047,4,2-4 yr,Female,Bachelor's degree or higher,White,west,76,13,17,10,11,14,12,12,13,44,37,55,36,41,54,41,48,45
+169044,2,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,west,103,25,15,14,17,12,31,14,17,61,61,50,49,60,46,75,55,55
+169045,4,2-4 yr,Male,Bachelor's degree or higher,MultiRacial,west,87,15,13,17,16,13,15,13,13,52,42,45,56,58,50,50,52,45
+169049,4,2-4 yr,Male,Bachelor's degree or higher,White,west,67,20,13,10,12,10,11,11,11,38,53,45,36,45,37,38,44,38
+209005,3,2-4 yr,Male,Bachelor's degree or higher,White,south,88,19,16,15,12,16,15,14,15,52,51,53,51,45,60,50,55,51
+209009,4,2-4 yr,Male,Bachelor's degree or higher,White,south,102,22,18,13,20,12,23,16,16,60,56,58,46,68,46,66,62,53
+177001,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,75,19,11,14,12,13,15,10,12,44,51,38,49,45,50,50,39,42
+209012,3,2-4 yr,Male,Bachelor's degree or higher,MultiRacial,south,90,18,16,20,15,13,14,12,16,53,49,53,63,55,50,47,48,53
+177002,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,65,17,11,13,10,11,10,10,10,36,47,38,46,36,42,34,39,35
+209008,4,2-4 yr,Female,Bachelor's degree or higher,White,south,89,14,19,18,13,17,10,12,13,53,40,60,59,48,63,34,48,45
+209016,4,2-4 yr,Female,Bachelor's degree or higher,Other,west,75,18,13,15,11,14,10,12,17,44,49,45,51,41,54,34,48,55
+177003,2,2-4 yr,Female,Bachelor's degree or higher,White,northeast,66,20,12,13,10,10,11,10,12,37,53,41,46,36,37,38,39,42
+204027,3,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,west,91,20,16,12,17,15,17,14,17,54,53,53,43,60,57,55,55,55
+209018,4,2-4 yr,Male,Some college or associate degree,White,south,127,26,25,23,24,15,25,15,18,72,63,71,68,75,57,70,59,58
+189039,3,2-4 yr,Male,Bachelor's degree or higher,White,south,100,18,17,15,14,16,22,16,17,59,49,55,51,52,60,65,62,55
+193028,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,88,23,15,15,14,14,17,13,17,52,58,50,51,52,54,55,52,55
+214002,3,2-4 yr,Female,Bachelor's degree or higher,White,south,70,16,11,11,12,11,14,11,13,40,45,38,39,45,42,47,44,45
+189043,2,2-4 yr,Female,Bachelor's degree or higher,White,south,89,24,16,14,15,14,14,16,19,53,60,53,49,55,54,47,62,60
+204031,4,2-4 yr,Female,Bachelor's degree or higher,White,west,97,19,17,19,18,12,14,17,22,58,51,55,61,63,46,47,65,66
+216004,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,101,20,15,21,19,13,22,11,18,60,53,50,65,65,50,65,44,58
+190020,4,2-4 yr,Male,Bachelor's degree or higher,Hispanic,west,65,10,12,10,10,12,11,10,11,36,27,41,36,36,46,38,39,38
+216003,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,96,16,19,16,14,10,19,18,19,57,45,60,54,52,37,59,68,60
+177005,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,97,21,19,18,18,14,15,13,17,58,55,60,59,63,54,50,52,55
+193035,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,71,13,13,12,13,11,12,10,16,41,37,45,43,48,42,41,39,53
+214003,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,76,17,11,11,14,16,13,11,11,44,47,38,39,52,60,44,44,38
+204028,4,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,west,76,16,14,16,10,14,11,11,14,44,45,48,54,36,54,38,44,48
+216005,4,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,midwest,78,22,17,13,12,13,13,10,14,46,56,55,46,45,50,44,39,48
+204030,4,2-4 yr,Male,Some college or associate degree,White,west,82,11,13,13,13,11,19,13,15,49,31,45,46,48,42,59,52,51
+216012,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,85,23,15,21,13,11,13,12,11,50,58,50,65,48,42,44,48,38
+216008,2,2-4 yr,Male,Bachelor's degree or higher,White,midwest,84,21,16,16,11,13,16,12,15,50,55,53,54,41,50,52,48,51
+193037,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,101,24,20,17,16,19,15,14,16,60,60,62,56,58,69,50,55,53
+216010,2,2-4 yr,Male,Bachelor's degree or higher,White,midwest,96,17,16,17,17,15,17,14,18,57,47,53,56,60,57,55,55,58
+190036,4,2-4 yr,Male,Bachelor's degree or higher,Hispanic,west,95,19,20,13,16,14,20,12,14,56,51,62,46,58,54,61,48,48
+209027,4,2-4 yr,Male,Bachelor's degree or higher,White,west,70,14,13,11,11,12,13,10,11,40,40,45,39,41,46,44,39,38
+204029,4,2-4 yr,Female,Some college or associate degree,Hispanic,west,85,21,17,14,11,13,16,14,14,50,55,55,49,41,50,52,55,48
+204032,4,2-4 yr,Male,Some college or associate degree,White,west,64,11,11,11,11,10,11,10,10,35,31,38,39,41,37,38,39,35
+216001,3,2-4 yr,Female,Bachelor's degree or higher,Asian,midwest,77,15,12,19,12,12,12,10,10,45,42,41,61,45,46,41,39,35
+119046,4,2-4 yr,Male,Some college or associate degree,Black,south,61,10,10,11,10,10,10,10,10,33,27,34,39,36,37,34,39,35
+209028,3,2-4 yr,Male,Bachelor's degree or higher,White,west,112,24,23,21,14,17,20,17,25,65,60,68,65,52,63,61,65,71
+214017,3,2-4 yr,Male,Bachelor's degree or higher,White,south,66,12,11,12,10,10,12,11,10,37,34,38,43,36,37,41,44,35
+190050,3,2-4 yr,Male,Bachelor's degree or higher,Hispanic,west,122,20,19,24,18,20,25,16,16,70,53,60,70,63,71,70,62,53
+209033,3,2-4 yr,Male,Bachelor's degree or higher,White,south,134,23,22,28,26,18,23,17,16,75,58,66,75,75,66,66,65,53
+177013,2,2-4 yr,Female,Some college or associate degree,White,northeast,110,19,22,19,20,12,21,16,21,64,51,66,61,68,46,63,62,64
+177011,3,2-4 yr,Male,Bachelor's degree or higher,White,northeast,92,18,13,14,16,20,14,15,13,55,49,45,49,58,71,47,59,45
+177012,2,2-4 yr,Female,Bachelor's degree or higher,White,northeast,98,26,17,15,14,16,23,13,20,58,63,55,51,52,60,66,52,62
+177016,4,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,northeast,80,21,18,13,12,10,13,14,18,47,55,58,46,45,37,44,55,58
+204035,4,2-4 yr,Male,High school graduate (including GED),White,west,82,20,14,15,14,13,15,11,16,49,53,48,51,52,50,50,44,53
+177018,3,2-4 yr,Male,Bachelor's degree or higher,White,northeast,85,26,13,14,14,12,21,11,16,50,63,45,49,52,46,63,44,53
+177017,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,91,24,11,12,15,15,24,14,13,54,60,38,43,55,57,68,55,45
+177008,3,2-4 yr,Female,Some college or associate degree,White,northeast,75,15,10,14,13,13,14,11,17,44,42,34,49,48,50,47,44,55
+177010,2,2-4 yr,Female,Some college or associate degree,White,northeast,78,20,13,13,17,10,12,13,20,46,53,45,46,60,37,41,52,62
+189038,3,2-4 yr,Female,Bachelor's degree or higher,White,south,89,17,17,16,15,13,17,11,18,53,47,55,54,55,50,55,44,58
+209040,4,2-4 yr,Male,Some college or associate degree,White,west,82,24,16,14,13,15,14,10,17,49,60,53,49,48,57,47,39,55
+216019,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,83,21,12,15,15,16,14,11,16,49,55,41,51,55,60,47,44,53
+209038,4,2-4 yr,Male,Bachelor's degree or higher,White,west,109,16,16,31,16,15,16,15,17,64,45,53,75,58,57,52,59,55
+209044,2,2-4 yr,Female,Bachelor's degree or higher,White,south,79,26,14,12,15,13,15,10,12,47,63,48,43,55,50,50,39,42
+177014,2,2-4 yr,Female,Bachelor's degree or higher,White,northeast,88,17,21,15,14,12,16,10,15,52,47,64,51,52,46,52,39,51
+177025,4,2-4 yr,Female,Bachelor's degree or higher,Asian,northeast,83,14,20,13,12,16,12,10,15,49,40,62,46,45,60,41,39,51
+177023,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,105,17,19,19,17,17,18,15,15,62,47,60,61,60,63,57,59,51
+177006,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,71,13,14,12,11,11,12,11,12,41,37,48,43,41,42,41,44,42
+190038,4,2-4 yr,Male,Bachelor's degree or higher,White,west,93,25,16,19,20,11,14,13,16,55,61,53,61,68,42,47,52,53
+204033,4,2-4 yr,Male,Bachelor's degree or higher,Asian,west,70,21,14,10,10,13,12,11,13,40,55,48,36,36,50,41,44,45
+216017,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,89,20,17,16,15,14,14,13,12,53,53,55,54,55,54,47,52,42
+230002,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,78,20,14,14,12,10,15,13,18,46,53,48,49,45,37,50,52,58
+204034,4,2-4 yr,Female,Bachelor's degree or higher,White,west,88,21,13,18,14,13,19,11,14,52,55,45,59,52,50,59,44,48
+216026,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,87,20,13,19,12,12,17,14,15,52,53,45,61,45,46,55,55,51
+209024,3,2-4 yr,Male,Bachelor's degree or higher,White,south,74,21,12,13,14,11,14,10,11,43,55,41,46,52,42,47,39,38
+204040,4,2-4 yr,Male,Bachelor's degree or higher,MultiRacial,west,123,23,27,30,18,13,20,15,20,70,58,74,75,63,50,61,59,62
+189036,2,2-4 yr,Male,Bachelor's degree or higher,White,south,66,20,12,10,13,11,10,10,10,37,53,41,36,48,42,34,39,35
+216021,2,2-4 yr,Male,Bachelor's degree or higher,White,midwest,104,24,22,18,17,12,20,15,20,61,60,66,59,60,46,61,59,62
+209045,2,2-4 yr,Female,Bachelor's degree or higher,White,south,77,23,13,12,14,13,13,12,14,45,58,45,43,52,50,44,48,48
+203026,4,2-4 yr,Male,Bachelor's degree or higher,White,south,88,24,13,13,17,10,23,12,12,52,60,45,46,60,37,66,48,42
+203027,4,2-4 yr,Male,Bachelor's degree or higher,White,south,102,17,18,12,20,12,16,24,20,60,47,58,43,68,46,52,75,62
+216011,4,2-4 yr,Female,Some college or associate degree,Black,midwest,64,14,12,11,10,11,10,10,10,35,40,41,39,36,42,34,39,35
+189044,3,2-4 yr,Female,Bachelor's degree or higher,White,south,75,19,14,14,14,11,12,10,14,44,51,48,49,52,42,41,39,48
+216029,3,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,midwest,70,10,11,11,12,11,12,13,12,40,27,38,39,45,42,41,52,42
+177026,2,2-4 yr,Male,Bachelor's degree or higher,White,northeast,80,27,11,12,18,11,16,12,18,47,64,38,43,63,42,52,48,58
+216023,4,2-4 yr,Female,Some college or associate degree,MultiRacial,midwest,93,22,17,16,14,15,18,13,13,55,56,55,54,52,57,57,52,45
+178068,4,2-4 yr,Male,Some college or associate degree,Black,south,63,10,10,10,11,11,11,10,11,34,27,34,36,41,42,38,39,38
+189047,2,2-4 yr,Male,Bachelor's degree or higher,White,south,105,20,17,16,18,17,23,14,18,62,53,55,54,63,63,66,55,58
+189045,4,2-4 yr,Male,Bachelor's degree or higher,White,south,126,26,21,22,21,18,25,19,20,72,63,64,66,70,66,70,70,62
+178013,3,2-4 yr,Male,Bachelor's degree or higher,Hispanic,south,109,18,32,15,12,20,19,11,16,64,49,75,51,45,71,59,44,53
+177021,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,79,17,15,13,16,10,14,11,10,47,47,50,46,58,37,47,44,35
+189040,3,2-4 yr,Male,Bachelor's degree or higher,White,south,104,20,16,16,19,17,21,15,16,61,53,53,54,65,63,63,59,53
+219001,4,2-4 yr,Male,Bachelor's degree or higher,White,south,89,18,17,14,13,12,18,15,15,53,49,55,49,48,46,57,59,51
+204038,4,2-4 yr,Male,Bachelor's degree or higher,White,west,81,21,11,14,16,11,19,10,16,48,55,38,49,58,42,59,39,53
+204026,4,2-4 yr,Female,Bachelor's degree or higher,Hispanic,west,65,13,10,10,10,11,12,12,10,36,37,34,36,36,42,41,48,35
+216038,3,2-4 yr,Female,Bachelor's degree or higher,Other,midwest,81,17,12,14,12,16,13,14,13,48,47,41,49,45,60,44,55,45
+209020,4,2-4 yr,Female,Bachelor's degree or higher,Hispanic,west,90,18,19,17,12,13,11,18,16,53,49,60,56,45,50,38,68,53
+216036,4,2-4 yr,Female,Some college or associate degree,White,midwest,84,18,15,13,13,12,17,14,20,50,49,50,46,48,46,55,55,62
+199003,3,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,midwest,90,21,17,16,14,14,16,13,16,53,55,55,54,52,54,52,52,53
+178011,3,2-4 yr,Female,Some college or associate degree,Other,south,75,13,17,13,11,14,10,10,11,44,37,55,46,41,54,34,39,38
+190062,4,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,west,71,17,13,14,10,11,12,11,16,41,47,45,49,36,42,41,44,53
+216037,3,2-4 yr,Female,Some college or associate degree,White,midwest,86,23,15,15,15,12,16,13,19,51,58,50,51,55,46,52,52,60
+193033,4,2-4 yr,Female,Some college or associate degree,White,northeast,80,17,15,14,14,12,14,11,12,47,47,50,49,52,46,47,44,42
+178069,4,2-4 yr,Male,Some college or associate degree,Black,south,78,22,12,13,12,15,16,10,11,46,56,41,46,45,57,52,39,38
+216039,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,71,12,11,12,12,16,10,10,11,41,34,38,43,45,60,34,39,38
+193034,3,2-4 yr,Male,Some college or associate degree,White,northeast,85,19,13,11,14,13,17,17,17,50,51,45,39,52,50,55,65,55
+207004,4,2-4 yr,Male,Bachelor's degree or higher,MultiRacial,south,103,25,17,22,17,14,19,14,19,61,61,55,66,60,54,59,55,60
+178015,4,2-4 yr,Male,Bachelor's degree or higher,Hispanic,south,91,24,17,16,15,10,18,15,12,54,60,55,54,55,37,57,59,42
+216043,4,2-4 yr,Female,Bachelor's degree or higher,Hispanic,midwest,86,18,10,14,16,12,23,11,12,51,49,34,49,58,46,66,44,42
+216045,4,2-4 yr,Female,Some college or associate degree,MultiRacial,midwest,76,19,13,12,10,14,15,12,14,44,51,45,43,36,54,50,48,48
+216046,3,2-4 yr,Female,Some college or associate degree,MultiRacial,midwest,98,24,21,16,14,15,17,15,23,58,60,64,54,52,57,55,59,67
+190067,4,2-4 yr,Male,Bachelor's degree or higher,White,west,76,15,10,14,13,14,14,11,13,44,42,34,49,48,54,47,44,45
+171005,4,2-4 yr,Female,Some college or associate degree,MultiRacial,south,74,22,14,11,11,12,15,11,14,43,56,48,39,41,46,50,44,48
+171006,3,2-4 yr,Male,Some college or associate degree,MultiRacial,south,73,21,13,13,12,10,14,11,13,42,55,45,46,45,37,47,44,45
+177004,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,73,17,13,12,11,10,15,12,13,42,47,45,43,41,37,50,48,45
+193059,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,86,19,17,14,15,16,12,12,15,51,51,55,49,55,60,41,48,51
+193043,2,2-4 yr,Female,Some college or associate degree,White,northeast,95,18,16,11,17,16,19,16,14,56,49,53,39,60,60,59,62,48
+189037,3,2-4 yr,Male,Bachelor's degree or higher,MultiRacial,south,98,20,20,24,12,15,15,12,14,58,53,62,70,45,57,50,48,48
+178067,4,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,south,133,21,23,27,21,19,25,18,24,74,55,68,75,70,69,70,68,69
+216040,4,2-4 yr,Female,Bachelor's degree or higher,White,midwest,66,16,10,13,11,10,12,10,12,37,45,34,46,41,37,41,39,42
+190068,4,2-4 yr,Female,Bachelor's degree or higher,White,west,72,15,12,11,13,12,11,13,15,42,42,41,39,48,46,38,52,51
+189042,2,2-4 yr,Male,Bachelor's degree or higher,White,south,74,20,14,12,11,11,16,10,15,43,53,48,43,41,42,52,39,51
+219009,4,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,south,74,10,12,13,12,12,12,13,10,43,27,41,46,45,46,41,52,35
+207002,4,2-4 yr,Male,Bachelor's degree or higher,Hispanic,south,97,21,21,16,16,16,14,14,23,58,55,64,54,58,60,47,55,67
+177019,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,80,19,15,12,15,11,13,14,14,47,51,50,43,55,42,44,55,48
+177015,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,67,21,10,10,10,11,13,13,14,38,55,34,36,36,42,44,52,48
+216028,4,2-4 yr,Male,Some college or associate degree,White,midwest,73,20,13,13,11,12,14,10,13,42,53,45,46,41,46,47,39,45
+216020,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,100,23,17,18,13,15,20,17,19,59,58,55,59,48,57,61,65,60
+216041,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,84,13,17,12,13,12,15,15,12,50,37,55,43,48,46,50,59,42
+198001,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,77,18,14,14,11,11,15,12,14,45,49,48,49,41,42,50,48,48
+216007,3,2-4 yr,Male,Bachelor's degree or higher,Hispanic,midwest,88,17,16,16,16,14,16,10,14,52,47,53,54,58,54,52,39,48
+216022,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,89,20,18,13,17,18,13,10,13,53,53,58,46,60,66,44,39,45
+199004,4,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,midwest,64,14,11,12,10,10,11,10,10,35,40,38,43,36,37,38,39,35
+199006,4,2-4 yr,Male,Some college or associate degree,White,midwest,73,18,14,15,10,10,11,13,16,42,49,48,51,36,37,38,52,53
+216042,2,2-4 yr,Male,Bachelor's degree or higher,White,midwest,94,19,18,15,16,12,19,14,14,56,51,58,51,58,46,59,55,48
+199010,4,2-4 yr,Male,High school graduate (including GED),Hispanic,midwest,131,25,23,24,18,25,23,18,19,74,61,68,70,63,75,66,68,60
+177007,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,95,19,18,15,17,11,21,13,16,56,51,58,51,60,42,63,52,53
+216053,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,81,19,12,15,13,13,17,11,16,48,51,41,51,48,50,55,44,53
+189048,2,2-4 yr,Male,Bachelor's degree or higher,Hispanic,south,105,24,18,15,19,15,23,15,20,62,60,58,51,65,57,66,59,62
+216031,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,85,17,14,13,13,15,17,13,13,50,47,48,46,48,57,55,52,45
+215014,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,95,30,15,17,14,18,16,15,20,56,68,50,56,52,66,52,59,62
+190072,3,2-4 yr,Female,Bachelor's degree or higher,Asian,west,64,16,10,11,10,10,11,12,10,35,45,34,39,36,37,38,48,35
+177029,2,2-4 yr,Female,Bachelor's degree or higher,White,northeast,60,16,10,10,10,10,10,10,10,32,45,34,36,36,37,34,39,35
+230013,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,85,11,12,18,15,11,16,13,14,50,31,41,59,55,42,52,52,48
+193006,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,67,10,10,10,10,12,10,15,10,38,27,34,36,36,46,34,59,35
+212019,3,2-4 yr,Female,Bachelor's degree or higher,Hispanic,west,70,12,12,10,12,10,16,10,10,40,34,41,36,45,37,52,39,35
+190066,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,81,12,12,15,14,16,13,11,10,48,34,41,51,52,60,44,44,35
+207001,4,2-4 yr,Female,Bachelor's degree or higher,White,south,78,16,12,16,11,12,14,13,12,46,45,41,54,41,46,47,52,42
+189046,4,2-4 yr,Female,Bachelor's degree or higher,White,south,96,24,20,17,13,15,15,16,16,57,60,62,56,48,57,50,62,53
+199008,4,2-4 yr,Male,Some college or associate degree,White,midwest,82,21,16,16,11,12,16,11,12,49,55,53,54,41,46,52,44,42
+207003,2,2-4 yr,Male,Bachelor's degree or higher,White,south,82,18,14,13,18,13,13,11,16,49,49,48,46,63,50,44,44,53
+177030,2,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,northeast,82,12,19,11,15,13,13,11,14,49,34,60,39,55,50,44,44,48
+207005,3,2-4 yr,Male,Bachelor's degree or higher,White,south,128,19,26,28,20,14,25,15,14,72,51,73,75,68,54,70,59,48
+177028,2,2-4 yr,Male,Bachelor's degree or higher,White,northeast,89,21,15,13,15,10,23,13,18,53,55,50,46,55,37,66,52,58
+216059,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,85,20,16,14,12,10,19,14,18,50,53,53,49,45,37,59,55,58
+216059,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,82,17,17,12,11,12,18,12,14,49,47,55,43,41,46,57,48,48
+204037,4,2-4 yr,Female,Bachelor's degree or higher,White,west,99,21,12,19,16,19,21,12,14,59,55,41,61,58,69,63,48,48
+214024,2,2-4 yr,Male,Bachelor's degree or higher,Asian,south,84,19,12,18,18,13,11,12,15,50,51,41,59,63,50,38,48,51
+216027,4,2-4 yr,Female,Bachelor's degree or higher,White,midwest,111,23,19,16,19,18,23,16,20,65,58,60,54,65,66,66,62,62
+207005,3,2-4 yr,Male,Some college or associate degree,White,south,73,11,13,12,12,11,13,12,12,42,31,45,43,45,42,44,48,42
+204039,4,2-4 yr,Female,Bachelor's degree or higher,White,west,66,19,10,10,14,12,10,10,13,37,51,34,36,52,46,34,39,45
+216051,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,83,20,13,13,14,11,19,13,17,49,53,45,46,52,42,59,52,55
+214021,3,2-4 yr,Male,Bachelor's degree or higher,White,south,95,23,19,21,16,12,16,11,16,56,58,60,65,58,46,52,44,53
+216061,4,2-4 yr,Male,Some college or associate degree,White,midwest,108,19,26,20,14,14,17,17,14,63,51,73,63,52,54,55,65,48
+216063,2,2-4 yr,Male,Bachelor's degree or higher,White,midwest,79,22,14,14,15,13,12,11,13,47,56,48,49,55,50,41,44,45
+230029,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,87,20,16,15,13,13,16,14,17,52,53,53,51,48,50,52,55,55
+230022,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,96,22,16,16,14,15,20,15,17,57,56,53,54,52,57,61,59,55
+216064,3,2-4 yr,Male,Bachelor's degree or higher,White,midwest,93,20,17,12,15,17,15,17,22,55,53,55,43,55,63,50,65,66
+119107,2,2-4 yr,Male,High school graduate (including GED),White,south,98,20,23,16,16,11,20,12,19,58,53,68,54,58,42,61,48,60
+216067,2,2-4 yr,Male,Bachelor's degree or higher,White,midwest,110,18,22,24,16,15,16,17,16,64,49,66,70,58,57,52,65,53
+198002,4,2-4 yr,Female,Bachelor's degree or higher,White,northeast,99,22,17,20,16,14,16,16,18,59,56,55,63,58,54,52,62,58
+230016,4,2-4 yr,Male,Bachelor's degree or higher,White,midwest,87,16,16,13,13,12,16,17,15,52,45,53,46,48,46,52,65,51
+230017,2,2-4 yr,Female,Bachelor's degree or higher,White,midwest,76,15,13,13,14,11,12,13,17,44,42,45,46,52,42,41,52,55
+230036,3,2-4 yr,Female,Bachelor's degree or higher,White,west,78,21,13,16,13,13,11,12,13,46,55,45,54,48,50,38,48,45
+250004,2,2-4 yr,Female,Bachelor's degree or higher,White,south,76,17,15,13,11,13,12,12,16,44,47,50,46,41,50,41,48,53
+198007,3,2-4 yr,Male,Bachelor's degree or higher,White,northeast,83,22,16,13,15,13,16,10,11,49,56,53,46,55,50,52,39,38
+198008,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,88,24,16,15,14,10,18,15,22,52,60,53,51,52,37,57,59,66
+230034,3,2-4 yr,Female,Bachelor's degree or higher,White,midwest,84,21,16,14,13,13,16,12,15,50,55,53,49,48,50,52,48,51
+219017,4,2-4 yr,Female,Bachelor's degree or higher,White,south,66,15,13,11,11,11,10,10,12,37,42,45,39,41,42,34,39,42
+260022,2,2-4 yr,Male,Bachelor's degree or higher,White,south,72,21,14,11,10,12,14,11,10,42,55,48,39,36,46,47,44,35
+260021,4,2-4 yr,Male,Bachelor's degree or higher,White,south,80,20,12,14,12,13,18,11,12,47,53,41,49,45,50,57,44,42
+260036,3,2-4 yr,Female,Bachelor's degree or higher,White,south,81,22,13,15,11,12,18,12,14,48,56,45,51,41,46,57,48,48
+260028,4,2-4 yr,Female,Bachelor's degree or higher,White,south,77,19,20,15,10,10,11,11,12,45,51,62,51,36,37,38,44,42
+260037,3,2-4 yr,Female,Bachelor's degree or higher,White,south,78,19,13,10,14,13,16,12,14,46,51,45,36,52,50,52,48,48
+260032,2,2-4 yr,Female,Bachelor's degree or higher,White,south,81,21,19,16,10,12,13,11,16,48,55,60,54,36,46,44,44,53
+260034,3,2-4 yr,Male,Bachelor's degree or higher,White,south,68,18,13,13,11,11,10,10,17,38,49,45,46,41,42,34,39,55
+250008,2,2-4 yr,Male,Bachelor's degree or higher,Other,south,75,14,15,15,10,14,11,10,10,44,40,50,51,36,54,38,39,35
+260040,4,2-4 yr,Female,Bachelor's degree or higher,White,south,98,19,15,18,12,19,17,17,17,58,51,50,59,45,69,55,65,55
+215006,2,2-4 yr,Female,Bachelor's degree or higher,White,northeast,76,25,13,14,13,11,14,11,12,44,61,45,49,48,42,47,44,42
+260046,2,2-4 yr,Female,Bachelor's degree or higher,White,south,62,14,10,10,11,10,11,10,10,34,40,34,36,41,37,38,39,35
+260048,3,2-4 yr,Female,Some college or associate degree,Hispanic,south,69,19,12,10,11,10,14,12,11,39,51,41,36,41,37,47,48,38
+241013,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,84,15,14,16,13,14,13,14,14,50,42,48,54,48,54,44,55,48
+260033,4,2-4 yr,Female,Bachelor's degree or higher,White,south,89,10,20,18,14,13,14,10,10,53,27,62,59,52,50,47,39,35
+241012,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,63,11,10,10,12,11,10,10,10,34,31,34,36,45,42,34,39,35
+241003,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,81,18,16,14,13,12,15,11,15,48,49,53,49,48,46,50,44,51
+250036,4,2-4 yr,Male,Bachelor's degree or higher,White,south,106,28,17,20,16,16,18,19,16,62,65,55,63,58,60,57,70,53
+250031,4,2-4 yr,Female,Some college or associate degree,White,south,88,19,17,11,13,16,16,15,17,52,51,55,39,48,60,52,59,55
+250028,3,2-4 yr,Female,Bachelor's degree or higher,White,south,68,13,12,11,10,12,13,10,11,38,37,41,39,36,46,44,39,38
+241026,4,2-4 yr,Male,Bachelor's degree or higher,White,northeast,83,19,14,19,12,13,15,10,15,49,51,48,61,45,50,50,39,51
+260029,4,2-4 yr,Male,Bachelor's degree or higher,White,south,94,26,16,14,14,15,20,15,13,56,63,53,49,52,57,61,59,45
+260049,2,2-4 yr,Female,Bachelor's degree or higher,White,south,97,21,18,16,15,12,17,19,19,58,55,58,54,55,46,55,70,60
+241002,3,2-4 yr,Female,Bachelor's degree or higher,White,northeast,73,20,15,12,10,11,12,13,13,42,53,50,43,36,42,41,52,45
+260039,2,2-4 yr,Male,Some college or associate degree,White,south,82,20,18,13,12,11,18,10,13,49,53,58,46,45,42,57,39,45
+260038,3,2-4 yr,Male,Bachelor's degree or higher,White,south,81,22,11,13,17,11,19,10,11,48,56,38,46,60,42,59,39,38
+250041,2,2-4 yr,Male,Bachelor's degree or higher,White,south,84,14,13,17,13,11,19,11,16,50,40,45,56,48,42,59,44,53
+198005,4,2-4 yr,Female,High school graduate (including GED),White,northeast,60,13,10,10,10,10,10,10,12,32,37,34,36,36,37,34,39,42
+250047,3,2-4 yr,Female,Bachelor's degree or higher,White,south,64,15,10,12,10,12,10,10,12,35,42,34,43,36,46,34,39,42
+250052,4,2-4 yr,Male,Bachelor's degree or higher,Hispanic,south,76,24,13,12,11,11,15,14,17,44,60,45,43,41,42,50,55,55
+250053,4,2-4 yr,Male,Bachelor's degree or higher,White,south,68,13,12,10,12,13,11,10,10,38,37,41,36,45,50,38,39,35
+250065,4,2-4 yr,Male,Bachelor's degree or higher,White,south,76,16,12,14,11,13,13,13,11,44,45,41,49,41,50,44,52,38
+250062,4,2-4 yr,Female,Bachelor's degree or higher,MultiRacial,south,92,19,18,15,11,15,16,17,15,55,51,58,51,41,57,52,65,51
+250060,4,2-4 yr,Female,Some college or associate degree,Hispanic,south,106,15,19,16,17,17,20,17,18,62,42,60,54,60,63,61,65,58
+250033,3,2-4 yr,Female,Bachelor's degree or higher,White,south,80,22,15,15,13,10,14,13,18,47,56,50,51,48,37,47,52,58
+250076,4,2-4 yr,Female,Bachelor's degree or higher,Hispanic,south,74,20,16,13,12,10,12,11,13,43,53,53,46,45,37,41,44,45
+250073,4,2-4 yr,Female,Bachelor's degree or higher,Hispanic,south,67,13,13,13,11,10,10,10,11,38,37,45,46,41,37,34,39,38
+250075,3,2-4 yr,Male,Bachelor's degree or higher,Hispanic,south,80,24,13,15,12,10,16,14,16,47,60,45,51,45,37,52,55,53
+250072,4,2-4 yr,Male,Bachelor's degree or higher,White,south,71,17,15,10,10,11,14,11,14,41,47,50,36,36,42,47,44,48
+250049,4,2-4 yr,Female,Bachelor's degree or higher,White,south,82,12,11,13,15,14,17,12,20,49,34,38,46,55,54,55,48,62
+275024,4,2-4 yr,Female,Did not complete high school (no diploma),Black,northeast,128,27,20,25,23,22,21,17,18,72,64,62,72,74,75,63,65,58
+275011,3,2-4 yr,Female,High school graduate (including GED),Black,northeast,143,21,30,26,27,21,21,18,20,75,55,75,73,75,74,63,68,62
+275028,4,2-4 yr,Male,High school graduate (including GED),Hispanic,northeast,127,21,28,23,21,20,20,15,19,72,55,75,68,70,71,61,59,60
+275005,3,2-4 yr,Female,High school graduate (including GED),Black,northeast,111,21,21,24,16,16,20,14,20,65,55,64,70,58,60,61,55,62
+298001,3,2-4 yr,Female,Did not complete high school (no diploma),Black,south,71,16,15,13,10,10,11,12,13,41,45,50,46,36,37,38,48,45
+300001,2,2-4 yr,Male,Bachelor's degree or higher,Hispanic,south,108,30,16,17,22,18,21,14,33,63,68,53,56,72,66,63,55,75
+298004,3,2-4 yr,Male,High school graduate (including GED),Black,south,120,28,18,26,22,20,16,18,22,69,65,58,73,72,71,52,68,66
+300004,3,2-4 yr,Male,Some college or associate degree,Hispanic,south,99,30,15,23,13,14,21,13,22,59,68,50,68,48,54,63,52,66
+300005,2,2-4 yr,Male,High school graduate (including GED),MultiRacial,south,165,38,23,37,29,20,30,26,34,75,75,68,75,75,71,75,75,75
+294007,4,2-4 yr,Male,Did not complete high school (no diploma),Black,midwest,76,28,11,13,10,11,18,13,11,44,65,38,46,36,42,57,52,38
+294008,4,2-4 yr,Male,Did not complete high school (no diploma),Black,midwest,67,10,10,12,11,11,13,10,12,38,27,34,43,41,42,44,39,42
+300017,3,2-4 yr,Male,High school graduate (including GED),Hispanic,south,64,16,11,10,10,10,13,10,10,35,45,38,36,36,37,44,39,35
+300014,3,2-4 yr,Male,Some college or associate degree,MultiRacial,south,73,13,14,10,12,12,14,11,11,42,37,48,36,45,46,47,44,38
+315001,4,2-4 yr,Male,Some college or associate degree,White,south,83,10,18,15,13,12,13,12,12,49,27,58,51,48,46,44,48,42
+300008,3,2-4 yr,Male,Some college or associate degree,Hispanic,south,93,23,14,15,16,20,17,11,18,55,58,48,51,58,71,55,44,58
+294010,2,2-4 yr,Male,High school graduate (including GED),Black,midwest,91,20,17,15,16,13,17,13,18,54,53,55,51,58,50,55,52,58
+309005,4,2-4 yr,Male,Some college or associate degree,Hispanic,west,96,21,17,24,16,11,17,11,11,57,55,55,70,58,42,55,44,38
+309019,4,2-4 yr,Female,Some college or associate degree,Hispanic,west,88,29,16,13,14,22,13,10,17,52,67,53,46,52,75,44,39,55
+309024,4,2-4 yr,Male,Did not complete high school (no diploma),Hispanic,west,78,19,17,12,10,14,13,12,13,46,51,55,43,36,54,44,48,45
+309033,4,2-4 yr,Female,High school graduate (including GED),Hispanic,west,81,22,14,18,11,10,15,13,13,48,56,48,59,41,37,50,52,45
+309003,4,2-4 yr,Female,Some college or associate degree,Hispanic,west,79,17,17,18,10,12,10,12,12,47,47,55,59,36,46,34,48,42
+309007,4,2-4 yr,Female,High school graduate (including GED),Hispanic,west,61,10,11,10,10,10,10,10,10,33,27,38,36,36,37,34,39,35
+309009,4,2-4 yr,Female,Some college or associate degree,Hispanic,west,107,23,21,17,17,18,19,15,17,63,58,64,56,60,66,59,59,55
+315030,4,2-4 yr,Female,Some college or associate degree,Black,south,93,11,23,11,16,17,15,11,10,55,31,68,39,58,63,50,44,35
+320005,4,2-4 yr,Female,High school graduate (including GED),Black,midwest,144,27,25,24,22,27,21,25,26,75,64,71,70,72,75,63,75,72
+320006,4,2-4 yr,Male,Some college or associate degree,Hispanic,midwest,65,20,10,11,10,12,12,10,13,36,53,34,39,36,46,41,39,45
+320007,3,2-4 yr,Male,High school graduate (including GED),Black,midwest,68,16,11,13,10,10,13,11,13,38,45,38,46,36,37,44,44,45
+322009,2,2-4 yr,Female,Some college or associate degree,Hispanic,south,98,24,16,17,15,12,22,16,17,58,60,53,56,55,46,65,62,55
+322010,3,2-4 yr,Female,Some college or associate degree,Hispanic,south,97,23,17,19,16,13,17,15,12,58,58,55,61,58,50,55,59,42
+323001,3,2-4 yr,Male,High school graduate (including GED),Black,south,90,23,21,14,14,15,16,10,18,53,58,64,49,52,57,52,39,58
+323002,2,2-4 yr,Female,High school graduate (including GED),Black,south,83,24,18,14,13,15,13,10,20,49,60,58,49,48,57,44,39,62
+323004,4,2-4 yr,Female,High school graduate (including GED),Black,south,79,27,15,13,11,16,14,10,13,47,64,50,46,41,60,47,39,45
+323005,4,2-4 yr,Female,Did not complete high school (no diploma),Black,south,72,15,14,12,10,14,12,10,12,42,42,48,43,36,54,41,39,42
+318072,4,2-4 yr,Male,Some college or associate degree,Black,midwest,136,35,24,25,24,22,24,17,19,75,74,70,72,75,75,68,65,60
+318074,3,2-4 yr,Female,Some college or associate degree,Black,midwest,60,17,10,10,10,10,10,10,14,32,47,34,36,36,37,34,39,48
+318075,3,2-4 yr,Female,High school graduate (including GED),Black,midwest,60,14,10,10,10,10,10,10,10,32,40,34,36,36,37,34,39,35
+318076,3,2-4 yr,Female,High school graduate (including GED),Black,midwest,60,13,10,10,10,10,10,10,14,32,37,34,36,36,37,34,39,48
+318077,3,2-4 yr,Male,Did not complete high school (no diploma),Black,midwest,64,19,10,13,10,11,10,10,19,35,51,34,46,36,42,34,39,60
+323006,3,2-4 yr,Male,High school graduate (including GED),Black,south,74,26,17,13,11,12,10,11,15,43,63,55,46,41,46,34,44,51
+323007,4,2-4 yr,Male,High school graduate (including GED),Black,south,81,25,17,13,12,13,15,11,15,48,61,55,46,45,50,50,44,51
+323008,2,2-4 yr,Female,High school graduate (including GED),Hispanic,south,88,30,17,14,16,15,14,12,32,52,68,55,49,58,57,47,48,75
+323009,3,2-4 yr,Male,Did not complete high school (no diploma),Other,south,81,24,16,11,14,13,16,11,13,48,60,53,39,52,50,52,44,45
+323021,2,2-4 yr,Female,Did not complete high school (no diploma),Hispanic,south,86,29,21,14,14,12,13,12,15,51,67,64,49,52,46,44,48,51
+323011,4,2-4 yr,Male,High school graduate (including GED),Hispanic,south,73,17,16,13,12,11,10,11,14,42,47,53,46,45,42,34,44,48
+323012,4,2-4 yr,Female,Did not complete high school (no diploma),Hispanic,south,72,20,14,12,11,13,11,11,15,42,53,48,43,41,50,38,44,51
+323013,3,2-4 yr,Male,High school graduate (including GED),Black,south,83,29,16,14,14,15,13,11,21,49,67,53,49,52,57,44,44,64
+323014,2,2-4 yr,Female,Did not complete high school (no diploma),Black,south,84,29,18,15,15,10,13,13,27,50,67,58,51,55,37,44,52,74
+323015,3,2-4 yr,Female,Did not complete high school (no diploma),Other,south,87,25,22,14,17,12,12,10,27,52,61,66,49,60,46,41,39,74
+323016,4,2-4 yr,Male,High school graduate (including GED),Hispanic,south,80,25,16,13,18,10,13,10,25,47,61,53,46,63,37,44,39,71
+323010,3,2-4 yr,Female,High school graduate (including GED),Hispanic,south,81,28,16,17,16,11,11,10,21,48,65,53,56,58,42,38,39,64
+323017,3,2-4 yr,Male,High school graduate (including GED),Black,south,73,19,14,13,12,13,11,10,16,42,51,48,46,45,50,38,39,53
+323018,4,2-4 yr,Male,High school graduate (including GED),Black,south,74,20,13,12,13,13,13,10,16,43,53,45,43,48,50,44,39,53
+323019,3,2-4 yr,Female,High school graduate (including GED),Black,south,75,21,15,12,14,13,11,10,14,44,55,50,43,52,50,38,39,48
+323020,3,2-4 yr,Male,High school graduate (including GED),Black,south,79,20,15,13,13,13,15,10,11,47,53,50,46,48,50,50,39,38
+323022,4,2-4 yr,Male,Did not complete high school (no diploma),Black,south,78,15,13,13,14,17,11,10,12,46,42,45,46,52,63,38,39,42
+318107,3,2-4 yr,Male,High school graduate (including GED),Black,midwest,147,26,28,27,26,24,21,21,21,75,63,75,75,75,75,63,75,64

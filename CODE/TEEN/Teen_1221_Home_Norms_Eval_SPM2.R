@@ -39,7 +39,7 @@ PLA_items_Teen_1221_Home <- c("q0106", "q0107", "q0108", "q0109", "q0111", "q011
 # Read data, recode item vars, calculate TOT.
 Teen_1221_Home <-
   suppressMessages(as_tibble(read_csv(
-    here("DATA/SPM-2 Teen ages 1221 Home Report Questionnaire.csv")
+    here('INPUT-FILES/TEEN/SPM-2 Teen ages 1221 Home Report Questionnaire.csv')
   ))) %>% select(
     IDNumber,
     Age,

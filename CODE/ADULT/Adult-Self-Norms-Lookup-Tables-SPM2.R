@@ -137,40 +137,50 @@ rm(list = ls(pattern='.*items_Adult_Self'))
 
 
 # Create frequency tables for TOT_raw by AgeGroup
-# Adult_Self_TOT_freq_AgeGroup <- Adult_Self %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
-#   mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
+Adult_Self_TOT_freq_AgeGroup <- Adult_Self %>% group_by(AgeGroup) %>% count(TOT_raw) %>%
+  mutate(
+    perc = round(100*(n/sum(n)), 4), 
+    cum_per = round(100*(cumsum(n)/sum(n)), 4) #, 
+    # lag_tot = lag(TOT_raw), 
+    # lag_cum_per = lag(cum_per)
+    )
 
+write_csv(Adult_Self_TOT_freq_AgeGroup, here('OUTPUT-FILES/ADULT/FREQUENCIES/Adult-Self-TOT-freq-AgeGroup.csv'))
 
 # Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-# Adult_Self_TOT_desc_AgeGroup <-
-#   Adult_Self %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
-#                                                                          median = round(median(TOT_raw), 2),
-#                                                                          mean = round(mean(TOT_raw), 2),
-#                                                                          sd = round(sd(TOT_raw), 2)) %>%
-#   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:6))
-# 
-# AgeGroup <- Adult_Self_TOT_desc_AgeGroup %>% pull(AgeGroup)
+Adult_Self_TOT_desc_AgeGroup <-
+  Adult_Self %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
+                                                                         median = round(median(TOT_raw), 2),
+                                                                         mean = round(mean(TOT_raw), 2),
+                                                                         sd = round(sd(TOT_raw), 2)) %>%
+  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2)#,
+         # group = c(1:6)
+         )
+
+write_csv(Adult_Self_TOT_desc_AgeGroup, here('OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Self-TOT-desc-AgeGroup.csv'))
+
+AgeGroup <- Adult_Self_TOT_desc_AgeGroup %>% pull(AgeGroup)
 
 # Plot TOT_raw means, SDs by AgeGroup
-# mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
-#   geom_point(
-#     col = "blue",
-#     fill = "blue",
-#     alpha = .5,
-#     size = 3,
-#     shape = 23
-#   ) +
-#   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-#   scale_x_continuous(breaks = seq(1, 6, 1), labels = AgeGroup) +
-#   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
-#   labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
-#   geom_errorbar(
-#     aes(ymin = mean - sd, ymax = mean + sd),
-#     col = "red",
-#     size = 0.2,
-#     width = 0.2
-#   ) 
-# print(mean_plot)
+mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
+  geom_point(
+    col = "blue",
+    fill = "blue",
+    alpha = .5,
+    size = 3,
+    shape = 23
+  ) +
+  geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
+  scale_x_continuous(breaks = seq(1, 6, 1), labels = AgeGroup) +
+  scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
+  labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
+  geom_errorbar(
+    aes(ymin = mean - sd, ymax = mean + sd),
+    col = "red",
+    size = 0.2,
+    width = 0.2
+  )
+print(mean_plot)
 
 # Check for duplicate IDnumber.
 

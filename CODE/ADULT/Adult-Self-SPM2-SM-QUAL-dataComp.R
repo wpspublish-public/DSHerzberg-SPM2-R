@@ -116,14 +116,16 @@ Adult_Self <-
   select(
     -(q0013:q0132)
   ) %>% 
-  # Exclude outliers on TOT_raw
-  filter(TOT_raw <200) %>% 
   # Create data var to differentiate Survey monkey from Qualtrics case
   mutate(data = case_when(
     IDNumber >= 700000 ~ 'Qual',
     TRUE ~ 'SM'
   )) %>% 
-  select(IDNumber, data, everything())
+  select(IDNumber, data, everything()) %>% 
+# Exclude outliers on TOT_raw (also exlude by data source to equalize samples
+  # from diiferent data sources)
+  filter(TOT_raw < 200) %>% 
+  filter(!(TOT_raw >= 130 & age_range == '21.00 to 30.99 years' & data == 'Qual'))
 
 # clean up environment
 rm(list = ls(pattern='.*items_Adult_Self'))
@@ -138,15 +140,14 @@ rm(list = ls(pattern='.*items_Adult_Self'))
 
 
 # Create frequency tables for TOT_raw by AgeGroup
-Adult_Self_TOT_freq_AgeGroup <- Adult_Self %>% group_by(age_range) %>% count(TOT_raw) %>%
+Adult_Self_TOT_freq_AgeGroup <- Adult_Self %>% group_by(data, age_range) %>% count(TOT_raw) %>%
   mutate(
     perc = round(100*(n/sum(n)), 4), 
-    cum_per = round(100*(cumsum(n)/sum(n)), 4) #, 
-    # lag_tot = lag(TOT_raw), 
-    # lag_cum_per = lag(cum_per)
+    cum_per = round(100*(cumsum(n)/sum(n)), 4)
   )
 
-write_csv(Adult_Self_TOT_freq_AgeGroup, here('OUTPUT-FILES/ADULT/FREQUENCIES/Adult-Self-TOT-freq-AgeGroup.csv'))
+# write_csv(Adult_Self_TOT_freq_AgeGroup, here('OUTPUT-FILES/ADULT/FREQUENCIES/Adult-Self-TOT-freq-AgeGroup.csv'))
+
 
 # Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
 Adult_Self_TOT_desc_AgeGroup <-
@@ -158,6 +159,8 @@ Adult_Self_TOT_desc_AgeGroup <-
          group = c(1:5)
   )
 
+
+# Generate single table comparing descriptives from SM and Qual sources.
 Adult_Self_TOT_desc_SM <- Adult_Self_TOT_desc_AgeGroup %>% 
   filter(data == 'SM') %>% 
   setNames(., str_c(names(.), 'SM', sep = '_')) %>% 
@@ -170,11 +173,15 @@ Adult_Self_TOT_desc_Qual <- Adult_Self_TOT_desc_AgeGroup %>%
   select(-matches('data|median|group'))
 
 Adult_Self_TOT_desc_comp <- Adult_Self_TOT_desc_SM %>% 
-  bind_cols(Adult_Self_TOT_desc_Qual)
+  bind_cols(Adult_Self_TOT_desc_Qual) %>% 
+  select(-age_range_Qual) %>% 
+  rename(age_range = age_range_SM) %>% 
+  mutate(
+    diff = round(mean_SM - mean_Qual, 2),
+    ES_diff = round((mean_SM - mean_Qual) / ((sd_SM + sd_Qual) / 2), 2)
+  )
 
-write_csv(Adult_Self_TOT_desc_AgeGroup, here('OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Self-TOT-desc-AgeGroup.csv'))
-
-AgeGroup <- Adult_Self_TOT_desc_AgeGroup %>% pull(age_range)
+# write_csv(Adult_Self_TOT_desc_AgeGroup, here('OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Self-TOT-desc-AgeGroup.csv'))
 
 # Plot TOT_raw means, SDs by AgeGroup
 mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
@@ -186,7 +193,7 @@ mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
     shape = 23
   ) +
   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-  scale_x_continuous(breaks = seq(1, 5, 1), labels = unique(AgeGroup)) +
+  scale_x_continuous(breaks = seq(1, 5, 1), labels = unique(Adult_Self_TOT_desc_AgeGroup$age_range)) +
   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
   labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
   geom_errorbar(

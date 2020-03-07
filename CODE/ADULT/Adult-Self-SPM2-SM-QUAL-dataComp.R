@@ -59,7 +59,7 @@ score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 # READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
 
-Adult_Self <-
+Adult_Self_items <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/ADULT/SPM-2 SM Qual Combo Adult ages 1690 Self-Report Questionnaire.csv")
   ))) %>% select(
@@ -113,9 +113,6 @@ Adult_Self <-
     BAL_raw = rowSums(.[BAL_items_Adult_Self]),
     PLA_raw = rowSums(.[PLA_items_Adult_Self])
   ) %>% 
-  select(
-    -(q0013:q0132)
-  ) %>% 
   # Create data var to differentiate Survey monkey from Qualtrics case
   mutate(data = case_when(
     IDNumber >= 700000 ~ 'Qual',
@@ -125,11 +122,17 @@ Adult_Self <-
 # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
   # from diiferent data sources)
   filter(TOT_raw < 200) %>% 
-  filter(!(TOT_raw >= 130 & age_range == '21.00 to 30.99 years' & data == 'Qual'))
+  filter(!(TOT_raw >= 140 & age_range == '21.00 to 30.99 years' & data == 'Qual')) %>% 
+  write_csv(here('INPUT-FILES/ADULT/SM-QUAL-COMBO-NORMS-INPUT/Adult-Self-combo-norms-input.csv'),
+            na = '')
 
 # clean up environment
 rm(list = ls(pattern='.*items_Adult_Self'))
 
+Adult_Self <- Adult_Self_items %>% 
+  select(
+    -(q0013:q0132)
+  )   
 
 # EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
 
@@ -181,7 +184,7 @@ Adult_Self_TOT_desc_comp <- Adult_Self_TOT_desc_SM %>%
     ES_diff = round((mean_SM - mean_Qual) / ((sd_SM + sd_Qual) / 2), 2)
   )
 
-# write_csv(Adult_Self_TOT_desc_AgeGroup, here('OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Self-TOT-desc-AgeGroup.csv'))
+write_csv(Adult_Self_TOT_desc_comp, here('OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Self-TOT-desc-comp.csv'))
 
 # Plot TOT_raw means, SDs by AgeGroup
 mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
@@ -203,3 +206,5 @@ mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
     width = 0.2
   )
 print(mean_plot)
+
+

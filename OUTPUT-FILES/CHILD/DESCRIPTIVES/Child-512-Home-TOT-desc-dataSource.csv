@@ -1,0 +1,5 @@
+data,age_range,n,median,mean,sd,ES,group
+Qual,5 to 8 years,145,82,84.8,17.75,NA,1
+Qual,9 to 12 years,156,80,83.6,16.79,-0.07,2
+SM,5 to 8 years,459,77,80.22,16.26,NA,1
+SM,9 to 12 years,339,70,75.79,17.77,-0.26,2

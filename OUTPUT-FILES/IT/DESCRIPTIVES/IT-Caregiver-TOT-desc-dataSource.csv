@@ -1,0 +1,5 @@
+data,age_range,n,median,mean,sd,ES,group
+Qual,03.5 to 10 mo,106,90,91.71,18,NA,1
+Qual,11 to 31.5 mo,102,88.5,90.93,20.2,-0.04,2
+SM,03.5 to 10 mo,240,85,87.63,17.3,NA,1
+SM,11 to 31.5 mo,378,87,87.49,15.25,-0.01,2

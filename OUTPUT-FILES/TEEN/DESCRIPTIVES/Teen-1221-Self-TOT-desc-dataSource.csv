@@ -1,0 +1,9 @@
+data,age_range,n,median,mean,sd,ES,group
+Qual,12 to 13 years,1,115,115,NA,NA,1
+Qual,14 to 15 years,40,106.5,104.28,18.5,NA,2
+Qual,16 to 17 years,91,102,102.65,18.45,-0.09,3
+Qual,18 to 21 years,46,104,106,19.73,0.18,4
+SM,12 to 13 years,273,93,96.49,24.28,NA,1
+SM,14 to 15 years,227,84,91.22,25.63,-0.21,2
+SM,16 to 17 years,233,87,90.08,23.3,-0.05,3
+SM,18 to 21 years,91,87,95.93,30.62,0.22,4

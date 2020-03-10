@@ -11,6 +11,15 @@ library(ggrepel) # MORE ggplot2 EXTENSIONS
 
 # Scale vectors with item names
 
+All_items_Preschool_25_School <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0024", 
+                                   "q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0035", 
+                                   "q0038", "q0039", "q0041", "q0042", "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", 
+                                   "q0052", "q0053", "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", "q0063", 
+                                   "q0064", "q0065", "q0066", "q0067", "q0068", "q0069", "q0070", "q0071", "q0074", "q0076", 
+                                   "q0077", "q0078", "q0079", "q0080", "q0081", "q0083", "q0084", "q0086", "q0088", "q0090", 
+                                   "q0091", "q0093", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", "q0101", "q0104", 
+                                   "q0105", "q0106", "q0108", "q0110", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
+
 TOT_items_Preschool_25_School <- c("q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0035", 
                                    "q0038", "q0039", "q0041", "q0042", "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", 
                                    "q0052", "q0053", "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", "q0063", 
@@ -39,17 +48,16 @@ PLA_items_Preschool_25_School <- c("q0105", "q0106", "q0108", "q0110", "q0111", 
 # Read data, recode item vars, calculate TOT.
 Preschool_25_School <-
   suppressMessages(as_tibble(read_csv(
-    here("DATA/SPM-2 Preschooler ages 25 School Report Questionnaire.csv")
+    here("INPUT-FILES/PRESCHOOL/SPM-2 Preschooler ages 25 School Report Questionnaire.csv")
   ))) %>% select(
     IDNumber,
     Age,
     AgeGroup,
     Gender,
+    # ParentHighestEducation,
     Ethnicity,
     Region,
-    SOC_items_Preschool_25_School,
-    TOT_items_Preschool_25_School,
-    PLA_items_Preschool_25_School
+    All_items_Preschool_25_School
   ) %>%
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(

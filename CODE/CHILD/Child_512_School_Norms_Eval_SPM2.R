@@ -4,7 +4,6 @@ suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
 library(reshape2) # RESHAPE DATA FROM WIDE TO TALL
 library(broom) # TIDY MODEL OUTPUTS
 library(moderndive) # USER-FRIENDLY LINEAR MODELING, REGRESSION AND CORRELATION TOOLS.
-library(magrittr) # PIPE OPERATORS
 suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS

@@ -9,63 +9,61 @@ library(bestNormalize) # NORMALIZATION METHODS
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
 
-All_items_Adult_Other <- c("q0014", "q0015", "q0016", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027", "q0028",
-                          "q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042", 
-                           "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057", 
-                           "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072", 
-                           "q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087", 
-                           "q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", 
-                           "q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114",
-                          "q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125", "q0129", "q0131")
+All_items_Child_512_Home <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0023", "q0027", "q0028", "q0029", "q0030", "q0031", "q0035", "q0036", "q0037", "q0038", "q0039", 
+                              "q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046", "q0047", "q0048", "q0050", 
+                              "q0053", "q0055", "q0057", "q0058", "q0059", "q0060", "q0061", "q0063", "q0064", "q0065", 
+                              "q0068", "q0070", "q0071", "q0072", "q0073", "q0075", "q0076", "q0077", "q0078", "q0079", 
+                              "q0081", "q0082", "q0083", "q0084", "q0086", "q0088", "q0089", "q0090", "q0091", "q0092", 
+                              "q0095", "q0096", "q0097", "q0098", "q0102", "q0103", "q0105", "q0106", "q0107", "q0108", "q0111", "q0112", "q0113", "q0114", "q0115", "q0116", "q0117", "q0120", "q0121", "q0122")
 
-TOT_items_Adult_Other <- c("q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042", 
-                           "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057", 
-                           "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072", 
-                           "q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087", 
-                           "q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", 
-                           "q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114")
+TOT_items_Child_512_Home <- c("q0027", "q0028", "q0029", "q0030", "q0031", "q0035", "q0036", "q0037", "q0038", "q0039", 
+                              "q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046", "q0047", "q0048", "q0050", 
+                              "q0053", "q0055", "q0057", "q0058", "q0059", "q0060", "q0061", "q0063", "q0064", "q0065", 
+                              "q0068", "q0070", "q0071", "q0072", "q0073", "q0075", "q0076", "q0077", "q0078", "q0079", 
+                              "q0081", "q0082", "q0083", "q0084", "q0086", "q0088", "q0089", "q0090", "q0091", "q0092", 
+                              "q0095", "q0096", "q0097", "q0098", "q0102", "q0103", "q0105", "q0106", "q0107", "q0108")
 
-SOC_items_Adult_Other <- c("q0014", "q0015", "q0016", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027", "q0028")
+SOC_items_Child_512_Home <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0023")
 
-SOC_rev_items_Adult_Other <- c("q0014", "q0015", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027")
+SOC_rev_items_Child_512_Home <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0023")
 
-VIS_items_Adult_Other <- c("q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042")
+VIS_items_Child_512_Home <- c("q0027", "q0028", "q0029", "q0030", "q0031", "q0035", "q0036", "q0037", "q0038", "q0039")
 
-HEA_items_Adult_Other <- c("q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057")
+HEA_items_Child_512_Home <- c("q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046", "q0047", "q0048", "q0050")
 
-TOU_items_Adult_Other <- c("q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072")
+TOU_items_Child_512_Home <- c("q0053", "q0055", "q0057", "q0058", "q0059", "q0060", "q0061", "q0063", "q0064", "q0065")
 
-TS_items_Adult_Other <- c("q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087")
+TS_items_Child_512_Home <- c("q0068", "q0070", "q0071", "q0072", "q0073", "q0075", "q0076", "q0077", "q0078", "q0079")
 
-BOD_items_Adult_Other <- c("q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100")
+BOD_items_Child_512_Home <- c("q0081", "q0082", "q0083", "q0084", "q0086", "q0088", "q0089", "q0090", "q0091", "q0092")
 
-BAL_items_Adult_Other <- c("q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114")
+BAL_items_Child_512_Home <- c("q0095", "q0096", "q0097", "q0098", "q0102", "q0103", "q0105", "q0106", "q0107", "q0108")
 
-PLA_items_Adult_Other <- c("q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125", "q0129", "q0131")
+PLA_items_Child_512_Home <- c("q0111", "q0112", "q0113", "q0114", "q0115", "q0116", "q0117", "q0120", "q0121", "q0122")
 
 score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 
 # READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
 
-Adult_Other <-
+Child_512_Home_items <-
   suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/ADULT/SPM-2 Adult ages 1690 Other Report Questionnaire.csv")
+    here("INPUT-FILES/CHILD/SPM-2 SM Qual COMBO Child ages 512 Home Report Questionnaire.csv")
   ))) %>% select(
     IDNumber,
     Age,
-    AgeGroup,
+    # AgeGroup,
     Gender,
-    HighestEducation,
+    ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Adult_Other
+    All_items_Child_512_Home
   ) %>%
-  # filter out youngest age group
-  filter(AgeGroup != "16.00 to 20.99 years") %>% 
+  # filter out 4 yo
+  # filter(Age >= 5) %>% 
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(
-    All_items_Adult_Other,
+    All_items_Child_512_Home,
     ~ case_when(
       .x == "Never" ~ 1,
       .x == "Occasionally" ~ 2,
@@ -76,7 +74,7 @@ Adult_Other <-
   ) %>%
   # recode reverse-scored items
   mutate_at(
-    SOC_rev_items_Adult_Other,
+    SOC_rev_items_Child_512_Home,
     ~ case_when(.x == 4 ~ 1,
                 .x == 3 ~ 2,
                 .x == 2 ~ 3,
@@ -84,33 +82,49 @@ Adult_Other <-
                 TRUE ~ NA_real_)
   ) %>%
   # Convert scored item vars to integers
-  mutate_at(All_items_Adult_Other,
+  mutate_at(All_items_Child_512_Home,
             ~ as.integer(.x)) %>% 
-  # Compute raw scores. Note use of `rowSums(.[TOT_items_Adult_Other])`: when used 
+  # Add age_range var.
+  mutate(age_range = case_when(
+    Age <= 8 ~ "5 to 8 years",
+    TRUE ~ "9 to 12 years")
+  ) %>% 
+  # select(-AgeGroup) %>% 
+# Compute raw scores. Note use of `rowSums(.[TOT_items_Child_512_Home])`: when used 
   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
   # must wrap the column vector in a column-subsetting expression: `.[]`, where the
   # dot is a token for the data in the pipe.
   mutate(
-    TOT_raw = rowSums(.[TOT_items_Adult_Other]),
-    SOC_raw = rowSums(.[SOC_items_Adult_Other]),
-    VIS_raw = rowSums(.[VIS_items_Adult_Other]),
-    HEA_raw = rowSums(.[HEA_items_Adult_Other]),
-    TOU_raw = rowSums(.[TOU_items_Adult_Other]),
-    TS_raw = rowSums(.[TS_items_Adult_Other]),
-    BOD_raw = rowSums(.[BOD_items_Adult_Other]),
-    BAL_raw = rowSums(.[BAL_items_Adult_Other]),
-    PLA_raw = rowSums(.[PLA_items_Adult_Other])
+    TOT_raw = rowSums(.[TOT_items_Child_512_Home]),
+    SOC_raw = rowSums(.[SOC_items_Child_512_Home]),
+    VIS_raw = rowSums(.[VIS_items_Child_512_Home]),
+    HEA_raw = rowSums(.[HEA_items_Child_512_Home]),
+    TOU_raw = rowSums(.[TOU_items_Child_512_Home]),
+    TS_raw = rowSums(.[TS_items_Child_512_Home]),
+    BOD_raw = rowSums(.[BOD_items_Child_512_Home]),
+    BAL_raw = rowSums(.[BAL_items_Child_512_Home]),
+    PLA_raw = rowSums(.[PLA_items_Child_512_Home])
   ) %>% 
-  select(
-    -(q0014:q0131)
-  ) %>% 
-  #print()
-  # Exclude outliers on TOT_raw
-  filter(TOT_raw <200) %>% print()
+  # Create data var to differentiate Survey monkey from Qualtrics case
+  mutate(data = case_when(
+    IDNumber >= 700000 ~ 'Qual',
+    TRUE ~ 'SM'
+  )) %>% 
+  select(IDNumber, data, everything()) %>% 
+# Exclude outliers on TOT_raw (also exlude by data source to equalize samples
+  # from diiferent data sources)
+  filter(TOT_raw < 200) #%>% 
+  # filter(!(TOT_raw >= 138 & data == 'Qual')) %>%
+  # write_csv(here('INPUT-FILES/CHILD/SM-QUAL-COMBO-NORMS-INPUT/Child-512-Home-combo-norms-input.csv'),
+            # na = "")
 
 # clean up environment
-rm(list = ls(pattern='.*items_Adult_Other'))
+rm(list = ls(pattern='.*items_Child_512_Home'))
 
+Child_512_Home <- Child_512_Home_items %>% 
+  select(
+    -(q0014:q0122)
+  )   
 
 # EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
 
@@ -120,23 +134,23 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 # can be commented off.
 
 
-# Create frequency tables for TOT_raw by AgeGroup
-# Adult_Other_TOT_freq_AgeGroup <- Adult_Other %>% group_by(AgeGroup) %>% count(TOT_raw) %>%
+# Create frequency tables for TOT_raw by age_range
+# Child_512_Home_TOT_freq_AgeGroup <- Child_512_Home %>% group_by(age_range) %>% count(TOT_raw) %>% 
 #   mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
 
 
-# Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-# Adult_Other_TOT_desc_AgeGroup <-
-#   Adult_Other %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
+# Compute descriptive statistics, effect sizes for TOT_raw by age_range
+# Child_512_Home_TOT_desc_AgeGroup <-
+#   Child_512_Home %>% group_by(age_range) %>% arrange(age_range) %>% summarise(n = n(),
 #                                                                          median = round(median(TOT_raw), 2),
 #                                                                          mean = round(mean(TOT_raw), 2),
 #                                                                          sd = round(sd(TOT_raw), 2)) %>%
-#   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:6))
+#   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:2))
 # 
-# AgeGroup <- Adult_Other_TOT_desc_AgeGroup %>% pull(AgeGroup)
+# AgeGroup <- Child_512_Home_TOT_desc_AgeGroup %>% pull(age_range)
 
-# Plot TOT_raw means, SDs by AgeGroup
-# mean_plot <- ggplot(data = Adult_Other_TOT_desc_AgeGroup, aes(group, mean)) +
+# Plot TOT_raw means, SDs by age_range
+# mean_plot <- ggplot(data = Child_512_Home_TOT_desc_AgeGroup, aes(group, mean)) +
 #   geom_point(
 #     col = "blue",
 #     fill = "blue",
@@ -145,7 +159,7 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 #     shape = 23
 #   ) +
 #   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-#   scale_x_continuous(breaks = seq(1, 6, 1), labels = AgeGroup) +
+#   scale_x_continuous(breaks = seq(1, 2, 1), labels = AgeGroup) +
 #   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
 #   labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
 #   geom_errorbar(
@@ -153,13 +167,13 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 #     col = "red",
 #     size = 0.2,
 #     width = 0.2
-#   )
+#   ) 
 # print(mean_plot)
 
 # Check for duplicate IDnumber.
 
-# Adult_Other_dup <- Adult_Other %>% count(IDNumber) %>% filter(n > 1)
-# write_csv(Adult_Other_dup, here("DATA/Adult_Other_dup.csv"))
+# Child_512_Home_dup <- Child_512_Home %>% count(IDNumber) %>% filter(n > 1)
+# write_csv(Child_512_Home_dup, here("OUTPUT-FILES/CHILD/Child_512_Home_dup.csv"))
 
 
 # DETERMINE BEST NORMALIZATION MODEL --------------------------------------
@@ -167,17 +181,17 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 # (NOTE: THIS SECTION SHOULD BE TOGGLED OFF AFTER SELECTION OF NORMALIZATION
 # MODEL)
 
-# create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
-# TOT_nz_obj <- bestNormalize(Adult_Other$TOT_raw)
-
-# print transformation
+# # create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
+# TOT_nz_obj <- bestNormalize(Child_512_Home$TOT_raw)
+# 
+# # print transformation
 # TOT_nz_obj$chosen_transform
-
-# Extract transformation type
+# 
+# # Extract transformation type
 # chosen_transform <- class(TOT_nz_obj$chosen_transform)[1]
-
-# apply the chosen method to create normalized z-scores for each case.
-# TOT_nz_transform <- eval(as.name(chosen_transform))(Adult_Other$TOT_raw)
+# 
+# # apply the chosen method to create normalized z-scores for each case.
+# TOT_nz_transform <- eval(as.name(chosen_transform))(Child_512_Home$TOT_raw)
 
 
 # APPLY SELECTED NORMALIZATION MODEL TO CREATE NORMALIZED Z-SCORES --------
@@ -189,7 +203,7 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 nz_transform_names <- c(paste0(score_names, '_nz_transform'))
 
 # pull nine raw score columns into a list
-raw_score_cols_list <- map(score_names, ~ Adult_Other %>% 
+raw_score_cols_list <- map(score_names, ~ Child_512_Home %>% 
               pull(
                 !!as.name(paste0(.x, '_raw'))
               )
@@ -207,14 +221,14 @@ raw_score_cols_list <- map(score_names, ~ Adult_Other %>%
 # .y data. 
 
 # NOTE: MUST SUBSITUTE NAMED TRANSFORMATION FROM PREVIOUS STEP IN THIS LINE:
-# value = boxcox(.y), e.g., value = [SELECTED TRANSFORMATION](.y), 
+# value = orderNorm(.y), e.g., value = [SELECTED TRANSFORMATION](.y), 
 
 raw_score_cols_list %>%
   walk2(
     .x = c(nz_transform_names),         # names to assign
     .y = .,                # object to be assigned
     .f = ~ assign(x = .x, 
-                  value = boxcox(.y), 
+                  value = arcsinh_x(.y), 
                   envir = .GlobalEnv)
   )
 
@@ -285,12 +299,12 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
-Adult_Other <- Adult_Other %>% bind_cols(NT_cols)
+Child_512_Home <- Child_512_Home %>% bind_cols(NT_cols)
 
 # write T-scores per case table to .csv
-write_csv(Adult_Other, here(
+write_csv(Child_512_Home, here(
   paste0(
-    'OUTPUT-FILES/ADULT/T-SCORES-PER-CASE/Adult-Other-T-Scores-per-case-',
+    'OUTPUT-FILES/CHILD/T-SCORES-PER-CASE/Child-512-Home-T-Scores-per-case-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
@@ -300,8 +314,8 @@ write_csv(Adult_Other, here(
 rm(list = ls(pattern='.*_nz'))
 
 # histogram to check normality
-# MASS::truehist(Adult_Other$TOT_NT, h = 1)
-# hist_plot <- ggplot(data = Adult_Other, aes(TOT_NT)) +
+# MASS::truehist(Child_512_Home$TOT_NT, h = 1)
+# hist_plot <- ggplot(data = Child_512_Home, aes(TOT_NT)) +
 #   geom_histogram(
 #     binwidth = .2,
 #     col = "red"
@@ -316,7 +330,7 @@ rm(list = ls(pattern='.*_nz'))
 # because each type has different raw score range. Start wtih TOT. Input is
 # stand sample with raw scores and normalized T scores for each case. Group
 # cases by raw score, relationship between raw and T is many-to-one.
-TOT_lookup <- Adult_Other %>% group_by(
+TOT_lookup <- Child_512_Home %>% group_by(
   TOT_raw
 ) %>% 
   # Because raw-to-T is many to one, all values of T are identical for each raw,
@@ -361,7 +375,7 @@ subscale_names <- score_names[2:9]
 
 subscale_lookup <- map(
   subscale_names, 
-  ~ Adult_Other %>% group_by(
+  ~ Child_512_Home %>% group_by(
     !!as.name(paste0(.x, '_raw'))
   ) %>% 
     summarise(
@@ -400,7 +414,7 @@ all_lookup_col_names <- c(paste0(score_names, '_raw'))
 # write final raw-to-T lookup table to .csv
 write_csv(all_lookup, here(
   paste0(
-    'OUTPUT-FILES/ADULT/RAW-T-LOOKUP-TABLES/Adult-Other-raw-T-lookup-',
+    'OUTPUT-FILES/CHILD/RAW-T-LOOKUP-TABLES/Child-512-Home-raw-T-lookup-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
@@ -448,7 +462,7 @@ all_lookup_pub <- all_lookup %>%
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(
   paste0(
-    'OUTPUT-FILES/ADULT/PRINT-FORMAT-NORMS-TABLES/Adult-Other-print-raw-T-lookup-',
+    'OUTPUT-FILES/CHILD/PRINT-FORMAT-NORMS-TABLES/Child-512-Home-print-raw-T-lookup-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )

@@ -2,7 +2,6 @@
 # create raw-to-T lookup tables.
 
 suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
-library(magrittr) # PIPE OPERATORS
 suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
@@ -55,7 +54,7 @@ Teen_1221_School <-
   ))) %>% select(
     IDNumber,
     Age,
-    AgeGroup,
+    # AgeGroup,
     Gender,
     # ParentHighestEducation,
     Ethnicity,
@@ -82,6 +81,13 @@ Teen_1221_School <-
                 .x == 1 ~ 4,
                 TRUE ~ NA_real_)
   ) %>%
+  # Add age_range var.
+  mutate(age_range = case_when(
+    Age <= 13 ~ "12 to 13 years",
+    between(Age, 14, 15) ~ "14 to 15 years",
+    between(Age, 16, 17) ~ "16 to 17 years",
+    TRUE ~ "18 to 21 years")
+  ) %>% 
   # Convert scored item vars to integers
   mutate_at(All_items_Teen_1221_School,
             ~ as.integer(.x)) %>% 
@@ -105,9 +111,10 @@ Teen_1221_School <-
   ) %>% 
   #print()
   # Exclude outliers on TOT_raw
-  filter(TOT_raw <200) %>% print()
-
-# clean up environment
+  filter(TOT_raw <200) %>% 
+  filter(!(TOT_raw >= 165 & age_range == '18 to 21 years'))
+  
+  # clean up environment
 rm(list = ls(pattern='.*items_Teen_1221_School'))
 
 
@@ -120,40 +127,40 @@ rm(list = ls(pattern='.*items_Teen_1221_School'))
 
 
 # Create frequency tables for TOT_raw by AgeGroup
-# Teen_1221_School_TOT_freq_AgeGroup <- Teen_1221_School %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
-#   mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
+Teen_1221_School_TOT_freq_AgeGroup <- Teen_1221_School %>% group_by(age_range) %>% count(TOT_raw) %>%
+  mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
 
 
 # Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-# Teen_1221_School_TOT_desc_AgeGroup <-
-#   Teen_1221_School %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
-#                                                                          median = round(median(TOT_raw), 2),
-#                                                                          mean = round(mean(TOT_raw), 2),
-#                                                                          sd = round(sd(TOT_raw), 2)) %>%
-#   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:6))
-# 
-# AgeGroup <- Teen_1221_School_TOT_desc_AgeGroup %>% pull(AgeGroup)
+Teen_1221_School_TOT_desc_AgeGroup <-
+  Teen_1221_School %>% group_by(age_range) %>% arrange(age_range) %>% summarise(n = n(),
+                                                                         median = round(median(TOT_raw), 2),
+                                                                         mean = round(mean(TOT_raw), 2),
+                                                                         sd = round(sd(TOT_raw), 2)) %>%
+  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:4))
+
+AgeGroup <- Teen_1221_School_TOT_desc_AgeGroup %>% pull(age_range)
 
 # Plot TOT_raw means, SDs by AgeGroup
-# mean_plot <- ggplot(data = Teen_1221_School_TOT_desc_AgeGroup, aes(group, mean)) +
-#   geom_point(
-#     col = "blue",
-#     fill = "blue",
-#     alpha = .5,
-#     size = 3,
-#     shape = 23
-#   ) +
-#   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-#   scale_x_continuous(breaks = seq(1, 6, 1), labels = AgeGroup) +
-#   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
-#   labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
-#   geom_errorbar(
-#     aes(ymin = mean - sd, ymax = mean + sd),
-#     col = "red",
-#     size = 0.2,
-#     width = 0.2
-#   ) 
-# print(mean_plot)
+mean_plot <- ggplot(data = Teen_1221_School_TOT_desc_AgeGroup, aes(group, mean)) +
+  geom_point(
+    col = "blue",
+    fill = "blue",
+    alpha = .5,
+    size = 3,
+    shape = 23
+  ) +
+  geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
+  scale_x_continuous(breaks = seq(1, 4, 1), labels = AgeGroup) +
+  scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
+  labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
+  geom_errorbar(
+    aes(ymin = mean - sd, ymax = mean + sd),
+    col = "red",
+    size = 0.2,
+    width = 0.2
+  )
+print(mean_plot)
 
 # Check for duplicate IDnumber.
 

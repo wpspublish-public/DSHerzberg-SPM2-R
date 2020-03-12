@@ -1,22 +1,27 @@
 # Examine SPM-2 data to determine need for age-stratified norms.
 
-suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
-library(reshape2) # RESHAPE DATA FROM WIDE TO TALL
-library(broom) # TIDY MODEL OUTPUTS
-library(moderndive) # USER-FRIENDLY LINEAR MODELING, REGRESSION AND CORRELATION TOOLS.
-library(magrittr) # PIPE OPERATORS
+suppressMessages(library(here))
+library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
-suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
-library(ggrepel) # MORE ggplot2 EXTENSIONS
+library(ggrepel) # ggplot2 EXTENSIONS
 
 # Scale vectors with item names
 
+All_items_IT_49_Daycare <- c("q0010", "q0011", "q0012", "q0013", "q0014", "q0015", "q0016", "q0017", "q0019", "q0023",
+                             "q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0035", "q0037", "q0038", 
+                             "q0039", "q0040", "q0042", "q0044", "q0045", "q0046", "q0047", "q0048", "q0049", "q0050", 
+                             "q0052", "q0053", "q0054", "q0055", "q0057", "q0058", "q0061", "q0063", "q0065", "q0066", 
+                             "q0067", "q0068", "q0070", "q0072", "q0073", "q0074", "q0075", "q0076", "q0077", "q0078", 
+                             "q0080", "q0081", "q0083", "q0084", "q0085", "q0087", "q0088", "q0089", "q0090", "q0091", 
+                             "q0092", "q0093", "q0095", "q0097", "q0098", "q0100", "q0101", "q0102", "q0104", "q0105",
+                             "q0109", "q0110", "q0111", "q0113", "q0114", "q0115", "q0116", "q0117", "q0118", "q0119")
+
 TOT_items_IT_49_Daycare <- c("q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0035", "q0037", "q0038", 
-                     "q0039", "q0040", "q0042", "q0044", "q0045", "q0046", "q0047", "q0048", "q0049", "q0050", 
-                     "q0052", "q0053", "q0054", "q0055", "q0057", "q0058", "q0061", "q0063", "q0065", "q0066", 
-                     "q0067", "q0068", "q0070", "q0072", "q0073", "q0074", "q0075", "q0076", "q0077", "q0078", 
-                     "q0080", "q0081", "q0083", "q0084", "q0085", "q0087", "q0088", "q0089", "q0090", "q0091", 
-                     "q0092", "q0093", "q0095", "q0097", "q0098", "q0100", "q0101", "q0102", "q0104", "q0105")
+                             "q0039", "q0040", "q0042", "q0044", "q0045", "q0046", "q0047", "q0048", "q0049", "q0050", 
+                             "q0052", "q0053", "q0054", "q0055", "q0057", "q0058", "q0061", "q0063", "q0065", "q0066", 
+                             "q0067", "q0068", "q0070", "q0072", "q0073", "q0074", "q0075", "q0076", "q0077", "q0078", 
+                             "q0080", "q0081", "q0083", "q0084", "q0085", "q0087", "q0088", "q0089", "q0090", "q0091", 
+                             "q0092", "q0093", "q0095", "q0097", "q0098", "q0100", "q0101", "q0102", "q0104", "q0105")
 
 SOC_items_IT_49_Daycare <- c("q0010", "q0011", "q0012", "q0013", "q0014", "q0015", "q0016", "q0017", "q0019", "q0023")
 
@@ -43,17 +48,15 @@ IT_49_Daycare <-
   ))) %>% select(
     IDNumber,
     AgeInMonths,
-    AgeGroup,
+    # AgeGroup,
     Gender,
     Ethnicity,
     Region,
-    SOC_items_IT_49_Daycare,
-    TOT_items_IT_49_Daycare,
-    PLA_items_IT_49_Daycare
+    All_items_IT_49_Daycare
   ) %>%
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(
-    TOT_items_IT_49_Daycare,
+    All_items_IT_49_Daycare,
     ~ case_when(
       .x == "Never" ~ 1,
       .x == "Occasionally" ~ 2,
@@ -72,13 +75,35 @@ IT_49_Daycare <-
                 TRUE ~ NA_real_)
   ) %>%
   # Convert scored item vars to integers
-  mutate_at(TOT_items_IT_49_Daycare,
+  mutate_at(All_items_IT_49_Daycare,
             ~ as.integer(.x)) %>% 
-  # Compute TOT raw score. Note use of `rowSums(.[TOT_items_IT_49])`: when used 
+  # Add age_range var.
+  mutate(age_range = case_when(
+    AgeInMonths <= 6 ~ "3.5 to 6 mo",
+    TRUE ~ "7 to 10.5 mo")
+  ) %>% 
+  # select(-AgeGroup) %>% 
+# Compute raw scores. Note use of `rowSums(.[TOT_items_IT_49_Daycare])`: when used 
   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
-  # must use wrap the column vector in a column-subsetting expression: `.[]`, where the
+  # must wrap the column vector in a column-subsetting expression: `.[]`, where the
   # dot is a token for the data in the pipe.
-  mutate(TOT_raw = rowSums(.[TOT_items_IT_49_Daycare])) %>% print()
+  mutate(
+    TOT_raw = rowSums(.[TOT_items_IT_49_Daycare]),
+    SOC_raw = rowSums(.[SOC_items_IT_49_Daycare]),
+    VIS_raw = rowSums(.[VIS_items_IT_49_Daycare]),
+    HEA_raw = rowSums(.[HEA_items_IT_49_Daycare]),
+    TOU_raw = rowSums(.[TOU_items_IT_49_Daycare]),
+    TS_raw = rowSums(.[TS_items_IT_49_Daycare]),
+    BOD_raw = rowSums(.[BOD_items_IT_49_Daycare]),
+    BAL_raw = rowSums(.[BAL_items_IT_49_Daycare]),
+    PLA_raw = rowSums(.[PLA_items_IT_49_Daycare])
+  ) %>% 
+  # Create data source ID var
+  mutate(data = 'Daycare') %>% 
+  select(IDNumber, data, everything()) %>% 
+# Exclude outliers on TOT_raw 
+  filter(TOT_raw < 200) 
+
 
 # Create frequency tables for TOT_raw by AgeInMonths
 IT_49_Daycare_TOT_freq_AgeInMonths <- IT_49_Daycare %>% group_by(AgeInMonths) %>% count(TOT_raw) %>% 

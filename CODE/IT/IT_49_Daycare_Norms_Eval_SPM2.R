@@ -1,7 +1,6 @@
 # Examine SPM-2 data to determine need for age-stratified norms.
 
 suppressMessages(library(here))
-library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
 library(ggrepel) # ggplot2 EXTENSIONS
 
@@ -40,6 +39,27 @@ BOD_items_IT_49_Daycare <- c("q0080", "q0081", "q0083", "q0084", "q0085", "q0087
 BAL_items_IT_49_Daycare <- c("q0092", "q0093", "q0095", "q0097", "q0098", "q0100", "q0101", "q0102", "q0104", "q0105")
 
 PLA_items_IT_49_Daycare <- c("q0109", "q0110", "q0111", "q0113", "q0114", "q0115", "q0116", "q0117", "q0118", "q0119")
+
+# Process scale vectors to increment column numbers by 1.
+
+# tibble::lst creates a named list, using the names of the input elements to name the list elements
+old_colNum_list <- lst(All_items_IT_49_Daycare, BAL_items_IT_49_Daycare, BOD_items_IT_49_Daycare,
+                        HEA_items_IT_49_Daycare, PLA_items_IT_49_Daycare, SOC_items_IT_49_Daycare,
+                        SOC_rev_items_IT_49_Daycare, TOT_items_IT_49_Daycare, TOU_items_IT_49_Daycare,
+                        TS_items_IT_49_Daycare, VIS_items_IT_49_Daycare)
+
+new_colNum_list <- map(
+  old_colNum_list,
+  ~
+    str_sub(.x, 3, 5) %>%
+    as.integer() %>%
+    # use backticks to make an arithmetic operator into a function
+    `+`(1) %>%
+    str_pad(4, pad = '0') %>%
+    str_c('q', .)
+)
+list2env(new_colNum_list, envir = .GlobalEnv)
+
 
 # Read data, recode item vars, calculate TOT.
 IT_49_Daycare <-

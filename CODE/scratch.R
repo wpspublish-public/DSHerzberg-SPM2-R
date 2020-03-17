@@ -17,14 +17,33 @@ dcp_newlist <- map(
 )
 list2env(dcp_newlist, envir = .GlobalEnv)
 
+# now go backwards and rename existing items to original numbers.
 
-# map(
-#   dcp_oldlist,
-#   ~
-#     str_sub(.x, 3, 5) %>%
-#     as.integer() %>%
-#     `+`(1) %>%
-#     str_pad(4, pad = '0') %>%
-#     str_c('q', .) %>%
-#     assign(names(.x), ., envir = .GlobalEnv)
-# )
+test1 <- enframe(dcp_oldnum1)
+test2 <- enframe(dcp_oldnum2)
+test12 <- c(dcp_oldnum1, dcp_oldnum2)
+test3 <- bind_rows(test1, test2) %>% select(value, name) %>% 
+  data.table::transpose() %>% 
+  data.table::setnames(test12) %>% 
+  filter(q0010 == '1') %>% 
+  mutate(id = '25')
+
+# names(test3) %<>% 
+#   str_sub(3, 5) %>%
+#   as.integer() %>%
+#   `-`(1) %>%
+#   str_pad(4, pad = '0') %>%
+#   str_c('q', .)
+
+rename_if(test3, str_detect(names(test3), "q"), ~
+              str_sub(., 3, 5) %>%
+              as.integer() %>%
+              `-`(1) %>%
+              str_pad(4, pad = '0') %>%
+              str_c('q', .)
+)
+
+
+
+
+

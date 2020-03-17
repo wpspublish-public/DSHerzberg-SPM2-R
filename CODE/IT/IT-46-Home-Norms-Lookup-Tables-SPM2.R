@@ -7,6 +7,7 @@ suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
+library(psych) # DESCRIPTIVE TABLES
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
 
@@ -52,9 +53,10 @@ score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 IT_46_Home <-
   suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/IT/SPM-2 InfantToddler 49 Months.csv")
+    here("INPUT-FILES/IT/SM-QUAL-COMBO-NORMS-INPUT/IT-49-Home-combo-norms-input.csv")
   ))) %>% select(
     IDNumber,
+    data,
     AgeInMonths,
     Gender,
     ParentHighestEducation,
@@ -63,29 +65,29 @@ IT_46_Home <-
     All_items_IT_46_Home
   ) %>%
   # filter for age stratification
-  filter(AgeInMonths %in% c(4:6)) %>%
-  mutate(agestrat = "4-6 mo") %>%
-  select(IDNumber, AgeInMonths, agestrat, everything()) %>% 
+  filter(AgeInMonths <= 6) %>%
+  mutate(age_range = "3.5 to 6 mo") %>%
+  select(everything(), age_range) %>% 
   # recode items from char to num (mutate_at applies funs to specific columns)
-  mutate_at(
-    All_items_IT_46_Home,
-    ~ case_when(
-      .x == "Never" ~ 1,
-      .x == "Occasionally" ~ 2,
-      .x == "Frequently" ~ 3,
-      .x == "Always" ~ 4,
-      TRUE ~ NA_real_
-    )
-  ) %>%
-  # recode reverse-scored items
-  mutate_at(
-    SOC_rev_items_IT_46_Home,
-    ~ case_when(.x == 4 ~ 1,
-                .x == 3 ~ 2,
-                .x == 2 ~ 3,
-                .x == 1 ~ 4,
-                TRUE ~ NA_real_)
-  ) %>%
+  # mutate_at(
+  #   All_items_IT_46_Home,
+  #   ~ case_when(
+  #     .x == "Never" ~ 1,
+  #     .x == "Occasionally" ~ 2,
+  #     .x == "Frequently" ~ 3,
+  #     .x == "Always" ~ 4,
+  #     TRUE ~ NA_real_
+  #   )
+  # ) %>%
+  # # recode reverse-scored items
+  # mutate_at(
+  #   SOC_rev_items_IT_46_Home,
+  #   ~ case_when(.x == 4 ~ 1,
+  #               .x == 3 ~ 2,
+  #               .x == 2 ~ 3,
+  #               .x == 1 ~ 4,
+  #               TRUE ~ NA_real_)
+  # ) %>%
   # Convert scored item vars to integers
   mutate_at(All_items_IT_46_Home,
             ~ as.integer(.x)) %>% 
@@ -104,15 +106,28 @@ IT_46_Home <-
     BAL_raw = rowSums(.[BAL_items_IT_46_Home]),
     PLA_raw = rowSums(.[PLA_items_IT_46_Home])
   ) %>% 
-  select(
-    -(q0010:q0119)
-  ) %>% 
+  # select(
+  #   -(q0010:q0119)
+  # ) %>% 
   #print()
   # Exclude outliers on TOT_raw
-  filter(TOT_raw <200) %>% print()
+  filter(TOT_raw <200)
 
 # clean up environment
 rm(list = ls(pattern='.*items_IT_46_Home'))
+
+# read in daycare data and combine with home data
+
+IT_46_Home_Daycare <- bind_rows(IT_46_Home,
+                                suppressMessages(read_csv(
+                                  here(
+                                    'INPUT-FILES/IT/DAYCARE-NORMS-INPUT/IT-49-Daycare-colName-matchHome.csv'
+                                  )
+                                ) %>%
+                                  filter(AgeInMonths <= 6)
+                                )
+                                ) %>% 
+  mutate_if(vars(is.numeric(.)), ~ as.integer(.))
 
 
 # EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
@@ -124,22 +139,22 @@ rm(list = ls(pattern='.*items_IT_46_Home'))
 
 
 # Create frequency tables for TOT_raw by AgeGroup
-# IT_46_Home_TOT_freq_AgeGroup <- IT_46_Home %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
+# IT_46_Home_Daycare_TOT_freq_AgeGroup <- IT_46_Home_Daycare %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
 #   mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
 
 
 # Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-# IT_46_Home_TOT_desc_AgeGroup <-
-#   IT_46_Home %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
+# IT_46_Home_Daycare_TOT_desc_AgeGroup <-
+#   IT_46_Home_Daycare %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
 #                                                                          median = round(median(TOT_raw), 2),
 #                                                                          mean = round(mean(TOT_raw), 2),
 #                                                                          sd = round(sd(TOT_raw), 2)) %>%
 #   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:6))
 # 
-# AgeGroup <- IT_46_Home_TOT_desc_AgeGroup %>% pull(AgeGroup)
+# AgeGroup <- IT_46_Home_Daycare_TOT_desc_AgeGroup %>% pull(AgeGroup)
 
 # Plot TOT_raw means, SDs by AgeGroup
-# mean_plot <- ggplot(data = IT_46_Home_TOT_desc_AgeGroup, aes(group, mean)) +
+# mean_plot <- ggplot(data = IT_46_Home_Daycare_TOT_desc_AgeGroup, aes(group, mean)) +
 #   geom_point(
 #     col = "blue",
 #     fill = "blue",
@@ -161,8 +176,8 @@ rm(list = ls(pattern='.*items_IT_46_Home'))
 
 # Check for duplicate IDnumber.
 
-# IT_46_Home_dup <- IT_46_Home %>% count(IDNumber) %>% filter(n > 1)
-# write_csv(IT_46_Home_dup, here("DATA/IT_46_Home_dup.csv"))
+# IT_46_Home_Daycare_dup <- IT_46_Home_Daycare %>% count(IDNumber) %>% filter(n > 1)
+# write_csv(IT_46_Home_Daycare_dup, here("DATA/IT_46_Home_Daycare_dup.csv"))
 
 
 # DETERMINE BEST NORMALIZATION MODEL --------------------------------------
@@ -170,17 +185,17 @@ rm(list = ls(pattern='.*items_IT_46_Home'))
 # (NOTE: THIS SECTION SHOULD BE TOGGLED OFF AFTER SELECTION OF NORMALIZATION
 # MODEL)
 
-# # create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
-# TOT_nz_obj <- bestNormalize(IT_46_Home$TOT_raw)
+# # # create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
+# TOT_nz_obj <- bestNormalize(IT_46_Home_Daycare$TOT_raw)
 # 
-# # print transformation
+# # # print transformation
 # TOT_nz_obj$chosen_transform
 # 
-# # Extract transformation type
+# # # Extract transformation type
 # chosen_transform <- class(TOT_nz_obj$chosen_transform)[1]
 # 
-# # apply the chosen method to create normalized z-scores for each case.
-# TOT_nz_transform <- eval(as.name(chosen_transform))(IT_46_Home$TOT_raw)
+# # # apply the chosen method to create normalized z-scores for each case.
+# TOT_nz_transform <- eval(as.name(chosen_transform))(IT_46_Home_Daycare$TOT_raw)
 
 
 # APPLY SELECTED NORMALIZATION MODEL TO CREATE NORMALIZED Z-SCORES --------
@@ -192,7 +207,7 @@ rm(list = ls(pattern='.*items_IT_46_Home'))
 nz_transform_names <- c(paste0(score_names, '_nz_transform'))
 
 # pull nine raw score columns into a list
-raw_score_cols_list <- map(score_names, ~ IT_46_Home %>% 
+raw_score_cols_list <- map(score_names, ~ IT_46_Home_Daycare %>% 
               pull(
                 !!as.name(paste0(.x, '_raw'))
               )
@@ -284,27 +299,30 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
   select(
     paste0(.y, '_NT')
   )
-)
+) %>% 
+  mutate_if(is.numeric, as.integer)
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
-IT_46_Home <- IT_46_Home %>% bind_cols(NT_cols)
+IT_46_Home_Daycare <- IT_46_Home_Daycare %>% bind_cols(NT_cols) 
 
 # write T-scores per case table to .csv
-write_csv(IT_46_Home, here(
+write_csv(IT_46_Home_Daycare, here(
   paste0(
     'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-T-Scores-per-case-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 # clean up environment
 rm(list = ls(pattern='.*_nz'))
 
 # histogram to check normality
-# MASS::truehist(IT_46_Home$TOT_NT, h = 1)
-# hist_plot <- ggplot(data = IT_46_Home, aes(TOT_NT)) +
+# MASS::truehist(IT_46_Home_Daycare$TOT_NT, h = 1)
+# hist_plot <- ggplot(data = IT_46_Home_Daycare, aes(TOT_NT)) +
 #   geom_histogram(
 #     binwidth = .2,
 #     col = "red"
@@ -319,7 +337,7 @@ rm(list = ls(pattern='.*_nz'))
 # because each type has different raw score range. Start wtih TOT. Input is
 # stand sample with raw scores and normalized T scores for each case. Group
 # cases by raw score, relationship between raw and T is many-to-one.
-TOT_lookup <- IT_46_Home %>% group_by(
+TOT_lookup <- IT_46_Home_Daycare %>% group_by(
   TOT_raw
 ) %>% 
   # Because raw-to-T is many to one, all values of T are identical for each raw,
@@ -364,7 +382,7 @@ subscale_names <- score_names[2:9]
 
 subscale_lookup <- map(
   subscale_names, 
-  ~ IT_46_Home %>% group_by(
+  ~ IT_46_Home_Daycare %>% group_by(
     !!as.name(paste0(.x, '_raw'))
   ) %>% 
     summarise(
@@ -407,7 +425,9 @@ write_csv(all_lookup, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 
 # generate print pub format raw-to-T table
@@ -455,6 +475,26 @@ write_csv(all_lookup_pub, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
+# write raw score descriptives for all scales (using psych::describe)
+IT_46_Home_Daycare_raw_desc <-
+  IT_46_Home_Daycare %>% 
+  select(contains('raw')) %>% 
+  describe() %>%
+  rownames_to_column() %>% 
+  rename(scale = rowname) %>% 
+  select(scale, n, mean, sd) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2)))
+write_csv(IT_46_Home_Daycare_raw_desc, here(
+  paste0(
+    'OUTPUT-FILES/IT/DESCRIPTIVES/IT-46-Home-Daycare-raw-desc-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = ''
+)
 

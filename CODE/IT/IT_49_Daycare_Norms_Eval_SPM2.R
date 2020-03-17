@@ -121,9 +121,33 @@ IT_49_Daycare <-
   # Create data source ID var
   mutate(data = 'Daycare') %>% 
   select(IDNumber, data, everything()) %>% 
-# Exclude outliers on TOT_raw 
-  filter(TOT_raw < 200) 
+# Exclude outliers on TOT_raw and also outliers to potentially equalize with Home sample
+  filter(TOT_raw < 200) %>% 
+  filter(!(TOT_raw >= 120 & age_range == '7 to 10.5 mo'))
+  
+# Save file to compare distribution of day care with home forms.
+# temp1 <- IT_49_Daycare %>% select(IDNumber, data, AgeInMonths, age_range:PLA_raw)
+# write_csv(temp, here('INPUT-FILES/IT/IT-49-Daycare-scores.csv'))
 
+# Save file with item cols renamed to match home item cols.
+
+#####AFTER RUNNING BELOW, COLUMN NAMES OF TEMP2 ARE IDENTICAL TO IT_49_Home_items
+
+temp2 <- IT_49_Daycare %>%
+  rename_if(
+    str_detect(names(IT_49_Daycare), "q"),
+    ~
+      str_sub(., 3, 5) %>%
+      as.integer() %>%
+      `-`(1) %>%
+      str_pad(4, pad = '0') %>%
+      str_c('q', .)
+  ) %>% 
+  mutate(ParentHighestEducation = NA) %>% 
+  select(IDNumber:Gender, ParentHighestEducation, everything())
+write_csv(temp2, here('INPUT-FILES/IT/DAYCARE-NORMS-INPUT/IT-49-Daycare-colName-matchHome.csv'))
+
+names_daycare <- names(temp2)
 
 # Create frequency tables for TOT_raw by AgeInMonths
 IT_49_Daycare_TOT_freq_AgeInMonths <- IT_49_Daycare %>% group_by(AgeInMonths) %>% count(TOT_raw) %>% 

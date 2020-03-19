@@ -309,7 +309,7 @@ IT_46_Home_Daycare <- IT_46_Home_Daycare %>% bind_cols(NT_cols)
 # write T-scores per case table to .csv
 write_csv(IT_46_Home_Daycare, here(
   paste0(
-    'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-T-Scores-per-case-',
+    'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-Daycare-T-Scores-per-case-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
@@ -421,7 +421,7 @@ all_lookup_col_names <- c(paste0(score_names, '_raw'))
 # write final raw-to-T lookup table to .csv
 write_csv(all_lookup, here(
   paste0(
-    'OUTPUT-FILES/IT/RAW-T-LOOKUP-TABLES/IT-46-Home-raw-T-lookup-',
+    'OUTPUT-FILES/IT/RAW-T-LOOKUP-TABLES/IT-46-Home-Daycare-raw-T-lookup-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
@@ -471,7 +471,7 @@ all_lookup_pub <- all_lookup %>%
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(
   paste0(
-    'OUTPUT-FILES/IT/PRINT-FORMAT-NORMS-TABLES/IT-46-Home-print-raw-T-lookup-',
+    'OUTPUT-FILES/IT/PRINT-FORMAT-NORMS-TABLES/IT-46-Home-Daycare-print-raw-T-lookup-',
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )

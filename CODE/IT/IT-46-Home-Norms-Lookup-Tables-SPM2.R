@@ -7,7 +7,7 @@ suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
-library(psych) # DESCRIPTIVE TABLES
+suppressMessages(library(psych)) # DESCRIPTIVE TABLES
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
 
@@ -372,7 +372,7 @@ TOT_lookup <- IT_46_Home_Daycare %>% group_by(
   ) %>% 
   mutate_at(
     vars(TOT_NT), ~ case_when(
-      raw < 60 ~ NA_real_,
+      raw < 60 ~ NA_integer_,
       TRUE ~ .x
     )
   )
@@ -403,7 +403,7 @@ subscale_lookup <- map(
     ) %>% 
     mutate_at(
       vars(!!as.name(paste0(.x, '_NT'))), ~ case_when(
-        raw > 40 ~ NA_real_,
+        raw > 40 ~ NA_integer_,
         TRUE ~ .x
       )
     )
@@ -483,11 +483,12 @@ na = ''
 IT_46_Home_Daycare_raw_desc <-
   IT_46_Home_Daycare %>% 
   select(contains('raw')) %>% 
-  describe() %>%
+  describe(fast = T) %>%
   rownames_to_column() %>% 
   rename(scale = rowname) %>% 
   select(scale, n, mean, sd) %>% 
   mutate_at(vars(mean, sd), ~(round(., 2)))
+
 write_csv(IT_46_Home_Daycare_raw_desc, here(
   paste0(
     'OUTPUT-FILES/IT/DESCRIPTIVES/IT-46-Home-Daycare-raw-desc-',
@@ -496,5 +497,44 @@ write_csv(IT_46_Home_Daycare_raw_desc, here(
   )
 ), 
 na = ''
+)
+
+# write table of demographic counts
+
+var_order <- c("data", "AgeInMonths", "Gender", "ParentHighestEducation", "Ethnicity", "Region")
+
+cat_order <- c("Daycare", "Qual", "SM", 
+               "4", "5", "6", 
+               "Male", "Female", 
+               NA, "Did not complete high school (no diploma)", "High school graduate (including GED)", "Some college or associate degree", "Bachelor's degree or higher", "Hispanic", 
+               "Asian", "Black", "White", "MultiRacial", "Other", 
+               "northeast", "midwest", "south", "west")                                   
+
+
+IT_46_Home_Daycare_demo_counts <- IT_46_Home_Daycare %>% 
+  select(data, AgeInMonths, Gender, ParentHighestEducation, Ethnicity, Region) %>% 
+  gather("Variable", "Category") %>% 
+  group_by(Variable, Category) %>%
+  count(Variable, Category) %>%
+  arrange(match(Variable, var_order), match(Category, cat_order)) %>% 
+  ungroup() %>% 
+  mutate(Variable = case_when(
+    lag(Variable) == "data" & Variable == "data" ~ "",
+    lag(Variable) == "AgeInMonths" & Variable == "AgeInMonths" ~ "",
+    lag(Variable) == "Gender" & Variable == "Gender" ~ "",
+    lag(Variable) == "ParentHighestEducation" & Variable == "ParentHighestEducation" ~ "",
+    lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
+    lag(Variable) == "Region" & Variable == "Region" ~ "",
+    TRUE ~ Variable
+  ))
+
+write_csv(IT_46_Home_Daycare_demo_counts, here(
+  paste0(
+    'OUTPUT-FILES/IT/DESCRIPTIVES/IT-46-Home-Daycare-demo-counts-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = '(missing)'
 )
 

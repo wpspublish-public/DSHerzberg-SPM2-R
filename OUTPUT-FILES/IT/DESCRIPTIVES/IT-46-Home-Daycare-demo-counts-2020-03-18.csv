@@ -1,0 +1,24 @@
+Variable,Category,n
+data,Daycare,29
+,Qual,51
+,SM,101
+AgeInMonths,4,62
+,5,67
+,6,52
+Gender,Male,76
+,Female,105
+ParentHighestEducation,(missing),29
+,Did not complete high school (no diploma),8
+,High school graduate (including GED),37
+,Some college or associate degree,50
+,Bachelor's degree or higher,57
+Ethnicity,Hispanic,47
+,Asian,2
+,Black,26
+,White,95
+,MultiRacial,8
+,Other,3
+Region,northeast,20
+,midwest,34
+,south,85
+,west,42

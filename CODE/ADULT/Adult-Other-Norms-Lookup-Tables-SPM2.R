@@ -64,7 +64,8 @@ Adult_Other <-
     All_items_Adult_Other
   ) %>%
   # filter out youngest age group
-  filter(AgeGroup != "16.00 to 20.99 years") %>% 
+  filter(AgeGroup != "15.75 to 20.99 years") %>% 
+  rename(age_range = AgeGroup) %>% 
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(
     All_items_Adult_Other,
@@ -88,7 +89,7 @@ Adult_Other <-
   # Convert scored item vars to integers
   mutate_at(All_items_Adult_Other,
             ~ as.integer(.x)) %>% 
-  # Compute raw scores. Note use of `rowSums(.[TOT_items_Adult_Other])`: when used 
+# Compute raw scores. Note use of `rowSums(.[TOT_items_Adult_Other])`: when used 
   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
   # must wrap the column vector in a column-subsetting expression: `.[]`, where the
   # dot is a token for the data in the pipe.
@@ -103,12 +104,12 @@ Adult_Other <-
     BAL_raw = rowSums(.[BAL_items_Adult_Other]),
     PLA_raw = rowSums(.[PLA_items_Adult_Other])
   ) %>% 
-  select(
-    -(q0014:q0131)
-  ) %>% 
-  #print()
-  # Exclude outliers on TOT_raw
-  filter(TOT_raw <200) %>% print()
+  # Create data var to differentiate Survey monkey from Qualtrics case
+  mutate(data = "Eng") %>% 
+  select(IDNumber, data, everything()) %>% 
+# Exclude outliers on TOT_raw (also exlude by data source to equalize samples
+  # from diiferent data sources)
+  filter(TOT_raw < 200)
 
 # clean up environment
 rm(list = ls(pattern='.*items_Adult_Other'))
@@ -283,7 +284,8 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
   select(
     paste0(.y, '_NT')
   )
-)
+) %>% 
+  mutate_if(is.numeric, as.integer)
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
@@ -296,7 +298,9 @@ write_csv(Adult_Other, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 # clean up environment
 rm(list = ls(pattern='.*_nz'))
@@ -353,7 +357,7 @@ TOT_lookup <- Adult_Other %>% group_by(
   ) %>% 
   mutate_at(
     vars(TOT_NT), ~ case_when(
-      raw < 60 ~ NA_real_,
+      raw < 60 ~ NA_integer_,
       TRUE ~ .x
     )
   )
@@ -384,7 +388,7 @@ subscale_lookup <- map(
     ) %>% 
     mutate_at(
       vars(!!as.name(paste0(.x, '_NT'))), ~ case_when(
-        raw > 40 ~ NA_real_,
+        raw > 40 ~ NA_integer_,
         TRUE ~ .x
       )
     )
@@ -406,7 +410,9 @@ write_csv(all_lookup, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 
 # generate print pub format raw-to-T table
@@ -454,6 +460,68 @@ write_csv(all_lookup_pub, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
+
+# write raw score descriptives for all scales (using psych::describe)
+Adult_Other_raw_desc <-
+  Adult_Other %>% 
+  select(contains('raw')) %>% 
+  describe(fast = T) %>%
+  rownames_to_column() %>% 
+  rename(scale = rowname) %>% 
+  select(scale, n, mean, sd) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2)))
+
+write_csv(Adult_Other_raw_desc, here(
+  paste0(
+    'OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Other-raw-desc-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = ''
+)
+
+# write table of demographic counts
+
+var_order <- c("data", "age_range", "Gender", "HighestEducation", "Ethnicity", "Region")
+
+cat_order <- c("Eng", 
+               "21.00 to 30.99 years", "31.00 to 40.99 years", "41.00 to 50.99 years", "51.00 to 64.99 years", "65.00 to 99.99 years",
+               "Male", "Female", 
+               "Did not complete high school (no diploma)", "High school graduate (including GED)", "Some college or associate degree", "Bachelor's degree or higher", 
+               "Hispanic", "Asian", "Black", "White", "MultiRacial", "AmericanIndAlaskanNat", "NativeHawPacIsl", "Other", 
+               NA, "northeast", "midwest", "south", "west")                                   
+
+
+Adult_Other_demo_counts <- Adult_Other %>% 
+  select(data, age_range, Gender, HighestEducation, Ethnicity, Region) %>% 
+  gather("Variable", "Category") %>% 
+  group_by(Variable, Category) %>%
+  count(Variable, Category) %>%
+  arrange(match(Variable, var_order), match(Category, cat_order)) %>% 
+  ungroup() %>% 
+  mutate(Variable = case_when(
+    lag(Variable) == "data" & Variable == "data" ~ "",
+    lag(Variable) == "age_range" & Variable == "age_range" ~ "",
+    lag(Variable) == "Gender" & Variable == "Gender" ~ "",
+    lag(Variable) == "HighestEducation" & Variable == "HighestEducation" ~ "",
+    lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
+    lag(Variable) == "Region" & Variable == "Region" ~ "",
+    TRUE ~ Variable
+  ))
+
+write_csv(Adult_Other_demo_counts, here(
+  paste0(
+    'OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Other-demo-counts-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = '(missing)'
+)
+
 
 

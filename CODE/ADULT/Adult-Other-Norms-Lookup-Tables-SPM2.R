@@ -104,7 +104,7 @@ Adult_Other <-
     BAL_raw = rowSums(.[BAL_items_Adult_Other]),
     PLA_raw = rowSums(.[PLA_items_Adult_Other])
   ) %>% 
-  # Create data var to differentiate Survey monkey from Qualtrics case
+  # Create data var to differentiate Eng from Sp cases
   mutate(data = "Eng") %>% 
   select(IDNumber, data, everything()) %>% 
 # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
@@ -209,7 +209,7 @@ raw_score_cols_list <- map(score_names, ~ Adult_Other %>%
 # argument allows the selected normalization transformation to be applied to the
 # .y data. 
 
-# NOTE: MUST SUBSITUTE NAMED TRANSFORMATION FROM PREVIOUS STEP IN THIS LINE:
+# NOTE: MUST SUBSTITUTE NAMED TRANSFORMATION FROM PREVIOUS STEP IN THIS LINE:
 # value = boxcox(.y), e.g., value = [SELECTED TRANSFORMATION](.y), 
 
 raw_score_cols_list %>%

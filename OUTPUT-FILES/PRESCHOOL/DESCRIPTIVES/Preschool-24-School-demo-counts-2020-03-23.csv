@@ -1,0 +1,14 @@
+Variable,Category,n
+age_range,2-4 yr,412
+Gender,Male,192
+,Female,220
+Ethnicity,Hispanic,53
+,Asian,10
+,Black,64
+,White,253
+,MultiRacial,25
+,Other,7
+Region,northeast,90
+,midwest,110
+,south,156
+,west,56

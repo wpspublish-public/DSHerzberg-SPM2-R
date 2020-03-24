@@ -7,6 +7,7 @@ suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
+suppressMessages(library(psych)) # DESCRIPTIVE TABLES
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
 
@@ -63,9 +64,9 @@ Preschool_24_School <-
     All_items_Preschool_24_School
   ) %>%
   # filter for age stratification
-  filter(Age %in% c(2:4)) %>%
-  mutate(agestrat = "2-4 yr") %>%
-  select(IDNumber, Age, agestrat, everything()) %>% 
+  filter(Age <= 4) %>%
+  mutate(age_range = "2-4 yr") %>%
+  select(everything(), age_range) %>% 
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(
     All_items_Preschool_24_School,
@@ -104,12 +105,11 @@ Preschool_24_School <-
     BAL_raw = rowSums(.[BAL_items_Preschool_24_School]),
     PLA_raw = rowSums(.[PLA_items_Preschool_24_School])
   ) %>% 
-  select(
-    -(q0014:q0117)
-  ) %>% 
-  #print()
+  #select(
+  #  -(q0014:q0117)
+  #) %>% 
   # Exclude outliers on TOT_raw
-  filter(TOT_raw <200) %>% print()
+  filter(TOT_raw <200)
 
 # clean up environment
 rm(list = ls(pattern='.*items_Preschool_24_School'))
@@ -284,7 +284,8 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
   select(
     paste0(.y, '_NT')
   )
-)
+) %>% 
+  mutate_if(is.numeric, as.integer)
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
@@ -297,7 +298,9 @@ write_csv(Preschool_24_School, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 # clean up environment
 rm(list = ls(pattern='.*_nz'))
@@ -354,7 +357,7 @@ TOT_lookup <- Preschool_24_School %>% group_by(
   ) %>% 
   mutate_at(
     vars(TOT_NT), ~ case_when(
-      raw < 60 ~ NA_real_,
+      raw < 60 ~ NA_integer_,
       TRUE ~ .x
     )
   )
@@ -385,7 +388,7 @@ subscale_lookup <- map(
     ) %>% 
     mutate_at(
       vars(!!as.name(paste0(.x, '_NT'))), ~ case_when(
-        raw > 40 ~ NA_real_,
+        raw > 40 ~ NA_integer_,
         TRUE ~ .x
       )
     )
@@ -407,7 +410,9 @@ write_csv(all_lookup, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 
 # generate print pub format raw-to-T table
@@ -455,6 +460,66 @@ write_csv(all_lookup_pub, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
+
+
+# write raw score descriptives for all scales (using psych::describe)
+Preschool_24_School_raw_desc <-
+  Preschool_24_School %>% 
+  select(contains('raw')) %>% 
+  describe(fast = T) %>%
+  rownames_to_column() %>% 
+  rename(scale = rowname) %>% 
+  select(scale, n, mean, sd) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2)))
+
+write_csv(Preschool_24_School_raw_desc, here(
+  paste0(
+    'OUTPUT-FILES/PRESCHOOL/DESCRIPTIVES/Preschool-24-School-raw-desc-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = ''
+)
+
+# write table of demographic counts
+
+var_order <- c("age_range", "Gender", "Ethnicity", "Region")
+
+cat_order <- c("2-4 yr",
+               "Male", "Female", 
+               "Hispanic", "Asian", "Black", "White", "MultiRacial", "Other", 
+               "northeast", "midwest", "south", "west")                                   
+
+
+Preschool_24_School_demo_counts <- Preschool_24_School %>% 
+  select(age_range, Gender, Ethnicity, Region) %>% 
+  gather("Variable", "Category") %>% 
+  group_by(Variable, Category) %>%
+  count(Variable, Category) %>%
+  arrange(match(Variable, var_order), match(Category, cat_order)) %>% 
+  ungroup() %>% 
+  mutate(Variable = case_when(
+    # lag(Variable) == "data" & Variable == "data" ~ "",
+    lag(Variable) == "age_range" & Variable == "age_range" ~ "",
+    lag(Variable) == "Gender" & Variable == "Gender" ~ "",
+    # lag(Variable) == "HighestEducation" & Variable == "HighestEducation" ~ "",
+    lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
+    lag(Variable) == "Region" & Variable == "Region" ~ "",
+    TRUE ~ Variable
+  ))
+
+write_csv(Preschool_24_School_demo_counts, here(
+  paste0(
+    'OUTPUT-FILES/PRESCHOOL/DESCRIPTIVES/Preschool-24-School-demo-counts-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = '(missing)'
+)
 
 

@@ -1,0 +1,14 @@
+Variable,Category,n
+age_range,5 yr,78
+Gender,Male,37
+,Female,41
+Ethnicity,Hispanic,9
+,Asian,1
+,Black,23
+,White,40
+,AmericanIndAlaskanNat,1
+,MultiRacial,4
+Region,northeast,16
+,midwest,25
+,south,30
+,west,7

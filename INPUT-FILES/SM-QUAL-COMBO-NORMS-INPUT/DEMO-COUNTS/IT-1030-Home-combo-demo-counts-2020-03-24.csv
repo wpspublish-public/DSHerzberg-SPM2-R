@@ -1,0 +1,24 @@
+Variable,Category,n
+data,SM,398
+,Qual,115
+age_range,09.5 to 20 mo,293
+,21 to 31.5 mo,220
+Gender,Male,255
+,Female,258
+ParentHighestEducation,Did not complete high school (no diploma),16
+,High school graduate (including GED),85
+,Some college or associate degree,130
+,Bachelor's degree or higher,282
+Ethnicity,Hispanic,87
+,Asian,7
+,Black,45
+,White,317
+,AmericanIndAlaskanNat,2
+,NativeHawPacIsl,1
+,MultiRacial,51
+,Other,3
+Region,(missing),1
+,northeast,48
+,midwest,120
+,south,229
+,west,115

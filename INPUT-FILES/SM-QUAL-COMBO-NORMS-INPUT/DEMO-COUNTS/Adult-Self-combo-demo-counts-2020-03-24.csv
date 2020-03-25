@@ -1,0 +1,27 @@
+Variable,Category,n
+data,SM,757
+,Qual,153
+age_range,21.00 to 30.99 years,270
+,31.00 to 40.99 years,284
+,41.00 to 50.99 years,160
+,51.00 to 64.99 years,129
+,65.00 to 99.99 years,67
+Gender,Male,345
+,Female,565
+HighestEducation,Did not complete high school (no diploma),35
+,High school graduate (including GED),190
+,Some college or associate degree,241
+,Bachelor's degree or higher,444
+Ethnicity,Hispanic,138
+,Asian,60
+,Black,116
+,White,549
+,AmericanIndAlaskanNat,3
+,NativeHawPacIsl,4
+,MultiRacial,33
+,Other,7
+Region,(missing),1
+,northeast,129
+,midwest,144
+,south,371
+,west,265

@@ -1,0 +1,21 @@
+Variable,Category,n
+data,SM,220
+,Qual,80
+age_range,3.5 to 6 mo,153
+,7 to 10.5 mo,147
+Gender,Male,134
+,Female,166
+ParentHighestEducation,Did not complete high school (no diploma),12
+,High school graduate (including GED),65
+,Some college or associate degree,90
+,Bachelor's degree or higher,133
+Ethnicity,Hispanic,64
+,Asian,4
+,Black,44
+,White,170
+,MultiRacial,15
+,Other,3
+Region,northeast,26
+,midwest,69
+,south,132
+,west,73

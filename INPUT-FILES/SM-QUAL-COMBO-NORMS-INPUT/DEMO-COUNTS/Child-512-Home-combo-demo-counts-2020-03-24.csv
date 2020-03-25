@@ -1,0 +1,22 @@
+Variable,Category,n
+data,SM,798
+,Qual,301
+age_range,5 to 8 years,604
+,9 to 12 years,495
+Gender,Male,545
+,Female,554
+ParentHighestEducation,Did not complete high school (no diploma),54
+,High school graduate (including GED),279
+,Some college or associate degree,415
+,Bachelor's degree or higher,351
+Ethnicity,Hispanic,205
+,Asian,16
+,Black,244
+,White,549
+,AmericanIndAlaskanNat,5
+,MultiRacial,71
+,Other,9
+Region,northeast,135
+,midwest,281
+,south,468
+,west,215

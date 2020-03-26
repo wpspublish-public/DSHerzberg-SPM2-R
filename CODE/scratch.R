@@ -1,49 +1,22 @@
 suppressMessages(library(here))
 suppressMessages(suppressWarnings(library(tidyverse)))
 
-dcp_oldnum1 <- c("q0010", "q0011", "q0012", "q0013", "q0014", "q0015", "q0016", "q0017")
-dcp_oldnum2 <- c("q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0035")
-# tibble::lst creates a named list, using the names of the input elements to name the list elements
-dcp_oldlist <- lst(dcp_oldnum1, dcp_oldnum2)
+# demo code showing that dplyr::arrange() can match to a pre-set sort order,
+# even when the data doesn't contain all of the values in the sort-order vecs.
 
-dcp_newlist <- map(
-  dcp_oldlist,
-  ~
-    str_sub(.x, 3, 5) %>%
-    as.integer() %>%
-    `+`(1) %>%
-    str_pad(4, pad = '0') %>%
-    str_c('q', .)
-)
-list2env(dcp_newlist, envir = .GlobalEnv)
+# var_order <- c("age_range", "gender", "educ", "ethnic", "region", "data")
+# 
+# cat_order <- c(NA, "typ", "clin",
+#                NA, "2-4", "5-7", "8-10", "11-13", "14-16",
+#                NA, "male", "female",
+#                NA, "hispanic", "asian", "black", "white", "multi", "other")
+# 
+# df <- tibble(var = c(rep("data", 2), rep("age_range", 4), rep("gender", 2), rep("ethnic", 4)),
+#              cat = c("clin", "typ", "11-13", "5-7", "8-10", "2-4", "female", "male", "white", "black", "hispanic", "asian"),
+#              n = c(30, 70, 12, 18, 47, 23, 52, 48, 56, 20, 23, 1))
+# 
+# df_sort <- df %>% arrange(match(var, var_order), match(cat, cat_order))
 
-# now go backwards and rename existing items to original numbers.
-
-test1 <- enframe(dcp_oldnum1)
-test2 <- enframe(dcp_oldnum2)
-test12 <- c(dcp_oldnum1, dcp_oldnum2)
-test3 <- bind_rows(test1, test2) %>% select(value, name) %>% 
-  data.table::transpose() %>% 
-  data.table::setnames(test12) %>% 
-  filter(q0010 == '1') %>% 
-  mutate(id = '25')
-
-# names(test3) %<>% 
-#   str_sub(3, 5) %>%
-#   as.integer() %>%
-#   `-`(1) %>%
-#   str_pad(4, pad = '0') %>%
-#   str_c('q', .)
-
-rename_if(test3, str_detect(names(test3), "q"), ~
-              str_sub(., 3, 5) %>%
-              as.integer() %>%
-              `-`(1) %>%
-              str_pad(4, pad = '0') %>%
-              str_c('q', .)
-)
-
-
-
+             
 
 

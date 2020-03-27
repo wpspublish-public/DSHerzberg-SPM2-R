@@ -2,10 +2,12 @@
 # create raw-to-T lookup tables.
 
 suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
+library(magrittr) # PIPE OPERATORS
 suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
+suppressMessages(library(psych)) # DESCRIPTIVE TABLES
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
 
@@ -106,9 +108,9 @@ Teen_1221_School <-
     BAL_raw = rowSums(.[BAL_items_Teen_1221_School]),
     PLA_raw = rowSums(.[PLA_items_Teen_1221_School])
   ) %>% 
-  select(
-    -(q0012:q0116)
-  ) %>% 
+  #select(
+  #  -(q0012:q0116)
+  #) %>% 
   #print()
   # Exclude outliers on TOT_raw
   filter(TOT_raw <200) %>% 
@@ -127,40 +129,40 @@ rm(list = ls(pattern='.*items_Teen_1221_School'))
 
 
 # Create frequency tables for TOT_raw by AgeGroup
-Teen_1221_School_TOT_freq_AgeGroup <- Teen_1221_School %>% group_by(age_range) %>% count(TOT_raw) %>%
-  mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
+# Teen_1221_School_TOT_freq_AgeGroup <- Teen_1221_School %>% group_by(age_range) %>% count(TOT_raw) %>%
+#   mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
 
 
 # Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-Teen_1221_School_TOT_desc_AgeGroup <-
-  Teen_1221_School %>% group_by(age_range) %>% arrange(age_range) %>% summarise(n = n(),
-                                                                         median = round(median(TOT_raw), 2),
-                                                                         mean = round(mean(TOT_raw), 2),
-                                                                         sd = round(sd(TOT_raw), 2)) %>%
-  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:4))
+# Teen_1221_School_TOT_desc_AgeGroup <-
+#   Teen_1221_School %>% group_by(age_range) %>% arrange(age_range) %>% summarise(n = n(),
+#                                                                          median = round(median(TOT_raw), 2),
+#                                                                          mean = round(mean(TOT_raw), 2),
+#                                                                          sd = round(sd(TOT_raw), 2)) %>%
+#   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:4))
 
-AgeGroup <- Teen_1221_School_TOT_desc_AgeGroup %>% pull(age_range)
+# AgeGroup <- Teen_1221_School_TOT_desc_AgeGroup %>% pull(age_range)
 
 # Plot TOT_raw means, SDs by AgeGroup
-mean_plot <- ggplot(data = Teen_1221_School_TOT_desc_AgeGroup, aes(group, mean)) +
-  geom_point(
-    col = "blue",
-    fill = "blue",
-    alpha = .5,
-    size = 3,
-    shape = 23
-  ) +
-  geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-  scale_x_continuous(breaks = seq(1, 4, 1), labels = AgeGroup) +
-  scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
-  labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
-  geom_errorbar(
-    aes(ymin = mean - sd, ymax = mean + sd),
-    col = "red",
-    size = 0.2,
-    width = 0.2
-  )
-print(mean_plot)
+# mean_plot <- ggplot(data = Teen_1221_School_TOT_desc_AgeGroup, aes(group, mean)) +
+#   geom_point(
+#     col = "blue",
+#     fill = "blue",
+#     alpha = .5,
+#     size = 3,
+#     shape = 23
+#   ) +
+#   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
+#   scale_x_continuous(breaks = seq(1, 4, 1), labels = AgeGroup) +
+#   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
+#   labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
+#   geom_errorbar(
+#     aes(ymin = mean - sd, ymax = mean + sd),
+#     col = "red",
+#     size = 0.2,
+#     width = 0.2
+#   )
+# print(mean_plot)
 
 # Check for duplicate IDnumber.
 
@@ -287,7 +289,8 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
   select(
     paste0(.y, '_NT')
   )
-)
+) %>% 
+  mutate_if(is.numeric, as.integer)
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
@@ -300,7 +303,9 @@ write_csv(Teen_1221_School, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 # clean up environment
 rm(list = ls(pattern='.*_nz'))
@@ -357,7 +362,7 @@ TOT_lookup <- Teen_1221_School %>% group_by(
   ) %>% 
   mutate_at(
     vars(TOT_NT), ~ case_when(
-      raw < 60 ~ NA_real_,
+      raw < 60 ~ NA_integer_,
       TRUE ~ .x
     )
   )
@@ -388,7 +393,7 @@ subscale_lookup <- map(
     ) %>% 
     mutate_at(
       vars(!!as.name(paste0(.x, '_NT'))), ~ case_when(
-        raw > 40 ~ NA_real_,
+        raw > 40 ~ NA_integer_,
         TRUE ~ .x
       )
     )
@@ -410,7 +415,9 @@ write_csv(all_lookup, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 
 # generate print pub format raw-to-T table
@@ -458,6 +465,83 @@ write_csv(all_lookup_pub, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
+
+
+# write raw score descriptives for all scales (using psych::describe)
+Teen_1221_School_raw_desc <-
+  Teen_1221_School %>% 
+  select(contains('raw')) %>% 
+  describe(fast = T) %>%
+  rownames_to_column() %>% 
+  rename(scale = rowname) %>% 
+  select(scale, n, mean, sd) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2)))
+
+write_csv(Teen_1221_School_raw_desc, here(
+  paste0(
+    'OUTPUT-FILES/TEEN/DESCRIPTIVES/Teen-1221-School-raw-desc-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = ''
+)
+
+# write table of demographic counts
+
+var_order <- c("data", "age_range", "Age", "Gender", "ParentHighestEducation", "HighestEducation", 
+               "Ethnicity", "Region")
+
+cat_order <- c(
+  # data
+  NA, "SM", "Qual",
+  # age_range
+  NA, "3.5 to 6 mo", "03.5 to 10 mo", "7 to 10.5 mo", "09.5 to 20 mo",  "11 to 31.5 mo", 
+  "21 to 31.5 mo", "5 to 8 years", "9 to 12 years", "12 to 13 years", "14 to 15 years", 
+  "16 to 17 years", "18 to 21 years", "21.00 to 30.99 years", "31.00 to 40.99 years", 
+  "41.00 to 50.99 years", "51.00 to 64.99 years", "65.00 to 99.99 years",
+  # Age
+  "2", "3", "4", "5",
+  # Gender
+  NA, "Male", "Female",
+  # ParentHighestEducation & HighestEducation
+  NA, "Did not complete high school (no diploma)", "High school graduate (including GED)", 
+  "Some college or associate degree", "Bachelor's degree or higher",
+  # Ethnicity
+  NA, "Hispanic", "Asian", "Black", "White", "AmericanIndAlaskanNat", 
+  "NativeHawPacIsl", "MultiRacial", "Other",
+  # Region
+  NA, "northeast", "midwest", "south", "west")
+
+
+Teen_1221_School_demo_counts <- Teen_1221_School %>% 
+  select(age_range, Gender, Ethnicity, Region) %>% 
+  gather("Variable", "Category") %>% 
+  group_by(Variable, Category) %>%
+  count(Variable, Category) %>%
+  arrange(match(Variable, var_order), match(Category, cat_order)) %>% 
+  ungroup() %>% 
+  mutate(Variable = case_when(
+    # lag(Variable) == "data" & Variable == "data" ~ "",
+    lag(Variable) == "age_range" & Variable == "age_range" ~ "",
+    lag(Variable) == "Gender" & Variable == "Gender" ~ "",
+    # lag(Variable) == "HighestEducation" & Variable == "HighestEducation" ~ "",
+    lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
+    lag(Variable) == "Region" & Variable == "Region" ~ "",
+    TRUE ~ Variable
+  ))
+
+write_csv(Teen_1221_School_demo_counts, here(
+  paste0(
+    'OUTPUT-FILES/TEEN/DESCRIPTIVES/Teen-1221-School-demo-counts-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = '(missing)'
+)
 
 

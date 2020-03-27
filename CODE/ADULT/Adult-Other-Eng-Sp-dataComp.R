@@ -105,11 +105,14 @@ Adult_Other <-
   # from diiferent data sources)
   filter(TOT_raw < 200)
 
-# clean up environment
-# rm(list = ls(pattern='.*items_Adult_Other'))
+# Prep file to comp
+Adult_Other_scores <- Adult_Other %>% 
+  select(
+    -(All_items_Adult_Other), -(Gender:Region)
+  )   
 
 
-# NEXT: READ IN SPANISH DATA
+# READ IN SPANISH DATA
 
 Adult_Other_Sp <-
   suppressMessages(as_tibble(read_csv(
@@ -123,53 +126,81 @@ Adult_Other_Sp <-
     Ethnicity,
     Region,
     All_items_Adult_Other
-  ) 
+  ) %>% 
+  # filter out youngest age group
+  filter(AgeGroup != "15.75 to 20.99 years") %>% 
+  rename(age_range = AgeGroup) %>% 
+  # recode items from char to num (mutate_at applies funs to specific columns)
+  mutate_at(
+    All_items_Adult_Other,
+    ~ case_when(
+      .x == "Nunca" ~ 1,
+      .x == "Ocasionalmente" ~ 2,
+      .x == "Frecuentemente" ~ 3,
+      .x == "Siempre" ~ 4,
+      TRUE ~ NA_real_
+    )
+  ) %>%
+  # recode reverse-scored items
+  mutate_at(
+    SOC_rev_items_Adult_Other,
+    ~ case_when(.x == 4 ~ 1,
+                .x == 3 ~ 2,
+                .x == 2 ~ 3,
+                .x == 1 ~ 4,
+                TRUE ~ NA_real_)
+  ) %>%
+  # Convert scored item vars to integers
+  mutate_at(All_items_Adult_Other,
+            ~ as.integer(.x)) %>% 
+  # Compute raw scores. Note use of `rowSums(.[TOT_items_Adult_Other])`: when used 
+  # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
+  # must wrap the column vector in a column-subsetting expression: `.[]`, where the
+  # dot is a token for the data in the pipe.
+  mutate(
+    TOT_raw = rowSums(.[TOT_items_Adult_Other]),
+    SOC_raw = rowSums(.[SOC_items_Adult_Other]),
+    VIS_raw = rowSums(.[VIS_items_Adult_Other]),
+    HEA_raw = rowSums(.[HEA_items_Adult_Other]),
+    TOU_raw = rowSums(.[TOU_items_Adult_Other]),
+    TS_raw = rowSums(.[TS_items_Adult_Other]),
+    BOD_raw = rowSums(.[BOD_items_Adult_Other]),
+    BAL_raw = rowSums(.[BAL_items_Adult_Other]),
+    PLA_raw = rowSums(.[PLA_items_Adult_Other])
+  ) %>% 
+  # Create data var to differentiate Survey monkey from Qualtrics case
+  mutate(data = "Sp") %>% 
+  select(IDNumber, data, everything()) %>% 
+  # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
+  # from diiferent data sources)
+  filter(TOT_raw < 200)
 
-
-
-
-
-Adult_Other <- Adult_Other_items %>% 
+# Prep file to comp
+Adult_Other_Sp_scores <- Adult_Other_Sp %>% 
   select(
-    -(q0010:q0119)
+    -(All_items_Adult_Other), -(Gender:Region)
   )   
 
-# Prep file to comp with daycare data
-Adult_Other_scores <- Adult_Other %>% 
-  select(
-    -(Gender:Region)
-  )   
+# clean up environment
+rm(list = ls(pattern='.*items_Adult_Other'))
 
-IT_49_Daycare_scores <- read_csv(here('INPUT-FILES/IT/IT-49-Daycare-scores.csv'))
+Adult_Other_comp <- bind_rows(Adult_Other_scores, Adult_Other_Sp_scores) 
 
-IT_49_comp <- bind_rows(Adult_Other_scores, IT_49_Daycare_scores) %>% 
-  mutate(data = case_when(
-    data == "Qual" ~ "Home",
-    data == "SM" ~ "Home",
-    TRUE ~ data
-  ))
+# EXAMINE DATA---------------------------------
 
-# EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
-
-# ### THE NEXT SECTION OF CODE FACILITATES EXAMINATION OF TOT_raw to make
-# decisions about whether norms need to be stratified by age. Once the decision
-# about age-stratification has been made and implemented, the 'examination' code
-# can be commented off.
-
-
-# Create frequency tables for TOT_raw by AgeGroup
-IT_49_comp_TOT_freq_AgeGroup <- IT_49_comp %>% group_by(data, age_range) %>% count(TOT_raw) %>%
+# Create frequency tables for TOT_raw by data source
+Adult_Other_comp_TOT_freq_data <- Adult_Other_comp %>% group_by(data, age_range) %>% count(TOT_raw) %>%
   mutate(
     perc = round(100*(n/sum(n)), 4), 
     cum_per = round(100*(cumsum(n)/sum(n)), 4)
   )
 
-# write_csv(IT_49_comp_TOT_freq_AgeGroup, here('OUTPUT-FILES/IT/FREQUENCIES/IT-49-Home-Daycare-TOT-freq-AgeGroup.csv'))
+# write_csv(Adult_Other_comp_TOT_freq_data, here('OUTPUT-FILES/ADULT/FREQUENCIES/Adult-Other-Eng-Sp-TOT-freq-data.csv'))
 
 
-# Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-IT_49_comp_TOT_desc_AgeGroup_data <-
-  IT_49_comp %>% group_by(data, age_range) %>% arrange(data, age_range) %>% summarise(n = n(),
+# Compute descriptive statistics, effect sizes for TOT_raw by data source
+Adult_Other_comp_TOT_desc_data <-
+  Adult_Other_comp %>% group_by(data) %>% arrange(data) %>% summarise(n = n(),
                                                                         median = round(median(TOT_raw), 2),
                                                                         mean = round(mean(TOT_raw), 2),
                                                                         sd = round(sd(TOT_raw), 2)) %>%
@@ -177,44 +208,33 @@ IT_49_comp_TOT_desc_AgeGroup_data <-
          group = c(1:2)
   )
 
-IT_49_comp_TOT_desc_AgeGroup <-
-  IT_49_comp %>% group_by(age_range) %>% arrange(age_range) %>% summarise(n = n(),
-                                                                                          median = round(median(TOT_raw), 2),
-                                                                                          mean = round(mean(TOT_raw), 2),
-                                                                                          sd = round(sd(TOT_raw), 2)) %>%
-  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2),
-         group = c(1:2)
-  )
+write_csv(Adult_Other_comp_TOT_desc_data, here('OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Other-Eng-Sp-TOT-desc-dataSource.csv'))
 
-write_csv(IT_49_comp_TOT_desc_AgeGroup_data, here('OUTPUT-FILES/IT/DESCRIPTIVES/IT-49-Home-Daycare-TOT-desc-dataSource.csv'))
-write_csv(IT_49_comp_TOT_desc_AgeGroup, here('OUTPUT-FILES/IT/DESCRIPTIVES/IT-49-Home-Daycare-TOT-desc.csv'))
-
-
-# Generate single table comparing descriptives from SM and Qual sources.
-IT_49_comp_TOT_desc_home <- IT_49_comp_TOT_desc_AgeGroup_data %>% 
-  filter(data == 'Home') %>% 
-  setNames(., str_c(names(.), 'Home', sep = '_')) %>% 
+# Generate single table comparing descriptives from Eng and Sp sources.
+Adult_Other_comp_TOT_desc_Eng <- Adult_Other_comp_TOT_desc_data %>% 
+  filter(data == 'Eng') %>% 
+  setNames(., str_c(names(.), 'Eng', sep = '_')) %>% 
   ungroup() %>% 
   select(-matches('data|median|group'))
-IT_49_comp_TOT_desc_daycare <- IT_49_comp_TOT_desc_AgeGroup_data %>% 
-  filter(data == 'Daycare') %>% 
-  setNames(., str_c(names(.), 'Daycare', sep = '_')) %>% 
+Adult_Other_comp_TOT_desc_Sp <- Adult_Other_comp_TOT_desc_data %>% 
+  filter(data == 'Sp') %>% 
+  setNames(., str_c(names(.), 'Sp', sep = '_')) %>% 
   ungroup() %>% 
   select(-matches('data|median|group'))
 
-IT_49_comp_TOT_desc_comp <- IT_49_comp_TOT_desc_home %>% 
-  bind_cols(IT_49_comp_TOT_desc_daycare) %>% 
-  select(-age_range_Daycare) %>% 
-  rename(age_range = age_range_Home) %>% 
+Adult_Other_comp_TOT_desc_comp <- Adult_Other_comp_TOT_desc_Eng %>% 
+  bind_cols(Adult_Other_comp_TOT_desc_Sp) %>% 
+  # select(-age_range_Sp) %>% 
+  # rename(age_range = age_range_Eng) %>% 
   mutate(
-    diff = round(mean_Home - mean_Daycare, 2),
-    ES_diff = round((mean_Home - mean_Daycare) / ((sd_Home + sd_Daycare) / 2), 2)
+    diff = round(mean_Eng - mean_Sp, 2),
+    ES_diff = round((mean_Eng - mean_Sp) / ((sd_Eng + sd_Sp) / 2), 2)
   )
 
-write_csv(IT_49_comp_TOT_desc_comp, here('OUTPUT-FILES/IT/DESCRIPTIVES/IT-49-Home-Daycare-TOT-desc-comp.csv'))
+write_csv(Adult_Other_comp_TOT_desc_comp, here('OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Other-Eng-Sp-TOT-desc-comp.csv'))
 
 # Plot TOT_raw means, SDs by AgeGroup
-mean_plot <- ggplot(data = IT_49_comp_TOT_desc_AgeGroup_data, aes(group, mean)) +
+mean_plot <- ggplot(data = Adult_Other_comp_TOT_desc_data, aes(group, mean)) +
   geom_point(
     col = "blue",
     fill = "blue",
@@ -223,9 +243,9 @@ mean_plot <- ggplot(data = IT_49_comp_TOT_desc_AgeGroup_data, aes(group, mean)) 
     shape = 23
   ) +
   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-  scale_x_continuous(breaks = seq(1, 2, 1), labels = unique(IT_49_comp_TOT_desc_AgeGroup_data$age_range)) +
+  scale_x_continuous(breaks = seq(1, 2, 1), labels = unique(Adult_Other_comp_TOT_desc_data$data)) +
   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
-  labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
+  labs(title = "Raw Score Means (with SDs)", x = "Data Sourcce", y = "TOT") +
   geom_errorbar(
     aes(ymin = mean - sd, ymax = mean + sd),
     col = "red",

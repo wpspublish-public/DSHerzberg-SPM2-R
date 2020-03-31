@@ -112,7 +112,7 @@ Child_512_Home_items <-
   )) %>% 
   select(IDNumber, data, everything()) %>% 
 # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
-  # from diiferent data sources)
+  # from different data sources)
   filter(TOT_raw < 200) #%>% 
   # filter(!(TOT_raw >= 138 & data == 'Qual')) %>%
   # write_csv(here('INPUT-FILES/CHILD/SM-QUAL-COMBO-NORMS-INPUT/Child-512-Home-combo-norms-input.csv'),

@@ -1,6 +1,7 @@
 # Examine SPM-2 data to determine need for age-stratified norms.
 
 suppressMessages(library(here))
+library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
 library(ggrepel) # ggplot2 EXTENSIONS
 
@@ -40,27 +41,6 @@ BAL_items_IT_49_Daycare <- c("q0092", "q0093", "q0095", "q0097", "q0098", "q0100
 
 PLA_items_IT_49_Daycare <- c("q0109", "q0110", "q0111", "q0113", "q0114", "q0115", "q0116", "q0117", "q0118", "q0119")
 
-# Process scale vectors to increment column numbers by 1.
-
-# tibble::lst creates a named list, using the names of the input elements to name the list elements
-old_colNum_list <- lst(All_items_IT_49_Daycare, BAL_items_IT_49_Daycare, BOD_items_IT_49_Daycare,
-                        HEA_items_IT_49_Daycare, PLA_items_IT_49_Daycare, SOC_items_IT_49_Daycare,
-                        SOC_rev_items_IT_49_Daycare, TOT_items_IT_49_Daycare, TOU_items_IT_49_Daycare,
-                        TS_items_IT_49_Daycare, VIS_items_IT_49_Daycare)
-
-new_colNum_list <- map(
-  old_colNum_list,
-  ~
-    str_sub(.x, 3, 5) %>%
-    as.integer() %>%
-    # use backticks to make an arithmetic operator into a function
-    `+`(1) %>%
-    str_pad(4, pad = '0') %>%
-    str_c('q', .)
-)
-list2env(new_colNum_list, envir = .GlobalEnv)
-
-
 # Read data, recode item vars, calculate TOT.
 IT_49_Daycare <-
   suppressMessages(as_tibble(read_csv(
@@ -68,15 +48,17 @@ IT_49_Daycare <-
   ))) %>% select(
     IDNumber,
     AgeInMonths,
-    # AgeGroup,
+    AgeGroup,
     Gender,
     Ethnicity,
     Region,
-    All_items_IT_49_Daycare
+    SOC_items_IT_49_Daycare,
+    TOT_items_IT_49_Daycare,
+    PLA_items_IT_49_Daycare
   ) %>%
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(
-    All_items_IT_49_Daycare,
+    TOT_items_IT_49_Daycare,
     ~ case_when(
       .x == "Never" ~ 1,
       .x == "Occasionally" ~ 2,
@@ -95,59 +77,13 @@ IT_49_Daycare <-
                 TRUE ~ NA_real_)
   ) %>%
   # Convert scored item vars to integers
-  mutate_at(All_items_IT_49_Daycare,
+  mutate_at(TOT_items_IT_49_Daycare,
             ~ as.integer(.x)) %>% 
-  # Add age_range var.
-  mutate(age_range = case_when(
-    AgeInMonths <= 6 ~ "3.5 to 6 mo",
-    TRUE ~ "7 to 10.5 mo")
-  ) %>% 
-  # select(-AgeGroup) %>% 
-# Compute raw scores. Note use of `rowSums(.[TOT_items_IT_49_Daycare])`: when used 
+  # Compute TOT raw score. Note use of `rowSums(.[TOT_items_IT_49])`: when used 
   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
-  # must wrap the column vector in a column-subsetting expression: `.[]`, where the
+  # must use wrap the column vector in a column-subsetting expression: `.[]`, where the
   # dot is a token for the data in the pipe.
-  mutate(
-    TOT_raw = rowSums(.[TOT_items_IT_49_Daycare]),
-    SOC_raw = rowSums(.[SOC_items_IT_49_Daycare]),
-    VIS_raw = rowSums(.[VIS_items_IT_49_Daycare]),
-    HEA_raw = rowSums(.[HEA_items_IT_49_Daycare]),
-    TOU_raw = rowSums(.[TOU_items_IT_49_Daycare]),
-    TS_raw = rowSums(.[TS_items_IT_49_Daycare]),
-    BOD_raw = rowSums(.[BOD_items_IT_49_Daycare]),
-    BAL_raw = rowSums(.[BAL_items_IT_49_Daycare]),
-    PLA_raw = rowSums(.[PLA_items_IT_49_Daycare])
-  ) %>% 
-  # Create data source ID var
-  mutate(data = 'Daycare') %>% 
-  select(IDNumber, data, everything()) %>% 
-# Exclude outliers on TOT_raw and also outliers to potentially equalize with Home sample
-  filter(TOT_raw < 200) %>% 
-  filter(!(TOT_raw >= 120 & age_range == '7 to 10.5 mo'))
-  
-# Save file to compare distribution of day care with home forms.
-# temp1 <- IT_49_Daycare %>% select(IDNumber, data, AgeInMonths, age_range:PLA_raw)
-# write_csv(temp, here('INPUT-FILES/IT/IT-49-Daycare-scores.csv'))
-
-# Save file with item cols renamed to match home item cols.
-
-#####AFTER RUNNING BELOW, COLUMN NAMES OF TEMP2 ARE IDENTICAL TO IT_49_Home_items
-
-temp2 <- IT_49_Daycare %>%
-  rename_if(
-    str_detect(names(IT_49_Daycare), "q"),
-    ~
-      str_sub(., 3, 5) %>%
-      as.integer() %>%
-      `-`(1) %>%
-      str_pad(4, pad = '0') %>%
-      str_c('q', .)
-  ) %>% 
-  mutate(ParentHighestEducation = NA) %>% 
-  select(IDNumber:Gender, ParentHighestEducation, everything())
-write_csv(temp2, here('INPUT-FILES/IT/DAYCARE-NORMS-INPUT/IT-49-Daycare-colName-matchHome.csv'))
-
-names_daycare <- names(temp2)
+  mutate(TOT_raw = rowSums(.[TOT_items_IT_49_Daycare])) %>% print()
 
 # Create frequency tables for TOT_raw by AgeInMonths
 IT_49_Daycare_TOT_freq_AgeInMonths <- IT_49_Daycare %>% group_by(AgeInMonths) %>% count(TOT_raw) %>% 

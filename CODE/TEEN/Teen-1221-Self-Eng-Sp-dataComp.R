@@ -155,7 +155,22 @@ Teen_1221_Self_Sp <-
                 .x == 1 ~ 4,
                 TRUE ~ NA_real_)
   ) %>%
-  # Convert scored item vars to integers
+  # recode gender and educ
+  mutate(
+    Gender = case_when(
+      Gender == "Masculino" ~ "Male",
+      Gender == "Femenino" ~ "Female",
+      TRUE ~ NA_character_
+    ),
+    ParentHighestEducation = case_when(
+      ParentHighestEducation == "No terminé la escuela secundaria (no obtuve el diploma)" ~ "Did not complete high school (no diploma)",
+      ParentHighestEducation == "Graduado/a de secundaria (incluye diploma de educación general o GED)" ~ "High school graduate (including GED)",
+      ParentHighestEducation == "Alguna educación superior o grado asociado (associate degree)" ~ "Some college or associate degree",
+      ParentHighestEducation == "Licenciatura o grado más alto" ~ "Bachelor's degree or higher",
+      TRUE ~ NA_character_
+    )
+  ) %>% 
+# Convert scored item vars to integers
   mutate_at(All_items_Teen_1221_Self,
             ~ as.integer(.x)) %>% 
   mutate(age_range = case_when(
@@ -187,6 +202,10 @@ Teen_1221_Self_Sp <-
   # from diiferent data sources)
   # filter(TOT_raw < 200)
   filter(TOT_raw < 160)
+# Save trimmed file 
+write_csv(Teen_1221_Self_Sp, here(
+  'INPUT-FILES/TEEN/SP-NORMS-INPUT/Teen-1221-Self-Sp-norms-input.csv'
+))
 
 # Prep file to comp
 Teen_1221_Self_Sp_scores <- Teen_1221_Self_Sp %>% 

@@ -153,6 +153,21 @@ IT_1030_Home_Sp <-
                 .x == 1 ~ 4,
                 TRUE ~ NA_real_)
   ) %>%
+  # recode gender and educ
+  mutate(
+    Gender = case_when(
+      Gender == "Masculino" ~ "Male",
+      Gender == "Femenino" ~ "Female",
+      TRUE ~ NA_character_
+    ),
+    ParentHighestEducation = case_when(
+      ParentHighestEducation == "No terminé la escuela secundaria (no obtuve el diploma)" ~ "Did not complete high school (no diploma)",
+      ParentHighestEducation == "Graduado/a de secundaria (incluye diploma de educación general o GED)" ~ "High school graduate (including GED)",
+      ParentHighestEducation == "Alguna educación superior o grado asociado (associate degree)" ~ "Some college or associate degree",
+      ParentHighestEducation == "Licenciatura o grado más alto" ~ "Bachelor's degree or higher",
+      TRUE ~ NA_character_
+    )
+  ) %>% 
   # Convert scored item vars to integers
   mutate_at(All_items_IT_1030_Home,
             ~ as.integer(.x)) %>% 
@@ -182,8 +197,11 @@ IT_1030_Home_Sp <-
   select(IDNumber, data, everything()) %>% 
   # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
   # from diiferent data sources)
-  # filter(TOT_raw < 200)
-  filter(TOT_raw < 120)
+  filter(TOT_raw < 200)
+# Save trimmed file 
+write_csv(IT_1030_Home_Sp, here(
+  'INPUT-FILES/IT/SP-NORMS-INPUT/IT-1030-Home-Sp-norms-input.csv'
+))
 
 # Prep file to comp
 IT_1030_Home_Sp_scores <- IT_1030_Home_Sp %>% 

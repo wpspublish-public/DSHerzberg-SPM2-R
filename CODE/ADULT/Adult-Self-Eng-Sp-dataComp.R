@@ -164,6 +164,21 @@ Adult_Self_Sp <-
                 .x == 1 ~ 4,
                 TRUE ~ NA_real_)
   ) %>%
+  # recode gender and educ
+  mutate(
+    Gender = case_when(
+      Gender == "Masculino" ~ "Male",
+      Gender == "Femenino" ~ "Female",
+      TRUE ~ NA_character_
+    ),
+    HighestEducation = case_when(
+      HighestEducation == "No terminé la escuela secundaria (no obtuve el diploma)" ~ "Did not complete high school (no diploma)",
+      HighestEducation == "Graduado/a de secundaria (incluye diploma de educación general o GED)" ~ "High school graduate (including GED)",
+      HighestEducation == "Alguna educación superior o grado asociado (associate degree)" ~ "Some college or associate degree",
+      HighestEducation == "Licenciatura o grado más alto" ~ "Bachelor's degree or higher",
+      TRUE ~ NA_character_
+    )
+  ) %>% 
   # Convert scored item vars to integers
   mutate_at(All_items_Adult_Self,
             ~ as.integer(.x)) %>% 
@@ -188,6 +203,10 @@ Adult_Self_Sp <-
   # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
   # from diiferent data sources)
   filter(TOT_raw < 200)
+# Save trimmed file
+write_csv(Adult_Self_Sp, here(
+  'INPUT-FILES/ADULT/SP-NORMS-INPUT/Adult-Self-Sp-norms-input.csv'
+))
 
 # Prep file to comp
 Adult_Self_Sp_scores <- Adult_Self_Sp %>% 

@@ -18,5 +18,13 @@ suppressMessages(suppressWarnings(library(tidyverse)))
 # df_sort <- df %>% arrange(match(var, var_order), match(cat, cat_order))
 
              
+test <- temp %>% 
+  select(
+    -(q0014:q0119)
+  ) %>% 
+  filter(Ethnicity == "NativeHawPacIsl" | Ethnicity == "AmericanIndAlaskanNat")
 
+temp <- read_csv(
+  here('INPUT-FILES/PRESCHOOL/SM-QUAL-COMBO-NORMS-INPUT/Preschool-25-Home-combo-norms-input.csv')
+)
 

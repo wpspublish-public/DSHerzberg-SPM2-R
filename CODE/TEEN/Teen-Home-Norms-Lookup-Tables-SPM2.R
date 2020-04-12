@@ -2,113 +2,113 @@
 # create raw-to-T lookup tables.
 
 suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
-library(magrittr) # PIPE OPERATORS
 suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
+suppressMessages(library(psych)) # DESCRIPTIVE TABLES
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
 
-All_items_Teen_1221_Home <- c("q0015", "q0016", "q0017", "q0018", "q0019", "q0021", "q0022", "q0024", "q0025", "q0026", 
-                              "q0028", "q0029", "q0030", "q0031", "q0033", "q0034", "q0035", "q0036", "q0037", "q0040", 
-                              "q0041", "q0042", "q0043", "q0044", "q0047", "q0048", "q0049", "q0050", "q0052", "q0053", 
-                              "q0055", "q0056", "q0057", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065", 
-                              "q0067", "q0068", "q0069", "q0071", "q0072", "q0074", "q0076", "q0077", "q0078", "q0079", 
-                              "q0080", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0091", "q0092", 
-                              "q0094", "q0095", "q0096", "q0097", "q0098", "q0099", "q0100", "q0102", "q0103", "q0104",
-                              "q0106", "q0107", "q0108", "q0109", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
-
-TOT_items_Teen_1221_Home <- c("q0028", "q0029", "q0030", "q0031", "q0033", "q0034", "q0035", "q0036", "q0037", "q0040", 
-                              "q0041", "q0042", "q0043", "q0044", "q0047", "q0048", "q0049", "q0050", "q0052", "q0053", 
-                              "q0055", "q0056", "q0057", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065", 
-                              "q0067", "q0068", "q0069", "q0071", "q0072", "q0074", "q0076", "q0077", "q0078", "q0079", 
-                              "q0080", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0091", "q0092", 
-                              "q0094", "q0095", "q0096", "q0097", "q0098", "q0099", "q0100", "q0102", "q0103", "q0104")
-
-SOC_items_Teen_1221_Home <- c("q0015", "q0016", "q0017", "q0018", "q0019", "q0021", "q0022", "q0024", "q0025", "q0026")
-
-SOC_rev_items_Teen_1221_Home <- c("q0015", "q0016", "q0017", "q0021", "q0022")
-
-VIS_items_Teen_1221_Home <- c("q0028", "q0029", "q0030", "q0031", "q0033", "q0034", "q0035", "q0036", "q0037", "q0040")
-
-HEA_items_Teen_1221_Home <- c("q0041", "q0042", "q0043", "q0044", "q0047", "q0048", "q0049", "q0050", "q0052", "q0053")
-
-TOU_items_Teen_1221_Home <- c("q0055", "q0056", "q0057", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065")
-
-TS_items_Teen_1221_Home <- c("q0067", "q0068", "q0069", "q0071", "q0072", "q0074", "q0076", "q0077", "q0078", "q0079")
-
-BOD_items_Teen_1221_Home <- c("q0080", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0091", "q0092")
-
-BAL_items_Teen_1221_Home <- c("q0094", "q0095", "q0096", "q0097", "q0098", "q0099", "q0100", "q0102", "q0103", "q0104")
-
-PLA_items_Teen_1221_Home <- c("q0106", "q0107", "q0108", "q0109", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
-
-score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+# All_items_Teen_1221_Home <- c("q0015", "q0016", "q0017", "q0018", "q0019", "q0021", "q0022", "q0024", "q0025", "q0026", 
+#                               "q0028", "q0029", "q0030", "q0031", "q0033", "q0034", "q0035", "q0036", "q0037", "q0040", 
+#                               "q0041", "q0042", "q0043", "q0044", "q0047", "q0048", "q0049", "q0050", "q0052", "q0053", 
+#                               "q0055", "q0056", "q0057", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065", 
+#                               "q0067", "q0068", "q0069", "q0071", "q0072", "q0074", "q0076", "q0077", "q0078", "q0079", 
+#                               "q0080", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0091", "q0092", 
+#                               "q0094", "q0095", "q0096", "q0097", "q0098", "q0099", "q0100", "q0102", "q0103", "q0104",
+#                               "q0106", "q0107", "q0108", "q0109", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
+# 
+# TOT_items_Teen_1221_Home <- c("q0028", "q0029", "q0030", "q0031", "q0033", "q0034", "q0035", "q0036", "q0037", "q0040", 
+#                               "q0041", "q0042", "q0043", "q0044", "q0047", "q0048", "q0049", "q0050", "q0052", "q0053", 
+#                               "q0055", "q0056", "q0057", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065", 
+#                               "q0067", "q0068", "q0069", "q0071", "q0072", "q0074", "q0076", "q0077", "q0078", "q0079", 
+#                               "q0080", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0091", "q0092", 
+#                               "q0094", "q0095", "q0096", "q0097", "q0098", "q0099", "q0100", "q0102", "q0103", "q0104")
+# 
+# SOC_items_Teen_1221_Home <- c("q0015", "q0016", "q0017", "q0018", "q0019", "q0021", "q0022", "q0024", "q0025", "q0026")
+# 
+# SOC_rev_items_Teen_1221_Home <- c("q0015", "q0016", "q0017", "q0021", "q0022")
+# 
+# VIS_items_Teen_1221_Home <- c("q0028", "q0029", "q0030", "q0031", "q0033", "q0034", "q0035", "q0036", "q0037", "q0040")
+# 
+# HEA_items_Teen_1221_Home <- c("q0041", "q0042", "q0043", "q0044", "q0047", "q0048", "q0049", "q0050", "q0052", "q0053")
+# 
+# TOU_items_Teen_1221_Home <- c("q0055", "q0056", "q0057", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065")
+# 
+# TS_items_Teen_1221_Home <- c("q0067", "q0068", "q0069", "q0071", "q0072", "q0074", "q0076", "q0077", "q0078", "q0079")
+# 
+# BOD_items_Teen_1221_Home <- c("q0080", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0091", "q0092")
+# 
+# BAL_items_Teen_1221_Home <- c("q0094", "q0095", "q0096", "q0097", "q0098", "q0099", "q0100", "q0102", "q0103", "q0104")
+# 
+# PLA_items_Teen_1221_Home <- c("q0106", "q0107", "q0108", "q0109", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
+# 
+# score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 
 # READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
 
-Teen_1221_Home <-
-  suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/TEEN/SPM-2 Teen ages 1221 Home Report Questionnaire.csv")
-  ))) %>% select(
-    IDNumber,
-    Age,
-    AgeGroup,
-    Gender,
-    ParentHighestEducation,
-    Ethnicity,
-    Region,
-    All_items_Teen_1221_Home
-  ) %>%
-  # recode items from char to num (mutate_at applies funs to specific columns)
-  mutate_at(
-    All_items_Teen_1221_Home,
-    ~ case_when(
-      .x == "Never" ~ 1,
-      .x == "Occasionally" ~ 2,
-      .x == "Frequently" ~ 3,
-      .x == "Always" ~ 4,
-      TRUE ~ NA_real_
-    )
-  ) %>%
-  # recode reverse-scored items
-  mutate_at(
-    SOC_rev_items_Teen_1221_Home,
-    ~ case_when(.x == 4 ~ 1,
-                .x == 3 ~ 2,
-                .x == 2 ~ 3,
-                .x == 1 ~ 4,
-                TRUE ~ NA_real_)
-  ) %>%
-  # Convert scored item vars to integers
-  mutate_at(All_items_Teen_1221_Home,
-            ~ as.integer(.x)) %>% 
-  # Compute raw scores. Note use of `rowSums(.[TOT_items_Teen_1221_Home])`: when used 
-  # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
-  # must wrap the column vector in a column-subsetting expression: `.[]`, where the
-  # dot is a token for the data in the pipe.
-  mutate(
-    TOT_raw = rowSums(.[TOT_items_Teen_1221_Home]),
-    SOC_raw = rowSums(.[SOC_items_Teen_1221_Home]),
-    VIS_raw = rowSums(.[VIS_items_Teen_1221_Home]),
-    HEA_raw = rowSums(.[HEA_items_Teen_1221_Home]),
-    TOU_raw = rowSums(.[TOU_items_Teen_1221_Home]),
-    TS_raw = rowSums(.[TS_items_Teen_1221_Home]),
-    BOD_raw = rowSums(.[BOD_items_Teen_1221_Home]),
-    BAL_raw = rowSums(.[BAL_items_Teen_1221_Home]),
-    PLA_raw = rowSums(.[PLA_items_Teen_1221_Home])
-  ) %>% 
-  select(
-    -(q0015:q0117)
-  ) %>% 
-  #print()
-  # Exclude outliers on TOT_raw
-  filter(TOT_raw <200) %>% print()
-
-# clean up environment
-rm(list = ls(pattern='.*items_Teen_1221_Home'))
+# Teen_1221_Home <-
+#   suppressMessages(as_tibble(read_csv(
+#     here("INPUT-FILES/TEEN/SPM-2 Teen ages 1221 Home Report Questionnaire.csv")
+#   ))) %>% select(
+#     IDNumber,
+#     Age,
+#     AgeGroup,
+#     Gender,
+#     ParentHighestEducation,
+#     Ethnicity,
+#     Region,
+#     All_items_Teen_1221_Home
+#   ) %>%
+#   # recode items from char to num (mutate_at applies funs to specific columns)
+#   mutate_at(
+#     All_items_Teen_1221_Home,
+#     ~ case_when(
+#       .x == "Never" ~ 1,
+#       .x == "Occasionally" ~ 2,
+#       .x == "Frequently" ~ 3,
+#       .x == "Always" ~ 4,
+#       TRUE ~ NA_real_
+#     )
+#   ) %>%
+#   # recode reverse-scored items
+#   mutate_at(
+#     SOC_rev_items_Teen_1221_Home,
+#     ~ case_when(.x == 4 ~ 1,
+#                 .x == 3 ~ 2,
+#                 .x == 2 ~ 3,
+#                 .x == 1 ~ 4,
+#                 TRUE ~ NA_real_)
+#   ) %>%
+#   # Convert scored item vars to integers
+#   mutate_at(All_items_Teen_1221_Home,
+#             ~ as.integer(.x)) %>% 
+#   # Compute raw scores. Note use of `rowSums(.[TOT_items_Teen_1221_Home])`: when used 
+#   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
+#   # must wrap the column vector in a column-subsetting expression: `.[]`, where the
+#   # dot is a token for the data in the pipe.
+#   mutate(
+#     TOT_raw = rowSums(.[TOT_items_Teen_1221_Home]),
+#     SOC_raw = rowSums(.[SOC_items_Teen_1221_Home]),
+#     VIS_raw = rowSums(.[VIS_items_Teen_1221_Home]),
+#     HEA_raw = rowSums(.[HEA_items_Teen_1221_Home]),
+#     TOU_raw = rowSums(.[TOU_items_Teen_1221_Home]),
+#     TS_raw = rowSums(.[TS_items_Teen_1221_Home]),
+#     BOD_raw = rowSums(.[BOD_items_Teen_1221_Home]),
+#     BAL_raw = rowSums(.[BAL_items_Teen_1221_Home]),
+#     PLA_raw = rowSums(.[PLA_items_Teen_1221_Home])
+#   ) %>% 
+#   select(
+#     -(q0015:q0117)
+#   ) %>% 
+#   #print()
+#   # Exclude outliers on TOT_raw
+#   filter(TOT_raw <200) %>% print()
+# 
+# # clean up environment
+# rm(list = ls(pattern='.*items_Teen_1221_Home'))
 
 
 # EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
@@ -166,7 +166,7 @@ rm(list = ls(pattern='.*items_Teen_1221_Home'))
 # (NOTE: THIS SECTION SHOULD BE TOGGLED OFF AFTER SELECTION OF NORMALIZATION
 # MODEL)
 
-# # create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
+# create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
 # TOT_nz_obj <- bestNormalize(Teen_1221_Home$TOT_raw)
 # 
 # # print transformation
@@ -174,10 +174,19 @@ rm(list = ls(pattern='.*items_Teen_1221_Home'))
 # 
 # # Extract transformation type
 # chosen_transform <- class(TOT_nz_obj$chosen_transform)[1]
-# 
-# # apply the chosen method to create normalized z-scores for each case.
+
+# apply the chosen method to create normalized z-scores for each case.
 # TOT_nz_transform <- eval(as.name(chosen_transform))(Teen_1221_Home$TOT_raw)
 
+
+# READ FINALIZED STAND SAMPLE ---------------------------------------------
+
+Teen_1221_Home <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/ALLDATA-DESAMP-NORMS-INPUT/Teen-1221-Home-allData-desamp.csv")
+  ))) 
+
+score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 # APPLY SELECTED NORMALIZATION MODEL TO CREATE NORMALIZED Z-SCORES --------
 
@@ -280,7 +289,8 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
   select(
     paste0(.y, '_NT')
   )
-)
+) %>% 
+  mutate_if(is.numeric, as.integer)
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
@@ -293,7 +303,9 @@ write_csv(Teen_1221_Home, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 # clean up environment
 rm(list = ls(pattern='.*_nz'))
@@ -350,7 +362,7 @@ TOT_lookup <- Teen_1221_Home %>% group_by(
   ) %>% 
   mutate_at(
     vars(TOT_NT), ~ case_when(
-      raw < 60 ~ NA_real_,
+      raw < 60 ~ NA_integer_,
       TRUE ~ .x
     )
   )
@@ -381,7 +393,7 @@ subscale_lookup <- map(
     ) %>% 
     mutate_at(
       vars(!!as.name(paste0(.x, '_NT'))), ~ case_when(
-        raw > 40 ~ NA_real_,
+        raw > 40 ~ NA_integer_,
         TRUE ~ .x
       )
     )
@@ -403,8 +415,9 @@ write_csv(all_lookup, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
-
+), 
+na = ''
+)
 
 # generate print pub format raw-to-T table
 all_lookup_pub <- all_lookup %>% 
@@ -451,6 +464,82 @@ write_csv(all_lookup_pub, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
+
+# write raw score descriptives for all scales (using psych::describe)
+Teen_1221_Home_raw_desc <-
+  Teen_1221_Home %>% 
+  select(contains('raw')) %>% 
+  describe(fast = T) %>%
+  rownames_to_column() %>% 
+  rename(scale = rowname) %>% 
+  select(scale, n, mean, sd) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2)))
+
+write_csv(Teen_1221_Home_raw_desc, here(
+  paste0(
+    'OUTPUT-FILES/TEEN/DESCRIPTIVES/Teen-1221-Home-raw-desc-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = ''
+)
+
+# write table of demographic counts
+
+var_order <- c("data", "age_range", "Age", "Gender", "ParentHighestEducation", "HighestEducation", 
+               "Ethnicity", "Region")
+
+cat_order <- c(
+  # data
+  NA, "SM", "Qual",
+  # age_range
+  NA, "3.5 to 6 mo", "03.5 to 10 mo", "7 to 10.5 mo", "09.5 to 20 mo",  "11 to 31.5 mo", 
+  "21 to 31.5 mo", "5 to 8 years", "9 to 12 years", "12 to 13 years", "14 to 15 years", 
+  "16 to 17 years", "18 to 21 years", "21.00 to 30.99 years", "31.00 to 40.99 years", 
+  "41.00 to 50.99 years", "51.00 to 64.99 years", "65.00 to 99.99 years",
+  # Age
+  "2", "3", "4", "5",
+  # Gender
+  NA, "Male", "Female",
+  # ParentHighestEducation & HighestEducation
+  NA, "Did not complete high school (no diploma)", "High school graduate (including GED)", 
+  "Some college or associate degree", "Bachelor's degree or higher",
+  # Ethnicity
+  NA, "Hispanic", "Asian", "Black", "White", "AmericanIndAlaskanNat", 
+  "NativeHawPacIsl", "MultiRacial", "Other",
+  # Region
+  NA, "northeast", "midwest", "south", "west")
+
+
+Teen_1221_Home_demo_counts <- Teen_1221_Home %>% 
+  select(age_range, Gender, ParentHighestEducation, Ethnicity, Region) %>% 
+  gather("Variable", "Category") %>% 
+  group_by(Variable, Category) %>%
+  count(Variable, Category) %>%
+  arrange(match(Variable, var_order), match(Category, cat_order)) %>% 
+  ungroup() %>% 
+  mutate(Variable = case_when(
+    # lag(Variable) == "data" & Variable == "data" ~ "",
+    lag(Variable) == "age_range" & Variable == "age_range" ~ "",
+    lag(Variable) == "Gender" & Variable == "Gender" ~ "",
+    lag(Variable) == "ParentHighestEducation" & Variable == "ParentHighestEducation" ~ "",
+    lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
+    lag(Variable) == "Region" & Variable == "Region" ~ "",
+    TRUE ~ Variable
+  ))
+
+write_csv(Teen_1221_Home_demo_counts, here(
+  paste0(
+    'OUTPUT-FILES/TEEN/DESCRIPTIVES/Teen-1221-Home-demo-counts-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = '(missing)'
+)
 
 

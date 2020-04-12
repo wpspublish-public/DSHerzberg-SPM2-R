@@ -1,8 +1,9 @@
 suppressMessages(library(here))
-library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
 library(ggrepel) # ggplot2 EXTENSIONS
 
+# Desampling is applied first to the Home form sample, the excluded cases are
+# then also removed from the other form samples
 
 Teen_1221_Home_Eng <-
   suppressMessages(as_tibble(read_csv(
@@ -12,7 +13,11 @@ Teen_1221_Home_Sp <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/TEEN/SP-NORMS-INPUT/Teen-1221-Home-Sp-norms-input.csv")
   ))) 
-Teen_1221_Home <- bind_rows(Teen_1221_Home_Eng, Teen_1221_Home_Sp) %>% 
+Teen_1221_Home_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/INHOUSE-NORMS-INPUT/Teen-1221-Home-inHouse-norms-input.csv")
+  ))) 
+Teen_1221_Home <- bind_rows(Teen_1221_Home_Eng, Teen_1221_Home_Sp, Teen_1221_Home_inHouse) %>% 
   arrange(IDNumber)
 
 
@@ -35,7 +40,63 @@ Teen_1221_Home_not_Black_HSsomeColl <- Teen_1221_Home %>%
 Teen_1221_Home_desamp <- bind_rows(Teen_1221_Home_Black_HSsomeColl, Teen_1221_Home_not_Black_HSsomeColl) %>% 
   arrange(IDNumber)
 
+
 write_csv(Teen_1221_Home_desamp, here('INPUT-FILES/TEEN/ALLDATA-DESAMP-NORMS-INPUT/Teen-1221-Home-allData-desamp.csv'))
+
+# extract ID numbers of cases excluded in Home desamp process
+
+Teen_1221_Home_desamp_excludedID <- Teen_1221_Home %>% anti_join(
+  Teen_1221_Home_desamp, 
+  by = 'IDNumber'
+  ) %>% 
+  select(IDNumber) %>% 
+  arrange(IDNumber)
+
+# Apply Home desampling to School data set
+
+Teen_1221_School_Eng <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/SM-ONLY-NORMS-INPUT/Teen-1221-School-SM-only-norms-input.csv")
+  ))) 
+Teen_1221_School_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/INHOUSE-NORMS-INPUT/Teen-1221-School-inHouse-norms-input.csv")
+  ))) 
+Teen_1221_School <- bind_rows(Teen_1221_School_Eng, Teen_1221_School_inHouse) %>% 
+  arrange(IDNumber)
+
+Teen_1221_School_desamp <- Teen_1221_School %>% anti_join(
+  Teen_1221_Home_desamp_excludedID, 
+  by = 'IDNumber'
+) %>% 
+  arrange(IDNumber)
+
+write_csv(Teen_1221_School_desamp, here('INPUT-FILES/TEEN/ALLDATA-DESAMP-NORMS-INPUT/Teen-1221-School-allData-desamp.csv'))
+
+# Apply Home desampling to Self data set
+
+Teen_1221_Self_Eng <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/SM-QUAL-COMBO-NORMS-INPUT/Teen-1221-Self-combo-norms-input.csv")
+  ))) 
+Teen_1221_Self_Sp <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/SP-NORMS-INPUT/Teen-1221-Self-Sp-norms-input.csv")
+  ))) 
+Teen_1221_Self_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/INHOUSE-NORMS-INPUT/Teen-1221-Self-inHouse-norms-input.csv")
+  ))) 
+Teen_1221_Self <- bind_rows(Teen_1221_Self_Eng, Teen_1221_Self_Sp, Teen_1221_Self_inHouse) %>% 
+  arrange(IDNumber)
+
+Teen_1221_Self_desamp <- Teen_1221_Self %>% anti_join(
+  Teen_1221_Home_desamp_excludedID, 
+  by = 'IDNumber'
+) %>% 
+  arrange(IDNumber)
+
+write_csv(Teen_1221_Self_desamp, here('INPUT-FILES/TEEN/ALLDATA-DESAMP-NORMS-INPUT/Teen-1221-Self-allData-desamp.csv'))
 
 # EXAMINE DATA---------------------------------
 

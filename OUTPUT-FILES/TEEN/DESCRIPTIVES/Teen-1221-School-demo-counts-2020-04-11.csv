@@ -1,0 +1,20 @@
+Variable,Category,n
+age_range,12 to 13 years,192
+,14 to 15 years,184
+,16 to 17 years,189
+,18 to 21 years,56
+Gender,Male,321
+,Female,300
+Ethnicity,Hispanic,147
+,Asian,11
+,Black,126
+,White,293
+,AmericanIndAlaskanNat,6
+,NativeHawPacIsl,3
+,MultiRacial,26
+,Other,9
+Region,(missing),1
+,northeast,69
+,midwest,175
+,south,221
+,west,155

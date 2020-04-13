@@ -3,7 +3,6 @@ library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
 library(ggrepel) # ggplot2 EXTENSIONS
 
-
 Child_512_Home_Eng <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/CHILD/SM-QUAL-COMBO-NORMS-INPUT/Child-512-Home-combo-norms-input.csv")
@@ -12,9 +11,15 @@ Child_512_Home_Sp <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/CHILD/SP-NORMS-INPUT/Child-512-Home-Sp-norms-input.csv")
   ))) 
-Child_512_Home <- bind_rows(Child_512_Home_Eng, Child_512_Home_Sp) %>% 
+Child_1221_Home_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/CHILD/INHOUSE-NORMS-INPUT/Child-1221-Home-inHouse-norms-input.csv")
+  ))) 
+Child_512_Home <- bind_rows(Child_512_Home_Eng, Child_512_Home_Sp, Child_1221_Home_inHouse) %>% 
   arrange(IDNumber)
 
+
+# STAGE 1 DESAMPLE --------------------------------------------------------
 
 # Subsample: 100 Blacks with HS deg or some college
 set.seed(123)
@@ -32,8 +37,85 @@ Child_512_Home_not_Black_HSsomeColl <- Child_512_Home %>%
   
 # combine subsamples to create desampled data set
 
-Child_512_Home_desamp <- bind_rows(Child_512_Home_Black_HSsomeColl, Child_512_Home_not_Black_HSsomeColl) %>% 
+Child_512_Home_desamp1 <- bind_rows(Child_512_Home_Black_HSsomeColl, Child_512_Home_not_Black_HSsomeColl) %>% 
   arrange(IDNumber)
+
+
+# STAGE 2 DESAMPLE --------------------------------------------------------
+
+# Subsample: 15 Blacks with BA+
+set.seed(123)
+Child_512_Home_Black_BAplus <- Child_512_Home_desamp1 %>% 
+  filter(Ethnicity == "Black" & 
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(15)
+
+# Subsample: 15 Blacks with Some College
+set.seed(123)
+Child_512_Home_Black_SomeColl <- Child_512_Home_desamp1 %>% 
+  filter(Ethnicity == "Black" & 
+           ParentHighestEducation == "Some college or associate degree") %>% 
+  sample_n(15)
+
+# Subsample: 17 Hisp with BA+
+set.seed(123)
+Child_512_Home_Hisp_BAplus <- Child_512_Home_desamp1 %>% 
+  filter(Ethnicity == "Hispanic" & 
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(17)
+
+# Subsample: 18 Hisp with Some College
+set.seed(123)
+Child_512_Home_Hisp_SomeColl <- Child_512_Home_desamp1 %>% 
+  filter(Ethnicity == "Hispanic" & 
+           ParentHighestEducation == "Some college or associate degree") %>% 
+  sample_n(18)
+
+# Subsample: 10 MultiRacial with BA+
+set.seed(123)
+Child_512_Home_Multi_BAplus <- Child_512_Home_desamp1 %>% 
+  filter(Ethnicity == "MultiRacial" & 
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(10)
+
+# Subsample: 10 MultiRacial with Some College
+set.seed(123)
+Child_512_Home_Multi_SomeColl <- Child_512_Home_desamp1 %>% 
+  filter(Ethnicity == "MultiRacial" & 
+           ParentHighestEducation == "Some college or associate degree") %>% 
+  sample_n(10)
+
+# Subsample: 58 White with BA+
+set.seed(123)
+Child_512_Home_White_BAplus <- Child_512_Home_desamp1 %>% 
+  filter(Ethnicity == "White" & 
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(58)
+
+# Subsample: 57 White with Some College
+set.seed(123)
+Child_512_Home_White_SomeColl <- Child_512_Home_desamp1 %>% 
+  filter(Ethnicity == "White" & 
+           ParentHighestEducation == "Some college or associate degree") %>% 
+  sample_n(57)
+
+# Combine 8 subsamples
+
+Child_512_Home_stage2 <- bind_rows(
+  Child_512_Home_Black_BAplus,
+  Child_512_Home_Black_SomeColl,
+  Child_512_Home_Hisp_BAplus,
+  Child_512_Home_Hisp_SomeColl,
+  Child_512_Home_Multi_BAplus,
+  Child_512_Home_Multi_SomeColl,
+  Child_512_Home_White_BAplus,
+  Child_512_Home_White_SomeColl
+) %>% 
+  arrange(IDNumber)
+
+Child_512_Home_desamp <- Child_512_Home_desamp1 %>% anti_join(Child_512_Home_stage2, by = 'IDNumber')
+
+# WRITE FINAL DESAMPLE FILE -----------------------------------------------
 
 write_csv(Child_512_Home_desamp, here('INPUT-FILES/CHILD/ALLDATA-DESAMP-NORMS-INPUT/CHILD-512-Home-allData-desamp.csv'))
 
@@ -59,7 +141,7 @@ Child_512_Home_desamp_TOT_desc_age <-
          # group = c(1:2)
   )
 
-write_csv(Child_512_Home_desamp_TOT_desc_age, here('OUTPUT-FILES/CHILD/DESCRIPTIVES/CHILD-512-Home-desamp-TOT-desc-age.csv'))
+write_csv(Child_512_Home_desamp_TOT_desc_age, here('OUTPUT-FILES/CHILD/DESCRIPTIVES/Child-512-Home-desamp-TOT-desc-age.csv'))
 
 # # Generate single table comparing descriptives from Eng and Sp sources.
 # Child_512_Home_desamp_TOT_desc_Eng <- Child_512_Home_desamp_TOT_desc %>% 

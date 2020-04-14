@@ -101,11 +101,8 @@ Child_512_Home_inHouse <-
     BAL_raw = rowSums(.[BAL_items_Child_512_Home]),
     PLA_raw = rowSums(.[PLA_items_Child_512_Home])
   ) %>% 
-  # Create data var to differentiate Survey monkey from Qualtrics case
-  mutate(data = case_when(
-    IDNumber >= 700000 ~ 'Qual',
-    TRUE ~ 'SM'
-  )) %>% 
+  # Create data var 
+  mutate(data = 'In-house') %>% 
   select(IDNumber, data, everything()) %>% 
   # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
   # from different data sources)

@@ -3,6 +3,8 @@ library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
 library(ggrepel) # ggplot2 EXTENSIONS
 
+# Desampling is applied first to the Home form sample, the excluded cases are
+# then also removed from the other form samples
 
 IT_49_Home_Eng <-
   suppressMessages(as_tibble(read_csv(
@@ -29,8 +31,22 @@ IT_1030_Home_Sp <-
   select(-(contains("q0")))
 IT_430_Home_Sp <- bind_rows(IT_49_Home_Sp, IT_1030_Home_Sp)
 
-IT_430_Home <- bind_rows(IT_430_Home_Eng, IT_430_Home_Sp) %>% 
+IT_49_Home_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/INHOUSE-NORMS-INPUT/IT-49-Home-inHouse-norms-input.csv")
+  ))) %>% 
+  select(-(contains("q0")))
+IT_1030_Home_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/INHOUSE-NORMS-INPUT/IT-1030-Home-inHouse-norms-input.csv")
+  ))) %>% 
+  select(-(contains("q0")))
+IT_430_Home_inHouse <- bind_rows(IT_49_Home_inHouse, IT_1030_Home_inHouse)
+
+IT_430_Home <- bind_rows(IT_430_Home_Eng, IT_430_Home_Sp, IT_430_Home_inHouse) %>% 
   arrange(IDNumber)
+
+# STAGE 1 DESAMPLE --------------------------------------------------------
 
 # Subsample: 212 Whites with four year college
 set.seed(123)
@@ -46,9 +62,47 @@ IT_430_Home_not_White_BA <- IT_430_Home %>%
   
 # combine subsamples to create desampled data set
 
-IT_430_Home_desamp <- bind_rows(IT_430_Home_White_BA, IT_430_Home_not_White_BA) %>% 
+IT_430_Home_desamp1 <- bind_rows(IT_430_Home_White_BA, IT_430_Home_not_White_BA) %>% 
   arrange(IDNumber)
 
+# STAGE 2 DESAMPLE --------------------------------------------------------
+
+# Subsample: 11 Hisp South with BA+
+set.seed(123)
+IT_430_Home_Hisp_South_BAplus <- IT_430_Home_desamp1 %>% 
+  filter(Ethnicity == "Hispanic" & 
+           Region == "south" &
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(11)
+
+# Subsample: 14 MultiRacial South with BA+
+set.seed(123)
+IT_430_Home_Multi_South_BAplus <- IT_430_Home_desamp1 %>% 
+  filter(Ethnicity == "MultiRacial" & 
+           Region == "south" &
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(14)
+
+# Subsample: 75 White South with BA+
+set.seed(123)
+IT_430_Home_White_South_BAplus <- IT_430_Home_desamp1 %>% 
+  filter(Ethnicity == "White" & 
+           Region == "south" &
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(75)
+
+# Combine 3 subsamples
+
+IT_430_Home_stage2 <- bind_rows(
+  IT_430_Home_Hisp_South_BAplus,
+  IT_430_Home_Multi_South_BAplus,
+  IT_430_Home_White_South_BAplus
+) %>% 
+  arrange(IDNumber)
+
+IT_430_Home_desamp <- IT_430_Home_desamp1 %>% anti_join(IT_430_Home_stage2, by = 'IDNumber')
+
+# WRITE FINAL DESAMPLE FILE -----------------------------------------------
 write_csv(IT_430_Home_desamp, here('INPUT-FILES/IT/ALLDATA-DESAMP-NORMS-INPUT/IT-430-Home-allData-desamp.csv'))
 
 # EXAMINE DATA---------------------------------

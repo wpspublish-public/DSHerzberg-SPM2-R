@@ -3,6 +3,9 @@ library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
 library(ggrepel) # ggplot2 EXTENSIONS
 
+# Desampling is applied first to the Home form sample, the excluded cases are
+# then also removed from the other form samples
+
 Child_512_Home_Eng <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/CHILD/SM-QUAL-COMBO-NORMS-INPUT/Child-512-Home-combo-norms-input.csv")

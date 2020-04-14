@@ -3,6 +3,8 @@ library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
 library(ggrepel) # ggplot2 EXTENSIONS
 
+# Desampling is applied first to the Home form sample, the excluded cases are
+# then also removed from the other form samples
 
 Preschool_25_Home_Eng <-
   suppressMessages(as_tibble(read_csv(
@@ -12,9 +14,14 @@ Preschool_25_Home_Sp <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/PRESCHOOL/SP-NORMS-INPUT/Preschool-25-Home-Sp-norms-input.csv")
   ))) 
-Preschool_25_Home <- bind_rows(Preschool_25_Home_Eng, Preschool_25_Home_Sp) %>% 
+Preschool_25_Home_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/PRESCHOOL/INHOUSE-NORMS-INPUT/Preschool-25-Home-inHouse-norms-input.csv")
+  ))) 
+Preschool_25_Home <- bind_rows(Preschool_25_Home_Eng, Preschool_25_Home_Sp, Preschool_25_Home_inHouse) %>% 
   arrange(IDNumber)
 
+# STAGE 1 DESAMPLE --------------------------------------------------------
 
 # Subsample: 189 Whites with four year college
 set.seed(123)
@@ -30,8 +37,52 @@ Preschool_25_Home_not_White_BA <- Preschool_25_Home %>%
   
 # combine subsamples to create desampled data set
 
-Preschool_25_Home_desamp <- bind_rows(Preschool_25_Home_White_BA, Preschool_25_Home_not_White_BA) %>% 
+Preschool_25_Home_desamp1 <- bind_rows(Preschool_25_Home_White_BA, Preschool_25_Home_not_White_BA) %>% 
   arrange(IDNumber)
+
+# STAGE 2 DESAMPLE --------------------------------------------------------
+
+# Subsample: 9 Blacks with BA+
+set.seed(123)
+Preschool_25_Home_Black_BAplus <- Preschool_25_Home_desamp1 %>% 
+  filter(Ethnicity == "Black" & 
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(9)
+
+# Subsample: 10 Hisp with BA+
+set.seed(123)
+Preschool_25_Home_Hisp_BAplus <- Preschool_25_Home_desamp1 %>% 
+  filter(Ethnicity == "Hispanic" & 
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(10)
+
+# Subsample: 20 MultiRacial with BA+
+set.seed(123)
+Preschool_25_Home_Multi_BAplus <- Preschool_25_Home_desamp1 %>% 
+  filter(Ethnicity == "MultiRacial" & 
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(20)
+
+# Subsample: 41 White with BA+
+set.seed(123)
+Preschool_25_Home_White_BAplus <- Preschool_25_Home_desamp1 %>% 
+  filter(Ethnicity == "White" & 
+           ParentHighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(41)
+
+# Combine 4 subsamples
+
+Preschool_25_Home_stage2 <- bind_rows(
+  Preschool_25_Home_Black_BAplus,
+  Preschool_25_Home_Hisp_BAplus,
+  Preschool_25_Home_Multi_BAplus,
+  Preschool_25_Home_White_BAplus
+) %>% 
+  arrange(IDNumber)
+
+Preschool_25_Home_desamp <- Preschool_25_Home_desamp1 %>% anti_join(Preschool_25_Home_stage2, by = 'IDNumber')
+
+# WRITE FINAL DESAMPLE FILE -----------------------------------------------
 
 write_csv(Preschool_25_Home_desamp, here('INPUT-FILES/PRESCHOOL/ALLDATA-DESAMP-NORMS-INPUT/Preschool-25-Home-allData-desamp.csv'))
 

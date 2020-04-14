@@ -3,6 +3,8 @@ library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
 library(ggrepel) # ggplot2 EXTENSIONS
 
+# Desampling is applied first to the Self form sample, the excluded cases are
+# then also removed from the Other form sample
 
 Adult_Self_Eng <-
   suppressMessages(as_tibble(read_csv(
@@ -12,9 +14,14 @@ Adult_Self_Sp <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/ADULT/SP-NORMS-INPUT/Adult-Self-Sp-norms-input.csv")
   ))) 
-Adult_Self <- bind_rows(Adult_Self_Eng, Adult_Self_Sp) %>% 
+Adult_Self_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/ADULT/INHOUSE-NORMS-INPUT/Adult-Self-inHouse-norms-input.csv")
+  ))) 
+Adult_Self <- bind_rows(Adult_Self_Eng, Adult_Self_Sp, Adult_Self_inHouse) %>% 
   arrange(IDNumber)
 
+# STAGE 1 DESAMPLE --------------------------------------------------------
 
 # Subsample: 100 females with 4-yr college
 set.seed(123)
@@ -28,8 +35,53 @@ Adult_Self_not_F_BA <- Adult_Self %>%
 
 # combine subsamples to create desampled data set
 
-Adult_Self_desamp <- bind_rows(Adult_Self_F_BA, Adult_Self_not_F_BA) %>% 
+Adult_Self_desamp1 <- bind_rows(Adult_Self_F_BA, Adult_Self_not_F_BA) %>% 
   arrange(IDNumber)
+
+# STAGE 2 DESAMPLE --------------------------------------------------------
+
+# Subsample: 14 Blacks with BA+
+set.seed(123)
+Adult_Self_Black_BAplus <- Adult_Self_desamp1 %>% 
+  filter(Ethnicity == "Black" & 
+           HighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(14)
+
+# Subsample: 30 Hisp with BA+
+set.seed(123)
+Adult_Self_Hisp_BAplus <- Adult_Self_desamp1 %>% 
+  filter(Ethnicity == "Hispanic" & 
+           HighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(30)
+
+# Subsample: 8 MultiRacial with BA+
+set.seed(123)
+Adult_Self_Multi_BAplus <- Adult_Self_desamp1 %>% 
+  filter(Ethnicity == "MultiRacial" & 
+           HighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(8)
+
+# Subsample: 6 Asian with BA+
+set.seed(123)
+Adult_Self_Asian_BAplus <- Adult_Self_desamp1 %>% 
+  filter(Ethnicity == "Asian" & 
+           HighestEducation == "Bachelor's degree or higher") %>% 
+  sample_n(6)
+
+# Combine 4 subsamples
+
+Adult_Self_stage2 <- bind_rows(
+  Adult_Self_Black_BAplus,
+  Adult_Self_Hisp_BAplus,
+  Adult_Self_Multi_BAplus,
+  Adult_Self_Asian_BAplus
+) %>% 
+  arrange(IDNumber)
+
+Adult_Self_desamp <- Adult_Self_desamp1 %>% anti_join(Adult_Self_stage2, by = 'IDNumber')
+
+# WRITE FINAL DESAMPLE FILE -----------------------------------------------
+
 
 write_csv(Adult_Self_desamp, here('INPUT-FILES/ADULT/ALLDATA-DESAMP-NORMS-INPUT/Adult-Self-allData-desamp.csv'))
 

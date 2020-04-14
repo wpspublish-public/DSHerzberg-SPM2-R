@@ -1,4 +1,5 @@
 IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_range,TOT_raw,SOC_raw,VIS_raw,HEA_raw,TOU_raw,TS_raw,BOD_raw,BAL_raw,PLA_raw
+100002,In-house,27,Female,Bachelor's degree or higher,MultiRacial,west,21 to 31.5 mo,71,10,12,13,11,10,12,13,10
 105001,SM,26,Female,Bachelor's degree or higher,White,midwest,21 to 31.5 mo,74,11,13,14,12,11,13,11,10
 105004,SM,25,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,90,15,13,16,18,14,15,14,10
 105005,SM,15,Female,Bachelor's degree or higher,MultiRacial,midwest,09.5 to 20 mo,89,10,17,18,16,12,12,14,10
@@ -25,7 +26,6 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 105072,SM,21,Female,Bachelor's degree or higher,White,midwest,21 to 31.5 mo,81,15,17,17,10,13,11,13,14
 105074,SM,16,Male,Bachelor's degree or higher,White,northeast,09.5 to 20 mo,84,16,16,13,12,13,17,13,11
 105075,SM,24,Male,Bachelor's degree or higher,White,midwest,21 to 31.5 mo,86,14,15,14,18,12,16,11,13
-105076,SM,23,Male,Bachelor's degree or higher,MultiRacial,south,21 to 31.5 mo,105,16,21,19,19,17,17,12,10
 105077,SM,5,Male,Bachelor's degree or higher,White,midwest,03.5 to 6 mo,81,19,19,15,12,10,13,12,19
 105078,SM,4,Female,High school graduate (including GED),Black,midwest,03.5 to 6 mo,87,24,20,15,12,11,15,14,27
 105079,SM,5,Female,Bachelor's degree or higher,White,midwest,03.5 to 6 mo,83,12,20,11,13,10,15,14,20
@@ -36,7 +36,6 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 105086,SM,8,Female,Bachelor's degree or higher,White,midwest,07 to 10.5 mo,84,12,22,13,12,12,11,14,14
 105089,SM,11,Female,Some college or associate degree,White,midwest,09.5 to 20 mo,101,15,21,18,13,12,19,18,31
 105090,SM,11,Female,Bachelor's degree or higher,MultiRacial,midwest,09.5 to 20 mo,99,19,15,19,18,13,15,19,19
-105092,SM,24,Male,Bachelor's degree or higher,MultiRacial,south,21 to 31.5 mo,73,14,12,14,11,11,14,11,10
 105094,SM,20,Female,Bachelor's degree or higher,White,midwest,09.5 to 20 mo,74,13,13,13,13,14,11,10,11
 105099,SM,22,Female,Bachelor's degree or higher,White,midwest,21 to 31.5 mo,83,17,13,16,13,13,15,13,12
 105100,SM,10,Female,Bachelor's degree or higher,Black,midwest,09.5 to 20 mo,74,18,12,11,11,10,15,15,15
@@ -54,27 +53,17 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 106006,SM,21,Female,Bachelor's degree or higher,Hispanic,midwest,21 to 31.5 mo,77,12,13,13,13,12,12,14,17
 106013,SM,29,Male,Bachelor's degree or higher,White,midwest,21 to 31.5 mo,71,15,11,16,11,11,12,10,10
 106015,SM,8,Female,Bachelor's degree or higher,White,midwest,07 to 10.5 mo,76,17,14,12,13,10,14,13,14
-118008,SM,12,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,76,11,12,11,14,10,16,13,10
 118010,SM,17,Male,Some college or associate degree,White,south,09.5 to 20 mo,82,11,12,13,14,13,16,14,13
-118020,SM,15,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,91,20,15,13,16,13,17,17,17
 118021,SM,6,Male,Some college or associate degree,Hispanic,south,03.5 to 6 mo,62,12,10,10,10,11,11,10,17
 118022,SM,29,Male,High school graduate (including GED),Hispanic,south,21 to 31.5 mo,61,13,10,10,10,10,10,11,10
-118023,SM,30,Female,Bachelor's degree or higher,MultiRacial,south,21 to 31.5 mo,104,19,17,19,16,15,18,19,13
-118024,SM,7,Female,Bachelor's degree or higher,MultiRacial,south,07 to 10.5 mo,94,18,17,16,14,14,16,17,27
 118025,SM,18,Male,Bachelor's degree or higher,AmericanIndAlaskanNat,south,09.5 to 20 mo,92,14,13,18,16,10,18,17,12
 118028,SM,27,Female,Some college or associate degree,White,south,21 to 31.5 mo,76,10,13,13,14,15,10,11,11
-118035,SM,27,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,107,18,17,20,21,14,18,17,14
-118036,SM,5,Male,Bachelor's degree or higher,White,south,03.5 to 6 mo,111,14,27,19,20,13,14,18,23
 118037,SM,26,Female,Bachelor's degree or higher,White,midwest,21 to 31.5 mo,105,16,15,15,23,17,18,17,13
-118038,SM,26,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,93,11,15,15,17,16,16,14,11
-118039,SM,8,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,87,15,18,13,19,11,15,11,10
 118041,SM,7,Male,Bachelor's degree or higher,White,west,07 to 10.5 mo,86,16,19,16,13,12,16,10,12
 118042,SM,19,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,86,15,14,14,14,17,15,12,13
 118043,SM,26,Male,Bachelor's degree or higher,White,northeast,21 to 31.5 mo,70,13,12,10,10,12,16,10,10
 118044,SM,25,Male,High school graduate (including GED),White,northeast,21 to 31.5 mo,118,17,18,14,23,13,27,23,10
 118046,SM,16,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,94,17,16,15,16,13,18,16,17
-118049,SM,17,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,71,12,11,12,12,11,14,11,10
-118050,SM,5,Female,Bachelor's degree or higher,White,south,03.5 to 6 mo,99,13,24,15,15,11,18,16,20
 118052,SM,25,Female,Some college or associate degree,White,south,21 to 31.5 mo,72,10,10,15,11,10,14,12,10
 118053,SM,7,Female,Some college or associate degree,White,south,07 to 10.5 mo,84,10,19,12,11,10,17,15,14
 118055,SM,19,Male,Some college or associate degree,White,south,09.5 to 20 mo,86,15,13,15,17,15,13,13,12
@@ -83,19 +72,15 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 118071,SM,15,Female,Bachelor's degree or higher,White,northeast,09.5 to 20 mo,89,14,15,13,16,16,13,16,10
 118073,SM,8,Female,Some college or associate degree,White,south,07 to 10.5 mo,92,14,19,16,16,11,17,13,20
 118074,SM,29,Female,Some college or associate degree,White,south,21 to 31.5 mo,100,14,18,20,17,16,14,15,10
-118075,SM,11,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,99,17,18,16,16,14,19,16,23
 118079,SM,11,Male,Some college or associate degree,White,midwest,09.5 to 20 mo,79,20,18,12,13,10,13,13,14
 118080,SM,8,Male,Bachelor's degree or higher,Black,south,07 to 10.5 mo,87,18,18,11,18,10,14,16,20
 118081,SM,24,Female,Bachelor's degree or higher,Black,south,21 to 31.5 mo,77,21,15,12,14,11,13,12,10
 118082,SM,11,Male,Some college or associate degree,White,midwest,09.5 to 20 mo,76,19,17,12,12,10,14,11,15
 119001,SM,20,Female,Did not complete high school (no diploma),Black,south,09.5 to 20 mo,83,12,19,14,12,11,13,14,13
 119002,SM,10,Male,Bachelor's degree or higher,Black,south,09.5 to 20 mo,75,19,17,13,10,12,13,10,16
-119004,SM,29,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,74,13,11,14,12,13,14,10,13
 119006,SM,14,Female,High school graduate (including GED),Black,south,09.5 to 20 mo,77,16,19,15,13,10,10,10,10
 119026,SM,10,Male,Some college or associate degree,Black,south,09.5 to 20 mo,103,23,22,18,14,10,18,21,35
 119043,SM,9,Female,High school graduate (including GED),White,south,07 to 10.5 mo,70,15,10,12,12,10,16,10,22
-119045,SM,8,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,72,11,18,12,11,10,11,10,14
-119048,SM,29,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,61,13,10,10,10,10,10,11,13
 119055,SM,4,Female,Bachelor's degree or higher,Black,south,03.5 to 6 mo,85,18,22,15,14,10,10,14,10
 119056,SM,4,Female,Some college or associate degree,White,south,03.5 to 6 mo,84,18,19,13,12,11,13,16,32
 119057,SM,9,Female,Some college or associate degree,White,south,07 to 10.5 mo,106,11,22,12,18,16,20,18,18
@@ -105,8 +90,6 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 119085,SM,11,Male,Some college or associate degree,Black,south,09.5 to 20 mo,109,25,21,18,20,11,20,19,22
 119086,SM,5,Female,Some college or associate degree,Other,south,03.5 to 6 mo,79,10,20,10,13,10,15,11,10
 119087,SM,18,Female,Bachelor's degree or higher,Hispanic,south,09.5 to 20 mo,101,22,18,17,16,17,18,15,16
-119088,SM,6,Male,Bachelor's degree or higher,White,south,03.5 to 6 mo,80,12,20,12,13,10,14,11,16
-119089,SM,5,Female,Bachelor's degree or higher,Hispanic,south,03.5 to 6 mo,62,18,12,10,10,10,10,10,10
 119090,SM,8,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,77,13,13,10,13,15,15,11,17
 119091,SM,4,Male,Some college or associate degree,Black,south,03.5 to 6 mo,73,14,16,12,10,11,12,12,10
 119107,SM,12,Male,High school graduate (including GED),White,south,09.5 to 20 mo,93,15,12,16,17,15,16,17,11
@@ -127,23 +110,16 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 126015,SM,7,Female,Bachelor's degree or higher,White,west,07 to 10.5 mo,82,10,23,14,12,10,12,11,21
 126018,SM,10,Female,Bachelor's degree or higher,NativeHawPacIsl,west,09.5 to 20 mo,108,24,14,20,14,17,18,25,14
 126020,SM,26,Male,Bachelor's degree or higher,White,west,21 to 31.5 mo,79,12,15,16,13,11,12,12,10
-126034,SM,8,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,88,19,20,12,15,12,18,11,18
-126043,SM,9,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,85,20,18,13,14,12,13,15,12
 126051,SM,21,Female,Bachelor's degree or higher,Hispanic,west,21 to 31.5 mo,83,15,14,17,15,13,14,10,10
 126061,SM,26,Male,Some college or associate degree,White,south,21 to 31.5 mo,69,11,12,10,12,13,11,11,10
 126062,SM,26,Male,Some college or associate degree,White,south,21 to 31.5 mo,70,11,14,11,11,12,11,11,11
-126065,SM,16,Male,Bachelor's degree or higher,MultiRacial,south,09.5 to 20 mo,92,14,18,14,14,14,16,16,16
 126066,SM,5,Male,Bachelor's degree or higher,White,west,03.5 to 6 mo,65,17,11,10,10,10,13,11,22
-126078,SM,28,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,98,11,17,23,14,11,18,15,17
-126079,SM,7,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,101,10,20,20,16,12,20,13,27
 126082,SM,7,Male,Bachelor's degree or higher,White,west,07 to 10.5 mo,85,18,21,13,12,10,14,15,23
 126083,SM,29,Male,Bachelor's degree or higher,White,west,21 to 31.5 mo,78,12,12,13,17,11,14,11,10
 126084,SM,23,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,79,15,14,16,14,11,12,12,13
 126107,SM,17,Male,Bachelor's degree or higher,Hispanic,west,09.5 to 20 mo,70,17,13,11,11,12,13,10,13
 126111,SM,24,Female,Bachelor's degree or higher,White,midwest,21 to 31.5 mo,69,10,11,12,11,10,15,10,10
-126130,SM,7,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,90,17,14,17,14,11,14,20,24
 126136,SM,20,Male,Bachelor's degree or higher,MultiRacial,west,09.5 to 20 mo,79,12,11,15,12,12,16,13,12
-126139,SM,5,Female,Bachelor's degree or higher,White,south,03.5 to 6 mo,89,17,22,14,15,11,13,14,25
 126152,SM,16,Female,Bachelor's degree or higher,Hispanic,west,09.5 to 20 mo,93,14,16,14,14,18,17,14,19
 126160,SM,15,Female,Bachelor's degree or higher,White,midwest,09.5 to 20 mo,89,14,21,13,14,16,13,12,11
 126177,SM,10,Female,Bachelor's degree or higher,White,midwest,09.5 to 20 mo,99,21,21,16,15,10,20,17,21
@@ -154,7 +130,6 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 126209,SM,26,Male,Some college or associate degree,Hispanic,west,21 to 31.5 mo,92,17,13,19,16,16,17,11,10
 126229,SM,25,Female,Bachelor's degree or higher,White,west,21 to 31.5 mo,88,12,16,19,16,12,12,13,11
 126230,SM,5,Male,Bachelor's degree or higher,White,west,03.5 to 6 mo,101,16,20,19,16,15,16,15,27
-126281,SM,11,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,80,14,17,13,13,13,12,12,14
 126302,SM,28,Male,Bachelor's degree or higher,White,midwest,21 to 31.5 mo,95,20,15,20,17,13,15,15,11
 126303,SM,5,Female,Bachelor's degree or higher,White,midwest,03.5 to 6 mo,94,20,20,16,17,11,13,17,21
 126308,SM,9,Female,Bachelor's degree or higher,White,midwest,07 to 10.5 mo,78,13,16,13,13,10,14,12,16
@@ -197,7 +172,6 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 133010,SM,9,Male,Bachelor's degree or higher,MultiRacial,west,07 to 10.5 mo,72,15,14,12,12,11,13,10,15
 133011,SM,10,Female,Bachelor's degree or higher,White,west,09.5 to 20 mo,109,23,16,17,18,22,18,18,26
 133079,SM,30,Female,Some college or associate degree,MultiRacial,west,21 to 31.5 mo,110,18,15,17,19,23,20,16,13
-134001,SM,20,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,74,16,12,14,10,11,14,13,10
 134002,SM,10,Female,Bachelor's degree or higher,White,west,09.5 to 20 mo,84,19,14,15,11,11,19,14,16
 134003,SM,17,Female,Bachelor's degree or higher,Black,south,09.5 to 20 mo,113,16,18,22,19,19,20,15,19
 134007,SM,6,Female,Some college or associate degree,Other,west,03.5 to 6 mo,100,16,28,14,14,10,17,17,24
@@ -227,50 +201,27 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 138005,SM,12,Female,Some college or associate degree,White,west,09.5 to 20 mo,103,17,17,16,17,18,18,17,16
 138006,SM,13,Female,Bachelor's degree or higher,MultiRacial,west,09.5 to 20 mo,83,15,12,14,13,15,16,13,14
 138007,SM,8,Female,Bachelor's degree or higher,Hispanic,west,07 to 10.5 mo,90,12,20,15,16,13,13,13,18
-141001,SM,11,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,84,16,13,14,16,13,15,13,11
 141002,SM,13,Female,Some college or associate degree,White,south,09.5 to 20 mo,81,19,14,14,12,13,14,14,14
-141003,SM,26,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,90,15,20,18,13,12,15,12,13
-141004,SM,18,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,84,11,14,15,14,14,16,11,10
-141005,SM,13,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,102,14,19,18,19,13,18,15,12
-141006,SM,23,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,88,19,17,15,14,12,16,14,13
 141016,SM,9,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,105,14,23,14,18,17,19,14,24
 141018,SM,26,Male,Bachelor's degree or higher,Hispanic,west,21 to 31.5 mo,79,14,14,14,12,13,15,11,11
-141026,SM,24,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,65,16,11,10,11,11,12,10,11
 141067,SM,25,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,92,11,17,18,15,14,15,13,13
-141080,SM,29,Female,Bachelor's degree or higher,Hispanic,south,21 to 31.5 mo,95,11,20,22,14,14,12,13,11
-141081,SM,26,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,77,19,15,14,13,11,12,12,13
-141082,SM,23,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,75,19,12,16,13,10,13,11,18
 141084,SM,28,Male,Bachelor's degree or higher,Hispanic,south,21 to 31.5 mo,82,16,12,17,14,14,14,11,10
 141087,SM,7,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,89,17,20,14,19,11,12,13,10
 141090,SM,6,Male,Bachelor's degree or higher,Hispanic,south,03.5 to 6 mo,101,13,22,15,17,12,19,16,16
-141100,SM,7,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,98,21,17,14,17,15,16,19,17
-141162,SM,18,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,71,13,13,13,11,10,12,12,10
-141164,SM,27,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,79,13,14,12,13,16,13,11,11
 141217,SM,9,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,83,11,14,14,15,10,16,14,16
 141218,SM,5,Female,Some college or associate degree,White,south,03.5 to 6 mo,96,16,24,15,15,10,16,16,17
 141219,SM,9,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,83,11,14,16,12,12,19,10,22
 141220,SM,9,Female,Bachelor's degree or higher,Hispanic,south,07 to 10.5 mo,84,14,22,12,11,12,13,14,22
-141222,SM,11,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,82,18,17,15,15,10,13,12,12
-141223,SM,4,Male,Bachelor's degree or higher,White,south,03.5 to 6 mo,97,17,28,15,12,12,15,15,26
-141224,SM,18,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,82,10,15,12,17,11,14,13,10
 141225,SM,9,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,76,14,15,11,16,10,14,10,14
 141227,SM,9,Male,Bachelor's degree or higher,Hispanic,south,07 to 10.5 mo,96,17,19,15,14,16,19,13,19
-141229,SM,8,Male,Bachelor's degree or higher,Hispanic,south,07 to 10.5 mo,88,13,19,13,14,18,13,11,15
 141231,SM,4,Female,Some college or associate degree,White,south,03.5 to 6 mo,87,13,20,16,13,10,15,13,26
-141232,SM,4,Male,Bachelor's degree or higher,White,south,03.5 to 6 mo,92,17,19,13,15,12,17,16,24
 141233,SM,4,Female,Some college or associate degree,Hispanic,south,03.5 to 6 mo,99,24,22,19,15,11,13,19,31
-141234,SM,28,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,101,15,14,15,18,22,15,17,13
 141235,SM,25,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,83,10,17,13,12,13,13,15,12
-141238,SM,15,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,72,16,12,14,11,13,11,11,10
-141239,SM,23,Female,Bachelor's degree or higher,Hispanic,south,21 to 31.5 mo,83,19,13,18,14,13,13,12,15
 141240,SM,18,Male,Some college or associate degree,White,south,09.5 to 20 mo,85,16,16,14,14,11,17,13,16
 141241,SM,10,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,109,12,21,20,18,14,18,18,16
 141242,SM,5,Female,Some college or associate degree,White,south,03.5 to 6 mo,88,13,21,13,14,10,15,15,27
-141243,SM,8,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,85,11,19,11,17,10,13,15,10
 141245,SM,6,Female,Bachelor's degree or higher,White,south,03.5 to 6 mo,80,17,15,14,14,11,14,12,17
-141283,SM,7,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,88,13,17,12,15,13,16,15,16
 141299,SM,18,Male,Some college or associate degree,Hispanic,south,09.5 to 20 mo,91,13,12,13,21,17,14,14,16
-141301,SM,11,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,84,21,15,12,13,10,15,19,23
 141304,SM,13,Female,High school graduate (including GED),Hispanic,south,09.5 to 20 mo,75,11,11,11,12,10,15,16,17
 141306,SM,18,Male,Some college or associate degree,Hispanic,south,09.5 to 20 mo,98,20,17,20,20,12,15,14,16
 141308,SM,23,Male,Some college or associate degree,Black,south,21 to 31.5 mo,60,10,10,10,10,10,10,10,10
@@ -305,28 +256,13 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 158057,SM,18,Female,Some college or associate degree,White,northeast,09.5 to 20 mo,81,17,13,15,12,11,15,15,15
 178002,SM,5,Female,Some college or associate degree,White,south,03.5 to 6 mo,78,16,17,11,13,10,13,14,10
 178004,SM,25,Female,Some college or associate degree,White,south,21 to 31.5 mo,103,21,18,19,16,19,15,16,18
-178005,SM,30,Female,Bachelor's degree or higher,MultiRacial,south,21 to 31.5 mo,117,19,11,22,19,21,25,19,16
-178006,SM,12,Male,Bachelor's degree or higher,MultiRacial,south,09.5 to 20 mo,79,21,11,12,12,15,13,16,10
 178009,SM,8,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,93,12,24,13,16,13,16,11,12
-189001,SM,7,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,95,20,18,16,17,11,15,18,22
 189003,SM,9,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,92,16,18,15,17,12,15,15,17
-189005,SM,4,Male,Bachelor's degree or higher,White,south,03.5 to 6 mo,100,14,25,19,14,10,19,13,29
-189006,SM,7,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,80,11,19,13,12,10,11,15,10
 189011,SM,28,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,83,16,14,13,13,11,16,16,10
-189015,SM,24,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,75,12,13,13,12,10,16,11,10
 189016,SM,27,Female,High school graduate (including GED),White,south,21 to 31.5 mo,111,23,21,21,16,16,20,17,15
-189017,SM,14,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,68,12,12,10,12,10,13,11,14
-189018,SM,20,Male,Bachelor's degree or higher,MultiRacial,south,09.5 to 20 mo,94,15,19,16,16,15,14,14,10
-189019,SM,14,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,93,21,18,17,16,11,17,14,15
 189021,SM,20,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,76,12,16,14,10,12,12,12,10
-189022,SM,16,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,96,10,20,14,15,17,16,14,14
 189025,SM,12,Male,Bachelor's degree or higher,Hispanic,south,09.5 to 20 mo,87,18,10,13,15,13,20,16,16
-189026,SM,21,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,114,16,19,24,22,15,18,16,14
-189028,SM,22,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,105,13,20,19,18,15,17,16,12
 189029,SM,22,Male,Some college or associate degree,White,south,21 to 31.5 mo,98,21,16,20,18,12,16,16,13
-189030,SM,25,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,85,15,10,15,15,17,16,12,10
-189031,SM,22,Female,Bachelor's degree or higher,MultiRacial,south,21 to 31.5 mo,73,14,12,11,13,11,13,13,10
-189032,SM,21,Male,Bachelor's degree or higher,MultiRacial,south,21 to 31.5 mo,93,13,14,19,15,14,18,13,14
 189033,SM,13,Female,Some college or associate degree,White,south,09.5 to 20 mo,85,18,16,14,16,10,15,14,11
 190005,SM,18,Male,Bachelor's degree or higher,Asian,west,09.5 to 20 mo,98,10,16,18,17,16,19,12,12
 190016,SM,18,Female,Bachelor's degree or higher,White,west,09.5 to 20 mo,110,14,21,23,16,15,20,15,14
@@ -334,21 +270,12 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 190061,SM,26,Male,Bachelor's degree or higher,White,west,21 to 31.5 mo,79,14,11,13,11,17,14,13,10
 190098,SM,8,Female,Bachelor's degree or higher,White,west,07 to 10.5 mo,84,17,15,13,16,13,15,12,26
 209003,SM,6,Female,High school graduate (including GED),White,south,03.5 to 6 mo,85,12,26,14,10,10,13,12,10
-209011,SM,24,Female,Bachelor's degree or higher,MultiRacial,south,21 to 31.5 mo,71,16,11,13,13,12,10,12,14
 209013,SM,26,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,74,13,14,13,12,11,14,10,10
 209014,SM,9,Male,Bachelor's degree or higher,Black,south,07 to 10.5 mo,77,12,17,11,11,10,14,14,17
-209017,SM,5,Female,Bachelor's degree or higher,MultiRacial,south,03.5 to 6 mo,93,21,19,17,15,11,17,14,13
-209019,SM,13,Male,Bachelor's degree or higher,MultiRacial,south,09.5 to 20 mo,91,12,18,14,16,12,17,14,12
-209022,SM,9,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,81,12,22,12,14,10,13,10,10
 209026,SM,28,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,82,13,17,13,12,12,14,14,12
 209029,SM,18,Female,Bachelor's degree or higher,White,west,09.5 to 20 mo,102,13,17,17,18,15,20,15,15
-209034,SM,11,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,92,17,17,15,18,11,18,13,19
 209037,SM,20,Female,Bachelor's degree or higher,White,west,09.5 to 20 mo,73,11,11,12,13,14,12,11,13
 209043,SM,13,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,83,15,15,14,15,11,14,14,11
-209046,SM,6,Female,Bachelor's degree or higher,White,south,03.5 to 6 mo,100,19,20,18,16,11,19,16,15
-209047,SM,4,Female,Bachelor's degree or higher,White,south,03.5 to 6 mo,98,11,23,14,16,14,15,16,21
-209048,SM,9,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,72,12,13,11,11,11,16,10,19
-209050,SM,7,Male,Bachelor's degree or higher,White,south,07 to 10.5 mo,87,15,15,15,17,11,15,14,20
 209051,SM,6,Male,Bachelor's degree or higher,White,south,03.5 to 6 mo,84,12,19,12,15,11,15,12,21
 212001,SM,5,Female,Bachelor's degree or higher,Hispanic,west,03.5 to 6 mo,104,14,21,16,19,10,21,17,23
 212005,SM,20,Female,Bachelor's degree or higher,Asian,west,09.5 to 20 mo,91,13,17,17,12,14,17,14,10
@@ -356,11 +283,8 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 212026,SM,20,Male,High school graduate (including GED),MultiRacial,west,09.5 to 20 mo,108,18,18,20,18,20,17,15,16
 212034,SM,5,Female,Bachelor's degree or higher,Asian,west,03.5 to 6 mo,93,18,25,16,15,11,14,12,29
 212209,SM,17,Male,Bachelor's degree or higher,MultiRacial,west,09.5 to 20 mo,85,19,15,16,13,13,14,14,11
-214001,SM,13,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,82,13,13,14,15,13,17,10,11
 214005,SM,8,Male,Bachelor's degree or higher,White,midwest,07 to 10.5 mo,91,12,23,15,12,13,17,11,15
 214014,SM,30,Female,Some college or associate degree,White,midwest,21 to 31.5 mo,78,12,16,16,11,12,12,11,10
-214018,SM,26,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,94,15,16,17,16,17,14,14,11
-214019,SM,11,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,106,19,15,18,18,17,21,17,18
 214023,SM,4,Female,Some college or associate degree,White,south,03.5 to 6 mo,90,13,25,14,14,10,12,15,10
 216009,SM,26,Male,Bachelor's degree or higher,White,midwest,21 to 31.5 mo,98,19,17,21,17,14,15,14,15
 216013,SM,28,Male,Bachelor's degree or higher,Black,midwest,21 to 31.5 mo,79,12,13,14,15,11,14,12,14
@@ -381,7 +305,6 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 216062,SM,27,Male,Some college or associate degree,White,midwest,21 to 31.5 mo,84,17,16,14,14,15,12,13,12
 216065,SM,8,Male,Bachelor's degree or higher,White,midwest,07 to 10.5 mo,96,16,17,16,20,13,14,16,16
 216066,SM,5,Female,Bachelor's degree or higher,White,midwest,03.5 to 6 mo,83,21,16,14,14,10,13,16,20
-221004,SM,12,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,90,20,17,13,13,12,22,13,21
 224023,SM,4,Female,Some college or associate degree,Hispanic,northeast,03.5 to 6 mo,101,20,25,21,15,10,15,15,24
 230001,SM,16,Female,Bachelor's degree or higher,White,midwest,09.5 to 20 mo,85,14,15,15,14,12,16,13,20
 230007,SM,9,Male,Some college or associate degree,White,midwest,07 to 10.5 mo,102,19,22,16,17,15,17,15,21
@@ -389,36 +312,23 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 230031,SM,9,Male,Bachelor's degree or higher,White,midwest,07 to 10.5 mo,108,19,25,18,16,12,23,14,23
 230035,SM,16,Male,Bachelor's degree or higher,White,midwest,09.5 to 20 mo,95,23,21,18,13,15,16,12,13
 230038,SM,30,Female,Bachelor's degree or higher,White,midwest,21 to 31.5 mo,82,14,13,13,14,12,15,15,11
+233003,In-house,6,Female,Some college or associate degree,White,northeast,03.5 to 6 mo,76,17,16,13,12,11,12,12,25
+233004,In-house,20,Female,Some college or associate degree,White,northeast,09.5 to 20 mo,71,15,11,12,13,11,10,14,19
+233005,In-house,13,Female,Some college or associate degree,White,northeast,09.5 to 20 mo,75,15,11,12,15,11,14,12,13
+233011,In-house,29,Female,Bachelor's degree or higher,MultiRacial,west,21 to 31.5 mo,110,18,19,19,20,14,19,19,18
+233015,In-house,23,Male,High school graduate (including GED),White,northeast,21 to 31.5 mo,89,11,16,18,16,12,14,13,10
 236011,SM,4,Female,Bachelor's degree or higher,White,west,03.5 to 6 mo,111,23,26,20,19,10,17,19,29
 236012,SM,29,Male,Some college or associate degree,White,west,21 to 31.5 mo,101,18,17,17,17,20,15,15,12
 236013,SM,29,Female,Some college or associate degree,Hispanic,west,21 to 31.5 mo,68,11,11,12,11,10,13,11,12
 236014,SM,17,Female,Bachelor's degree or higher,White,west,09.5 to 20 mo,114,19,23,21,17,17,19,17,18
-250002,SM,27,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,86,14,16,17,15,15,10,13,10
 250003,SM,18,Female,Bachelor's degree or higher,Hispanic,south,09.5 to 20 mo,80,16,17,11,11,11,14,16,23
-250009,SM,14,Female,Bachelor's degree or higher,MultiRacial,south,09.5 to 20 mo,75,16,12,12,12,10,14,15,13
-250010,SM,11,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,91,24,18,15,13,14,15,16,18
-250011,SM,23,Male,Bachelor's degree or higher,Hispanic,south,21 to 31.5 mo,85,18,13,18,14,16,13,11,10
-250016,SM,22,Female,Bachelor's degree or higher,Hispanic,south,21 to 31.5 mo,84,15,12,13,15,14,13,17,12
 250017,SM,22,Female,Bachelor's degree or higher,Hispanic,south,21 to 31.5 mo,81,14,13,14,13,12,14,15,11
 250025,SM,27,Female,Some college or associate degree,White,south,21 to 31.5 mo,83,13,14,15,11,18,12,13,10
 250034,SM,20,Male,Bachelor's degree or higher,Hispanic,south,09.5 to 20 mo,75,21,14,12,12,11,13,13,11
-250042,SM,20,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,85,14,14,15,15,13,17,11,10
-250043,SM,18,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,82,14,13,13,14,13,17,12,12
 250045,SM,8,Female,Bachelor's degree or higher,Black,south,07 to 10.5 mo,82,14,14,11,19,10,18,10,10
-250046,SM,30,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,84,13,15,18,14,11,15,11,11
 250056,SM,9,Female,Bachelor's degree or higher,White,south,07 to 10.5 mo,84,10,19,13,12,11,17,12,16
-250057,SM,10,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,111,22,21,19,17,14,23,17,20
-250058,SM,11,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,87,13,16,14,17,11,14,15,16
-250067,SM,14,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,84,23,12,13,14,17,16,12,15
-250069,SM,9,Female,Bachelor's degree or higher,Hispanic,south,07 to 10.5 mo,79,12,17,12,13,11,15,11,12
 250071,SM,10,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,72,19,12,11,10,11,15,13,18
-250078,SM,12,Female,Bachelor's degree or higher,White,south,09.5 to 20 mo,82,19,12,13,13,15,16,13,22
-260024,SM,27,Female,Bachelor's degree or higher,White,south,21 to 31.5 mo,76,11,13,12,12,12,15,12,11
-260027,SM,25,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,63,11,10,11,11,10,10,11,11
 260030,SM,16,Male,Some college or associate degree,White,south,09.5 to 20 mo,95,17,15,18,17,12,17,16,10
-260035,SM,28,Male,Bachelor's degree or higher,White,south,21 to 31.5 mo,95,13,19,17,16,12,16,15,11
-260054,SM,10,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,87,21,19,10,12,14,16,16,14
-260055,SM,18,Male,Bachelor's degree or higher,White,south,09.5 to 20 mo,83,13,16,13,16,11,13,14,10
 260062,SM,15,Female,Did not complete high school (no diploma),White,south,09.5 to 20 mo,112,18,21,20,19,16,18,18,12
 263001,SM,28,Male,Some college or associate degree,Hispanic,west,21 to 31.5 mo,65,12,10,10,11,12,12,10,10
 275002,SM,24,Male,High school graduate (including GED),White,northeast,21 to 31.5 mo,84,23,13,15,15,14,11,16,12
@@ -470,7 +380,6 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 322013,SM,23,Female,High school graduate (including GED),Hispanic,south,21 to 31.5 mo,84,23,14,11,14,16,16,13,10
 322014,SM,10,Female,High school graduate (including GED),Hispanic,south,09.5 to 20 mo,100,12,25,14,15,13,18,15,11
 322015,SM,19,Female,Some college or associate degree,Hispanic,south,09.5 to 20 mo,70,15,12,12,11,10,12,13,10
-324001,SM,8,Female,Bachelor's degree or higher,Hispanic,south,07 to 10.5 mo,75,11,15,12,13,11,13,11,14
 324003,SM,24,Female,Some college or associate degree,Hispanic,south,21 to 31.5 mo,91,11,18,14,14,15,13,17,15
 354001,SM,10,Female,High school graduate (including GED),Black,midwest,09.5 to 20 mo,74,15,14,11,14,10,15,10,10
 354002,SM,16,Female,High school graduate (including GED),Black,midwest,09.5 to 20 mo,64,12,10,10,10,10,14,10,10
@@ -549,10 +458,7 @@ IDNumber,data,AgeInMonths,Gender,ParentHighestEducation,Ethnicity,Region,age_ran
 382003,SM,9,Female,Some college or associate degree,Black,south,07 to 10.5 mo,105,17,25,18,15,11,13,23,17
 407001,Sp,16,Female,Bachelor's degree or higher,Hispanic,west,09.5 to 20 mo,115,20,22,20,18,20,21,14,15
 407002,Sp,16,Male,Bachelor's degree or higher,Hispanic,northeast,09.5 to 20 mo,88,16,18,16,13,12,17,12,16
-407003,Sp,16,Female,Bachelor's degree or higher,Hispanic,south,09.5 to 20 mo,72,10,10,10,13,14,12,13,10
 407004,Sp,16,Female,Some college or associate degree,White,south,09.5 to 20 mo,83,18,14,14,11,14,17,13,13
-407005,Sp,17,Female,Bachelor's degree or higher,Hispanic,south,09.5 to 20 mo,81,10,12,17,11,12,11,18,13
-407006,Sp,16,Female,Bachelor's degree or higher,Hispanic,south,09.5 to 20 mo,90,15,16,16,12,13,17,16,15
 407007,Sp,12,Female,Bachelor's degree or higher,Hispanic,south,09.5 to 20 mo,68,13,12,10,11,10,10,15,17
 700202,Qual,8,Male,Some college or associate degree,White,south,07 to 10.5 mo,94,16,27,17,15,12,11,12,25
 700203,Qual,6,Male,High school graduate (including GED),White,south,03.5 to 6 mo,93,31,17,20,15,12,13,16,26

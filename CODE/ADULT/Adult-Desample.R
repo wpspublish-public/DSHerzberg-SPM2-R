@@ -85,6 +85,38 @@ Adult_Self_desamp <- Adult_Self_desamp1 %>% anti_join(Adult_Self_stage2, by = 'I
 
 write_csv(Adult_Self_desamp, here('INPUT-FILES/ADULT/ALLDATA-DESAMP-NORMS-INPUT/Adult-Self-allData-desamp.csv'))
 
+
+# extract ID numbers of cases excluded in Self desamp process
+
+Adult_Self_desamp_excludedID <- Adult_Self %>% anti_join(
+  Adult_Self_desamp, 
+  by = 'IDNumber'
+) %>% 
+  select(IDNumber) %>% 
+  arrange(IDNumber)
+
+# Apply Self desampling to Other data set
+
+Adult_Other_Eng <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/ADULT/SM-ONLY-NORMS-INPUT/Adult-Other-SM-only-norms-input.csv")
+  ))) 
+Adult_Other_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/ADULT/INHOUSE-NORMS-INPUT/Adult-Other-inHouse-norms-input.csv")
+  ))) 
+Adult_Other <- bind_rows(Adult_Other_Eng, Adult_Other_inHouse) %>% 
+  arrange(IDNumber)
+
+Adult_Other_desamp <- Adult_Other %>% anti_join(
+  Adult_Self_desamp_excludedID, 
+  by = 'IDNumber'
+) %>% 
+  arrange(IDNumber)
+
+write_csv(Adult_Other_desamp, here('INPUT-FILES/ADULT/ALLDATA-DESAMP-NORMS-INPUT/Adult-Other-allData-desamp.csv'))
+
+
 # EXAMINE DATA---------------------------------
 
 # Create frequency tables for TOT_raw by data source

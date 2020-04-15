@@ -10,110 +10,113 @@ library(bestNormalize) # NORMALIZATION METHODS
 suppressMessages(library(psych)) # DESCRIPTIVE TABLES
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
-
-All_items_Adult_Other <- c("q0014", "q0015", "q0016", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027", "q0028",
-                          "q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042", 
-                           "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057", 
-                           "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072", 
-                           "q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087", 
-                           "q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", 
-                           "q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114",
-                          "q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125", "q0129", "q0131")
-
-TOT_items_Adult_Other <- c("q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042", 
-                           "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057", 
-                           "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072", 
-                           "q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087", 
-                           "q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", 
-                           "q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114")
-
-SOC_items_Adult_Other <- c("q0014", "q0015", "q0016", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027", "q0028")
-
-SOC_rev_items_Adult_Other <- c("q0014", "q0015", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027")
-
-VIS_items_Adult_Other <- c("q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042")
-
-HEA_items_Adult_Other <- c("q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057")
-
-TOU_items_Adult_Other <- c("q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072")
-
-TS_items_Adult_Other <- c("q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087")
-
-BOD_items_Adult_Other <- c("q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100")
-
-BAL_items_Adult_Other <- c("q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114")
-
-PLA_items_Adult_Other <- c("q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125", "q0129", "q0131")
-
-score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
-
-
-# READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
-
-Adult_Other <-
-  suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/ADULT/SPM-2 Adult ages 1690 Other Report Questionnaire.csv")
-  ))) %>% select(
-    IDNumber,
-    Age,
-    AgeGroup,
-    Gender,
-    HighestEducation,
-    Ethnicity,
-    Region,
-    All_items_Adult_Other
-  ) %>%
-  # filter out youngest age group
-  filter(AgeGroup != "15.75 to 20.99 years") %>% 
-  rename(age_range = AgeGroup) %>% 
-  # recode items from char to num (mutate_at applies funs to specific columns)
-  mutate_at(
-    All_items_Adult_Other,
-    ~ case_when(
-      .x == "Never" ~ 1,
-      .x == "Occasionally" ~ 2,
-      .x == "Frequently" ~ 3,
-      .x == "Always" ~ 4,
-      TRUE ~ NA_real_
-    )
-  ) %>%
-  # recode reverse-scored items
-  mutate_at(
-    SOC_rev_items_Adult_Other,
-    ~ case_when(.x == 4 ~ 1,
-                .x == 3 ~ 2,
-                .x == 2 ~ 3,
-                .x == 1 ~ 4,
-                TRUE ~ NA_real_)
-  ) %>%
-  # Convert scored item vars to integers
-  mutate_at(All_items_Adult_Other,
-            ~ as.integer(.x)) %>% 
-# Compute raw scores. Note use of `rowSums(.[TOT_items_Adult_Other])`: when used 
-  # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
-  # must wrap the column vector in a column-subsetting expression: `.[]`, where the
-  # dot is a token for the data in the pipe.
-  mutate(
-    TOT_raw = rowSums(.[TOT_items_Adult_Other]),
-    SOC_raw = rowSums(.[SOC_items_Adult_Other]),
-    VIS_raw = rowSums(.[VIS_items_Adult_Other]),
-    HEA_raw = rowSums(.[HEA_items_Adult_Other]),
-    TOU_raw = rowSums(.[TOU_items_Adult_Other]),
-    TS_raw = rowSums(.[TS_items_Adult_Other]),
-    BOD_raw = rowSums(.[BOD_items_Adult_Other]),
-    BAL_raw = rowSums(.[BAL_items_Adult_Other]),
-    PLA_raw = rowSums(.[PLA_items_Adult_Other])
-  ) %>% 
-  # Create data var to differentiate Eng from Sp cases
-  mutate(data = "Eng") %>% 
-  select(IDNumber, data, everything()) %>% 
-# Exclude outliers on TOT_raw (also exlude by data source to equalize samples
-  # from diiferent data sources)
-  filter(TOT_raw < 200)
-
-# clean up environment
-rm(list = ls(pattern='.*items_Adult_Other'))
-
+# 
+# All_items_Adult_Other <- c("q0014", "q0015", "q0016", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027", "q0028",
+#                           "q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042", 
+#                            "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057", 
+#                            "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072", 
+#                            "q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087", 
+#                            "q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", 
+#                            "q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114",
+#                           "q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125", "q0129", "q0131")
+# 
+# TOT_items_Adult_Other <- c("q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042", 
+#                            "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057", 
+#                            "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072", 
+#                            "q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087", 
+#                            "q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", 
+#                            "q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114")
+# 
+# SOC_items_Adult_Other <- c("q0014", "q0015", "q0016", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027", "q0028")
+# 
+# SOC_rev_items_Adult_Other <- c("q0014", "q0015", "q0022", "q0023", "q0024", "q0025", "q0026", "q0027")
+# 
+# VIS_items_Adult_Other <- c("q0029", "q0031", "q0033", "q0034", "q0036", "q0037", "q0039", "q0040", "q0041", "q0042")
+# 
+# HEA_items_Adult_Other <- c("q0043", "q0045", "q0046", "q0047", "q0048", "q0050", "q0053", "q0055", "q0056", "q0057")
+# 
+# TOU_items_Adult_Other <- c("q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0069", "q0071", "q0072")
+# 
+# TS_items_Adult_Other <- c("q0073", "q0074", "q0075", "q0076", "q0079", "q0080", "q0081", "q0084", "q0086", "q0087")
+# 
+# BOD_items_Adult_Other <- c("q0088", "q0090", "q0091", "q0092", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100")
+# 
+# BAL_items_Adult_Other <- c("q0103", "q0105", "q0107", "q0108", "q0109", "q0110", "q0111", "q0112", "q0113", "q0114")
+# 
+# PLA_items_Adult_Other <- c("q0118", "q0119", "q0120", "q0121", "q0122", "q0123", "q0124", "q0125", "q0129", "q0131")
+# 
+# score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+# 
+# 
+# # READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
+# 
+# Adult_Other <-
+#   suppressMessages(as_tibble(read_csv(
+#     here("INPUT-FILES/ADULT/SPM-2 Adult ages 1690 Other Report Questionnaire.csv")
+#   ))) %>% select(
+#     IDNumber,
+#     Age,
+#     AgeGroup,
+#     Gender,
+#     HighestEducation,
+#     Ethnicity,
+#     Region,
+#     All_items_Adult_Other
+#   ) %>%
+#   # filter out youngest age group
+#   filter(AgeGroup != "15.75 to 20.99 years") %>% 
+#   rename(age_range = AgeGroup) %>% 
+#   # recode items from char to num (mutate_at applies funs to specific columns)
+#   mutate_at(
+#     All_items_Adult_Other,
+#     ~ case_when(
+#       .x == "Never" ~ 1,
+#       .x == "Occasionally" ~ 2,
+#       .x == "Frequently" ~ 3,
+#       .x == "Always" ~ 4,
+#       TRUE ~ NA_real_
+#     )
+#   ) %>%
+#   # recode reverse-scored items
+#   mutate_at(
+#     SOC_rev_items_Adult_Other,
+#     ~ case_when(.x == 4 ~ 1,
+#                 .x == 3 ~ 2,
+#                 .x == 2 ~ 3,
+#                 .x == 1 ~ 4,
+#                 TRUE ~ NA_real_)
+#   ) %>%
+#   # Convert scored item vars to integers
+#   mutate_at(All_items_Adult_Other,
+#             ~ as.integer(.x)) %>% 
+# # Compute raw scores. Note use of `rowSums(.[TOT_items_Adult_Other])`: when used 
+#   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
+#   # must wrap the column vector in a column-subsetting expression: `.[]`, where the
+#   # dot is a token for the data in the pipe.
+#   mutate(
+#     TOT_raw = rowSums(.[TOT_items_Adult_Other]),
+#     SOC_raw = rowSums(.[SOC_items_Adult_Other]),
+#     VIS_raw = rowSums(.[VIS_items_Adult_Other]),
+#     HEA_raw = rowSums(.[HEA_items_Adult_Other]),
+#     TOU_raw = rowSums(.[TOU_items_Adult_Other]),
+#     TS_raw = rowSums(.[TS_items_Adult_Other]),
+#     BOD_raw = rowSums(.[BOD_items_Adult_Other]),
+#     BAL_raw = rowSums(.[BAL_items_Adult_Other]),
+#     PLA_raw = rowSums(.[PLA_items_Adult_Other])
+#   ) %>% 
+#   # Create data var to differentiate Eng from Sp cases
+#   mutate(data = "SM") %>% 
+#   select(IDNumber, data, everything()) %>% 
+# # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
+#   # from diiferent data sources)
+#   filter(TOT_raw < 200) %>% 
+#   write_csv(here("INPUT-FILES/ADULT/SM-ONLY-NORMS-INPUT/Adult-Other-SM-only-norms-input.csv"))
+# 
+# 
+# 
+# # clean up environment
+# rm(list = ls(pattern='.*items_Adult_Other'))
+# 
 
 # EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
 
@@ -165,6 +168,17 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 # write_csv(Adult_Other_dup, here("DATA/Adult_Other_dup.csv"))
 
 
+# READ FINALIZED STAND SAMPLE ---------------------------------------------
+
+Adult_Other <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/ADULT/ALLDATA-DESAMP-NORMS-INPUT/Adult-Other-allData-desamp.csv")
+  ))) 
+
+score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+
+anyDuplicated(Adult_Other$IDNumber)
+
 # DETERMINE BEST NORMALIZATION MODEL --------------------------------------
 
 # (NOTE: THIS SECTION SHOULD BE TOGGLED OFF AFTER SELECTION OF NORMALIZATION
@@ -172,11 +186,11 @@ rm(list = ls(pattern='.*items_Adult_Other'))
 
 # create a bestNormalize object to lock down the normalizing function that will be used on repeated runs of the norms.
 # TOT_nz_obj <- bestNormalize(Adult_Other$TOT_raw)
-
-# print transformation
+# 
+# # print transformation
 # TOT_nz_obj$chosen_transform
-
-# Extract transformation type
+# 
+# # Extract transformation type
 # chosen_transform <- class(TOT_nz_obj$chosen_transform)[1]
 
 # apply the chosen method to create normalized z-scores for each case.
@@ -217,7 +231,7 @@ raw_score_cols_list %>%
     .x = c(nz_transform_names),         # names to assign
     .y = .,                # object to be assigned
     .f = ~ assign(x = .x, 
-                  value = boxcox(.y), 
+                  value = orderNorm(.y), 
                   envir = .GlobalEnv)
   )
 

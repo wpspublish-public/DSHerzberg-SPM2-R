@@ -7,186 +7,198 @@ suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
+suppressMessages(library(psych)) # DESCRIPTIVE TABLES
+
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
 
-All_items_Adult_Self <- c("q0013", "q0014", "q0016", "q0018", "q0020", "q0021", "q0023", 
-                          "q0024", "q0026", "q0027", "q0029", "q0030", "q0031", "q0032", 
-                          "q0033", "q0034", "q0036", "q0037", "q0040", "q0041", "q0043", 
-                          "q0044", "q0046", "q0047", "q0049", "q0050", "q0051", "q0053", 
-                          "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", 
-                          "q0063", "q0064", "q0067", "q0068", "q0069", "q0073", "q0075", 
-                          "q0076", "q0077", "q0081", "q0082", "q0083", "q0084", "q0086", 
-                          "q0087", "q0089", "q0090", "q0091", "q0092", "q0093", "q0096", 
-                          "q0098", "q0099", "q0100", "q0101", "q0103", "q0104", "q0105", 
-                          "q0106", "q0108", "q0111", "q0113", "q0114", "q0115", "q0117", 
-                          "q0118", "q0119", "q0122", "q0126", "q0127", "q0128", "q0129", 
-                          "q0130", "q0131", "q0132")
-
-TOT_items_Adult_Self <- c("q0029", "q0030", "q0031", "q0032", 
-                          "q0033", "q0034", "q0036", "q0037", "q0040", "q0041", "q0043", 
-                          "q0044", "q0046", "q0047", "q0049", "q0050", "q0051", "q0053", 
-                          "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", 
-                          "q0063", "q0064", "q0067", "q0068", "q0069", "q0073", "q0075", 
-                          "q0076", "q0077", "q0081", "q0082", "q0083", "q0084", "q0086", 
-                          "q0087", "q0089", "q0090", "q0091", "q0092", "q0093", "q0096", 
-                          "q0098", "q0099", "q0100", "q0101", "q0103", "q0104", "q0105", 
-                          "q0106", "q0108", "q0111", "q0113", "q0114", "q0115", "q0117")
-
-SOC_items_Adult_Self <- c("q0013", "q0014", "q0016", "q0018", "q0020", "q0021", "q0023", 
-                          "q0024", "q0026", "q0027")
-
-SOC_rev_items_Adult_Self <- c("q0013", "q0014", "q0018", "q0020", "q0027")
-
-VIS_items_Adult_Self <- c("q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0036", 
-                          "q0037", "q0040", "q0041")
-
-HEA_items_Adult_Self <- c("q0043", "q0044", "q0046", "q0047", "q0049", "q0050", "q0051", 
-                          "q0053", "q0054", "q0057")
-
-TOU_items_Adult_Self <- c("q0058", "q0059", "q0060", "q0061", "q0062", "q0063", "q0064", 
-                          "q0067", "q0068", "q0069")
-
-TS_items_Adult_Self <- c("q0073", "q0075", "q0076", "q0077", "q0081", "q0082", "q0083", 
-                         "q0084", "q0086", "q0087")
-
-BOD_items_Adult_Self <- c("q0089", "q0090", "q0091", "q0092", "q0093", "q0096", "q0098", 
-                          "q0099", "q0100", "q0101")
-
-BAL_items_Adult_Self <- c("q0103", "q0104", "q0105", "q0106", "q0108", "q0111", "q0113", 
-                          "q0114", "q0115", "q0117")
-
-PLA_items_Adult_Self <- c("q0118", "q0119", "q0122", "q0126", "q0127", "q0128", "q0129", 
-                          "q0130", "q0131", "q0132")
-
-score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
-
-
-# READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
-
-Adult_Self <-
-  suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/ADULT/SPM-2 Adult ages 1690 Self-Report Questionnaire.csv")
-  ))) %>% select(
-    IDNumber,
-    Age,
-    AgeGroup,
-    Gender,
-    HighestEducation,
-    Ethnicity,
-    Region,
-    All_items_Adult_Self
-  ) %>%
-  # filter out youngest age group
-  filter(AgeGroup != "16.00 to 20.99 years") %>% 
-  # recode items from char to num (mutate_at applies funs to specific columns)
-  mutate_at(
-    All_items_Adult_Self,
-    ~ case_when(
-      .x == "Never" ~ 1,
-      .x == "Occasionally" ~ 2,
-      .x == "Frequently" ~ 3,
-      .x == "Always" ~ 4,
-      TRUE ~ NA_real_
-    )
-  ) %>%
-  # recode reverse-scored items
-  mutate_at(
-    SOC_rev_items_Adult_Self,
-    ~ case_when(.x == 4 ~ 1,
-                .x == 3 ~ 2,
-                .x == 2 ~ 3,
-                .x == 1 ~ 4,
-                TRUE ~ NA_real_)
-  ) %>%
-  # Convert scored item vars to integers
-  mutate_at(All_items_Adult_Self,
-            ~ as.integer(.x)) %>% 
-  # Compute raw scores. Note use of `rowSums(.[TOT_items_Adult_Self])`: when used 
-  # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
-  # must wrap the column vector in a column-subsetting expression: `.[]`, where the
-  # dot is a token for the data in the pipe.
-  mutate(
-    TOT_raw = rowSums(.[TOT_items_Adult_Self]),
-    SOC_raw = rowSums(.[SOC_items_Adult_Self]),
-    VIS_raw = rowSums(.[VIS_items_Adult_Self]),
-    HEA_raw = rowSums(.[HEA_items_Adult_Self]),
-    TOU_raw = rowSums(.[TOU_items_Adult_Self]),
-    TS_raw = rowSums(.[TS_items_Adult_Self]),
-    BOD_raw = rowSums(.[BOD_items_Adult_Self]),
-    BAL_raw = rowSums(.[BAL_items_Adult_Self]),
-    PLA_raw = rowSums(.[PLA_items_Adult_Self])
-  ) %>% 
-  select(
-    -(q0013:q0132)
-  ) %>% 
-  #print()
-  # Exclude outliers on TOT_raw
-  filter(TOT_raw <200) %>% print()
-
-# clean up environment
-rm(list = ls(pattern='.*items_Adult_Self'))
-
-
-# EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
-
-# ### THE NEXT SECTION OF CODE FACILITATES EXAMINATION OF TOT_raw to make
-# decisions about whether norms need to be stratified by age. Once the decision
-# about age-stratification has been made and implemented, the 'examination' code
-# can be commented off.
-
-
-# Create frequency tables for TOT_raw by AgeGroup
-Adult_Self_TOT_freq_AgeGroup <- Adult_Self %>% group_by(AgeGroup) %>% count(TOT_raw) %>%
-  mutate(
-    perc = round(100*(n/sum(n)), 4), 
-    cum_per = round(100*(cumsum(n)/sum(n)), 4) #, 
-    # lag_tot = lag(TOT_raw), 
-    # lag_cum_per = lag(cum_per)
-    )
-
-write_csv(Adult_Self_TOT_freq_AgeGroup, here('OUTPUT-FILES/ADULT/FREQUENCIES/Adult-Self-TOT-freq-AgeGroup.csv'))
-
-# Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-Adult_Self_TOT_desc_AgeGroup <-
-  Adult_Self %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
-                                                                         median = round(median(TOT_raw), 2),
-                                                                         mean = round(mean(TOT_raw), 2),
-                                                                         sd = round(sd(TOT_raw), 2)) %>%
-  mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2)#,
-         # group = c(1:6)
-         )
-
-write_csv(Adult_Self_TOT_desc_AgeGroup, here('OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Self-TOT-desc-AgeGroup.csv'))
-
-AgeGroup <- Adult_Self_TOT_desc_AgeGroup %>% pull(AgeGroup)
-
-# Plot TOT_raw means, SDs by AgeGroup
-mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
-  geom_point(
-    col = "blue",
-    fill = "blue",
-    alpha = .5,
-    size = 3,
-    shape = 23
-  ) +
-  geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-  scale_x_continuous(breaks = seq(1, 6, 1), labels = AgeGroup) +
-  scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
-  labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
-  geom_errorbar(
-    aes(ymin = mean - sd, ymax = mean + sd),
-    col = "red",
-    size = 0.2,
-    width = 0.2
-  )
-print(mean_plot)
+# All_items_Adult_Self <- c("q0013", "q0014", "q0016", "q0018", "q0020", "q0021", "q0023", 
+#                           "q0024", "q0026", "q0027", "q0029", "q0030", "q0031", "q0032", 
+#                           "q0033", "q0034", "q0036", "q0037", "q0040", "q0041", "q0043", 
+#                           "q0044", "q0046", "q0047", "q0049", "q0050", "q0051", "q0053", 
+#                           "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", 
+#                           "q0063", "q0064", "q0067", "q0068", "q0069", "q0073", "q0075", 
+#                           "q0076", "q0077", "q0081", "q0082", "q0083", "q0084", "q0086", 
+#                           "q0087", "q0089", "q0090", "q0091", "q0092", "q0093", "q0096", 
+#                           "q0098", "q0099", "q0100", "q0101", "q0103", "q0104", "q0105", 
+#                           "q0106", "q0108", "q0111", "q0113", "q0114", "q0115", "q0117", 
+#                           "q0118", "q0119", "q0122", "q0126", "q0127", "q0128", "q0129", 
+#                           "q0130", "q0131", "q0132")
+# 
+# TOT_items_Adult_Self <- c("q0029", "q0030", "q0031", "q0032", 
+#                           "q0033", "q0034", "q0036", "q0037", "q0040", "q0041", "q0043", 
+#                           "q0044", "q0046", "q0047", "q0049", "q0050", "q0051", "q0053", 
+#                           "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", 
+#                           "q0063", "q0064", "q0067", "q0068", "q0069", "q0073", "q0075", 
+#                           "q0076", "q0077", "q0081", "q0082", "q0083", "q0084", "q0086", 
+#                           "q0087", "q0089", "q0090", "q0091", "q0092", "q0093", "q0096", 
+#                           "q0098", "q0099", "q0100", "q0101", "q0103", "q0104", "q0105", 
+#                           "q0106", "q0108", "q0111", "q0113", "q0114", "q0115", "q0117")
+# 
+# SOC_items_Adult_Self <- c("q0013", "q0014", "q0016", "q0018", "q0020", "q0021", "q0023", 
+#                           "q0024", "q0026", "q0027")
+# 
+# SOC_rev_items_Adult_Self <- c("q0013", "q0014", "q0018", "q0020", "q0027")
+# 
+# VIS_items_Adult_Self <- c("q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0036", 
+#                           "q0037", "q0040", "q0041")
+# 
+# HEA_items_Adult_Self <- c("q0043", "q0044", "q0046", "q0047", "q0049", "q0050", "q0051", 
+#                           "q0053", "q0054", "q0057")
+# 
+# TOU_items_Adult_Self <- c("q0058", "q0059", "q0060", "q0061", "q0062", "q0063", "q0064", 
+#                           "q0067", "q0068", "q0069")
+# 
+# TS_items_Adult_Self <- c("q0073", "q0075", "q0076", "q0077", "q0081", "q0082", "q0083", 
+#                          "q0084", "q0086", "q0087")
+# 
+# BOD_items_Adult_Self <- c("q0089", "q0090", "q0091", "q0092", "q0093", "q0096", "q0098", 
+#                           "q0099", "q0100", "q0101")
+# 
+# BAL_items_Adult_Self <- c("q0103", "q0104", "q0105", "q0106", "q0108", "q0111", "q0113", 
+#                           "q0114", "q0115", "q0117")
+# 
+# PLA_items_Adult_Self <- c("q0118", "q0119", "q0122", "q0126", "q0127", "q0128", "q0129", 
+#                           "q0130", "q0131", "q0132")
+# 
+# score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+# 
+# 
+# # READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
+# 
+# Adult_Self <-
+#   suppressMessages(as_tibble(read_csv(
+#     here("INPUT-FILES/ADULT/SPM-2 Adult ages 1690 Self-Report Questionnaire.csv")
+#   ))) %>% select(
+#     IDNumber,
+#     Age,
+#     AgeGroup,
+#     Gender,
+#     HighestEducation,
+#     Ethnicity,
+#     Region,
+#     All_items_Adult_Self
+#   ) %>%
+#   # filter out youngest age group
+#   filter(AgeGroup != "16.00 to 20.99 years") %>% 
+#   # recode items from char to num (mutate_at applies funs to specific columns)
+#   mutate_at(
+#     All_items_Adult_Self,
+#     ~ case_when(
+#       .x == "Never" ~ 1,
+#       .x == "Occasionally" ~ 2,
+#       .x == "Frequently" ~ 3,
+#       .x == "Always" ~ 4,
+#       TRUE ~ NA_real_
+#     )
+#   ) %>%
+#   # recode reverse-scored items
+#   mutate_at(
+#     SOC_rev_items_Adult_Self,
+#     ~ case_when(.x == 4 ~ 1,
+#                 .x == 3 ~ 2,
+#                 .x == 2 ~ 3,
+#                 .x == 1 ~ 4,
+#                 TRUE ~ NA_real_)
+#   ) %>%
+#   # Convert scored item vars to integers
+#   mutate_at(All_items_Adult_Self,
+#             ~ as.integer(.x)) %>% 
+#   # Compute raw scores. Note use of `rowSums(.[TOT_items_Adult_Self])`: when used 
+#   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
+#   # must wrap the column vector in a column-subsetting expression: `.[]`, where the
+#   # dot is a token for the data in the pipe.
+#   mutate(
+#     TOT_raw = rowSums(.[TOT_items_Adult_Self]),
+#     SOC_raw = rowSums(.[SOC_items_Adult_Self]),
+#     VIS_raw = rowSums(.[VIS_items_Adult_Self]),
+#     HEA_raw = rowSums(.[HEA_items_Adult_Self]),
+#     TOU_raw = rowSums(.[TOU_items_Adult_Self]),
+#     TS_raw = rowSums(.[TS_items_Adult_Self]),
+#     BOD_raw = rowSums(.[BOD_items_Adult_Self]),
+#     BAL_raw = rowSums(.[BAL_items_Adult_Self]),
+#     PLA_raw = rowSums(.[PLA_items_Adult_Self])
+#   ) %>% 
+#   select(
+#     -(q0013:q0132)
+#   ) %>% 
+#   #print()
+#   # Exclude outliers on TOT_raw
+#   filter(TOT_raw <200) %>% print()
+# 
+# # clean up environment
+# rm(list = ls(pattern='.*items_Adult_Self'))
+# 
+# 
+# # EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
+# 
+# # ### THE NEXT SECTION OF CODE FACILITATES EXAMINATION OF TOT_raw to make
+# # decisions about whether norms need to be stratified by age. Once the decision
+# # about age-stratification has been made and implemented, the 'examination' code
+# # can be commented off.
+# 
+# 
+# # Create frequency tables for TOT_raw by AgeGroup
+# Adult_Self_TOT_freq_AgeGroup <- Adult_Self %>% group_by(AgeGroup) %>% count(TOT_raw) %>%
+#   mutate(
+#     perc = round(100*(n/sum(n)), 4), 
+#     cum_per = round(100*(cumsum(n)/sum(n)), 4) #, 
+#     # lag_tot = lag(TOT_raw), 
+#     # lag_cum_per = lag(cum_per)
+#     )
+# 
+# write_csv(Adult_Self_TOT_freq_AgeGroup, here('OUTPUT-FILES/ADULT/FREQUENCIES/Adult-Self-TOT-freq-AgeGroup.csv'))
+# 
+# # Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
+# Adult_Self_TOT_desc_AgeGroup <-
+#   Adult_Self %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
+#                                                                          median = round(median(TOT_raw), 2),
+#                                                                          mean = round(mean(TOT_raw), 2),
+#                                                                          sd = round(sd(TOT_raw), 2)) %>%
+#   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2)#,
+#          # group = c(1:6)
+#          )
+# 
+# write_csv(Adult_Self_TOT_desc_AgeGroup, here('OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Self-TOT-desc-AgeGroup.csv'))
+# 
+# AgeGroup <- Adult_Self_TOT_desc_AgeGroup %>% pull(AgeGroup)
+# 
+# # Plot TOT_raw means, SDs by AgeGroup
+# mean_plot <- ggplot(data = Adult_Self_TOT_desc_AgeGroup, aes(group, mean)) +
+#   geom_point(
+#     col = "blue",
+#     fill = "blue",
+#     alpha = .5,
+#     size = 3,
+#     shape = 23
+#   ) +
+#   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
+#   scale_x_continuous(breaks = seq(1, 6, 1), labels = AgeGroup) +
+#   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
+#   labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
+#   geom_errorbar(
+#     aes(ymin = mean - sd, ymax = mean + sd),
+#     col = "red",
+#     size = 0.2,
+#     width = 0.2
+#   )
+# print(mean_plot)
 
 # Check for duplicate IDnumber.
 
 # Adult_Self_dup <- Adult_Self %>% count(IDNumber) %>% filter(n > 1)
 # write_csv(Adult_Self_dup, here("DATA/Adult_Self_dup.csv"))
 
+# READ FINALIZED STAND SAMPLE ---------------------------------------------
+
+Adult_Self <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/ADULT/ALLDATA-DESAMP-NORMS-INPUT/Adult-Self-allData-desamp.csv")
+  ))) 
+
+score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+
+anyDuplicated(Adult_Self$IDNumber)
 
 # DETERMINE BEST NORMALIZATION MODEL --------------------------------------
 
@@ -307,7 +319,8 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
   select(
     paste0(.y, '_NT')
   )
-)
+) %>% 
+  mutate_if(is.numeric, as.integer)
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
@@ -320,7 +333,9 @@ write_csv(Adult_Self, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 # clean up environment
 rm(list = ls(pattern='.*_nz'))
@@ -377,7 +392,7 @@ TOT_lookup <- Adult_Self %>% group_by(
   ) %>% 
   mutate_at(
     vars(TOT_NT), ~ case_when(
-      raw < 60 ~ NA_real_,
+      raw < 60 ~ NA_integer_,
       TRUE ~ .x
     )
   )
@@ -408,7 +423,7 @@ subscale_lookup <- map(
     ) %>% 
     mutate_at(
       vars(!!as.name(paste0(.x, '_NT'))), ~ case_when(
-        raw > 40 ~ NA_real_,
+        raw > 40 ~ NA_integer_,
         TRUE ~ .x
       )
     )
@@ -430,8 +445,9 @@ write_csv(all_lookup, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
-
+), 
+na = ''
+)
 
 # generate print pub format raw-to-T table
 all_lookup_pub <- all_lookup %>% 
@@ -478,6 +494,85 @@ write_csv(all_lookup_pub, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
+
+# write raw score descriptives for all scales (using psych::describe)
+Adult_Self_raw_desc <-
+  Adult_Self %>% 
+  select(contains('raw')) %>% 
+  describe(fast = T) %>%
+  rownames_to_column() %>% 
+  rename(scale = rowname) %>% 
+  select(scale, n, mean, sd) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2)))
+
+write_csv(Adult_Self_raw_desc, here(
+  paste0(
+    'OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Self-raw-desc-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = ''
+)
+
+# write table of demographic counts
+
+var_order <- c("data", "age_range", "Age", "Gender", "ParentHighestEducation", "HighestEducation", 
+               "Ethnicity", "Region")
+
+cat_order <- c(
+  # data
+  NA, "SM", "Qual",
+  # age_range
+  NA, "3.5 to 6 mo", "03.5 to 10 mo", "7 to 10.5 mo", "09.5 to 20 mo",  "11 to 31.5 mo", 
+  "21 to 31.5 mo", "5 to 8 years", "9 to 12 years", "12 to 13 years", "14 to 15 years", 
+  "16 to 17 years", "18 to 21 years", "21.00 to 30.99 years", "31.00 to 40.99 years", 
+  "41.00 to 50.99 years", "51.00 to 64.99 years", "65.00 to 99.99 years",
+  # Age
+  "2", "3", "4", "5",
+  # Gender
+  NA, "Male", "Female",
+  # ParentHighestEducation & HighestEducation
+  NA, "Did not complete high school (no diploma)", "High school graduate (including GED)", 
+  "Some college or associate degree", "Bachelor's degree or higher",
+  # Ethnicity
+  NA, "Hispanic", "Asian", "Black", "White", "AmericanIndAlaskanNat", 
+  "NativeHawPacIsl", "MultiRacial", "Other",
+  # Region
+  NA, "northeast", "midwest", "south", "west")
+
+
+Adult_Self_demo_counts <- Adult_Self %>% 
+  select(age_range, Gender, HighestEducation, Ethnicity, Region) %>% 
+  gather("Variable", "Category") %>% 
+  group_by(Variable, Category) %>%
+  count(Variable, Category) %>%
+  arrange(match(Variable, var_order), match(Category, cat_order)) %>% 
+  ungroup() %>% 
+  mutate(Variable = case_when(
+    # lag(Variable) == "data" & Variable == "data" ~ "",
+    lag(Variable) == "age_range" & Variable == "age_range" ~ "",
+    lag(Variable) == "Gender" & Variable == "Gender" ~ "",
+    lag(Variable) == "HighestEducation" & Variable == "HighestEducation" ~ "",
+    lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
+    lag(Variable) == "Region" & Variable == "Region" ~ "",
+    TRUE ~ Variable
+  ))
+
+write_csv(Adult_Self_demo_counts, here(
+  paste0(
+    'OUTPUT-FILES/ADULT/DESCRIPTIVES/Adult-Self-demo-counts-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = '(missing)'
+)
+s
+
+
 
 

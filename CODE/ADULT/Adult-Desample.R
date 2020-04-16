@@ -38,6 +38,14 @@ Adult_Self_not_F_BA <- Adult_Self %>%
 Adult_Self_desamp1 <- bind_rows(Adult_Self_F_BA, Adult_Self_not_F_BA) %>% 
   arrange(IDNumber)
 
+# 50% subsample
+set.seed(123)
+Adult_Self_F_BA_50pct <- Adult_Self %>% 
+  filter(Gender == "Female" & HighestEducation == "Bachelor's degree or higher" ) %>% 
+  sample_n(205)
+Adult_Self_desamp1_50pct <- bind_rows(Adult_Self_F_BA_50pct, Adult_Self_not_F_BA) %>% 
+  arrange(IDNumber)
+
 # STAGE 2 DESAMPLE --------------------------------------------------------
 
 # Subsample: 14 Blacks with BA+
@@ -46,6 +54,8 @@ Adult_Self_Black_BAplus <- Adult_Self_desamp1 %>%
   filter(Ethnicity == "Black" & 
            HighestEducation == "Bachelor's degree or higher") %>% 
   sample_n(14)
+# 50% subsample
+Adult_Self_Black_BAplus_50pct <- Adult_Self_Black_BAplus %>% sample_frac(.5)
 
 # Subsample: 30 Hisp with BA+
 set.seed(123)
@@ -53,6 +63,8 @@ Adult_Self_Hisp_BAplus <- Adult_Self_desamp1 %>%
   filter(Ethnicity == "Hispanic" & 
            HighestEducation == "Bachelor's degree or higher") %>% 
   sample_n(30)
+# 50% subsample
+Adult_Self_Hisp_BAplus_50pct <- Adult_Self_Hisp_BAplus %>% sample_frac(.5)
 
 # Subsample: 8 MultiRacial with BA+
 set.seed(123)
@@ -60,6 +72,8 @@ Adult_Self_Multi_BAplus <- Adult_Self_desamp1 %>%
   filter(Ethnicity == "MultiRacial" & 
            HighestEducation == "Bachelor's degree or higher") %>% 
   sample_n(8)
+# 50% subsample
+Adult_Self_Multi_BAplus_50pct <- Adult_Self_Multi_BAplus %>% sample_frac(.5)
 
 # Subsample: 6 Asian with BA+
 set.seed(123)
@@ -67,6 +81,8 @@ Adult_Self_Asian_BAplus <- Adult_Self_desamp1 %>%
   filter(Ethnicity == "Asian" & 
            HighestEducation == "Bachelor's degree or higher") %>% 
   sample_n(6)
+# 50% subsample
+Adult_Self_Asian_BAplus_50pct <- Adult_Self_Asian_BAplus %>% sample_frac(.5)
 
 # Combine 4 subsamples
 
@@ -78,7 +94,27 @@ Adult_Self_stage2 <- bind_rows(
 ) %>% 
   arrange(IDNumber)
 
-Adult_Self_desamp <- Adult_Self_desamp1 %>% anti_join(Adult_Self_stage2, by = 'IDNumber')
+Adult_Self_desamp <- Adult_Self_desamp1 %>% 
+  anti_join(
+    Adult_Self_stage2, 
+    by = 'IDNumber'
+    )
+
+# Combine 4 50% subsamples
+
+Adult_Self_stage2_50pct <- bind_rows(
+  Adult_Self_Black_BAplus_50pct,
+  Adult_Self_Hisp_BAplus_50pct,
+  Adult_Self_Multi_BAplus_50pct,
+  Adult_Self_Asian_BAplus_50pct
+) %>% 
+  arrange(IDNumber)
+
+Adult_Self_desamp_50pct <- Adult_Self_desamp1_50pct %>% 
+  anti_join(
+    Adult_Self_stage2_50pct, 
+    by = 'IDNumber'
+    )
 
 # WRITE FINAL DESAMPLE FILE -----------------------------------------------
 
@@ -90,6 +126,12 @@ write_csv(Adult_Self_desamp, here('INPUT-FILES/ADULT/ALLDATA-DESAMP-NORMS-INPUT/
 
 Adult_Self_desamp_excludedID <- Adult_Self %>% anti_join(
   Adult_Self_desamp, 
+  by = 'IDNumber'
+) %>% 
+  select(IDNumber) %>% 
+  arrange(IDNumber)
+Adult_Self_desamp_excludedID_50pct <- Adult_Self %>% anti_join(
+  Adult_Self_desamp_50pct, 
   by = 'IDNumber'
 ) %>% 
   select(IDNumber) %>% 
@@ -108,8 +150,14 @@ Adult_Other_inHouse <-
 Adult_Other <- bind_rows(Adult_Other_Eng, Adult_Other_inHouse) %>% 
   arrange(IDNumber)
 
+# Adult_Other_desamp <- Adult_Other %>% anti_join(
+#   Adult_Self_desamp_excludedID, 
+#   by = 'IDNumber'
+# ) %>% 
+#   arrange(IDNumber)
+# 50% subsamples
 Adult_Other_desamp <- Adult_Other %>% anti_join(
-  Adult_Self_desamp_excludedID, 
+  Adult_Self_desamp_excludedID_50pct, 
   by = 'IDNumber'
 ) %>% 
   arrange(IDNumber)

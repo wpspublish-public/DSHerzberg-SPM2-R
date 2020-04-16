@@ -571,7 +571,6 @@ write_csv(Adult_Self_demo_counts, here(
 ), 
 na = '(missing)'
 )
-s
 
 
 

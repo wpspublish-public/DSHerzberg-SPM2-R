@@ -42,7 +42,9 @@ score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 # READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
 
-Child_512_Home_inHouse <-
+# English
+
+Child_512_Home_inHouse_Eng <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/CHILD/WPS SPM-2 Child ages 512 Home Report Questionnaire.csv")
   ))) %>% select(
@@ -102,14 +104,104 @@ Child_512_Home_inHouse <-
     PLA_raw = rowSums(.[PLA_items_Child_512_Home])
   ) %>% 
   # Create data var 
-  mutate(data = 'In-house') %>% 
+  mutate(data = 'In-house-Eng') %>% 
   select(IDNumber, data, everything()) %>% 
   # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
   # from different data sources)
-  filter(TOT_raw < 200) %>% 
-# filter(!(TOT_raw >= 155 & age_range == '18 to 21 years' & data == 'SM')) %>%
-  write_csv(here('INPUT-FILES/CHILD/INHOUSE-NORMS-INPUT/Child-1221-Home-inHouse-norms-input.csv'),
-            na = "")
+  filter(TOT_raw < 200)
+
+# Spanish
+
+Child_512_Home_inHouse_Sp <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/CHILD/SPM-2 Child ages 512 Home Report Questionnaire-Sp.csv")
+  ))) %>% select(
+    IDNumber,
+    Age,
+    # AgeGroup,
+    Gender,
+    ParentHighestEducation,
+    Ethnicity,
+    Region,
+    All_items_Child_512_Home
+  ) %>%
+  # filter out 4 yo
+  # filter(Age >= 5) %>% 
+  # recode items from char to num (mutate_at applies funs to specific columns)
+  mutate_at(
+    All_items_Child_512_Home,
+    ~ case_when(
+      .x == "Nunca" ~ 1,
+      .x == "Ocasionalmente" ~ 2,
+      .x == "Frecuentemente" ~ 3,
+      .x == "Siempre" ~ 4,
+      TRUE ~ NA_real_
+    )
+  ) %>%
+  # recode reverse-scored items
+  mutate_at(
+    SOC_rev_items_Child_512_Home,
+    ~ case_when(.x == 4 ~ 1,
+                .x == 3 ~ 2,
+                .x == 2 ~ 3,
+                .x == 1 ~ 4,
+                TRUE ~ NA_real_)
+  ) %>%
+  # recode gender and educ
+  mutate(
+    Gender = case_when(
+      Gender == "Masculino" ~ "Male",
+      Gender == "Femenino" ~ "Female",
+      TRUE ~ NA_character_
+    ),
+    ParentHighestEducation = case_when(
+      ParentHighestEducation == "No terminé la escuela secundaria (no obtuve el diploma)" ~ "Did not complete high school (no diploma)",
+      ParentHighestEducation == "Graduado/a de secundaria (incluye diploma de educación general o GED)" ~ "High school graduate (including GED)",
+      ParentHighestEducation == "Alguna educación superior o grado asociado (associate degree)" ~ "Some college or associate degree",
+      ParentHighestEducation == "Licenciatura o grado más alto" ~ "Bachelor's degree or higher",
+      TRUE ~ NA_character_
+    )
+  ) %>% 
+  # Convert scored item vars to integers
+  mutate_at(All_items_Child_512_Home,
+            ~ as.integer(.x)) %>% 
+  # Add age_range var.
+  mutate(age_range = case_when(
+    Age <= 8 ~ "5 to 8 years",
+    TRUE ~ "9 to 12 years")
+  ) %>% 
+  # select(-AgeGroup) %>% 
+  # Compute raw scores. Note use of `rowSums(.[TOT_items_Child_512_Home])`: when used 
+  # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
+  # must wrap the column vector in a column-subsetting expression: `.[]`, where the
+  # dot is a token for the data in the pipe.
+  mutate(
+    TOT_raw = rowSums(.[TOT_items_Child_512_Home]),
+    SOC_raw = rowSums(.[SOC_items_Child_512_Home]),
+    VIS_raw = rowSums(.[VIS_items_Child_512_Home]),
+    HEA_raw = rowSums(.[HEA_items_Child_512_Home]),
+    TOU_raw = rowSums(.[TOU_items_Child_512_Home]),
+    TS_raw = rowSums(.[TS_items_Child_512_Home]),
+    BOD_raw = rowSums(.[BOD_items_Child_512_Home]),
+    BAL_raw = rowSums(.[BAL_items_Child_512_Home]),
+    PLA_raw = rowSums(.[PLA_items_Child_512_Home])
+  ) %>% 
+  # Create data var to differentiate Survey monkey from Qualtrics case
+  mutate(data = "In-House-Sp") %>% 
+  select(IDNumber, data, everything()) %>% 
+  # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
+  # from diiferent data sources)
+  filter(TOT_raw < 200)
+
+# write combined English spanish norms input file
+
+Child_512_Home_inHouse <- bind_rows(Child_512_Home_inHouse_Eng, Child_512_Home_inHouse_Sp) %>% 
+  write_csv(
+    here(
+      'INPUT-FILES/CHILD/INHOUSE-NORMS-INPUT/Child-512-Home-inHouse-norms-input.csv'
+    ),
+    na = ""
+  )
 
 rm(list = ls())
 
@@ -156,7 +248,7 @@ score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 # READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
 
-Child_512_School_inHouse <-
+Child_512_School_inHouse_Eng <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/CHILD/WPS SPM-2 Child ages 512 School Report Questionnaire.csv")
   ))) %>% select(
@@ -215,18 +307,14 @@ Child_512_School_inHouse <-
     BAL_raw = rowSums(.[BAL_items_Child_512_School]),
     PLA_raw = rowSums(.[PLA_items_Child_512_School])
   ) %>% 
-  # Create data var to differentiate Survey monkey from Qualtrics case
-  # mutate(data = case_when(
-  #   IDNumber >= 700000 ~ 'Qual',
-  #   TRUE ~ 'SM'
-  # )) %>% 
-  # select(IDNumber, data, everything()) %>% 
+  # Create data var 
+  mutate(data = 'In-house-Eng') %>% 
   select(IDNumber, everything()) %>% 
   # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
   # from diiferent data sources)
   filter(TOT_raw < 200) %>% 
 # filter(!(TOT_raw >= 155 & age_range == '18 to 21 years' & data == 'SM')) %>%
-  write_csv(here('INPUT-FILES/CHILD/INHOUSE-NORMS-INPUT/Child-1221-School-inHouse-norms-input.csv'),
+  write_csv(here('INPUT-FILES/CHILD/INHOUSE-NORMS-INPUT/Child-512-School-inHouse-norms-input.csv'),
             na = "")
 
 rm(list = ls())

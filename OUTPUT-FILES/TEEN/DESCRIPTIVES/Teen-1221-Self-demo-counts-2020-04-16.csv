@@ -1,0 +1,24 @@
+Variable,Category,n
+age_range,12 to 13 years,258
+,14 to 15 years,256
+,16 to 17 years,314
+,18 to 21 years,129
+Gender,Male,484
+,Female,473
+ParentHighestEducation,(missing),177
+,Did not complete high school (no diploma),118
+,High school graduate (including GED),214
+,Some college or associate degree,152
+,Bachelor's degree or higher,296
+Ethnicity,Hispanic,257
+,Asian,29
+,Black,172
+,White,438
+,AmericanIndAlaskanNat,8
+,NativeHawPacIsl,2
+,MultiRacial,41
+,Other,10
+Region,northeast,111
+,midwest,234
+,south,358
+,west,254

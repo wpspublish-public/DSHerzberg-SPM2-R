@@ -188,6 +188,8 @@ Teen_1221_Home <-
 
 score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
+anyDuplicated(Teen_1221_Home$IDNumber)
+
 # APPLY SELECTED NORMALIZATION MODEL TO CREATE NORMALIZED Z-SCORES --------
 
 # Apply a static, repeatable transformation to create normalized z-scores for

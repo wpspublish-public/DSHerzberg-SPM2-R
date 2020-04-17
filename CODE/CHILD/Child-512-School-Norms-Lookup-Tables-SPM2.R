@@ -2,7 +2,6 @@
 # create raw-to-T lookup tables.
 
 suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
-library(magrittr) # PIPE OPERATORS
 suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
@@ -118,10 +117,10 @@ Child_512_School_items <-
   select(IDNumber, everything()) %>% 
   # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
   # from diiferent data sources)
-  filter(TOT_raw < 200) #%>% 
+  filter(TOT_raw < 200) %>% 
   # filter(!(TOT_raw >= 138 & data == 'Qual')) %>%
-  # write_csv(here('INPUT-FILES/CHILD/SM-QUAL-COMBO-NORMS-INPUT/Child-512-School-combo-norms-input.csv'),
-            # na = "")
+  write_csv(here('INPUT-FILES/CHILD/SM-ONLY-NORMS-INPUT/Child-512-School-SM-only-norms-input.csv'),
+            na = "")
 
 # clean up environment
 rm(list = ls(pattern='.*items_Child_512_School'))

@@ -309,7 +309,7 @@ Child_512_School_inHouse_Eng <-
   ) %>% 
   # Create data var 
   mutate(data = 'In-house-Eng') %>% 
-  select(IDNumber, everything()) %>% 
+  select(IDNumber, data, everything()) %>% 
   # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
   # from diiferent data sources)
   filter(TOT_raw < 200) %>% 

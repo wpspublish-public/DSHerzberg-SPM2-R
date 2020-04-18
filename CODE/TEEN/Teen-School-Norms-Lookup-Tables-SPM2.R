@@ -513,7 +513,7 @@ var_order <- c("data", "age_range", "Age", "Gender", "ParentHighestEducation", "
 
 cat_order <- c(
   # data
-  NA, "SM", "Qual",
+  NA, "SM", "Qual", "Sp", "Daycare", "In-house-Eng", "In-house-Sp", "In-house-Alt", 
   # age_range
   NA, "3.5 to 6 mo", "03.5 to 10 mo", "7 to 10.5 mo", "09.5 to 20 mo",  "11 to 31.5 mo", 
   "21 to 31.5 mo", "5 to 8 years", "9 to 12 years", "12 to 13 years", "14 to 15 years", 
@@ -534,7 +534,7 @@ cat_order <- c(
 
 
 Teen_1221_School_demo_counts <- Teen_1221_School %>% 
-  select(age_range, Gender, Ethnicity, Region) %>% 
+  select(data, age_range, Gender, Ethnicity, Region) %>% 
   gather("Variable", "Category") %>% 
   group_by(Variable, Category) %>%
   count(Variable, Category) %>%

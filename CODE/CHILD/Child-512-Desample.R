@@ -14,11 +14,11 @@ Child_512_Home_Sp <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/CHILD/SP-NORMS-INPUT/Child-512-Home-Sp-norms-input.csv")
   ))) 
-Child_1221_Home_inHouse <-
+Child_512_Home_inHouse <-
   suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/CHILD/INHOUSE-NORMS-INPUT/Child-1221-Home-inHouse-norms-input.csv")
+    here("INPUT-FILES/CHILD/INHOUSE-NORMS-INPUT/Child-512-Home-inHouse-norms-input.csv")
   ))) 
-Child_512_Home <- bind_rows(Child_512_Home_Eng, Child_512_Home_Sp, Child_1221_Home_inHouse) %>% 
+Child_512_Home <- bind_rows(Child_512_Home_Eng, Child_512_Home_Sp, Child_512_Home_inHouse) %>% 
   arrange(IDNumber)
 
 
@@ -43,6 +43,16 @@ Child_512_Home_not_Black_HSsomeColl <- Child_512_Home %>%
 Child_512_Home_desamp1 <- bind_rows(Child_512_Home_Black_HSsomeColl, Child_512_Home_not_Black_HSsomeColl) %>% 
   arrange(IDNumber)
 
+# 50% subsample
+set.seed(123)
+Child_512_Home_Black_HSsomeColl_50pct <- Child_512_Home %>% 
+  filter(Ethnicity == "Black" & 
+           (ParentHighestEducation == "High school graduate (including GED)" | 
+              ParentHighestEducation == "Some college or associate degree" )) %>% 
+  sample_n(154)
+Child_512_Home_desamp1_50pct <- bind_rows(Child_512_Home_Black_HSsomeColl_50pct, Child_512_Home_not_Black_HSsomeColl) %>% 
+  arrange(IDNumber)
+
 
 # STAGE 2 DESAMPLE --------------------------------------------------------
 
@@ -52,6 +62,8 @@ Child_512_Home_Black_BAplus <- Child_512_Home_desamp1 %>%
   filter(Ethnicity == "Black" & 
            ParentHighestEducation == "Bachelor's degree or higher") %>% 
   sample_n(15)
+# 50% subsample
+Child_512_Home_Black_BAplus_50pct <- Child_512_Home_Black_BAplus %>% sample_frac(.5)
 
 # Subsample: 15 Blacks with Some College
 set.seed(123)
@@ -59,6 +71,8 @@ Child_512_Home_Black_SomeColl <- Child_512_Home_desamp1 %>%
   filter(Ethnicity == "Black" & 
            ParentHighestEducation == "Some college or associate degree") %>% 
   sample_n(15)
+# 50% subsample
+Child_512_Home_Black_SomeColl_50pct <- Child_512_Home_Black_SomeColl %>% sample_frac(.5)
 
 # Subsample: 17 Hisp with BA+
 set.seed(123)
@@ -66,6 +80,8 @@ Child_512_Home_Hisp_BAplus <- Child_512_Home_desamp1 %>%
   filter(Ethnicity == "Hispanic" & 
            ParentHighestEducation == "Bachelor's degree or higher") %>% 
   sample_n(17)
+# 50% subsample
+Child_512_Home_Hisp_BAplus_50pct <- Child_512_Home_Hisp_BAplus %>% sample_frac(.5)
 
 # Subsample: 18 Hisp with Some College
 set.seed(123)
@@ -73,6 +89,8 @@ Child_512_Home_Hisp_SomeColl <- Child_512_Home_desamp1 %>%
   filter(Ethnicity == "Hispanic" & 
            ParentHighestEducation == "Some college or associate degree") %>% 
   sample_n(18)
+# 50% subsample
+Child_512_Home_Hisp_SomeColl_50pct <- Child_512_Home_Hisp_SomeColl %>% sample_frac(.5)
 
 # Subsample: 10 MultiRacial with BA+
 set.seed(123)
@@ -80,6 +98,8 @@ Child_512_Home_Multi_BAplus <- Child_512_Home_desamp1 %>%
   filter(Ethnicity == "MultiRacial" & 
            ParentHighestEducation == "Bachelor's degree or higher") %>% 
   sample_n(10)
+# 50% subsample
+Child_512_Home_Multi_BAplus_50pct <- Child_512_Home_Multi_BAplus %>% sample_frac(.5)
 
 # Subsample: 10 MultiRacial with Some College
 set.seed(123)
@@ -87,6 +107,8 @@ Child_512_Home_Multi_SomeColl <- Child_512_Home_desamp1 %>%
   filter(Ethnicity == "MultiRacial" & 
            ParentHighestEducation == "Some college or associate degree") %>% 
   sample_n(10)
+# 50% subsample
+Child_512_Home_Multi_SomeColl_50pct <- Child_512_Home_Multi_SomeColl %>% sample_frac(.5)
 
 # Subsample: 58 White with BA+
 set.seed(123)
@@ -94,6 +116,8 @@ Child_512_Home_White_BAplus <- Child_512_Home_desamp1 %>%
   filter(Ethnicity == "White" & 
            ParentHighestEducation == "Bachelor's degree or higher") %>% 
   sample_n(58)
+# 50% subsample
+Child_512_Home_White_BAplus_50pct <- Child_512_Home_White_BAplus %>% sample_frac(.5)
 
 # Subsample: 57 White with Some College
 set.seed(123)
@@ -101,6 +125,8 @@ Child_512_Home_White_SomeColl <- Child_512_Home_desamp1 %>%
   filter(Ethnicity == "White" & 
            ParentHighestEducation == "Some college or associate degree") %>% 
   sample_n(57)
+# 50% subsample
+Child_512_Home_White_SomeColl_50pct <- Child_512_Home_White_SomeColl %>% sample_frac(.5)
 
 # Combine 8 subsamples
 
@@ -116,11 +142,68 @@ Child_512_Home_stage2 <- bind_rows(
 ) %>% 
   arrange(IDNumber)
 
-Child_512_Home_desamp <- Child_512_Home_desamp1 %>% anti_join(Child_512_Home_stage2, by = 'IDNumber')
+Child_512_Home_desamp <- Child_512_Home_desamp1 %>% 
+  anti_join(
+    Child_512_Home_stage2, 
+    by = 'IDNumber'
+    )
+
+# Combine 8 50% subsamples
+
+Child_512_Home_stage2_50pct <- bind_rows(
+  Child_512_Home_Black_BAplus_50pct,
+  Child_512_Home_Black_SomeColl_50pct,
+  Child_512_Home_Hisp_BAplus_50pct,
+  Child_512_Home_Hisp_SomeColl_50pct,
+  Child_512_Home_Multi_BAplus_50pct,
+  Child_512_Home_Multi_SomeColl_50pct,
+  Child_512_Home_White_BAplus_50pct,
+  Child_512_Home_White_SomeColl_50pct
+) %>% 
+  arrange(IDNumber)
+
+rm(list = ls(pattern = 'BAplus'))
+rm(list = ls(pattern ='SomeColl'))
+
+Child_512_Home_desamp_50pct <- Child_512_Home_desamp1_50pct %>% 
+  anti_join(
+    Child_512_Home_stage2_50pct, 
+    by = 'IDNumber'
+    )
 
 # WRITE FINAL DESAMPLE FILE -----------------------------------------------
 
-write_csv(Child_512_Home_desamp, here('INPUT-FILES/CHILD/ALLDATA-DESAMP-NORMS-INPUT/CHILD-512-Home-allData-desamp.csv'))
+write_csv(Child_512_Home_desamp, here('INPUT-FILES/CHILD/ALLDATA-DESAMP-NORMS-INPUT/Child-512-Home-allData-desamp.csv'))
+
+# extract ID numbers of cases excluded in Home desamp process
+
+Child_512_Home_desamp_excludedID <- Child_512_Home %>% anti_join(
+  Child_512_Home_desamp, 
+  by = 'IDNumber'
+) %>% 
+  select(IDNumber) %>% 
+  arrange(IDNumber)
+
+# Apply Home desamp to School data set
+
+Child_512_School_Eng <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/CHILD/SM-ONLY-NORMS-INPUT/Child-512-School-SM-only-norms-input.csv")
+  ))) 
+Child_512_School_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/CHILD/INHOUSE-NORMS-INPUT/Child-512-School-inHouse-norms-input.csv")
+  ))) 
+Child_512_School <- bind_rows(Child_512_School_Eng, Child_512_School_inHouse) %>% 
+  arrange(IDNumber)
+
+Child_512_School_desamp <- Child_512_School %>% anti_join(
+  Child_512_Home_desamp_excludedID,
+  by = 'IDNumber'
+) %>%
+  arrange(IDNumber)
+
+write_csv(Child_512_School_desamp, here('INPUT-FILES/CHILD/ALLDATA-DESAMP-NORMS-INPUT/Child-512-School-allData-desamp.csv'))
 
 # EXAMINE DATA---------------------------------
 

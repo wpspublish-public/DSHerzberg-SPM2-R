@@ -164,6 +164,7 @@ Child_512_Home_stage2_50pct <- bind_rows(
 
 rm(list = ls(pattern = 'BAplus'))
 rm(list = ls(pattern ='SomeColl'))
+rm(list = ls(pattern ='Black'))
 
 Child_512_Home_desamp_50pct <- Child_512_Home_desamp1_50pct %>% 
   anti_join(
@@ -184,6 +185,13 @@ Child_512_Home_desamp_excludedID <- Child_512_Home %>% anti_join(
   select(IDNumber) %>% 
   arrange(IDNumber)
 
+Child_512_Home_desamp_excludedID_50pct <- Child_512_Home %>% anti_join(
+  Child_512_Home_desamp_50pct, 
+  by = 'IDNumber'
+) %>% 
+  select(IDNumber) %>% 
+  arrange(IDNumber)
+
 # Apply Home desamp to School data set
 
 Child_512_School_Eng <-
@@ -198,7 +206,7 @@ Child_512_School <- bind_rows(Child_512_School_Eng, Child_512_School_inHouse) %>
   arrange(IDNumber)
 
 Child_512_School_desamp <- Child_512_School %>% anti_join(
-  Child_512_Home_desamp_excludedID,
+  Child_512_Home_desamp_excludedID_50pct,
   by = 'IDNumber'
 ) %>%
   arrange(IDNumber)

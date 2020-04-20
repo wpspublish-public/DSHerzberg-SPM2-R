@@ -1,5 +1,4 @@
 suppressMessages(library(here))
-library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
 library(ggrepel) # ggplot2 EXTENSIONS
 
@@ -201,9 +200,13 @@ IT_49_Home_Sp <-
   # filter(TOT_raw < 200)
   filter(TOT_raw < 120)
 # Save trimmed file 
-write_csv(IT_49_Home_Sp, here(
-  'INPUT-FILES/IT/SP-NORMS-INPUT/IT-49-Home-Sp-norms-input.csv'
-))
+write_csv(
+  IT_49_Home_Sp,
+  here(
+    'INPUT-FILES/IT/SP-NORMS-INPUT/IT-49-Home-Sp-norms-input.csv'
+  ),
+  na = ""
+)
 
 # Prep file to comp
 IT_49_Home_Sp_scores <- IT_49_Home_Sp %>% 

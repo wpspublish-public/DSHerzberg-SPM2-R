@@ -2,7 +2,6 @@
 # create raw-to-T lookup tables.
 
 suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
-library(magrittr) # PIPE OPERATORS
 suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
@@ -10,109 +9,109 @@ library(bestNormalize) # NORMALIZATION METHODS
 suppressMessages(library(psych)) # DESCRIPTIVE TABLES
 
 # SCALE VECTORS WITH ITEM NAMES -------------------------------------------
-
-All_items_Preschool_24_School <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0024", 
-                                   "q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0035", 
-                                   "q0038", "q0039", "q0041", "q0042", "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", 
-                                   "q0052", "q0053", "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", "q0063", 
-                                   "q0064", "q0065", "q0066", "q0067", "q0068", "q0069", "q0070", "q0071", "q0074", "q0076", 
-                                   "q0077", "q0078", "q0079", "q0080", "q0081", "q0083", "q0084", "q0086", "q0088", "q0090", 
-                                   "q0091", "q0093", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", "q0101", "q0104", 
-                                   "q0105", "q0106", "q0108", "q0110", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
-
-TOT_items_Preschool_24_School <- c("q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0035", 
-                                   "q0038", "q0039", "q0041", "q0042", "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", 
-                                   "q0052", "q0053", "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", "q0063", 
-                                   "q0064", "q0065", "q0066", "q0067", "q0068", "q0069", "q0070", "q0071", "q0074", "q0076", 
-                                   "q0077", "q0078", "q0079", "q0080", "q0081", "q0083", "q0084", "q0086", "q0088", "q0090", 
-                                   "q0091", "q0093", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", "q0101", "q0104")
-
-SOC_items_Preschool_24_School <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0024")
-
-SOC_rev_items_Preschool_24_School <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0024")
-
-VIS_items_Preschool_24_School <- c("q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0035")
-
-HEA_items_Preschool_24_School <- c("q0038", "q0039", "q0041", "q0042", "q0043", "q0045", "q0046", "q0047", "q0048", "q0050")
-
-TOU_items_Preschool_24_School <- c("q0052", "q0053", "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", "q0063")
-
-TS_items_Preschool_24_School <- c("q0064", "q0065", "q0066", "q0067", "q0068", "q0069", "q0070", "q0071", "q0074", "q0076")
-
-BOD_items_Preschool_24_School <- c("q0077", "q0078", "q0079", "q0080", "q0081", "q0083", "q0084", "q0086", "q0088", "q0090")
-
-BAL_items_Preschool_24_School <- c("q0091", "q0093", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", "q0101", "q0104")
-
-PLA_items_Preschool_24_School <- c("q0105", "q0106", "q0108", "q0110", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
-
-score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
-
+# 
+# All_items_Preschool_24_School <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0024", 
+#                                    "q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0035", 
+#                                    "q0038", "q0039", "q0041", "q0042", "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", 
+#                                    "q0052", "q0053", "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", "q0063", 
+#                                    "q0064", "q0065", "q0066", "q0067", "q0068", "q0069", "q0070", "q0071", "q0074", "q0076", 
+#                                    "q0077", "q0078", "q0079", "q0080", "q0081", "q0083", "q0084", "q0086", "q0088", "q0090", 
+#                                    "q0091", "q0093", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", "q0101", "q0104", 
+#                                    "q0105", "q0106", "q0108", "q0110", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
+# 
+# TOT_items_Preschool_24_School <- c("q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0035", 
+#                                    "q0038", "q0039", "q0041", "q0042", "q0043", "q0045", "q0046", "q0047", "q0048", "q0050", 
+#                                    "q0052", "q0053", "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", "q0063", 
+#                                    "q0064", "q0065", "q0066", "q0067", "q0068", "q0069", "q0070", "q0071", "q0074", "q0076", 
+#                                    "q0077", "q0078", "q0079", "q0080", "q0081", "q0083", "q0084", "q0086", "q0088", "q0090", 
+#                                    "q0091", "q0093", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", "q0101", "q0104")
+# 
+# SOC_items_Preschool_24_School <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0024")
+# 
+# SOC_rev_items_Preschool_24_School <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0024")
+# 
+# VIS_items_Preschool_24_School <- c("q0026", "q0027", "q0028", "q0029", "q0030", "q0031", "q0032", "q0033", "q0034", "q0035")
+# 
+# HEA_items_Preschool_24_School <- c("q0038", "q0039", "q0041", "q0042", "q0043", "q0045", "q0046", "q0047", "q0048", "q0050")
+# 
+# TOU_items_Preschool_24_School <- c("q0052", "q0053", "q0054", "q0057", "q0058", "q0059", "q0060", "q0061", "q0062", "q0063")
+# 
+# TS_items_Preschool_24_School <- c("q0064", "q0065", "q0066", "q0067", "q0068", "q0069", "q0070", "q0071", "q0074", "q0076")
+# 
+# BOD_items_Preschool_24_School <- c("q0077", "q0078", "q0079", "q0080", "q0081", "q0083", "q0084", "q0086", "q0088", "q0090")
+# 
+# BAL_items_Preschool_24_School <- c("q0091", "q0093", "q0094", "q0095", "q0096", "q0097", "q0099", "q0100", "q0101", "q0104")
+# 
+# PLA_items_Preschool_24_School <- c("q0105", "q0106", "q0108", "q0110", "q0111", "q0112", "q0113", "q0114", "q0115", "q0117")
+# 
+# score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+# 
 
 # READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
 
-Preschool_24_School <-
-  suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/PRESCHOOL/SPM-2 Preschooler ages 25 School Report Questionnaire.csv")
-  ))) %>% select(
-    IDNumber,
-    Age,
-    # AgeGroup,
-    Gender,
-    # ParentHighestEducation,
-    Ethnicity,
-    Region,
-    All_items_Preschool_24_School
-  ) %>%
-  # filter for age stratification
-  filter(Age <= 4) %>%
-  mutate(age_range = "2-4 yr") %>%
-  select(everything(), age_range) %>% 
-  # recode items from char to num (mutate_at applies funs to specific columns)
-  mutate_at(
-    All_items_Preschool_24_School,
-    ~ case_when(
-      .x == "Never" ~ 1,
-      .x == "Occasionally" ~ 2,
-      .x == "Frequently" ~ 3,
-      .x == "Always" ~ 4,
-      TRUE ~ NA_real_
-    )
-  ) %>%
-  # recode reverse-scored items
-  mutate_at(
-    SOC_rev_items_Preschool_24_School,
-    ~ case_when(.x == 4 ~ 1,
-                .x == 3 ~ 2,
-                .x == 2 ~ 3,
-                .x == 1 ~ 4,
-                TRUE ~ NA_real_)
-  ) %>%
-  # Convert scored item vars to integers
-  mutate_at(All_items_Preschool_24_School,
-            ~ as.integer(.x)) %>% 
-  # Compute raw scores. Note use of `rowSums(.[TOT_items_Preschool_24_School])`: when used 
-  # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
-  # must wrap the column vector in a column-subsetting expression: `.[]`, where the
-  # dot is a token for the data in the pipe.
-  mutate(
-    TOT_raw = rowSums(.[TOT_items_Preschool_24_School]),
-    SOC_raw = rowSums(.[SOC_items_Preschool_24_School]),
-    VIS_raw = rowSums(.[VIS_items_Preschool_24_School]),
-    HEA_raw = rowSums(.[HEA_items_Preschool_24_School]),
-    TOU_raw = rowSums(.[TOU_items_Preschool_24_School]),
-    TS_raw = rowSums(.[TS_items_Preschool_24_School]),
-    BOD_raw = rowSums(.[BOD_items_Preschool_24_School]),
-    BAL_raw = rowSums(.[BAL_items_Preschool_24_School]),
-    PLA_raw = rowSums(.[PLA_items_Preschool_24_School])
-  ) %>% 
-  #select(
-  #  -(q0014:q0117)
-  #) %>% 
-  # Exclude outliers on TOT_raw
-  filter(TOT_raw <200)
-
-# clean up environment
-rm(list = ls(pattern='.*items_Preschool_24_School'))
+# Preschool_24_School <-
+#   suppressMessages(as_tibble(read_csv(
+#     here("INPUT-FILES/PRESCHOOL/SPM-2 Preschooler ages 25 School Report Questionnaire.csv")
+#   ))) %>% select(
+#     IDNumber,
+#     Age,
+#     # AgeGroup,
+#     Gender,
+#     # ParentHighestEducation,
+#     Ethnicity,
+#     Region,
+#     All_items_Preschool_24_School
+#   ) %>%
+#   # filter for age stratification
+#   filter(Age <= 4) %>%
+#   mutate(age_range = "2-4 yr") %>%
+#   select(everything(), age_range) %>% 
+#   # recode items from char to num (mutate_at applies funs to specific columns)
+#   mutate_at(
+#     All_items_Preschool_24_School,
+#     ~ case_when(
+#       .x == "Never" ~ 1,
+#       .x == "Occasionally" ~ 2,
+#       .x == "Frequently" ~ 3,
+#       .x == "Always" ~ 4,
+#       TRUE ~ NA_real_
+#     )
+#   ) %>%
+#   # recode reverse-scored items
+#   mutate_at(
+#     SOC_rev_items_Preschool_24_School,
+#     ~ case_when(.x == 4 ~ 1,
+#                 .x == 3 ~ 2,
+#                 .x == 2 ~ 3,
+#                 .x == 1 ~ 4,
+#                 TRUE ~ NA_real_)
+#   ) %>%
+#   # Convert scored item vars to integers
+#   mutate_at(All_items_Preschool_24_School,
+#             ~ as.integer(.x)) %>% 
+#   # Compute raw scores. Note use of `rowSums(.[TOT_items_Preschool_24_School])`: when used 
+#   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
+#   # must wrap the column vector in a column-subsetting expression: `.[]`, where the
+#   # dot is a token for the data in the pipe.
+#   mutate(
+#     TOT_raw = rowSums(.[TOT_items_Preschool_24_School]),
+#     SOC_raw = rowSums(.[SOC_items_Preschool_24_School]),
+#     VIS_raw = rowSums(.[VIS_items_Preschool_24_School]),
+#     HEA_raw = rowSums(.[HEA_items_Preschool_24_School]),
+#     TOU_raw = rowSums(.[TOU_items_Preschool_24_School]),
+#     TS_raw = rowSums(.[TS_items_Preschool_24_School]),
+#     BOD_raw = rowSums(.[BOD_items_Preschool_24_School]),
+#     BAL_raw = rowSums(.[BAL_items_Preschool_24_School]),
+#     PLA_raw = rowSums(.[PLA_items_Preschool_24_School])
+#   ) %>% 
+#   #select(
+#   #  -(q0014:q0117)
+#   #) %>% 
+#   # Exclude outliers on TOT_raw
+#   filter(TOT_raw <200)
+# 
+# # clean up environment
+# rm(list = ls(pattern='.*items_Preschool_24_School'))
 
 
 # EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
@@ -163,6 +162,19 @@ rm(list = ls(pattern='.*items_Preschool_24_School'))
 
 # Preschool_24_School_dup <- Preschool_24_School %>% count(IDNumber) %>% filter(n > 1)
 # write_csv(Preschool_24_School_dup, here("DATA/Preschool_24_School_dup.csv"))
+
+
+# READ FINALIZED STAND SAMPLE ---------------------------------------------
+
+Preschool_24_School <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/PRESCHOOL/ALLDATA-DESAMP-NORMS-INPUT/Preschool-25-School-allData-desamp.csv")
+  ))) %>% 
+filter(Age %in% c(2:4))
+
+score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+
+anyDuplicated(Preschool_24_School$IDNumber)
 
 
 # DETERMINE BEST NORMALIZATION MODEL --------------------------------------
@@ -487,26 +499,43 @@ na = ''
 
 # write table of demographic counts
 
-var_order <- c("age_range", "Gender", "Ethnicity", "Region")
+var_order <- c("data", "age_range", "Age", "Gender", "ParentHighestEducation", "HighestEducation", 
+               "Ethnicity", "Region")
 
-cat_order <- c("2-4 yr",
-               "Male", "Female", 
-               "Hispanic", "Asian", "Black", "White", "MultiRacial", "Other", 
-               "northeast", "midwest", "south", "west")                                   
+cat_order <- c(
+  # data
+  NA, "SM", "Qual", "Sp", "Daycare", "In-house-Eng", "In-house-Sp", "In-house-Alt", 
+  # age_range
+  NA, "3.5 to 6 mo", "03.5 to 10 mo", "7 to 10.5 mo", "09.5 to 20 mo",  "11 to 31.5 mo", 
+  "21 to 31.5 mo", "5 to 8 years", "9 to 12 years", "12 to 13 years", "14 to 15 years", 
+  "16 to 17 years", "18 to 21 years", "21.00 to 30.99 years", "31.00 to 40.99 years", 
+  "41.00 to 50.99 years", "51.00 to 64.99 years", "65.00 to 99.99 years",
+  # Age
+  "2", "3", "4", "5",
+  # Gender
+  NA, "Male", "Female",
+  # ParentHighestEducation & HighestEducation
+  NA, "Did not complete high school (no diploma)", "High school graduate (including GED)", 
+  "Some college or associate degree", "Bachelor's degree or higher",
+  # Ethnicity
+  NA, "Hispanic", "Asian", "Black", "White", "AmericanIndAlaskanNat", 
+  "NativeHawPacIsl", "MultiRacial", "Other",
+  # Region
+  NA, "northeast", "midwest", "south", "west")
 
 
 Preschool_24_School_demo_counts <- Preschool_24_School %>% 
-  select(age_range, Gender, Ethnicity, Region) %>% 
+  select(data, age_range, Gender, Ethnicity, Region) %>% 
   gather("Variable", "Category") %>% 
   group_by(Variable, Category) %>%
   count(Variable, Category) %>%
   arrange(match(Variable, var_order), match(Category, cat_order)) %>% 
   ungroup() %>% 
   mutate(Variable = case_when(
-    # lag(Variable) == "data" & Variable == "data" ~ "",
+    lag(Variable) == "data" & Variable == "data" ~ "",
     lag(Variable) == "age_range" & Variable == "age_range" ~ "",
     lag(Variable) == "Gender" & Variable == "Gender" ~ "",
-    # lag(Variable) == "HighestEducation" & Variable == "HighestEducation" ~ "",
+    # lag(Variable) == "ParentHighestEducation" & Variable == "ParentHighestEducation" ~ "",
     lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
     lag(Variable) == "Region" & Variable == "Region" ~ "",
     TRUE ~ Variable
@@ -521,5 +550,4 @@ write_csv(Preschool_24_School_demo_counts, here(
 ), 
 na = '(missing)'
 )
-
 

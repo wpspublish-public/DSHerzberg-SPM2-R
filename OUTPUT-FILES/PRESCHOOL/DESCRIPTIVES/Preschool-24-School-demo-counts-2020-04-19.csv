@@ -1,0 +1,16 @@
+Variable,Category,n
+data,SM,441
+,In-house-Eng,7
+age_range,2 to 4 years,448
+Gender,Male,212
+,Female,236
+Ethnicity,Hispanic,57
+,Asian,12
+,Black,72
+,White,274
+,MultiRacial,26
+,Other,7
+Region,northeast,93
+,midwest,114
+,south,179
+,west,62

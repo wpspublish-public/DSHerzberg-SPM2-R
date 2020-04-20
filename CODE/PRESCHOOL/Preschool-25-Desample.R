@@ -24,13 +24,13 @@ Preschool_25_Home <- bind_rows(Preschool_25_Home_Eng, Preschool_25_Home_Sp, Pres
 
 # Subsample: 189 Whites with four year college
 set.seed(123)
-Preschool_25_Home_White_BA <- Preschool_25_Home %>% 
+Preschool_25_Home_White_BAplus <- Preschool_25_Home %>% 
   filter(Ethnicity == "White" & 
            ParentHighestEducation == "Bachelor's degree or higher") %>% 
   sample_n(189)
 
 # Remove all Whites with four year college from main sample
-Preschool_25_Home_not_White_BA <- Preschool_25_Home %>% 
+Preschool_25_Home_not_White_BAplus <- Preschool_25_Home %>% 
   filter(!(Ethnicity == "White" & 
              ParentHighestEducation == "Bachelor's degree or higher"))
   
@@ -79,11 +79,43 @@ Preschool_25_Home_stage2 <- bind_rows(
 ) %>% 
   arrange(IDNumber)
 
+rm(list = ls(pattern = 'BAplus'))
+
 Preschool_25_Home_desamp <- Preschool_25_Home_desamp1 %>% anti_join(Preschool_25_Home_stage2, by = 'IDNumber')
 
 # WRITE FINAL DESAMPLE FILE -----------------------------------------------
 
 write_csv(Preschool_25_Home_desamp, here('INPUT-FILES/PRESCHOOL/ALLDATA-DESAMP-NORMS-INPUT/Preschool-25-Home-allData-desamp.csv'))
+
+# extract ID numbers of cases excluded in Home desamp process
+
+Preschool_25_Home_desamp_excludedID <- Preschool_25_Home %>% anti_join(
+  Preschool_25_Home_desamp, 
+  by = 'IDNumber'
+) %>% 
+  select(IDNumber) %>% 
+  arrange(IDNumber)
+
+# write all school data for norming, without applying any desampling.
+
+Preschool_25_School_Eng <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/PRESCHOOL/SM-ONLY-NORMS-INPUT/Preschool-25-School-SM-only-norms-input.csv")
+  ))) 
+Preschool_25_School_inHouse <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/PRESCHOOL/INHOUSE-NORMS-INPUT/Preschool-25-School-inHouse-norms-input.csv")
+  ))) 
+Preschool_25_School <- bind_rows(Preschool_25_School_Eng, Preschool_25_School_inHouse) %>% 
+  arrange(IDNumber)
+
+write_csv(
+  Preschool_25_School, 
+  here(
+    'INPUT-FILES/PRESCHOOL/ALLDATA-DESAMP-NORMS-INPUT/Preschool-25-School-allData-desamp.csv'
+    ),
+  na = ""
+  )
 
 # EXAMINE DATA---------------------------------
 

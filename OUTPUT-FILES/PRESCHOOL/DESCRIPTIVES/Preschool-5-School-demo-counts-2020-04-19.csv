@@ -1,0 +1,15 @@
+Variable,Category,n
+data,SM,91
+age_range,5 years,91
+Gender,Male,45
+,Female,46
+Ethnicity,Hispanic,10
+,Asian,1
+,Black,27
+,White,47
+,AmericanIndAlaskanNat,1
+,MultiRacial,5
+Region,northeast,16
+,midwest,27
+,south,40
+,west,8

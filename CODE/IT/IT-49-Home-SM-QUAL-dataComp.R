@@ -1,5 +1,4 @@
 suppressMessages(library(here))
-library(magrittr)
 suppressMessages(suppressWarnings(library(tidyverse)))
 library(ggrepel) # ggplot2 EXTENSIONS
 

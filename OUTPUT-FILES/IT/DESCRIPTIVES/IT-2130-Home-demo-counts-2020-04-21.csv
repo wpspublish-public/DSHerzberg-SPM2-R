@@ -1,0 +1,32 @@
+Variable,Category,n
+data,SM,125
+,Qual,30
+,Sp,9
+,In-house-Eng,3
+,In-house-Sp,1
+AgeInMonths,21,20
+,22,17
+,23,14
+,24,19
+,25,15
+,26,23
+,27,18
+,28,12
+,29,15
+,30,15
+Gender,Male,83
+,Female,85
+ParentHighestEducation,Did not complete high school (no diploma),5
+,High school graduate (including GED),31
+,Some college or associate degree,53
+,Bachelor's degree or higher,79
+Ethnicity,Hispanic,49
+,Asian,2
+,Black,17
+,White,83
+,MultiRacial,14
+,Other,3
+Region,northeast,14
+,midwest,46
+,south,56
+,west,52

@@ -198,7 +198,9 @@ IT_Caregiver_Sp <-
 # Save trimmed file 
 write_csv(IT_Caregiver_Sp, here(
   'INPUT-FILES/IT/SP-NORMS-INPUT/IT-Caregiver-Sp-norms-input.csv'
-))
+),
+na = ''
+)
 
 # Prep file to comp
 IT_Caregiver_Sp_scores <- IT_Caregiver_Sp %>% 

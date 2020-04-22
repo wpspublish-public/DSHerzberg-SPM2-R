@@ -7,162 +7,35 @@ suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
 library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
+suppressMessages(library(data.table))
+suppressMessages(library(psych))
 
-# SCALE VECTORS WITH ITEM NAMES -------------------------------------------
+# READ FINALIZED STAND SAMPLE ---------------------------------------------
 
-All_items_IT_Caregiver <- c("QT1", "QT2", "QT4", "QT5", "QT6", "QT7", "QT10", "QT11", "QT12", "QT13", "QT14", "QT15", 
-                                "QT17", "QT18", "QT19", "QT20", "QT21", "QT23", "QT25", "QT26", "QT27", "QT28", "QT30", 
-                                "QT31", "QT32", "QT33", "QT34", "QT35", "QT37", "QT39", "QT41", "QT43", "QT45", "QT46", 
-                                "QT47", "QT48", "QT49", "QT50", "QT51", "QT54", "QT55", "QT56", "QT57", "QT60", "QT62", 
-                                "QT65", "QT66", "QT67", "QT68", "QT69", "QT71", "QT72", "QT73", "QT74", "QT75", "QT76", 
-                                "QT77", "QT78", "QT79", "QT81", "QT83", "QT85", "QT86", "QT87", "QT89", "QT91", "QT92", 
-                                "QT93", "QT94", "QT95", "QT96", "QT97", "QT98", "QT100", "QT101", "QT103", "QT105", 
-                            "QT106", "QT107", "QT108")
+IT_Caregiver_Eng <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/SM-QUAL-COMBO-NORMS-INPUT/IT-Caregiver-combo-norms-input.csv")
+  )))
+IT_Caregiver_Sp <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/SP-NORMS-INPUT/IT-Caregiver-Sp-norms-input.csv")
+  )))
 
-
-TOT_items_IT_Caregiver <- c("QT14", "QT15", 
-                                "QT17", "QT18", "QT19", "QT20", "QT21", "QT23", "QT25", "QT26", "QT27", "QT28", "QT30", 
-                                "QT31", "QT32", "QT33", "QT34", "QT35", "QT37", "QT39", "QT41", "QT43", "QT45", "QT46", 
-                                "QT47", "QT48", "QT49", "QT50", "QT51", "QT54", "QT55", "QT56", "QT57", "QT60", "QT62", 
-                                "QT65", "QT66", "QT67", "QT68", "QT69", "QT71", "QT72", "QT73", "QT74", "QT75", "QT76", 
-                                "QT77", "QT78", "QT79", "QT81", "QT83", "QT85", "QT86", "QT87", "QT89", "QT91", "QT92", 
-                                "QT93", "QT94", "QT95")
-
-SOC_items_IT_Caregiver <- c("QT1", "QT2", "QT4", "QT5", "QT6", "QT7", "QT10", "QT11", "QT12", "QT13")
-
-SOC_rev_items_IT_Caregiver <- c("QT1", "QT2", "QT4", "QT5", "QT6", "QT7")
-
-VIS_items_IT_Caregiver <- c("QT14", "QT15", "QT17", "QT18", "QT19", "QT20", "QT21", "QT23", "QT25", "QT26")
-
-HEA_items_IT_Caregiver <- c("QT27", "QT28", "QT30", "QT31", "QT32", "QT33", "QT34", "QT35", "QT37", "QT39")
-
-TOU_items_IT_Caregiver <- c("QT41", "QT43", "QT45", "QT46", "QT47", "QT48", "QT49", "QT50", "QT51", "QT54")
-
-TS_items_IT_Caregiver <- c("QT55", "QT56", "QT57", "QT60", "QT62", "QT65", "QT66", "QT67", "QT68", "QT69")
-
-BOD_items_IT_Caregiver <- c("QT71", "QT72", "QT73", "QT74", "QT75", "QT76", "QT77", "QT78", "QT79", "QT81")
-
-BAL_items_IT_Caregiver <- c("QT83", "QT85", "QT86", "QT87", "QT89", "QT91", "QT92", "QT93", "QT94", "QT95")
-
-PLA_items_IT_Caregiver <- c("QT96", "QT97", "QT98", "QT100", "QT101", "QT103", "QT105", "QT106", "QT107", "QT108")
+IT_Caregiver <- bind_rows(
+  IT_Caregiver_Eng,
+  IT_Caregiver_Sp
+) %>% 
+  arrange(IDNumber)
 
 score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
+anyDuplicated(IT_Caregiver$IDNumber)
 
-# READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
-
-IT_Caregiver <-
-  suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/IT/SPM2_InfantToddler_Caregiver_Combo.csv")
-  ))) %>% select(
-    IDNumber,
-    AgeInMonths,
-    AgeGroup,
-    Gender,
-    # HighestEducation,
-    Ethnicity,
-    Region,
-    All_items_IT_Caregiver
-  ) %>%
-  # filter out youngest age group
-  # filter(AgeGroup != "16.00 to 20.99 years") %>% 
-  # recode items from char to num (mutate_at applies funs to specific columns)
-  mutate_at(
-    All_items_IT_Caregiver,
-    ~ case_when(
-      .x == "Never" ~ 1,
-      .x == "Occasionally" ~ 2,
-      .x == "Frequently" ~ 3,
-      .x == "Always" ~ 4,
-      TRUE ~ NA_real_
-    )
-  ) %>%
-  # recode reverse-scored items
-  mutate_at(
-    SOC_rev_items_IT_Caregiver,
-    ~ case_when(.x == 4 ~ 1,
-                .x == 3 ~ 2,
-                .x == 2 ~ 3,
-                .x == 1 ~ 4,
-                TRUE ~ NA_real_)
-  ) %>%
-  # Convert scored item vars to integers
-  mutate_at(All_items_IT_Caregiver,
-            ~ as.integer(.x)) %>% 
-  # Compute raw scores. Note use of `rowSums(.[TOT_items_IT_Caregiver])`: when used 
-  # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
-  # must wrap the column vector in a column-subsetting expression: `.[]`, where the
-  # dot is a token for the data in the pipe.
-  mutate(
-    TOT_raw = rowSums(.[TOT_items_IT_Caregiver]),
-    SOC_raw = rowSums(.[SOC_items_IT_Caregiver]),
-    VIS_raw = rowSums(.[VIS_items_IT_Caregiver]),
-    HEA_raw = rowSums(.[HEA_items_IT_Caregiver]),
-    TOU_raw = rowSums(.[TOU_items_IT_Caregiver]),
-    TS_raw = rowSums(.[TS_items_IT_Caregiver]),
-    BOD_raw = rowSums(.[BOD_items_IT_Caregiver]),
-    BAL_raw = rowSums(.[BAL_items_IT_Caregiver]),
-    PLA_raw = rowSums(.[PLA_items_IT_Caregiver])
-  ) %>% 
-  select(
-    -(QT1:QT108)
-  ) %>% 
-  #print()
-  # Exclude outliers on TOT_raw
-  filter(TOT_raw <200) %>% print()
-
-# clean up environment
-rm(list = ls(pattern='.*items_IT_Caregiver'))
-
-
-# EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
-
-# ### THE NEXT SECTION OF CODE FACILITATES EXAMINATION OF TOT_raw to make
-# decisions about whether norms need to be stratified by age. Once the decision
-# about age-stratification has been made and implemented, the 'examination' code
-# can be commented off.
-
-
-# Create frequency tables for TOT_raw by AgeGroup
-# IT_Caregiver_TOT_freq_AgeGroup <- IT_Caregiver %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
-#   mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
-
-
-# Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-# IT_Caregiver_TOT_desc_AgeGroup <-
-#   IT_Caregiver %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
-#                                                                          median = round(median(TOT_raw), 2),
-#                                                                          mean = round(mean(TOT_raw), 2),
-#                                                                          sd = round(sd(TOT_raw), 2)) %>%
-#   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:6))
-# 
-# AgeGroup <- IT_Caregiver_TOT_desc_AgeGroup %>% pull(AgeGroup)
-
-# Plot TOT_raw means, SDs by AgeGroup
-# mean_plot <- ggplot(data = IT_Caregiver_TOT_desc_AgeGroup, aes(group, mean)) +
-#   geom_point(
-#     col = "blue",
-#     fill = "blue",
-#     alpha = .5,
-#     size = 3,
-#     shape = 23
-#   ) +
-#   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-#   scale_x_continuous(breaks = seq(1, 6, 1), labels = AgeGroup) +
-#   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
-#   labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
-#   geom_errorbar(
-#     aes(ymin = mean - sd, ymax = mean + sd),
-#     col = "red",
-#     size = 0.2,
-#     width = 0.2
-#   ) 
-# print(mean_plot)
-
-# Check for duplicate IDnumber.
-
-# IT_Caregiver_dup <- IT_Caregiver %>% count(IDNumber) %>% filter(n > 1)
-# write_csv(IT_Caregiver_dup, here("DATA/IT_Caregiver_dup.csv"))
+# extract Dup ID numbers
+IT_Caregiver_dupIDs <- IT_Caregiver %>% 
+mutate(dup = duplicated(IDNumber)) %>% 
+  select(IDNumber, dup, everything()) %>% 
+  filter(dup == TRUE)
 
 
 # DETERMINE BEST NORMALIZATION MODEL --------------------------------------
@@ -209,7 +82,7 @@ raw_score_cols_list <- map(score_names, ~ IT_Caregiver %>%
 # argument allows the selected normalization transformation to be applied to the
 # .y data. 
 
-# NOTE: MUST SUBSITUTE NAMED TRANSFORMATION FROM PREVIOUS STEP IN THIS LINE:
+# NOTE: MUST SUBSTITUTE NAMED TRANSFORMATION FROM PREVIOUS STEP IN THIS LINE:
 # value = boxcox(.y), e.g., value = [SELECTED TRANSFORMATION](.y), 
 
 raw_score_cols_list %>%
@@ -284,7 +157,8 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
   select(
     paste0(.y, '_NT')
   )
-)
+) %>% 
+  mutate_if(is.numeric, as.integer)
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
@@ -297,7 +171,9 @@ write_csv(IT_Caregiver, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 # clean up environment
 rm(list = ls(pattern='.*_nz'))
@@ -354,7 +230,7 @@ TOT_lookup <- IT_Caregiver %>% group_by(
   ) %>% 
   mutate_at(
     vars(TOT_NT), ~ case_when(
-      raw < 60 ~ NA_real_,
+      raw < 60 ~ NA_integer_,
       TRUE ~ .x
     )
   )
@@ -385,7 +261,7 @@ subscale_lookup <- map(
     ) %>% 
     mutate_at(
       vars(!!as.name(paste0(.x, '_NT'))), ~ case_when(
-        raw > 40 ~ NA_real_,
+      raw < 60 ~ NA_integer_,
         TRUE ~ .x
       )
     )
@@ -407,7 +283,9 @@ write_csv(all_lookup, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
 
 # generate print pub format raw-to-T table
@@ -455,6 +333,81 @@ write_csv(all_lookup_pub, here(
     format(Sys.Date(), "%Y-%m-%d"),
     '.csv'
   )
-))
+), 
+na = ''
+)
 
+# write raw score descriptives for all scales (using psych::describe)
+IT_Caregiver_raw_desc <-
+  IT_Caregiver %>% 
+  select(contains('raw')) %>% 
+  describe(fast = T) %>%
+  rownames_to_column() %>% 
+  rename(scale = rowname) %>% 
+  select(scale, n, mean, sd) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2)))
+
+write_csv(IT_Caregiver_raw_desc, here(
+  paste0(
+    'OUTPUT-FILES/IT/DESCRIPTIVES/IT-Caregiver-raw-desc-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = ''
+)
+
+# write table of demographic counts
+
+var_order <- c("data", "age_range", "Age", "AgeInMonths", "Gender", "ParentHighestEducation", "HighestEducation", 
+               "Ethnicity", "Region")
+
+cat_order <- c(
+  # data
+  NA, "SM", "Qual", "Sp", "Daycare", "In-house-Eng", "In-house-Sp", "In-house-Alt", 
+  # age_range
+  NA, "3.5 to 6 mo", "03.5 to 10 mo", "7 to 10.5 mo", "09.5 to 20 mo",  "11 to 31.5 mo", 
+  "21 to 31.5 mo", "5 to 8 years", "9 to 12 years", "12 to 13 years", "14 to 15 years", 
+  "16 to 17 years", "18 to 21 years", "21.00 to 30.99 years", "31.00 to 40.99 years", 
+  "41.00 to 50.99 years", "51.00 to 64.99 years", "65.00 to 99.99 years",
+  # Age
+  "2", "3", "4", "5",
+  # Gender
+  NA, "Male", "Female",
+  # ParentHighestEducation & HighestEducation
+  NA, "Did not complete high school (no diploma)", "High school graduate (including GED)", 
+  "Some college or associate degree", "Bachelor's degree or higher",
+  # Ethnicity
+  NA, "Hispanic", "Asian", "Black", "White", "AmericanIndAlaskanNat", 
+  "NativeHawPacIsl", "MultiRacial", "Other",
+  # Region
+  NA, "northeast", "midwest", "south", "west")
+
+
+IT_Caregiver_demo_counts <- IT_Caregiver %>% 
+  select(data, AgeInMonths, Gender, ParentHighestEducation, Ethnicity, Region) %>% 
+  gather("Variable", "Category") %>% 
+  group_by(Variable, Category) %>%
+  count(Variable, Category) %>%
+  arrange(match(Variable, var_order), match(Category, cat_order)) %>% 
+  ungroup() %>% 
+  mutate(Variable = case_when(
+    lag(Variable) == "data" & Variable == "data" ~ "",
+    lag(Variable) == "AgeInMonths" & Variable == "AgeInMonths" ~ "",
+    lag(Variable) == "Gender" & Variable == "Gender" ~ "",
+    lag(Variable) == "ParentHighestEducation" & Variable == "ParentHighestEducation" ~ "",
+    lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
+    lag(Variable) == "Region" & Variable == "Region" ~ "",
+    TRUE ~ Variable
+  ))
+
+write_csv(IT_Caregiver_demo_counts, here(
+  paste0(
+    'OUTPUT-FILES/IT/DESCRIPTIVES/IT-Caregiver-demo-counts-',
+    format(Sys.Date(), "%Y-%m-%d"),
+    '.csv'
+  )
+), 
+na = '(missing)'
+)
 

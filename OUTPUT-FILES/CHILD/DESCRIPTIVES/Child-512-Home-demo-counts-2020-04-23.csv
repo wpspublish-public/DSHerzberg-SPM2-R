@@ -1,0 +1,25 @@
+Variable,Category,n
+data,SM,601
+,Qual,241
+,Sp,27
+,In-house-Eng,3
+,In-House-Sp,3
+age_range,5 to 8 years,475
+,9 to 12 years,400
+Gender,Male,438
+,Female,437
+ParentHighestEducation,Did not complete high school (no diploma),61
+,High school graduate (including GED),241
+,Some college or associate degree,280
+,Bachelor's degree or higher,293
+Ethnicity,Hispanic,217
+,Asian,16
+,Black,121
+,White,452
+,AmericanIndAlaskanNat,5
+,MultiRacial,52
+,Other,12
+Region,northeast,110
+,midwest,205
+,south,371
+,west,189

@@ -1,0 +1,21 @@
+mod_var,mod_val,n,mean_TOT,sd_TOT,ES_lag,ES_grand
+Age Range,2 to 4 years,445,89.12,20.76,,0.01
+"",5 years,75,87.17,27.88,-0.08,-0.08
+Gender,Male,261,90.94,22.84,,0.1
+"",Female,259,86.73,20.76,-0.19,-0.1
+SES,Did not complete high school (no diploma),28,88.57,24.93,,-0.01
+"",High school graduate (including GED),125,92.96,28.3,0.16,0.19
+"",Some college or associate degree,158,90.03,22.35,-0.12,0.05
+"",Bachelor's degree or higher,209,85.52,15.51,-0.24,-0.15
+Ethnicity,Hispanic,125,92.51,22.08,,0.17
+"",Asian,14,86.36,15.89,-0.32,-0.11
+"",Black,92,87.58,28.21,0.06,-0.06
+"",White,242,87.25,19.31,-0.01,-0.07
+"",AmericanIndAlaskanNat,1,73,,,-0.72
+"",NativeHawPacIsl,3,94.67,10.41,,0.27
+"",MultiRacial,34,92.85,23.45,-0.11,0.18
+"",Other,9,82.22,11.27,-0.61,-0.3
+Region,northeast,80,92.8,26.16,,0.18
+"",midwest,123,85.09,20.62,-0.33,-0.17
+"",south,202,90.09,22.04,0.23,0.06
+"",west,115,87.91,19.24,-0.11,-0.04

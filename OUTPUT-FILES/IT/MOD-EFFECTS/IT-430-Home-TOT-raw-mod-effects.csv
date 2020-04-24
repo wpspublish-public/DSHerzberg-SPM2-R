@@ -1,0 +1,23 @@
+mod_var,mod_val,n,mean_TOT,sd_TOT,ES_lag,ES_grand
+Age Range,03.5 to 6 mo,139,90.35,13.13,,0.09
+"",07 to 10.5 mo,130,89.83,13.86,-0.04,0.06
+"",09.5 to 20 mo,252,90.9,16.25,0.07,0.13
+"",21 to 31.5 mo,167,84.4,13.99,-0.43,-0.31
+Gender,Male,327,89.32,16.31,,0.02
+"",Female,361,88.72,13.47,-0.04,-0.02
+SES,Did not complete high school (no diploma),30,91.3,20.99,,0.15
+"",High school graduate (including GED),176,91.47,17.7,0.01,0.17
+"",Some college or associate degree,245,89.59,14.38,-0.12,0.04
+"",Bachelor's degree or higher,237,86.3,11.46,-0.25,-0.18
+Ethnicity,Hispanic,192,89.07,13.14,,0
+"",Asian,11,91.09,15.9,0.14,0.14
+"",Black,93,88.23,22.22,-0.15,-0.05
+"",White,327,88.89,12.58,0.04,-0.01
+"",AmericanIndAlaskanNat,2,109.5,24.75,1.1,1.38
+"",NativeHawPacIsl,1,108,,,1.28
+"",MultiRacial,56,89.89,17.62,,0.06
+"",Other,6,83.67,8.96,-0.47,-0.36
+Region,northeast,77,88.94,13.98,,-0
+"",midwest,166,86.63,18.75,-0.14,-0.16
+"",south,254,89.69,13.83,0.19,0.05
+"",west,190,90.26,12.49,0.04,0.08

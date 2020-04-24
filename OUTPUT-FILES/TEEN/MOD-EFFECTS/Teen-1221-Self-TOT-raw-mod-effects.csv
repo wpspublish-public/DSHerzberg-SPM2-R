@@ -1,0 +1,23 @@
+mod_var,mod_val,n,mean_TOT,sd_TOT,ES_lag,ES_grand
+Age Range,12 to 13 years,258,96.02,23.52,,0.03
+"",14 to 15 years,256,93.91,24.77,-0.09,-0.05
+"",16 to 17 years,314,93.73,22.42,-0.01,-0.06
+"",18 to 21 years,129,99.85,26.8,0.25,0.19
+Gender,Male,484,93.37,24.13,,-0.08
+"",Female,473,97.11,23.8,0.16,0.08
+SES,Did not complete high school (no diploma),118,89.86,25.89,,-0.22
+"",High school graduate (including GED),214,90.89,27.96,0.04,-0.18
+"",Some college or associate degree,152,96.76,25.48,0.22,0.06
+"",Bachelor's degree or higher,296,94.37,20.67,-0.1,-0.04
+Ethnicity,Hispanic,257,95.11,23.67,,-0
+"",Asian,29,98.38,20.75,0.15,0.13
+"",Black,172,91.86,29.16,-0.26,-0.14
+"",White,438,95.57,21.08,0.15,0.01
+"",AmericanIndAlaskanNat,8,137.38,36.99,1.44,1.75
+"",NativeHawPacIsl,2,69.5,13.44,-2.69,-1.07
+"",MultiRacial,41,98.07,24.64,1.5,0.12
+"",Other,10,91.3,22.15,-0.29,-0.16
+Region,northeast,111,92.72,19.77,,-0.1
+"",midwest,234,91.19,25.33,-0.07,-0.17
+"",south,358,98.21,24.13,0.28,0.12
+"",west,254,95.82,23.83,-0.1,0.02

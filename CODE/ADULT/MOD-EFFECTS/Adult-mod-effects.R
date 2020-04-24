@@ -24,6 +24,9 @@ cat_order <- c(
   # Region
   NA, "northeast", "midwest", "south", "west")
 
+
+# SELF --------------------------------------------------------------------
+
 Adult_Self <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/ADULT/ALLDATA-DESAMP-NORMS-INPUT/Adult-Self-allData-desamp.csv")
@@ -123,4 +126,103 @@ Adult_Self_TOT_raw_mod_effects <- suppressWarnings(
   ),
   na = '')
 
+# OTHER --------------------------------------------------------------------
 
+Adult_Other <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/ADULT/ALLDATA-DESAMP-NORMS-INPUT/Adult-Other-allData-desamp.csv")
+  )))
+
+Adult_Other_age_TOT_raw_desc <-
+  describeBy(Adult_Other$TOT_raw, Adult_Other$age_range, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(Adult_Other$TOT_raw))/sd(Adult_Other$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Age Range',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+Adult_Other_gender_TOT_raw_desc <-
+  describeBy(Adult_Other$TOT_raw, Adult_Other$Gender, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(Adult_Other$TOT_raw))/sd(Adult_Other$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Gender',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+Adult_Other_SES_TOT_raw_desc <-
+  describeBy(Adult_Other$TOT_raw, Adult_Other$HighestEducation, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(Adult_Other$TOT_raw))/sd(Adult_Other$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'SES',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+Adult_Other_Ethnic_TOT_raw_desc <-
+  describeBy(Adult_Other$TOT_raw, Adult_Other$Ethnicity, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(Adult_Other$TOT_raw))/sd(Adult_Other$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Ethnicity',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+Adult_Other_Region_TOT_raw_desc <-
+  describeBy(Adult_Other$TOT_raw, Adult_Other$Region, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(Adult_Other$TOT_raw))/sd(Adult_Other$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Region',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+Adult_Other_TOT_raw_mod_effects <- suppressWarnings(
+  bind_rows(
+    Adult_Other_age_TOT_raw_desc,
+    Adult_Other_gender_TOT_raw_desc,
+    Adult_Other_SES_TOT_raw_desc,
+    Adult_Other_Ethnic_TOT_raw_desc,
+    Adult_Other_Region_TOT_raw_desc
+  )
+) %>%
+  write_csv(here(
+    'OUTPUT-FILES/ADULT/MOD-EFFECTS/Adult-Other-TOT-raw-mod-effects.csv'
+  ),
+  na = '')

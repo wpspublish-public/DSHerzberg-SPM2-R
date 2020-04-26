@@ -1,0 +1,19 @@
+Variable,Category,n
+Gender,Male,261
+,Female,259
+ParentHighestEducation,Did not complete high school (no diploma),28
+,High school graduate (including GED),125
+,Some college or associate degree,158
+,Bachelor's degree or higher,209
+Ethnicity,Hispanic,125
+,Asian,14
+,Black,92
+,White,242
+,AmericanIndAlaskanNat,1
+,NativeHawPacIsl,3
+,MultiRacial,34
+,Other,9
+Region,northeast,80
+,midwest,123
+,south,202
+,west,115

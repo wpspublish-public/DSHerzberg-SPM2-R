@@ -114,8 +114,13 @@ adult_driving_data_self <-
   # remove outliers
   filter(TOT_raw < 45)
 
-adult_driving_data_other <- adult_driving_data_Eng %>% 
-  filter(DriveForm == "AdultOther") %>% 
+adult_driving_data_other <- 
+  # adult_driving_data_Eng %>% 
+  # filter(DriveForm == "AdultOther") %>% 
+  bind_rows(
+    (adult_driving_data_Eng %>% filter(DriveForm == "AdultOther")),
+    (adult_driving_data_Sp %>% filter(DriveForm == "AdultOthersp"))
+  ) %>% 
   arrange(IDNumber) %>% 
   filter(!is.na(TOT_raw)) %>% 
   # remove outliers
@@ -129,6 +134,8 @@ adult_driving_data_other <- adult_driving_data_Eng %>%
 
 
 # CREATE SUMMARY TABLE SHOWING OPTIMAL CUTOFF SCORE -----------------------
+
+# SELF
 
 # Freq table
 adult_driving_self_TOT_freq <- adult_driving_data_self %>% 
@@ -165,6 +172,46 @@ adult_driving_self_summary <- bind_cols(adult_driving_self_TOT_freq, adult_drivi
 write_csv(
   adult_driving_self_summary,
   here('OUTPUT-FILES/ADULT/MISC/adult-driving-self-cutoff-summary.csv'),
+  na = ''
+)
+
+# OTHER
+
+# Freq table
+adult_driving_other_TOT_freq <- adult_driving_data_other %>% 
+  count(TOT_raw) %>%
+  mutate(
+    perc = round(100*(n/sum(n)), 4), 
+    cum_per = round(100*(cumsum(n)/sum(n)), 4),
+    diff = case_when(
+      cum_per <= 90 & lead(cum_per) >= 90 & lag(cum_per) <= 90 ~ 90 - cum_per,
+      cum_per > 90 & lead(cum_per) >= 90 & lag(cum_per) <= 90 ~ cum_per -90,
+      TRUE ~ NA_real_
+    ),
+    cutoff = case_when(
+      is.na(lag(diff)) & diff < lead(diff) ~ 'cutoff',
+      is.na(lead(diff)) & diff < lag(diff) ~ 'cutoff',
+      TRUE ~ NA_character_
+    )
+  ) %>% 
+  select(-diff)
+
+# Descriptives table
+adult_driving_other_TOT_desc <- adult_driving_data_other %>% 
+  summarise(total_n = n(),
+            median_TOT_raw = round(median(TOT_raw), 2),
+            mean_TOT_raw = round(mean(TOT_raw), 2),
+            sd_TOT_raw = round(sd(TOT_raw), 2))
+
+# Add enough rows to descriptive table so that it can be combined with freq
+# table into single summary table.
+adult_driving_other_TOT_desc[nrow(adult_driving_other_TOT_desc) + (nrow(adult_driving_other_TOT_freq) - 1),] <- NA
+adult_driving_other_summary <- bind_cols(adult_driving_other_TOT_freq, adult_driving_other_TOT_desc)
+
+# write summary table
+write_csv(
+  adult_driving_other_summary,
+  here('OUTPUT-FILES/ADULT/MISC/adult-driving-other-cutoff-summary.csv'),
   na = ''
 )
 

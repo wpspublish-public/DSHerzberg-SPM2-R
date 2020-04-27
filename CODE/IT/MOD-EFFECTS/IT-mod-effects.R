@@ -25,7 +25,7 @@ cat_order <- c(
   NA, "northeast", "midwest", "south", "west")
 
 
-# HOME --------------------------------------------------------------------
+# READ DATA --------------------------------------------------------------------
 
 IT_49_Home <-
   suppressMessages(as_tibble(read_csv(
@@ -39,12 +39,31 @@ IT_1030_Home <-
   ))) %>% 
   select(-(contains('q0')))
 
+IT_Caregiver_Eng <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/SM-QUAL-COMBO-NORMS-INPUT/IT-Caregiver-combo-norms-input.csv")
+  )))
+IT_Caregiver_Sp <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/SP-NORMS-INPUT/IT-Caregiver-Sp-norms-input.csv")
+  )))
+
+IT_Caregiver <- bind_rows(
+  IT_Caregiver_Eng,
+  IT_Caregiver_Sp
+) %>% 
+  arrange(IDNumber)
+
+rm(IT_Caregiver_Eng, IT_Caregiver_Sp)
+
 IT_430_Home <- 
   bind_rows(
     IT_49_Home,
     IT_1030_Home
   ) %>% 
   arrange(IDNumber)
+
+# HOME 430 --------------------------------------------------------------------
 
 IT_430_Home_age_TOT_raw_desc <-
   describeBy(IT_430_Home$TOT_raw, IT_430_Home$age_range, fast = T, mat = T) %>%
@@ -57,11 +76,11 @@ IT_430_Home_age_TOT_raw_desc <-
            is.na(lag(n)) ~ 'Age Range',
            TRUE ~ ''
          )
-         ) %>% 
+  ) %>% 
   mutate_at(vars(mean, sd), ~(round(., 2))) %>%
   rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
   select(mod_var, everything())
-  
+
 IT_430_Home_gender_TOT_raw_desc <-
   describeBy(IT_430_Home$TOT_raw, IT_430_Home$Gender, fast = T, mat = T) %>%
   rownames_to_column() %>%
@@ -137,6 +156,294 @@ IT_430_Home_TOT_raw_mod_effects <- suppressWarnings(
 ) %>%
   write_csv(here(
     'OUTPUT-FILES/IT/MOD-EFFECTS/IT-430-Home-TOT-raw-mod-effects.csv'
+  ),
+  na = '')
+
+# HOME 49 --------------------------------------------------------------------
+
+IT_49_Home_age_TOT_raw_desc <-
+  describeBy(IT_49_Home$TOT_raw, IT_49_Home$age_range, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_49_Home$TOT_raw))/sd(IT_49_Home$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Age Range',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_49_Home_gender_TOT_raw_desc <-
+  describeBy(IT_49_Home$TOT_raw, IT_49_Home$Gender, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_49_Home$TOT_raw))/sd(IT_49_Home$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Gender',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_49_Home_SES_TOT_raw_desc <-
+  describeBy(IT_49_Home$TOT_raw, IT_49_Home$ParentHighestEducation, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_49_Home$TOT_raw))/sd(IT_49_Home$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'SES',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_49_Home_Ethnic_TOT_raw_desc <-
+  describeBy(IT_49_Home$TOT_raw, IT_49_Home$Ethnicity, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_49_Home$TOT_raw))/sd(IT_49_Home$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Ethnicity',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_49_Home_Region_TOT_raw_desc <-
+  describeBy(IT_49_Home$TOT_raw, IT_49_Home$Region, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_49_Home$TOT_raw))/sd(IT_49_Home$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Region',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_49_Home_TOT_raw_mod_effects <- suppressWarnings(
+  bind_rows(
+    IT_49_Home_age_TOT_raw_desc,
+    IT_49_Home_gender_TOT_raw_desc,
+    IT_49_Home_SES_TOT_raw_desc,
+    IT_49_Home_Ethnic_TOT_raw_desc,
+    IT_49_Home_Region_TOT_raw_desc
+  )
+) %>%
+  write_csv(here(
+    'OUTPUT-FILES/IT/MOD-EFFECTS/IT-49-Home-TOT-raw-mod-effects.csv'
+  ),
+  na = '')
+
+# HOME 1030 --------------------------------------------------------------------
+
+IT_1030_Home_age_TOT_raw_desc <-
+  describeBy(IT_1030_Home$TOT_raw, IT_1030_Home$age_range, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_1030_Home$TOT_raw))/sd(IT_1030_Home$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Age Range',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_1030_Home_gender_TOT_raw_desc <-
+  describeBy(IT_1030_Home$TOT_raw, IT_1030_Home$Gender, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_1030_Home$TOT_raw))/sd(IT_1030_Home$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Gender',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_1030_Home_SES_TOT_raw_desc <-
+  describeBy(IT_1030_Home$TOT_raw, IT_1030_Home$ParentHighestEducation, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_1030_Home$TOT_raw))/sd(IT_1030_Home$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'SES',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_1030_Home_Ethnic_TOT_raw_desc <-
+  describeBy(IT_1030_Home$TOT_raw, IT_1030_Home$Ethnicity, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_1030_Home$TOT_raw))/sd(IT_1030_Home$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Ethnicity',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_1030_Home_Region_TOT_raw_desc <-
+  describeBy(IT_1030_Home$TOT_raw, IT_1030_Home$Region, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_1030_Home$TOT_raw))/sd(IT_1030_Home$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Region',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_1030_Home_TOT_raw_mod_effects <- suppressWarnings(
+  bind_rows(
+    IT_1030_Home_age_TOT_raw_desc,
+    IT_1030_Home_gender_TOT_raw_desc,
+    IT_1030_Home_SES_TOT_raw_desc,
+    IT_1030_Home_Ethnic_TOT_raw_desc,
+    IT_1030_Home_Region_TOT_raw_desc
+  )
+) %>%
+  write_csv(here(
+    'OUTPUT-FILES/IT/MOD-EFFECTS/IT-1030-Home-TOT-raw-mod-effects.csv'
+  ),
+  na = '')
+
+# CAREGIVER --------------------------------------------------------------------
+
+IT_Caregiver_age_TOT_raw_desc <-
+  describeBy(IT_Caregiver$TOT_raw, IT_Caregiver$age_range, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_Caregiver$TOT_raw))/sd(IT_Caregiver$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Age Range',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_Caregiver_gender_TOT_raw_desc <-
+  describeBy(IT_Caregiver$TOT_raw, IT_Caregiver$Gender, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_Caregiver$TOT_raw))/sd(IT_Caregiver$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Gender',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_Caregiver_SES_TOT_raw_desc <-
+  describeBy(IT_Caregiver$TOT_raw, IT_Caregiver$ParentHighestEducation, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_Caregiver$TOT_raw))/sd(IT_Caregiver$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'SES',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_Caregiver_Ethnic_TOT_raw_desc <-
+  describeBy(IT_Caregiver$TOT_raw, IT_Caregiver$Ethnicity, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_Caregiver$TOT_raw))/sd(IT_Caregiver$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Ethnicity',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_Caregiver_Region_TOT_raw_desc <-
+  describeBy(IT_Caregiver$TOT_raw, IT_Caregiver$Region, fast = T, mat = T) %>%
+  rownames_to_column() %>%
+  arrange(match(group1, cat_order)) %>%
+  select(group1, n, mean, sd) %>% 
+  mutate(ES_lag = round((mean - lag(mean))/((sd + lag(sd))/2),2), 
+         ES_grand = round((mean - mean(IT_Caregiver$TOT_raw))/sd(IT_Caregiver$TOT_raw),2),
+         mod_var = case_when(
+           is.na(lag(n)) ~ 'Region',
+           TRUE ~ ''
+         )
+  ) %>% 
+  mutate_at(vars(mean, sd), ~(round(., 2))) %>%
+  rename(mod_val = group1, mean_TOT = mean, sd_TOT = sd) %>% 
+  select(mod_var, everything())
+
+IT_Caregiver_TOT_raw_mod_effects <- suppressWarnings(
+  bind_rows(
+    IT_Caregiver_age_TOT_raw_desc,
+    IT_Caregiver_gender_TOT_raw_desc,
+    IT_Caregiver_SES_TOT_raw_desc,
+    IT_Caregiver_Ethnic_TOT_raw_desc,
+    IT_Caregiver_Region_TOT_raw_desc
+  )
+) %>%
+  write_csv(here(
+    'OUTPUT-FILES/IT/MOD-EFFECTS/IT-Caregiver-TOT-raw-mod-effects.csv'
   ),
   na = '')
 

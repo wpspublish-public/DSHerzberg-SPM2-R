@@ -34,3 +34,11 @@ BAL_items_IT_49_Home <- c("q0092", "q0093", "q0095", "q0097", "q0098", "q0100", 
 PLA_items_IT_49_Home <- c("q0109", "q0110", "q0111", "q0113", "q0114", "q0115", "q0116", "q0117", "q0118", "q0119")
 
 score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+
+scale_order <- c("SOC", "VIS", "HEA", "TOU", 
+                 "TS", "BOD", "BAL", "PLA", "TOT")
+
+item_vectors <- c('All_items_IT_49_Home', 'TOT_items_IT_49_Home', 'SOC_items_IT_49_Home', 
+                     'SOC_rev_items_IT_49_Home', 'VIS_items_IT_49_Home', 'HEA_items_IT_49_Home',
+                     'TOU_items_IT_49_Home', 'TS_items_IT_49_Home', 'BOD_items_IT_49_Home',
+                     'BAL_items_IT_49_Home', 'PLA_items_IT_49_Home')

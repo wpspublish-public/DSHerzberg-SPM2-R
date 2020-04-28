@@ -3,8 +3,6 @@
 
 suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
 suppressMessages(suppressWarnings(library(tidyverse)))
-suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
-library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
 suppressMessages(library(psych)) # DESCRIPTIVE TABLES
 

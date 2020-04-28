@@ -35,3 +35,11 @@ BAL_items_IT_Caregiver <- c("QT83", "QT85", "QT86", "QT87", "QT89", "QT91", "QT9
 PLA_items_IT_Caregiver <- c("QT96", "QT97", "QT98", "QT100", "QT101", "QT103", "QT105", "QT106", "QT107", "QT108")
 
 score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+
+scale_order <- c("SOC", "VIS", "HEA", "TOU", 
+                 "TS", "BOD", "BAL", "PLA", "TOT")
+
+item_vectors <- c('All_items_IT_Caregiver', 'TOT_items_IT_Caregiver', 'SOC_items_IT_Caregiver', 
+                  'SOC_rev_items_IT_Caregiver', 'VIS_items_IT_Caregiver', 'HEA_items_IT_Caregiver',
+                  'TOU_items_IT_Caregiver', 'TS_items_IT_Caregiver', 'BOD_items_IT_Caregiver',
+                  'BAL_items_IT_Caregiver', 'PLA_items_IT_Caregiver')

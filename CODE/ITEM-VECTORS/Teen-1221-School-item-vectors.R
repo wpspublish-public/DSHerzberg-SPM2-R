@@ -33,3 +33,11 @@ BAL_items_Teen_1221_School <- c("q0090", "q0092", "q0093", "q0094", "q0096", "q0
 PLA_items_Teen_1221_School <- c("q0103", "q0104", "q0105", "q0106", "q0107", "q0108", "q0112", "q0113", "q0115", "q0116")
 
 score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+
+scale_order <- c("SOC", "VIS", "HEA", "TOU", 
+                 "TS", "BOD", "BAL", "PLA", "TOT")
+
+item_vectors <- c('All_items_Teen_1221_School', 'TOT_items_Teen_1221_School', 'SOC_items_Teen_1221_School', 
+                  'SOC_rev_items_Teen_1221_School', 'VIS_items_Teen_1221_School', 'HEA_items_Teen_1221_School',
+                  'TOU_items_Teen_1221_School', 'TS_items_Teen_1221_School', 'BOD_items_Teen_1221_School',
+                  'BAL_items_Teen_1221_School', 'PLA_items_Teen_1221_School')

@@ -3,12 +3,22 @@
 
 suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
 suppressMessages(suppressWarnings(library(tidyverse)))
-suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
-library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
 suppressMessages(library(psych)) # DESCRIPTIVE TABLES
 
- DETERMINE BEST NORMALIZATION MODEL --------------------------------------
+# READ FINALIZED STAND SAMPLE ---------------------------------------------
+
+IT_2130_Home <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/ALLDATA-DESAMP-NORMS-INPUT/IT-1030-Home-allData-desamp.csv")
+  ))) %>% 
+  filter(AgeInMonths %in% 21:30)
+
+score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+
+anyDuplicated(IT_2130_Home$IDNumber)
+
+# DETERMINE BEST NORMALIZATION MODEL --------------------------------------
 
 # (NOTE: THIS SECTION SHOULD BE TOGGLED OFF AFTER SELECTION OF NORMALIZATION
 # MODEL)

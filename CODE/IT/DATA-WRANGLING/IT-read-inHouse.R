@@ -367,8 +367,8 @@ IT_1030_Home_inHouse_Sp <-
             ~ as.integer(.x)) %>% 
   # Add age_range var.
   mutate(age_range = case_when(
-    AgeInMonths <= 6 ~ "03.5 to 6 mo",
-    TRUE ~ "07 to 10.5 mo")
+    AgeInMonths <= 20 ~ "09.5 to 20 mo",
+    TRUE ~ "21 to 31.5 mo")
   ) %>% 
   # select(-AgeGroup) %>% 
   # Compute raw scores. Note use of `rowSums(.[TOT_items_Child_512_Home])`: when used 

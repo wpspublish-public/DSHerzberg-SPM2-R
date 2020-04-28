@@ -33,3 +33,11 @@ BAL_items_Preschool_25_Home <- c("q0093", "q0094", "q0095", "q0096", "q0098", "q
 PLA_items_Preschool_25_Home <- c("q0107", "q0108", "q0110", "q0111", "q0112", "q0113", "q0114", "q0116", "q0118", "q0119")
 
 score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+
+scale_order <- c("SOC", "VIS", "HEA", "TOU", 
+                 "TS", "BOD", "BAL", "PLA", "TOT")
+
+item_vectors <- c('All_items_Preschool_25_Home', 'TOT_items_Preschool_25_Home', 'SOC_items_Preschool_25_Home', 
+                  'SOC_rev_items_Preschool_25_Home', 'VIS_items_Preschool_25_Home', 'HEA_items_Preschool_25_Home',
+                  'TOU_items_Preschool_25_Home', 'TS_items_Preschool_25_Home', 'BOD_items_Preschool_25_Home',
+                  'BAL_items_Preschool_25_Home', 'PLA_items_Preschool_25_Home')

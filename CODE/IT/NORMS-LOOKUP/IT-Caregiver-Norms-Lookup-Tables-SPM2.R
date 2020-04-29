@@ -172,15 +172,19 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
-IT_Caregiver <- IT_Caregiver %>% bind_cols(NT_cols)
+IT_Caregiver <- IT_Caregiver %>% bind_cols(NT_cols) %>% 
+  mutate(clin_status = 'typ',
+         clin_dx = NA) %>% 
+  select(IDNumber, AgeInMonths, age_range, Gender:Region, data, clin_status, clin_dx, everything())
 
 # write T-scores per case table to .csv
 write_csv(IT_Caregiver, here(
-  paste0(
-    'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-Caregiver-T-Scores-per-case-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-Caregiver-T-Scores-per-case.csv'
+  # paste0(
+  #   'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-Caregiver-T-Scores-per-case-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -271,7 +275,7 @@ subscale_lookup <- map(
     ) %>% 
     mutate_at(
       vars(!!as.name(paste0(.x, '_NT'))), ~ case_when(
-      raw < 60 ~ NA_integer_,
+        raw > 40 ~ NA_integer_,
         TRUE ~ .x
       )
     )
@@ -288,15 +292,15 @@ all_lookup_col_names <- c(paste0(score_names, '_raw'))
 
 # write final raw-to-T lookup table to .csv
 write_csv(all_lookup, here(
-  paste0(
-    'OUTPUT-FILES/IT/RAW-T-LOOKUP-TABLES/IT-Caregiver-raw-T-lookup-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/IT/RAW-T-LOOKUP-TABLES/IT-Caregiver-raw-T-lookup.csv'
+  # paste0(
+  #   'OUTPUT-FILES/IT/RAW-T-LOOKUP-TABLES/IT-Caregiver-raw-T-lookup-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
-
 
 # generate print pub format raw-to-T table
 all_lookup_pub <- all_lookup %>% 
@@ -338,11 +342,12 @@ all_lookup_pub <- all_lookup %>%
 
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(
-  paste0(
-    'OUTPUT-FILES/IT/PRINT-FORMAT-NORMS-TABLES/IT-Caregiver-print-raw-T-lookup-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/IT/PRINT-FORMAT-NORMS-TABLES/IT-Caregiver-print-raw-T-lookup.csv'
+    # paste0(
+  #   'OUTPUT-FILES/IT/PRINT-FORMAT-NORMS-TABLES/IT-Caregiver-print-raw-T-lookup-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -358,11 +363,12 @@ IT_Caregiver_raw_desc <-
   mutate_at(vars(mean, sd), ~(round(., 2)))
 
 write_csv(IT_Caregiver_raw_desc, here(
-  paste0(
-    'OUTPUT-FILES/IT/DESCRIPTIVES/IT-Caregiver-raw-desc-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/IT/DESCRIPTIVES/IT-Caregiver-raw-desc.csv'
+  # paste0(
+  #   'OUTPUT-FILES/IT/DESCRIPTIVES/IT-Caregiver-raw-desc-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -395,7 +401,7 @@ cat_order <- c(
 
 
 IT_Caregiver_demo_counts <- IT_Caregiver %>% 
-  select(data, AgeInMonths, Gender, ParentHighestEducation, Ethnicity, Region) %>% 
+  select(data, age_range, Gender, ParentHighestEducation, Ethnicity, Region) %>% 
   gather("Variable", "Category") %>% 
   group_by(Variable, Category) %>%
   count(Variable, Category) %>%
@@ -403,7 +409,7 @@ IT_Caregiver_demo_counts <- IT_Caregiver %>%
   ungroup() %>% 
   mutate(Variable = case_when(
     lag(Variable) == "data" & Variable == "data" ~ "",
-    lag(Variable) == "AgeInMonths" & Variable == "AgeInMonths" ~ "",
+    lag(Variable) == "age_range" & Variable == "age_range" ~ "",
     lag(Variable) == "Gender" & Variable == "Gender" ~ "",
     lag(Variable) == "ParentHighestEducation" & Variable == "ParentHighestEducation" ~ "",
     lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
@@ -412,11 +418,12 @@ IT_Caregiver_demo_counts <- IT_Caregiver %>%
   ))
 
 write_csv(IT_Caregiver_demo_counts, here(
-  paste0(
-    'OUTPUT-FILES/IT/DESCRIPTIVES/IT-Caregiver-demo-counts-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/IT/DESCRIPTIVES/IT-Caregiver-demo-counts.csv'
+  # paste0(
+  #   'OUTPUT-FILES/IT/DESCRIPTIVES/IT-Caregiver-demo-counts-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = '(missing)'
 )

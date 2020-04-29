@@ -142,15 +142,19 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
-IT_1020_Home <- IT_1020_Home %>% bind_cols(NT_cols) 
+IT_1020_Home <- IT_1020_Home %>% bind_cols(NT_cols) %>% 
+  mutate(clin_status = 'typ',
+         clin_dx = NA) %>% 
+  select(IDNumber, AgeInMonths, age_range, Gender:Region, data, clin_status, clin_dx, everything())
 
 # write T-scores per case table to .csv
 write_csv(IT_1020_Home, here(
-  paste0(
-    'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-T-Scores-per-case-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-T-Scores-per-case.csv'
+  # paste0(
+  #   'OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-T-Scores-per-case-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -258,11 +262,12 @@ all_lookup_col_names <- c(paste0(score_names, '_raw'))
 
 # write final raw-to-T lookup table to .csv
 write_csv(all_lookup, here(
-  paste0(
-    'OUTPUT-FILES/IT/RAW-T-LOOKUP-TABLES/IT-1020-Home-raw-T-lookup-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/IT/RAW-T-LOOKUP-TABLES/IT-1020-Home-raw-T-lookup.csv'
+  # paste0(
+  #   'OUTPUT-FILES/IT/RAW-T-LOOKUP-TABLES/IT-1020-Home-raw-T-lookup-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -308,11 +313,12 @@ all_lookup_pub <- all_lookup %>%
 
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(
-  paste0(
-    'OUTPUT-FILES/IT/PRINT-FORMAT-NORMS-TABLES/IT-1020-Home-print-raw-T-lookup-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/IT/PRINT-FORMAT-NORMS-TABLES/IT-1020-Home-print-raw-T-lookup.csv'
+    # paste0(
+  #   'OUTPUT-FILES/IT/PRINT-FORMAT-NORMS-TABLES/IT-1020-Home-print-raw-T-lookup-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -328,11 +334,12 @@ IT_1020_Home_raw_desc <-
   mutate_at(vars(mean, sd), ~(round(., 2)))
 
 write_csv(IT_1020_Home_raw_desc, here(
-  paste0(
-    'OUTPUT-FILES/IT/DESCRIPTIVES/IT-1020-Home-raw-desc-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/IT/DESCRIPTIVES/IT-1020-Home-raw-desc.csv'
+  # paste0(
+  #   'OUTPUT-FILES/IT/DESCRIPTIVES/IT-1020-Home-raw-desc-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -382,11 +389,12 @@ IT_1020_Home_demo_counts <- IT_1020_Home %>%
   ))
 
 write_csv(IT_1020_Home_demo_counts, here(
-  paste0(
-    'OUTPUT-FILES/IT/DESCRIPTIVES/IT-1020-Home-demo-counts-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/IT/DESCRIPTIVES/IT-1020-Home-demo-counts.csv'
+  # paste0(
+  #   'OUTPUT-FILES/IT/DESCRIPTIVES/IT-1020-Home-demo-counts-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = '(missing)'
 )

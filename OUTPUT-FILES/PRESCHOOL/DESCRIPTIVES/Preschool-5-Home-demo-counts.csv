@@ -1,0 +1,22 @@
+Variable,Category,n
+data,SM,63
+,Qual,10
+,Sp,2
+Age,5,75
+Gender,Male,40
+,Female,35
+ParentHighestEducation,Did not complete high school (no diploma),5
+,High school graduate (including GED),20
+,Some college or associate degree,24
+,Bachelor's degree or higher,26
+Ethnicity,Hispanic,17
+,Asian,1
+,Black,17
+,White,33
+,AmericanIndAlaskanNat,1
+,MultiRacial,5
+,Other,1
+Region,northeast,12
+,midwest,23
+,south,27
+,west,13

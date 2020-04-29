@@ -3,167 +3,8 @@
 
 suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
 suppressMessages(suppressWarnings(library(tidyverse)))
-suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
-library(ggrepel) # MORE ggplot2 EXTENSIONS
 library(bestNormalize) # NORMALIZATION METHODS
 suppressMessages(library(psych)) # DESCRIPTIVE TABLES
-
-# SCALE VECTORS WITH ITEM NAMES -------------------------------------------
-
-# All_items_Preschool_5_Home <- c("q0014", "q0015", "q0016", "q0017", "q0019", "q0020", "q0023", "q0024", "q0025", "q0026", 
-#                                  "q0027", "q0028", "q0030", "q0031", "q0032", "q0033", "q0035", "q0036", "q0037", "q0038", 
-#                                  "q0040", "q0041", "q0044", "q0045", "q0046", "q0047", "q0048", "q0049", "q0050", "q0052", 
-#                                  "q0053", "q0054", "q0055", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065", 
-#                                  "q0067", "q0068", "q0070", "q0072", "q0073", "q0074", "q0075", "q0076", "q0077", "q0079", 
-#                                  "q0081", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0088", "q0089", "q0091", 
-#                                  "q0093", "q0094", "q0095", "q0096", "q0098", "q0099", "q0101", "q0102", "q0103", "q0105", 
-#                                  "q0107", "q0108", "q0110", "q0111", "q0112", "q0113", "q0114", "q0116", "q0118", "q0119")
-# 
-# TOT_items_Preschool_5_Home <- c("q0027", "q0028", "q0030", "q0031", "q0032", "q0033", "q0035", "q0036", "q0037", "q0038", 
-#                                  "q0040", "q0041", "q0044", "q0045", "q0046", "q0047", "q0048", "q0049", "q0050", "q0052", 
-#                                  "q0053", "q0054", "q0055", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065", 
-#                                  "q0067", "q0068", "q0070", "q0072", "q0073", "q0074", "q0075", "q0076", "q0077", "q0079", 
-#                                  "q0081", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0088", "q0089", "q0091", 
-#                                  "q0093", "q0094", "q0095", "q0096", "q0098", "q0099", "q0101", "q0102", "q0103", "q0105")
-# 
-# SOC_items_Preschool_5_Home <- c("q0014", "q0015", "q0016", "q0017", "q0019", "q0020", "q0023", "q0024", "q0025", "q0026")
-# 
-# SOC_rev_items_Preschool_5_Home <- c("q0014", "q0015", "q0016", "q0017", "q0019", "q0020", "q0023", "q0024", "q0025", "q0026")
-# 
-# VIS_items_Preschool_5_Home <- c("q0027", "q0028", "q0030", "q0031", "q0032", "q0033", "q0035", "q0036", "q0037", "q0038")
-# 
-# HEA_items_Preschool_5_Home <- c("q0040", "q0041", "q0044", "q0045", "q0046", "q0047", "q0048", "q0049", "q0050", "q0052")
-# 
-# TOU_items_Preschool_5_Home <- c("q0053", "q0054", "q0055", "q0058", "q0059", "q0061", "q0062", "q0063", "q0064", "q0065")
-# 
-# TS_items_Preschool_5_Home <- c("q0067", "q0068", "q0070", "q0072", "q0073", "q0074", "q0075", "q0076", "q0077", "q0079")
-# 
-# BOD_items_Preschool_5_Home <- c("q0081", "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0088", "q0089", "q0091")
-# 
-# BAL_items_Preschool_5_Home <- c("q0093", "q0094", "q0095", "q0096", "q0098", "q0099", "q0101", "q0102", "q0103", "q0105")
-# 
-# PLA_items_Preschool_5_Home <- c("q0107", "q0108", "q0110", "q0111", "q0112", "q0113", "q0114", "q0116", "q0118", "q0119")
-# 
-# score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
-
-
-# READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
-
-# Preschool_5_Home <-
-#   suppressMessages(as_tibble(read_csv(
-#     here("INPUT-FILES/PRESCHOOL/SPM-2 Preschooler ages 25 Home Report Questionnaire.csv")
-#   ))) %>% select(
-#     IDNumber,
-#     Age,
-#     # AgeGroup,
-#     Gender,
-#     ParentHighestEducation,
-#     Ethnicity,
-#     Region,
-#     All_items_Preschool_5_Home
-#   ) %>%
-#   # filter for age stratification
-#   filter(Age %in% c(2:4)) %>%
-#   mutate(agestrat = "2-4 yr") %>%
-#   select(IDNumber, Age, agestrat, everything()) %>% 
-#   # recode items from char to num (mutate_at applies funs to specific columns)
-#   mutate_at(
-#     All_items_Preschool_5_Home,
-#     ~ case_when(
-#       .x == "Never" ~ 1,
-#       .x == "Occasionally" ~ 2,
-#       .x == "Frequently" ~ 3,
-#       .x == "Always" ~ 4,
-#       TRUE ~ NA_real_
-#     )
-#   ) %>%
-#   # recode reverse-scored items
-#   mutate_at(
-#     SOC_rev_items_Preschool_5_Home,
-#     ~ case_when(.x == 4 ~ 1,
-#                 .x == 3 ~ 2,
-#                 .x == 2 ~ 3,
-#                 .x == 1 ~ 4,
-#                 TRUE ~ NA_real_)
-#   ) %>%
-#   # Convert scored item vars to integers
-#   mutate_at(All_items_Preschool_5_Home,
-#             ~ as.integer(.x)) %>% 
-#   # Compute raw scores. Note use of `rowSums(.[TOT_items_Preschool_5_Home])`: when used 
-#   # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
-#   # must wrap the column vector in a column-subsetting expression: `.[]`, where the
-#   # dot is a token for the data in the pipe.
-#   mutate(
-#     TOT_raw = rowSums(.[TOT_items_Preschool_5_Home]),
-#     SOC_raw = rowSums(.[SOC_items_Preschool_5_Home]),
-#     VIS_raw = rowSums(.[VIS_items_Preschool_5_Home]),
-#     HEA_raw = rowSums(.[HEA_items_Preschool_5_Home]),
-#     TOU_raw = rowSums(.[TOU_items_Preschool_5_Home]),
-#     TS_raw = rowSums(.[TS_items_Preschool_5_Home]),
-#     BOD_raw = rowSums(.[BOD_items_Preschool_5_Home]),
-#     BAL_raw = rowSums(.[BAL_items_Preschool_5_Home]),
-#     PLA_raw = rowSums(.[PLA_items_Preschool_5_Home])
-#   ) %>% 
-#   select(
-#     -(q0014:q0119)
-#   ) %>% 
-#   #print()
-#   # Exclude outliers on TOT_raw
-#   filter(TOT_raw <200) %>% print()
-# 
-# # clean up environment
-# rm(list = ls(pattern='.*items_Preschool_5_Home'))
-
-
-# EXAMINE DATA TO MAKE AGESTRAT DECISIONS ---------------------------------
-
-# ### THE NEXT SECTION OF CODE FACILITATES EXAMINATION OF TOT_raw to make
-# decisions about whether norms need to be stratified by age. Once the decision
-# about age-stratification has been made and implemented, the 'examination' code
-# can be commented off.
-
-
-# Create frequency tables for TOT_raw by AgeGroup
-# Preschool_5_Home_TOT_freq_AgeGroup <- Preschool_5_Home %>% group_by(AgeGroup) %>% count(TOT_raw) %>% 
-#   mutate(perc = round(100*(n/sum(n)), 4), cum_per = round(100*(cumsum(n)/sum(n)), 4), lag_tot = lag(TOT_raw), lag_cum_per = lag(cum_per))
-
-
-# Compute descriptive statistics, effect sizes for TOT_raw by AgeGroup
-# Preschool_5_Home_TOT_desc_AgeGroup <-
-#   Preschool_5_Home %>% group_by(AgeGroup) %>% arrange(AgeGroup) %>% summarise(n = n(),
-#                                                                          median = round(median(TOT_raw), 2),
-#                                                                          mean = round(mean(TOT_raw), 2),
-#                                                                          sd = round(sd(TOT_raw), 2)) %>%
-#   mutate(ES = round((mean - lag(mean))/((sd + lag(sd))/2),2), group = c(1:6))
-# 
-# AgeGroup <- Preschool_5_Home_TOT_desc_AgeGroup %>% pull(AgeGroup)
-
-# Plot TOT_raw means, SDs by AgeGroup
-# mean_plot <- ggplot(data = Preschool_5_Home_TOT_desc_AgeGroup, aes(group, mean)) +
-#   geom_point(
-#     col = "blue",
-#     fill = "blue",
-#     alpha = .5,
-#     size = 3,
-#     shape = 23
-#   ) +
-#   geom_label_repel(aes(label = mean), hjust = .7, vjust = -1, label.padding = unit(0.1, "lines"), size = 4, col = "blue") +
-#   scale_x_continuous(breaks = seq(1, 6, 1), labels = AgeGroup) +
-#   scale_y_continuous(breaks = seq(0, 250, 25), limits = c(0, 250)) +
-#   labs(title = "Raw Score Means (with SDs)", x = "AgeGroup", y = "TOT") +
-#   geom_errorbar(
-#     aes(ymin = mean - sd, ymax = mean + sd),
-#     col = "red",
-#     size = 0.2,
-#     width = 0.2
-#   ) 
-# print(mean_plot)
-
-# Check for duplicate IDnumber.
-
-# Preschool_5_Home_dup <- Preschool_5_Home %>% count(IDNumber) %>% filter(n > 1)
-# write_csv(Preschool_5_Home_dup, here("DATA/Preschool_5_Home_dup.csv"))
-
 
 # READ FINALIZED STAND SAMPLE ---------------------------------------------
 
@@ -176,7 +17,6 @@ filter(Age == 5)
 score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
 
 anyDuplicated(Preschool_5_Home$IDNumber)
-
 
 # DETERMINE BEST NORMALIZATION MODEL --------------------------------------
 
@@ -303,15 +143,19 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
-Preschool_5_Home <- Preschool_5_Home %>% bind_cols(NT_cols)
+Preschool_5_Home <- Preschool_5_Home %>% bind_cols(NT_cols) %>% 
+  mutate(clin_status = 'typ',
+         clin_dx = NA) %>% 
+  select(IDNumber, Age, age_range, Gender:Region, data, clin_status, clin_dx, everything())
 
 # write T-scores per case table to .csv
 write_csv(Preschool_5_Home, here(
-  paste0(
-    'OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-5-Home-T-Scores-per-case-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-5-Home-T-Scores-per-case.csv'
+  # paste0(
+  #   'OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-5-Home-T-Scores-per-case-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -419,15 +263,15 @@ all_lookup_col_names <- c(paste0(score_names, '_raw'))
 
 # write final raw-to-T lookup table to .csv
 write_csv(all_lookup, here(
-  paste0(
-    'OUTPUT-FILES/PRESCHOOL/RAW-T-LOOKUP-TABLES/Preschool-5-Home-raw-T-lookup-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/PRESCHOOL/RAW-T-LOOKUP-TABLES/Preschool-5-Home-raw-T-lookup.csv'
+  # paste0(
+  #   'OUTPUT-FILES/PRESCHOOL/RAW-T-LOOKUP-TABLES/Preschool-5-Home-raw-T-lookup-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
-
 
 # generate print pub format raw-to-T table
 all_lookup_pub <- all_lookup %>% 
@@ -469,11 +313,12 @@ all_lookup_pub <- all_lookup %>%
 
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(
-  paste0(
-    'OUTPUT-FILES/PRESCHOOL/PRINT-FORMAT-NORMS-TABLES/Preschool-5-Home-print-raw-T-lookup-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/PRESCHOOL/PRINT-FORMAT-NORMS-TABLES/Preschool-5-Home-print-raw-T-lookup.csv'
+    # paste0(
+  #   'OUTPUT-FILES/PRESCHOOL/PRINT-FORMAT-NORMS-TABLES/Preschool-5-Home-print-raw-T-lookup-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -490,11 +335,12 @@ Preschool_5_Home_raw_desc <-
   mutate_at(vars(mean, sd), ~(round(., 2)))
 
 write_csv(Preschool_5_Home_raw_desc, here(
-  paste0(
-    'OUTPUT-FILES/PRESCHOOL/DESCRIPTIVES/Preschool-5-Home-raw-desc-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/PRESCHOOL/DESCRIPTIVES/Preschool-5-Home-raw-desc.csv'
+  # paste0(
+  #   'OUTPUT-FILES/PRESCHOOL/DESCRIPTIVES/Preschool-5-Home-raw-desc-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -527,7 +373,7 @@ cat_order <- c(
 
 
 Preschool_5_Home_demo_counts <- Preschool_5_Home %>% 
-  select(data, age_range, ParentHighestEducation, Gender, Ethnicity, Region) %>% 
+  select(data, Age, ParentHighestEducation, Gender, Ethnicity, Region) %>% 
   gather("Variable", "Category") %>% 
   group_by(Variable, Category) %>%
   count(Variable, Category) %>%
@@ -535,7 +381,7 @@ Preschool_5_Home_demo_counts <- Preschool_5_Home %>%
   ungroup() %>% 
   mutate(Variable = case_when(
     lag(Variable) == "data" & Variable == "data" ~ "",
-    lag(Variable) == "age_range" & Variable == "age_range" ~ "",
+    lag(Variable) == "Age" & Variable == "Age" ~ "",
     lag(Variable) == "Gender" & Variable == "Gender" ~ "",
     lag(Variable) == "ParentHighestEducation" & Variable == "ParentHighestEducation" ~ "",
     lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
@@ -544,11 +390,13 @@ Preschool_5_Home_demo_counts <- Preschool_5_Home %>%
   ))
 
 write_csv(Preschool_5_Home_demo_counts, here(
-  paste0(
-    'OUTPUT-FILES/PRESCHOOL/DESCRIPTIVES/Preschool-5-Home-demo-counts-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/PRESCHOOL/DESCRIPTIVES/Preschool-5-Home-demo-counts.csv'
+  # paste0(
+  #   'OUTPUT-FILES/PRESCHOOL/DESCRIPTIVES/Preschool-5-Home-demo-counts-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = '(missing)'
 )
+

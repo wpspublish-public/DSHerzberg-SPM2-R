@@ -162,15 +162,19 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
-Child_512_Home <- Child_512_Home %>% bind_cols(NT_cols)
+Child_512_Home <- Child_512_Home %>% bind_cols(NT_cols) %>% 
+  mutate(clin_status = 'typ',
+         clin_dx = NA) %>% 
+  select(IDNumber, Age, age_range, Gender:Region, data, clin_status, clin_dx, everything())
 
 # write T-scores per case table to .csv
 write_csv(Child_512_Home, here(
-  paste0(
-    'OUTPUT-FILES/CHILD/T-SCORES-PER-CASE/Child-512-Home-T-Scores-per-case-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/CHILD/T-SCORES-PER-CASE/Child-512-Home-T-Scores-per-case.csv'
+  # paste0(
+  #   'OUTPUT-FILES/CHILD/T-SCORES-PER-CASE/Child-512-Home-T-Scores-per-case-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -278,11 +282,12 @@ all_lookup_col_names <- c(paste0(score_names, '_raw'))
 
 # write final raw-to-T lookup table to .csv
 write_csv(all_lookup, here(
-  paste0(
-    'OUTPUT-FILES/CHILD/RAW-T-LOOKUP-TABLES/Child-512-Home-raw-T-lookup-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/CHILD/RAW-T-LOOKUP-TABLES/Child-512-Home-raw-T-lookup.csv'
+  # paste0(
+  #   'OUTPUT-FILES/CHILD/RAW-T-LOOKUP-TABLES/Child-512-Home-raw-T-lookup-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -328,11 +333,12 @@ all_lookup_pub <- all_lookup %>%
 
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(
-  paste0(
-    'OUTPUT-FILES/CHILD/PRINT-FORMAT-NORMS-TABLES/Child-512-Home-print-raw-T-lookup-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/CHILD/PRINT-FORMAT-NORMS-TABLES/Child-512-Home-print-raw-T-lookup.csv'
+    # paste0(
+  #   'OUTPUT-FILES/CHILD/PRINT-FORMAT-NORMS-TABLES/Child-512-Home-print-raw-T-lookup-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -348,11 +354,12 @@ Child_512_Home_raw_desc <-
   mutate_at(vars(mean, sd), ~(round(., 2)))
 
 write_csv(Child_512_Home_raw_desc, here(
-  paste0(
-    'OUTPUT-FILES/CHILD/DESCRIPTIVES/Child-512-Home-raw-desc-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/CHILD/DESCRIPTIVES/Child-512-Home-raw-desc.csv'
+  # paste0(
+  #   'OUTPUT-FILES/CHILD/DESCRIPTIVES/Child-512-Home-raw-desc-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -402,11 +409,12 @@ Child_512_Home_demo_counts <- Child_512_Home %>%
   ))
 
 write_csv(Child_512_Home_demo_counts, here(
-  paste0(
-    'OUTPUT-FILES/CHILD/DESCRIPTIVES/Child-512-Home-demo-counts-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/CHILD/DESCRIPTIVES/Child-512-Home-demo-counts.csv'
+  # paste0(
+  #   'OUTPUT-FILES/CHILD/DESCRIPTIVES/Child-512-Home-demo-counts-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = '(missing)'
 )

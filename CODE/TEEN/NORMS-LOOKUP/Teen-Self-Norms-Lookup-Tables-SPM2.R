@@ -162,15 +162,19 @@ NT_cols <- map2_dfc(nz_col_list, score_names, ~
 
 # Bind the normalized T-score columns to the table containing raw scores for
 # each case.
-Teen_1221_Self <- Teen_1221_Self %>% bind_cols(NT_cols)
+Teen_1221_Self <- Teen_1221_Self %>% bind_cols(NT_cols) %>% 
+  mutate(clin_status = 'typ',
+         clin_dx = NA) %>% 
+  select(IDNumber, Age, age_range, Gender:Region, data, clin_status, clin_dx, everything())
 
 # write T-scores per case table to .csv
 write_csv(Teen_1221_Self, here(
-  paste0(
-    'OUTPUT-FILES/TEEN/T-SCORES-PER-CASE/Teen-Self-T-Scores-per-case-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/TEEN/T-SCORES-PER-CASE/Teen-1221-Self-T-Scores-per-case.csv'
+  # paste0(
+  #   'OUTPUT-FILES/TEEN/T-SCORES-PER-CASE/Teen-1221-Self-T-Scores-per-case-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -278,11 +282,12 @@ all_lookup_col_names <- c(paste0(score_names, '_raw'))
 
 # write final raw-to-T lookup table to .csv
 write_csv(all_lookup, here(
-  paste0(
-    'OUTPUT-FILES/TEEN/RAW-T-LOOKUP-TABLES/Teen-Self-raw-T-lookup-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/TEEN/RAW-T-LOOKUP-TABLES/Teen-1221-Self-raw-T-lookup.csv'
+  # paste0(
+  #   'OUTPUT-FILES/TEEN/RAW-T-LOOKUP-TABLES/Teen-1221-Self-raw-T-lookup-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -327,11 +332,12 @@ all_lookup_pub <- all_lookup %>%
 
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(
-  paste0(
-    'OUTPUT-FILES/TEEN/PRINT-FORMAT-NORMS-TABLES/Teen-Self-print-raw-T-lookup-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/TEEN/PRINT-FORMAT-NORMS-TABLES/Teen-1221-Self-print-raw-T-lookup.csv'
+    # paste0(
+  #   'OUTPUT-FILES/TEEN/PRINT-FORMAT-NORMS-TABLES/Teen-1221-Self-print-raw-T-lookup-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -347,11 +353,12 @@ Teen_1221_Self_raw_desc <-
   mutate_at(vars(mean, sd), ~(round(., 2)))
 
 write_csv(Teen_1221_Self_raw_desc, here(
-  paste0(
-    'OUTPUT-FILES/TEEN/DESCRIPTIVES/Teen-1221-Self-raw-desc-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/TEEN/DESCRIPTIVES/Teen-1221-Self-raw-desc.csv'
+  # paste0(
+  #   'OUTPUT-FILES/TEEN/DESCRIPTIVES/Teen-1221-Self-raw-desc-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = ''
 )
@@ -401,11 +408,12 @@ Teen_1221_Self_demo_counts <- Teen_1221_Self %>%
   ))
 
 write_csv(Teen_1221_Self_demo_counts, here(
-  paste0(
-    'OUTPUT-FILES/TEEN/DESCRIPTIVES/Teen-1221-Self-demo-counts-',
-    format(Sys.Date(), "%Y-%m-%d"),
-    '.csv'
-  )
+  'OUTPUT-FILES/TEEN/DESCRIPTIVES/Teen-1221-Self-demo-counts.csv'
+  # paste0(
+  #   'OUTPUT-FILES/TEEN/DESCRIPTIVES/Teen-1221-Self-demo-counts-',
+  #   format(Sys.Date(), "%Y-%m-%d"),
+  #   '.csv'
+  # )
 ), 
 na = '(missing)'
 )

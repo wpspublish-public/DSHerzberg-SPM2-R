@@ -1,0 +1,28 @@
+Variable,Category,n
+data,SM,568
+,In-house-Eng,21
+,In-house-Sp,15
+age_range,21.00 to 30.99 years,185
+,31.00 to 40.99 years,181
+,41.00 to 50.99 years,106
+,51.00 to 64.99 years,81
+,65.00 to 99.99 years,51
+Gender,Male,274
+,Female,330
+HighestEducation,Did not complete high school (no diploma),28
+,High school graduate (including GED),126
+,Some college or associate degree,146
+,Bachelor's degree or higher,304
+Ethnicity,Hispanic,103
+,Asian,39
+,Black,83
+,White,350
+,AmericanIndAlaskanNat,2
+,NativeHawPacIsl,2
+,MultiRacial,21
+,Other,4
+Region,(missing),1
+,northeast,84
+,midwest,107
+,south,212
+,west,200

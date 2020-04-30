@@ -1,0 +1,22 @@
+Variable,Category,n
+data,SM,642
+data,In-house,3
+age_range,12 to 13 years,202
+,14 to 15 years,190
+,16 to 17 years,199
+,18 to 21 years,54
+Gender,Male,332
+,Female,313
+Ethnicity,Hispanic,155
+,Asian,12
+,Black,136
+,White,297
+,AmericanIndAlaskanNat,6
+,NativeHawPacIsl,3
+,MultiRacial,27
+,Other,9
+Region,(missing),1
+,northeast,69
+,midwest,169
+,south,251
+,west,155

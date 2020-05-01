@@ -1,0 +1,55 @@
+form,group,Variable,Category,n
+Home,Clinical sample,Age,2,3
+,,"",3,38
+,,"",4,42
+,,"",5,24
+,,Gender,Male,73
+,,"",Female,34
+,,ParentHighestEducation,Did not complete high school (no diploma),4
+,,"",High school graduate (including GED),19
+,,"",Some college or associate degree,31
+,,"",Bachelor's degree or higher,53
+,,Ethnicity,Hispanic,21
+,,"",Asian,3
+,,"",Black,14
+,,"",White,62
+,,"",AmericanIndAlaskanNat,1
+,,"",MultiRacial,5
+,,"",Other,1
+,Matched typical sample,Age,2,3
+,,"",3,37
+,,"",4,42
+,,"",5,25
+,,Gender,Male,73
+,,"",Female,34
+,,ParentHighestEducation,Did not complete high school (no diploma),3
+,,"",High school graduate (including GED),20
+,,"",Some college or associate degree,30
+,,"",Bachelor's degree or higher,54
+,,Ethnicity,Hispanic,20
+,,"",Asian,1
+,,"",Black,14
+,,"",White,66
+,,"",MultiRacial,6
+School,Clinical sample,Age,2,4
+,,"",3,35
+,,"",4,37
+,,"",5,23
+,,Gender,Male,68
+,,"",Female,31
+,,Ethnicity,Hispanic,12
+,,"",Asian,2
+,,"",Black,14
+,,"",White,67
+,,"",MultiRacial,4
+,Matched typical sample,Age,2,4
+,,"",3,35
+,,"",4,37
+,,"",5,23
+,,Gender,Male,68
+,,"",Female,31
+,,Ethnicity,Hispanic,12
+,,"",Asian,2
+,,"",Black,14
+,,"",White,67
+,,"",MultiRacial,4

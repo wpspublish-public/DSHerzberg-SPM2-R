@@ -1,0 +1,32 @@
+group,Variable,Category,n
+Clinical sample,age_range,4 to 10 mo,11
+,"",11 to 20 mo,6
+,"",21 to 30 mo,37
+,Gender,Male,38
+,"",Female,16
+,ParentHighestEducation,Did not complete high school (no diploma),3
+,"",High school graduate (including GED),11
+,"",Some college or associate degree,10
+,"",Bachelor's degree or higher,30
+,Ethnicity,Hispanic,10
+,"",Asian,2
+,"",Black,8
+,"",White,25
+,"",AmericanIndAlaskanNat,2
+,"",MultiRacial,4
+,"",Other,3
+Matched typical sample,age_range,4 to 10 mo,9
+,"",11 to 20 mo,11
+,"",21 to 30 mo,34
+,Gender,Male,38
+,"",Female,16
+,ParentHighestEducation,Did not complete high school (no diploma),4
+,"",High school graduate (including GED),11
+,"",Some college or associate degree,6
+,"",Bachelor's degree or higher,33
+,Ethnicity,Hispanic,13
+,"",Black,11
+,"",White,24
+,"",AmericanIndAlaskanNat,1
+,"",MultiRacial,3
+,"",Other,2

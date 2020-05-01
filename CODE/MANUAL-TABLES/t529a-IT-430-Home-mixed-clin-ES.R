@@ -1,52 +1,76 @@
-########### SCHOOL DATA
+suppressMessages(library(here)) 
+suppressMessages(suppressWarnings(library(tidyverse)))
+suppressMessages(library(psych))
+suppressMessages(library(MatchIt))
+suppressMessages(library(tableone))
+suppressMessages(library(knitr))
 
 # READ AND COMBINE FINALIZED SAMPLES --------------------------------------------------
 
-Preschool_24_School_Stand_preMatch <- 
+IT_49_Home_Stand_preMatch <- bind_rows(
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-24-School-T-Scores-per-case.csv")
-  ))) %>% 
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-T-Scores-per-case.csv")
+  ))),
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-79-Home-T-Scores-per-case.csv")
+  )))
+) %>% 
   arrange(IDNumber) %>% 
   select(IDNumber:Region, clin_status)
 
-Preschool_5_School_Stand_preMatch <-
+IT_1030_Home_Stand_preMatch <- bind_rows(
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-5-School-T-Scores-per-case.csv")
-  ))) %>% 
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-T-Scores-per-case.csv")
+  ))),
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-2130-Home-T-Scores-per-case.csv")
+  )))
+) %>% 
   arrange(IDNumber) %>% 
   select(IDNumber:Region, clin_status)
 
-Preschool_24_School_Clin_preMatch <-
+IT_49_Home_Clin_preMatch <- bind_rows(
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-24-School-clin-T-Scores-per-case.csv")
-  ))) %>% 
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-clin-T-Scores-per-case.csv")
+  ))),
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-79-Home-clin-T-Scores-per-case.csv")
+  )))
+) %>% 
   arrange(IDNumber) %>% 
   select(IDNumber:Region, clin_status)
 
-Preschool_5_School_Clin_preMatch <-
+IT_1030_Home_Clin_preMatch <- bind_rows(
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-5-School-clin-T-Scores-per-case.csv")
-  ))) %>% 
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-clin-T-Scores-per-case.csv")
+  ))),
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-2130-Home-clin-T-Scores-per-case.csv")
+  )))
+) %>% 
   arrange(IDNumber) %>% 
   select(IDNumber:Region, clin_status)
 
-Preschool_25_School_Stand_preMatch <- bind_rows(
-  Preschool_24_School_Stand_preMatch,
-  Preschool_5_School_Stand_preMatch
+IT_430_Home_Stand_preMatch <- bind_rows(
+  IT_49_Home_Stand_preMatch,
+  IT_1030_Home_Stand_preMatch
 ) %>% arrange(IDNumber)
 
-Preschool_25_School_Clin_preMatch <- bind_rows(
-  Preschool_24_School_Clin_preMatch,
-  Preschool_5_School_Clin_preMatch
+IT_430_Home_Clin_preMatch <- bind_rows(
+  IT_49_Home_Clin_preMatch,
+  IT_1030_Home_Clin_preMatch
 ) %>% arrange(IDNumber)
+
+rm(list = ls(pattern = '49'))
+rm(list = ls(pattern = '1030'))
 
 # EXTRACT MATCHED TYPICAL SAMPLE ------------------------------------------
 
 # This step encodes a logical var (Group), needed by matchit, that captures clin
 # vs typ status
-Preschool_25_School_Clin_Stand_preMatch <- bind_rows(
-  Preschool_25_School_Clin_preMatch,
-  Preschool_25_School_Stand_preMatch 
+IT_430_Home_Clin_Stand_preMatch <- bind_rows(
+  IT_430_Home_Clin_preMatch,
+  IT_430_Home_Stand_preMatch 
 ) %>% 
   mutate(Group = case_when(
     clin_status == 'clin' ~ TRUE,
@@ -57,24 +81,26 @@ Preschool_25_School_Clin_Stand_preMatch <- bind_rows(
 # proceed. If sum NA is positive, remove rows with NA using next filter_all()
 # line (but be cognizant of how many cases you are dropping and how this might
 # affect the resulting matched sample)
-sum(is.na(Preschool_25_School_Clin_Stand_preMatch))
-Preschool_25_School_Clin_Stand_preMatch <- filter_all(
-  Preschool_25_School_Clin_Stand_preMatch, 
+sum(is.na(IT_430_Home_Clin_Stand_preMatch))
+IT_430_Home_Clin_Stand_preMatch <- filter_all(
+  IT_430_Home_Clin_Stand_preMatch, 
   all_vars(!is.na(.))
-)
+  )
 
 # print table comparing distributions of two samples
 preMatch_dist <-
   CreateTableOne(
     vars = c(
-      'Age',
+      'AgeInMonths',
       'Gender',
+      'ParentHighestEducation',
       'Ethnicity'
     ),
-    data = Preschool_25_School_Clin_Stand_preMatch,
+    data = IT_430_Home_Clin_Stand_preMatch,
     factorVars = c(
-      'Age',
+      'AgeInMonths',
       'Gender',
+      'ParentHighestEducation',
       'Ethnicity'
     ),
     strata = 'clin_status'
@@ -89,10 +115,10 @@ kable(table[, 1:3],
       caption = 'Table 1: Comparison of pre-matched samples')
 
 # run matchit to get 1:1 matching
-set.seed(398734)
+set.seed(1234)
 match <- matchit(
-  Group ~ Age + Gender + Ethnicity, 
-  data = Preschool_25_School_Clin_Stand_preMatch, 
+  Group ~ AgeInMonths + Gender + ParentHighestEducation + Ethnicity, 
+  data = IT_430_Home_Clin_Stand_preMatch, 
   method = "nearest", 
   ratio = 1)
 match_summ <- summary(match)
@@ -106,16 +132,16 @@ kable(match_summ$sum.matched[c(1,2,4)], digits = 2, align = 'c',
       caption = 'Table 3: Summary of balance for matched data')
 
 # save matched samples into new df; split by clin_status
-Preschool_25_School_Clin_Stand_match <- match.data(match) %>% 
-  select(-Group, -distance, -weights) #%>% 
-# mutate(age_range = case_when(
-#   Age <= 10 ~"4 to 10 mo",
-#   Age >= 21 ~"21 to 30 mo",
-#   T ~ "11 to 20 mo"
-# ))
-Preschool_25_School_Stand_match <- Preschool_25_School_Clin_Stand_match %>% 
+IT_430_Home_Clin_Stand_match <- match.data(match) %>% 
+  select(-Group, -distance, -weights) %>% 
+  mutate(age_range = case_when(
+    AgeInMonths <= 10 ~"4 to 10 mo",
+    AgeInMonths >= 21 ~"21 to 30 mo",
+    T ~ "11 to 20 mo"
+  ))
+IT_430_Home_Stand_match <- IT_430_Home_Clin_Stand_match %>% 
   filter(clin_status == 'typ')
-Preschool_25_School_Clin_match <- Preschool_25_School_Clin_Stand_match %>% 
+IT_430_Home_Clin_match <- IT_430_Home_Clin_Stand_match %>% 
   filter(clin_status == 'clin')
 
 # examine distributions of demographic vars
@@ -146,8 +172,8 @@ cat_order <- c(
   # Region
   NA, "northeast", "midwest", "south", "west")
 
-match_dist_Stand <- Preschool_25_School_Stand_match %>% 
-  select(Age, Gender, Ethnicity) %>% 
+match_dist_Stand <- IT_430_Home_Stand_match %>% 
+  select(age_range, Gender, ParentHighestEducation, Ethnicity) %>% 
   gather("Variable", "Category") %>% 
   group_by(Variable, Category) %>%
   count(Variable, Category) %>%
@@ -155,21 +181,21 @@ match_dist_Stand <- Preschool_25_School_Stand_match %>%
   ungroup() %>% 
   mutate(Variable = case_when(
     # lag(Variable) == "data" & Variable == "data" ~ "",
-    lag(Variable) == "Age" & Variable == "Age" ~ "",
+    lag(Variable) == "age_range" & Variable == "age_range" ~ "",
     lag(Variable) == "Gender" & Variable == "Gender" ~ "",
-    # lag(Variable) == "ParentHighestEducation" & Variable == "ParentHighestEducation" ~ "",
+    lag(Variable) == "ParentHighestEducation" & Variable == "ParentHighestEducation" ~ "",
     lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
     # lag(Variable) == "Region" & Variable == "Region" ~ "",
     TRUE ~ Variable
   )) %>% 
   mutate(group = case_when(
-    Variable == 'Age' ~ 'Matched typical sample',
+    Variable == 'age_range' ~ 'Matched typical sample',
     T ~ NA_character_
   )) %>% 
   select(group, everything())
 
-match_dist_Clin <- Preschool_25_School_Clin_match %>% 
-  select(Age, Gender, Ethnicity) %>% 
+match_dist_Clin <- IT_430_Home_Clin_match %>% 
+  select(age_range, Gender, ParentHighestEducation, Ethnicity) %>% 
   gather("Variable", "Category") %>% 
   group_by(Variable, Category) %>%
   count(Variable, Category) %>%
@@ -177,76 +203,102 @@ match_dist_Clin <- Preschool_25_School_Clin_match %>%
   ungroup() %>% 
   mutate(Variable = case_when(
     # lag(Variable) == "data" & Variable == "data" ~ "",
-    lag(Variable) == "Age" & Variable == "Age" ~ "",
+    lag(Variable) == "age_range" & Variable == "age_range" ~ "",
     lag(Variable) == "Gender" & Variable == "Gender" ~ "",
-    # lag(Variable) == "ParentHighestEducation" & Variable == "ParentHighestEducation" ~ "",
+    lag(Variable) == "ParentHighestEducation" & Variable == "ParentHighestEducation" ~ "",
     lag(Variable) == "Ethnicity" & Variable == "Ethnicity" ~ "",
     # lag(Variable) == "Region" & Variable == "Region" ~ "",
     TRUE ~ Variable
   )) %>% 
   mutate(group = case_when(
-    Variable == 'Age' ~ 'Clinical sample',
+    Variable == 'age_range' ~ 'Clinical sample',
     T ~ NA_character_
   )) %>% 
   select(group, everything())
 
 # write table of combined matched typical, clinical demo counts.
-match_dist_School <- bind_rows(
+match_dist <- bind_rows(
   match_dist_Clin,
   match_dist_Stand
-) %>% 
-  mutate(form = case_when(
-    group == 'Clinical sample' ~ 'School',
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything())
+)
 
-rm(list=setdiff(ls(), c("Preschool_25_School_Stand_match", "match_dist_School", "match_dist_Home")))
+write_csv(
+  match_dist,
+  here(
+    'OUTPUT-FILES/MANUAL-TABLES/t529a-IT-430-mixed-clin-matchDemos.csv'
+  ),
+  na = ''
+)
+
+rm(list=setdiff(ls(), "IT_430_Home_Stand_match"))
 
 # RE-ASSEMBLE AND COMBINE FINALIZED SAMPLES --------------------------------------------------
 
-Preschool_24_School_Stand <- 
+IT_49_Home_Stand <- bind_rows(
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-24-School-T-Scores-per-case.csv")
-  )))
-
-Preschool_5_School_Stand <-
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-T-Scores-per-case.csv")
+  ))),
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-5-School-T-Scores-per-case.csv")
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-79-Home-T-Scores-per-case.csv")
   )))
+) %>% 
+  select(-(q0010:q0119))
 
-Preschool_24_School_Clin <-
+IT_1030_Home_Stand <- bind_rows(
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-24-School-clin-T-Scores-per-case.csv")
-  )))
-
-Preschool_5_School_Clin <-
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-T-Scores-per-case.csv")
+  ))),
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-5-School-clin-T-Scores-per-case.csv")
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-2130-Home-T-Scores-per-case.csv")
   )))
+) %>% 
+  select(-(q0011:q0125))
 
-Preschool_25_School_Stand <- bind_rows(
-  Preschool_24_School_Stand,
-  Preschool_5_School_Stand
+IT_49_Home_Clin <- bind_rows(
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-clin-T-Scores-per-case.csv")
+  ))),
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-79-Home-clin-T-Scores-per-case.csv")
+  )))
+) %>% 
+  select(-(q0010:q0119))
+
+IT_1030_Home_Clin <- bind_rows(
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-clin-T-Scores-per-case.csv")
+  ))),
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-2130-Home-clin-T-Scores-per-case.csv")
+  )))
+) %>% 
+  select(-(q0011:q0125))
+
+IT_430_Home_Stand <- bind_rows(
+  IT_49_Home_Stand,
+  IT_1030_Home_Stand
 ) %>% arrange(IDNumber)
 
-Preschool_25_School_Clin <- bind_rows(
-  Preschool_24_School_Clin,
-  Preschool_5_School_Clin
+IT_430_Home_Clin <- bind_rows(
+  IT_49_Home_Clin,
+  IT_1030_Home_Clin
 ) %>% arrange(IDNumber)
+
+rm(list = ls(pattern = '49'))
+rm(list = ls(pattern = '1030'))
 
 # COMPARE MATCHED SAMPLES ON T-SCORES -------------------------------------
 
 # Extract match cases from stand sample
-Preschool_25_School_matchStand <- Preschool_25_School_Stand %>% 
-  semi_join(Preschool_25_School_Stand_match, by ='IDNumber')
+IT_430_Home_matchStand <- IT_430_Home_Stand %>% 
+  semi_join(IT_430_Home_Stand_match, by ='IDNumber')
 
 scale_order <- c("SOC", "VIS", "HEA", "TOU", 
                  "TS", "BOD", "BAL", "PLA", "TOT")
 
 # Write matched typical t-score descriptives
-Preschool_25_School_matchStand_t_desc <-
-  Preschool_25_School_matchStand %>% 
+IT_430_Home_matchStand_t_desc <-
+  IT_430_Home_matchStand %>% 
   select(contains('_NT')) %>% 
   rename_all(~ str_sub(., 1, -4)) %>% 
   describe(fast = T) %>%
@@ -263,8 +315,8 @@ Preschool_25_School_matchStand_t_desc <-
          sd_typ = sd)
 
 # Write clinical t-score descriptives
-Preschool_25_School_clin_t_desc <-
-  Preschool_25_School_Clin %>% 
+IT_430_Home_clin_t_desc <-
+  IT_430_Home_Clin %>% 
   select(contains('_NT')) %>% 
   rename_all(~ str_sub(., 1, -4)) %>% 
   describe(fast = T) %>%
@@ -282,10 +334,21 @@ Preschool_25_School_clin_t_desc <-
 
 # Combine stand, clin columns, add ES column
 
-Preschool_25_School_match_t_desc <- bind_cols(Preschool_25_School_matchStand_t_desc,
-                                            Preschool_25_School_clin_t_desc) %>%
+IT_430_Home_match_t_desc <- bind_cols(IT_430_Home_matchStand_t_desc,
+                                      IT_430_Home_clin_t_desc) %>%
   select(-sample1) %>%
   mutate(ES = abs((mean_typ - mean_clin) / ((sd_typ + sd_clin / 2)))) %>%
   mutate_at(vars(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
               (round(., 2)))
+
+# write table comping t-score descriptives with ES
+write_csv(
+  IT_430_Home_match_t_desc,
+  here(
+    'OUTPUT-FILES/MANUAL-TABLES/t529a-IT-430-mixed-clin-ES.csv'
+  ),
+  na = ''
+)
+
+
 

@@ -1,0 +1,65 @@
+form,group,Variable,Category,n
+Self,Clinical sample,age_range,21.00 to 30.99 years,37
+,,"",31.00 to 40.99 years,30
+,,"",41.00 to 50.99 years,22
+,,"",51.00 to 64.99 years,25
+,,"",65.00 to 99.99 years,6
+,,Gender,Male,50
+,,"",Female,70
+,,HighestEducation,Did not complete high school (no diploma),6
+,,"",High school graduate (including GED),31
+,,"",Some college or associate degree,39
+,,"",Bachelor's degree or higher,44
+,,Ethnicity,Hispanic,16
+,,"",Asian,2
+,,"",Black,19
+,,"",White,82
+,,"",MultiRacial,1
+,Matched typical sample,age_range,21.00 to 30.99 years,28
+,,"",31.00 to 40.99 years,34
+,,"",41.00 to 50.99 years,29
+,,"",51.00 to 64.99 years,18
+,,"",65.00 to 99.99 years,11
+,,Gender,Male,51
+,,"",Female,69
+,,HighestEducation,Did not complete high school (no diploma),7
+,,"",High school graduate (including GED),24
+,,"",Some college or associate degree,45
+,,"",Bachelor's degree or higher,44
+,,Ethnicity,Hispanic,14
+,,"",Asian,1
+,,"",Black,15
+,,"",White,88
+,,"",MultiRacial,2
+Other,Clinical sample,age_range,21.00 to 30.99 years,35
+,,"",31.00 to 40.99 years,28
+,,"",41.00 to 50.99 years,22
+,,"",51.00 to 64.99 years,25
+,,"",65.00 to 99.99 years,6
+,,Gender,Male,47
+,,"",Female,69
+,,HighestEducation,Did not complete high school (no diploma),6
+,,"",High school graduate (including GED),34
+,,"",Some college or associate degree,34
+,,"",Bachelor's degree or higher,42
+,,Ethnicity,Hispanic,15
+,,"",Asian,3
+,,"",Black,19
+,,"",White,78
+,,"",MultiRacial,1
+,Matched typical sample,age_range,21.00 to 30.99 years,34
+,,"",31.00 to 40.99 years,30
+,,"",41.00 to 50.99 years,24
+,,"",51.00 to 64.99 years,17
+,,"",65.00 to 99.99 years,11
+,,Gender,Male,45
+,,"",Female,71
+,,HighestEducation,Did not complete high school (no diploma),7
+,,"",High school graduate (including GED),34
+,,"",Some college or associate degree,32
+,,"",Bachelor's degree or higher,43
+,,Ethnicity,Hispanic,15
+,,"",Asian,2
+,,"",Black,21
+,,"",White,77
+,,"",MultiRacial,1

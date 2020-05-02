@@ -5,6 +5,8 @@ suppressMessages(library(MatchIt))
 suppressMessages(library(tableone))
 suppressMessages(library(knitr))
 
+# ######### HOME DATA -----------------------------------------------------
+
 # READ AND COMBINE FINALIZED SAMPLES --------------------------------------------------
 
 IT_49_Home_Stand_preMatch <- bind_rows(
@@ -222,13 +224,15 @@ match_dist <- bind_rows(
   match_dist_Stand
 )
 
-write_csv(
-  match_dist,
-  here(
-    'OUTPUT-FILES/MANUAL-TABLES/t529a-IT-430-mixed-clin-matchDemos.csv'
-  ),
-  na = ''
-)
+write_csv(match_dist,
+          here(
+            str_c(
+              'OUTPUT-FILES/MANUAL-TABLES/t529a-IT-430-mixed-clin-matchDemos-',
+              format(Sys.Date(), "%Y-%m-%d"),
+              '.csv'
+            )
+          ),
+          na = '')
 
 rm(list=setdiff(ls(), "IT_430_Home_Stand_match"))
 
@@ -342,13 +346,12 @@ IT_430_Home_match_t_desc <- bind_cols(IT_430_Home_matchStand_t_desc,
               (round(., 2)))
 
 # write table comping t-score descriptives with ES
-write_csv(
-  IT_430_Home_match_t_desc,
-  here(
-    'OUTPUT-FILES/MANUAL-TABLES/t529a-IT-430-mixed-clin-ES.csv'
-  ),
-  na = ''
-)
-
-
-
+write_csv(IT_430_Home_match_t_desc,
+          here(
+            str_c(
+              'OUTPUT-FILES/MANUAL-TABLES/t529a-IT-430-mixed-clin-ES-',
+              format(Sys.Date(), "%Y-%m-%d"),
+              '.csv'
+            )
+          ),
+          na = '')

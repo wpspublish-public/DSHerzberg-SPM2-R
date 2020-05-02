@@ -1,0 +1,91 @@
+form,group,Variable,Category,n
+Home,Clinical sample,age_range,12 to 13 years,37
+,,"",14 to 15 years,29
+,,"",16 to 17 years,27
+,,"",18 to 21 years,12
+,,Gender,Male,76
+,,"",Female,29
+,,ParentHighestEducation,Did not complete high school (no diploma),5
+,,"",High school graduate (including GED),13
+,,"",Some college or associate degree,28
+,,"",Bachelor's degree or higher,59
+,,Ethnicity,Hispanic,12
+,,"",Asian,1
+,,"",Black,9
+,,"",White,79
+,,"",NativeHawPacIsl,1
+,,"",MultiRacial,2
+,,"",Other,1
+,Matched typical sample,age_range,12 to 13 years,35
+,,"",14 to 15 years,31
+,,"",16 to 17 years,30
+,,"",18 to 21 years,9
+,,Gender,Male,75
+,,"",Female,30
+,,ParentHighestEducation,Did not complete high school (no diploma),5
+,,"",High school graduate (including GED),11
+,,"",Some college or associate degree,27
+,,"",Bachelor's degree or higher,62
+,,Ethnicity,Hispanic,10
+,,"",Asian,2
+,,"",Black,10
+,,"",White,81
+,,"",MultiRacial,2
+School,Clinical sample,age_range,12 to 13 years,30
+,,"",14 to 15 years,38
+,,"",16 to 17 years,25
+,,"",18 to 21 years,9
+,,Gender,Male,68
+,,"",Female,34
+,,Ethnicity,Hispanic,10
+,,"",Black,15
+,,"",White,68
+,,"",AmericanIndAlaskanNat,3
+,,"",NativeHawPacIsl,2
+,,"",MultiRacial,4
+,Matched typical sample,age_range,12 to 13 years,31
+,,"",14 to 15 years,39
+,,"",16 to 17 years,23
+,,"",18 to 21 years,9
+,,Gender,Male,71
+,,"",Female,31
+,,Ethnicity,Hispanic,12
+,,"",Black,15
+,,"",White,69
+,,"",AmericanIndAlaskanNat,2
+,,"",NativeHawPacIsl,2
+,,"",MultiRacial,2
+Self,Clinical sample,age_range,12 to 13 years,28
+,,"",14 to 15 years,37
+,,"",16 to 17 years,26
+,,"",18 to 21 years,14
+,,Gender,Male,71
+,,"",Female,34
+,,ParentHighestEducation,Did not complete high school (no diploma),18
+,,"",High school graduate (including GED),17
+,,"",Some college or associate degree,16
+,,"",Bachelor's degree or higher,54
+,,Ethnicity,Hispanic,9
+,,"",Asian,1
+,,"",Black,8
+,,"",White,83
+,,"",AmericanIndAlaskanNat,1
+,,"",NativeHawPacIsl,2
+,,"",MultiRacial,1
+,Matched typical sample,age_range,12 to 13 years,29
+,,"",14 to 15 years,35
+,,"",16 to 17 years,29
+,,"",18 to 21 years,12
+,,Gender,Male,70
+,,"",Female,35
+,,ParentHighestEducation,Did not complete high school (no diploma),21
+,,"",High school graduate (including GED),21
+,,"",Some college or associate degree,13
+,,"",Bachelor's degree or higher,50
+,,Ethnicity,Hispanic,9
+,,"",Asian,1
+,,"",Black,8
+,,"",White,84
+,,"",AmericanIndAlaskanNat,1
+,,"",NativeHawPacIsl,1
+,,"",MultiRacial,1

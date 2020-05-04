@@ -1,0 +1,159 @@
+form,group,Variable,Category,n
+IT 430 Home,Sp sample,age_range,4 to 10 mo,15
+,,"",11 to 20 mo,20
+,,"",21 to 30 mo,10
+,,Gender,Male,17
+,,"",Female,28
+,,ParentHighestEducation,Did not complete high school (no diploma),2
+,,"",High school graduate (including GED),15
+,,"",Some college or associate degree,9
+,,"",Bachelor's degree or higher,19
+,,Ethnicity,Hispanic,43
+,,"",White,1
+,,"",MultiRacial,1
+,Matched Eng sample,age_range,4 to 10 mo,15
+,,"",11 to 20 mo,20
+,,"",21 to 30 mo,10
+,,Gender,Male,16
+,,"",Female,29
+,,ParentHighestEducation,Did not complete high school (no diploma),2
+,,"",High school graduate (including GED),16
+,,"",Some college or associate degree,9
+,,"",Bachelor's degree or higher,18
+,,Ethnicity,Hispanic,43
+,,"",White,1
+,,"",MultiRacial,1
+IT Caregiver,Sp sample,age_range,4 to 10 mo,17
+,,"",11 to 20 mo,18
+,,"",21 to 30 mo,9
+,,Gender,Male,18
+,,"",Female,26
+,,ParentHighestEducation,Did not complete high school (no diploma),3
+,,"",High school graduate (including GED),15
+,,"",Some college or associate degree,8
+,,"",Bachelor's degree or higher,18
+,,Ethnicity,Hispanic,42
+,,"",White,1
+,,"",MultiRacial,1
+,Matched Eng sample,age_range,4 to 10 mo,17
+,,"",11 to 20 mo,18
+,,"",21 to 30 mo,9
+,,Gender,Male,18
+,,"",Female,26
+,,ParentHighestEducation,Did not complete high school (no diploma),3
+,,"",High school graduate (including GED),15
+,,"",Some college or associate degree,8
+,,"",Bachelor's degree or higher,18
+,,Ethnicity,Hispanic,42
+,,"",White,1
+,,"",MultiRacial,1
+Preschool 25 Home,Sp sample,age_range,2 to 4 years,18
+,,"",5 years,2
+,,Gender,Male,8
+,,"",Female,12
+,,ParentHighestEducation,Did not complete high school (no diploma),3
+,,"",High school graduate (including GED),5
+,,"",Some college or associate degree,3
+,,"",Bachelor's degree or higher,9
+,,Ethnicity,Hispanic,19
+,,"",MultiRacial,1
+,Matched Eng sample,age_range,2 to 4 years,18
+,,"",5 years,2
+,,Gender,Male,8
+,,"",Female,12
+,,ParentHighestEducation,Did not complete high school (no diploma),3
+,,"",High school graduate (including GED),5
+,,"",Some college or associate degree,3
+,,"",Bachelor's degree or higher,9
+,,Ethnicity,Hispanic,19
+,,"",MultiRacial,1
+Child 512 Home,Sp sample,age_range,5 to 8 years,16
+,,"",9 to 12 years,20
+,,Gender,Male,15
+,,"",Female,21
+,,ParentHighestEducation,Did not complete high school (no diploma),4
+,,"",High school graduate (including GED),17
+,,"",Some college or associate degree,5
+,,"",Bachelor's degree or higher,10
+,,Ethnicity,Hispanic,35
+,,"",White,1
+,Matched Eng sample,age_range,5 to 8 years,18
+,,"",9 to 12 years,18
+,,Gender,Male,14
+,,"",Female,22
+,,ParentHighestEducation,Did not complete high school (no diploma),4
+,,"",High school graduate (including GED),17
+,,"",Some college or associate degree,5
+,,"",Bachelor's degree or higher,10
+,,Ethnicity,Hispanic,35
+,,"",White,1
+Teen 1221 Home,Sp sample,age_range,12 to 13 years,5
+,,"",14 to 15 years,6
+,,"",16 to 17 years,6
+,,"",18 to 21 years,2
+,,Gender,Male,8
+,,"",Female,11
+,,ParentHighestEducation,Did not complete high school (no diploma),5
+,,"",High school graduate (including GED),10
+,,"",Some college or associate degree,4
+,,Ethnicity,Hispanic,17
+,,"",White,2
+,Matched Eng sample,age_range,12 to 13 years,5
+,,"",14 to 15 years,6
+,,"",16 to 17 years,6
+,,"",18 to 21 years,2
+,,Gender,Male,8
+,,"",Female,11
+,,ParentHighestEducation,Did not complete high school (no diploma),5
+,,"",High school graduate (including GED),10
+,,"",Some college or associate degree,4
+,,Ethnicity,Hispanic,17
+,,"",White,2
+Teen 1221 Self,Sp sample,age_range,12 to 13 years,7
+,,"",14 to 15 years,5
+,,"",16 to 17 years,6
+,,"",18 to 21 years,5
+,,Gender,Male,10
+,,"",Female,13
+,,ParentHighestEducation,Did not complete high school (no diploma),11
+,,"",High school graduate (including GED),10
+,,"",Some college or associate degree,1
+,,"",Bachelor's degree or higher,1
+,,Ethnicity,Hispanic,22
+,,"",White,1
+,Matched Eng sample,age_range,12 to 13 years,7
+,,"",14 to 15 years,5
+,,"",16 to 17 years,6
+,,"",18 to 21 years,5
+,,Gender,Male,10
+,,"",Female,13
+,,ParentHighestEducation,Did not complete high school (no diploma),11
+,,"",High school graduate (including GED),10
+,,"",Some college or associate degree,1
+,,"",Bachelor's degree or higher,1
+,,Ethnicity,Hispanic,22
+,,"",White,1
+Adult Self,Sp sample,age_range,21.00 to 30.99 years,14
+,,"",31.00 to 40.99 years,19
+,,"",41.00 to 50.99 years,8
+,,"",51.00 to 64.99 years,3
+,,"",65.00 to 99.99 years,2
+,,Gender,Male,12
+,,"",Female,34
+,,HighestEducation,Did not complete high school (no diploma),4
+,,"",High school graduate (including GED),21
+,,"",Some college or associate degree,14
+,,"",Bachelor's degree or higher,7
+,,Ethnicity,Hispanic,46
+,Matched Eng sample,age_range,21.00 to 30.99 years,16
+,,"",31.00 to 40.99 years,16
+,,"",41.00 to 50.99 years,7
+,,"",51.00 to 64.99 years,5
+,,"",65.00 to 99.99 years,2
+,,Gender,Male,13
+,,"",Female,33
+,,HighestEducation,Did not complete high school (no diploma),4
+,,"",High school graduate (including GED),22
+,,"",Some college or associate degree,14
+,,"",Bachelor's degree or higher,6
+,,Ethnicity,Hispanic,46

@@ -1,8 +1,8 @@
+###### LOAD PACKAGES -----------------------------------------------------------
 suppressMessages(library(here)) 
 suppressMessages(suppressWarnings(library(tidyverse)))
 
-# ######### IT 430 HOME DATA -----------------------------------------------------
-
+#### IT 430 HOME DATA -----------------------------------------------------
 # READ AND COMBINE FINALIZED SAMPLES --------------------------------------------------
 
 IT_49_Home_Clin <- bind_rows(
@@ -51,7 +51,36 @@ IT_430_clin_dx_counts <- IT_430_Home_Clin %>%
 
 rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
 
-# ######### PRESCHOOL 25  DATA -----------------------------------------------------
+#### IT CAREGIVER DATA -----------------------------------------------------
+# READ AND COMBINE FINALIZED SAMPLES --------------------------------------------------
+
+IT_Caregiver_Clin <-
+  suppressMessages(as_tibble(read_csv(
+    here(
+      "OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-Caregiver-clin-T-Scores-per-case.csv"
+    )
+  ))) %>%
+  drop_na(clin_dx) %>%
+  arrange(IDNumber)
+
+# GENERATE TABLE OF DISORDER COUNTS ------------------------------------------
+
+IT_Caregiver_clin_dx_counts <- IT_Caregiver_Clin %>%
+  select(clin_dx) %>%
+  gather("Variable", "dx") %>%
+  group_by(Variable, dx) %>%
+  count(Variable, dx) %>%
+  ungroup() %>%
+  mutate(
+    form = case_when(is.na(lag(dx)) ~ 'IT Caregiver',
+                     T ~ NA_character_),
+    pct_samp = round(n / nrow(IT_Caregiver_Clin), 3)
+  ) %>%
+  select(form, dx, n, pct_samp)
+
+rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
+
+#### PRESCHOOL 25  DATA -----------------------------------------------------
 
 # READ AND COMBINE FINALIZED SAMPLES --------------------------------------------------
 
@@ -124,7 +153,7 @@ Preschool_25_clin_dx_counts <- bind_rows(
 
 rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
 
-# ######### CHILD 512  DATA -----------------------------------------------------
+#### CHILD 512  DATA -----------------------------------------------------
 
 # READ AND COMBINE FINALIZED SAMPLES --------------------------------------------------
 
@@ -181,7 +210,7 @@ Child_512_clin_dx_counts <- bind_rows(
 
 rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
 
-# ######### TEEN 1221  DATA -----------------------------------------------------
+#### TEEN 1221  DATA -----------------------------------------------------
 
 # READ AND COMBINE FINALIZED SAMPLES --------------------------------------------------
 
@@ -261,7 +290,7 @@ Teen_1221_clin_dx_counts <- bind_rows(
 
 rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
 
-# ######### ADULT DATA -----------------------------------------------------
+####ADULT DATA -----------------------------------------------------
 
 # READ AND COMBINE FINALIZED SAMPLES --------------------------------------------------
 
@@ -318,11 +347,12 @@ Adult_clin_dx_counts <- bind_rows(
 
 rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
 
-# WRITE MANUAL TABLES -----------------------------------------------------
+###### WRITE MANUAL TABLES -----------------------------------------------------
 
 # write table of combined matched typical, clinical demo counts.
 clin_dx_counts <- bind_rows(
   IT_430_clin_dx_counts,
+  IT_Caregiver_clin_dx_counts,
   Preschool_25_clin_dx_counts,
   Child_512_clin_dx_counts,
   Teen_1221_clin_dx_counts,

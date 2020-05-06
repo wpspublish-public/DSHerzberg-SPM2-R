@@ -18,7 +18,7 @@ IT_49_Home_clin <-
     All_items_IT_49_Home,
     q0009_other
   ) %>%
-  rename(clin_dx = q0009_other) %>% 
+  rename(clin_dx= q0009_other) %>% 
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(
     All_items_IT_49_Home,
@@ -91,7 +91,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_46 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                      ~
                        IT_46_Home_clin %>% left_join(eval(as.name(
                          str_c(.x, '_46_lookup_col')
@@ -100,7 +100,11 @@ output_46 <- map_dfc(score_names,
                        select(!!str_c(.x, '_NT'))) %>%
   bind_cols(IT_46_Home_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_46 <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_46,
@@ -109,7 +113,7 @@ write_csv(
   )
 )
 
-rm(list = ls(pattern = 'col'))
+rm(list = ls(pattern = 'col|recode'))
 
 # 79 DATA
 
@@ -129,7 +133,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_79 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                      ~
                        IT_79_Home_clin %>% left_join(eval(as.name(
                          str_c(.x, '_79_lookup_col')
@@ -138,7 +142,11 @@ output_79 <- map_dfc(score_names,
                        select(!!str_c(.x, '_NT'))) %>%
   bind_cols(IT_79_Home_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_79 <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_79,
@@ -239,7 +247,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_1020 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                        ~
                          IT_1020_Home_clin %>% left_join(eval(as.name(
                            str_c(.x, '_1020_lookup_col')
@@ -248,7 +256,11 @@ output_1020 <- map_dfc(score_names,
                          select(!!str_c(.x, '_NT'))) %>%
   bind_cols(IT_1020_Home_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_1020 <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_1020,
@@ -257,7 +269,7 @@ write_csv(
   )
 )
 
-rm(list = ls(pattern = 'col'))
+rm(list = ls(pattern = 'col|recode'))
 
 # 2130 DATA
 
@@ -277,7 +289,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_2130 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                        ~
                          IT_2130_Home_clin %>% left_join(eval(as.name(
                            str_c(.x, '_2130_lookup_col')
@@ -286,7 +298,11 @@ output_2130 <- map_dfc(score_names,
                          select(!!str_c(.x, '_NT'))) %>%
   bind_cols(IT_2130_Home_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_2130 <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_2130,
@@ -295,6 +311,7 @@ write_csv(
   )
 )
 
+rm(list = ls())
 
 # CAREGIVER DATA ------------------------------------------------------------
 
@@ -379,7 +396,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_Caregiver <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                        ~
                          IT_Caregiver_clin %>% left_join(eval(as.name(
                            str_c(.x, '_Caregiver_lookup_col')
@@ -388,7 +405,11 @@ output_Caregiver <- map_dfc(score_names,
                          select(!!str_c(.x, '_NT'))) %>%
   bind_cols(IT_Caregiver_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_Caregiver <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_Caregiver,

@@ -376,7 +376,7 @@ Preschool_25_Home_TRT_T <- Preschool_25_Home_TRT_cor_table %>%
          CV_90 = 1.6449*SEM,
          CV_95 = 1.96*SEM
   ) %>% 
-  select(form, scale, n, correct_r, everything(), -r, -p, -SEM) %>% 
+  select(form, scale, n, correct_r, everything(), -r, -p) %>% 
   mutate_if(is.numeric, ~ round(., 2))
 
 rm(list = setdiff(ls(), 'Preschool_25_Home_TRT_T'))
@@ -511,7 +511,7 @@ Preschool_25_School_TRT_T <- Preschool_25_School_TRT_cor_table %>%
          CV_90 = 1.6449*SEM,
          CV_95 = 1.96*SEM
   ) %>% 
-  select(form, scale, n, correct_r, everything(), -r, -p, -SEM) %>% 
+  select(form, scale, n, correct_r, everything(), -r, -p) %>% 
   mutate_if(is.numeric, ~ round(., 2))
 
 rm(list = setdiff(ls(), c('Preschool_25_Home_TRT_T', 'Preschool_25_School_TRT_T')))

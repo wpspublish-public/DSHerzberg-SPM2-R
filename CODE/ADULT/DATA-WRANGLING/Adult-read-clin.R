@@ -83,7 +83,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_1221 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                        ~
                          Adult_Self_clin %>% left_join(eval(as.name(
                            str_c(.x, '_1221_lookup_col')
@@ -92,10 +92,14 @@ output_1221 <- map_dfc(score_names,
                          select(!!str_c(.x, '_NT'))) %>%
   bind_cols(Adult_Self_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_Self <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
-  output_1221,
+  output_Self,
   here(
     'OUTPUT-FILES/ADULT/T-SCORES-PER-CASE/Adult-Self-clin-T-Scores-per-case.csv'
   )
@@ -185,7 +189,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_1221 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                        ~
                          Adult_Other_clin %>% left_join(eval(as.name(
                            str_c(.x, '_1221_lookup_col')
@@ -194,14 +198,16 @@ output_1221 <- map_dfc(score_names,
                          select(!!str_c(.x, '_NT'))) %>%
   bind_cols(Adult_Other_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_Other <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
-  output_1221,
+  output_Other,
   here(
     'OUTPUT-FILES/ADULT/T-SCORES-PER-CASE/Adult-Other-clin-T-Scores-per-case.csv'
   )
 )
-
-rm(list = ls())
 

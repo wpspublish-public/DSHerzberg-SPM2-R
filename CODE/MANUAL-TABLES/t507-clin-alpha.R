@@ -340,3 +340,25 @@ alpha_Adult_Other <- map_df(scale_order, ~
 )
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
+
+###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------
+
+list <- mget(ls(pattern = "alpha"))
+
+alpha_clin <- list %>% reduce(left_join, by = "scale") %>% 
+  select(scale, alpha_IT_1030_Home, alpha_IT_Caregiver, alpha_Preschool_25_Home,
+         alpha_Preschool_25_School, alpha_Child_512_Home, alpha_Child_512_School,
+         alpha_Teen_1221_Home, alpha_Teen_1221_School, alpha_Teen_1221_Self,
+         alpha_Adult_Self, alpha_Adult_Other) %>% 
+  mutate_if(is.numeric, ~round(., 3))
+  
+write_csv(alpha_clin,
+          here(
+            paste0(
+              'OUTPUT-FILES/MANUAL-TABLES/t507-clin-alpha-',
+              format(Sys.Date(), "%Y-%m-%d"),
+              '.csv'
+            )
+          ),
+          na = '')
+

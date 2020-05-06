@@ -493,7 +493,7 @@ IT_49_Home_TRT_T <- IT_49_Home_TRT_cor_table %>%
          CV_90 = 1.6449*SEM,
          CV_95 = 1.96*SEM
   ) %>% 
-  select(form, scale, n, correct_r, everything(), -r, -p, -SEM) %>% 
+  select(form, scale, n, correct_r, everything(), -r, -p) %>% 
   mutate_if(is.numeric, ~ round(., 2))
 
 rm(list = setdiff(ls(), 'IT_49_Home_TRT_T'))
@@ -627,7 +627,7 @@ IT_1030_Home_TRT_T <- IT_1030_Home_TRT_cor_table %>%
          CV_90 = 1.6449*SEM,
          CV_95 = 1.96*SEM
   ) %>% 
-  select(form, scale, n, correct_r, everything(), -r, -p, -SEM) %>% 
+  select(form, scale, n, correct_r, everything(), -r, -p) %>% 
   mutate_if(is.numeric, ~ round(., 2))
 
 rm(list = setdiff(ls(), c('IT_49_Home_TRT_T',
@@ -757,7 +757,7 @@ IT_Caregiver_TRT_T <- IT_Caregiver_TRT_cor_table %>%
          CV_90 = 1.6449*SEM,
          CV_95 = 1.96*SEM
   ) %>% 
-  select(form, scale, n, correct_r, everything(), -r, -p, -SEM) %>% 
+  select(form, scale, n, correct_r, everything(), -r, -p) %>% 
   mutate_if(is.numeric, ~ round(., 2))
 
 rm(list = setdiff(ls(), c('IT_49_Home_TRT_T',

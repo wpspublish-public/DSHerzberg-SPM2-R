@@ -602,7 +602,7 @@ Teen_1221_Home_TRT_T <- Teen_1221_Home_TRT_cor_table %>%
          CV_90 = 1.6449*SEM,
          CV_95 = 1.96*SEM
   ) %>% 
-  select(form, scale, n, correct_r, everything(), -r, -p, -SEM) %>% 
+  select(form, scale, n, correct_r, everything(), -r, -p) %>% 
   mutate_if(is.numeric, ~ round(., 2))
 
 rm(list = setdiff(ls(), 'Teen_1221_Home_TRT_T'))
@@ -726,7 +726,7 @@ Teen_1221_School_TRT_T <- Teen_1221_School_TRT_cor_table %>%
          CV_90 = 1.6449*SEM,
          CV_95 = 1.96*SEM
   ) %>% 
-  select(form, scale, n, correct_r, everything(), -r, -p, -SEM) %>% 
+  select(form, scale, n, correct_r, everything(), -r, -p) %>% 
   mutate_if(is.numeric, ~ round(., 2))
 
 rm(list = setdiff(ls(), c('Teen_1221_Home_TRT_T', 'Teen_1221_School_TRT_T')))
@@ -848,7 +848,7 @@ Teen_1221_Self_TRT_T <- Teen_1221_Self_TRT_cor_table %>%
          CV_90 = 1.6449*SEM,
          CV_95 = 1.96*SEM
   ) %>% 
-  select(form, scale, n, correct_r, everything(), -r, -p, -SEM) %>% 
+  select(form, scale, n, correct_r, everything(), -r, -p) %>% 
   mutate_if(is.numeric, ~ round(., 2))
 
 rm(list = setdiff(ls(), c('Teen_1221_Home_TRT_T', 

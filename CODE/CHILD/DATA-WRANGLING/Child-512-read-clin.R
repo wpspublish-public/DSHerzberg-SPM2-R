@@ -84,7 +84,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_512 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                      ~
                        Child_512_Home_clin %>% left_join(eval(as.name(
                          str_c(.x, '_512_lookup_col')
@@ -93,7 +93,11 @@ output_512 <- map_dfc(score_names,
                        select(!!str_c(.x, '_NT'))) %>%
   bind_cols(Child_512_Home_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_512 <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_512,
@@ -187,7 +191,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_512 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                      ~
                        Child_512_School_clin %>% left_join(eval(as.name(
                          str_c(.x, '_512_lookup_col')
@@ -196,7 +200,11 @@ output_512 <- map_dfc(score_names,
                        select(!!str_c(.x, '_NT'))) %>%
   bind_cols(Child_512_School_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_512 <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_512,

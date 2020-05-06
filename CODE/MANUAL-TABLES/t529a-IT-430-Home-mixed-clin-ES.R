@@ -63,8 +63,7 @@ IT_430_Home_Clin_preMatch <- bind_rows(
   IT_1030_Home_Clin_preMatch
 ) %>% arrange(IDNumber)
 
-rm(list = ls(pattern = '49'))
-rm(list = ls(pattern = '1030'))
+rm(list = ls(pattern = '49|1030'))
 
 # EXTRACT MATCHED TYPICAL SAMPLE ------------------------------------------
 
@@ -288,8 +287,7 @@ IT_430_Home_Clin <- bind_rows(
   IT_1030_Home_Clin
 ) %>% arrange(IDNumber)
 
-rm(list = ls(pattern = '49'))
-rm(list = ls(pattern = '1030'))
+rm(list = ls(pattern = '49|1030'))
 
 # COMPARE MATCHED SAMPLES ON T-SCORES -------------------------------------
 

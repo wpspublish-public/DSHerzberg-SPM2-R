@@ -1,0 +1,594 @@
+clin_dx_orig,clin_dx_rev
+Autism,ASD
+"autism, SI/PD comorbid",SPD
+Birth Weight: Low birth weight (< 5lb 8oz (2500g)) & Premature birth (< 37 weeks),LBW
+"Birth Weight: Low birth weight (< 5lb 8oz (2500g)), Small for gestational age (< 2SD below mean) & Premature birth (< 37 weeks)",LBW
+Blindness,VIS
+Cerebral palsy; SLP,MO
+Chronic Lung Disease; DCD,OTH
+Developmental Coordination Disorder,MO
+Down syndrome,ID
+Down Syndrome,ID
+Down Syndrome; SLP,ID
+FASD,FASD
+Hearing Impairment,HEA
+Hearing loss,HEA
+IDD_Mild,ID
+"LBW, Premature Birth",LBW
+Low Birth Weight ( < 5lb 8oz (2500g)),LBW
+motor impaired - motor delay,MO
+muscular Hypotonia,MO
+SI/PD,SPD
+SLP,SLP
+SLP: Langauge Disorder,SLP
+Small for gestational age (< 2SD below mean),LBW
+Specific developmental disorder of motor function,MO
+Speech-Language Pathology,SLP
+Speech-Language Pathology; Language Disorder,SLP
+"Stickler Syndrome, SLP",SLP
+"Torticollis, hypotonia, idd-severe",ID
+"Trisomy 21, Hypotonia, DCD",ID
+Unilateral hearing loss due to a congenital malformation of his right ear (microtia/atresia),HEA
+ADHD,ADHD
+"ADHD, language delay",ADHD
+"ADHD,Speech Delay",ADHD
+ASD,ASD
+autism,ASD
+Autism,ASD
+Autism ADHD,ASD
+Autism spectrum disorder,ASD
+Autism Spectrum Disorder,ASD
+behavioral disorder,MH
+Bilateral sensorineural hearing loss,HEA
+Blind,VIS
+Cerebral Palsy,MO
+Childhood Apraxia of speech,SLP
+DCD,MO
+Deaf and hypotonia,HEA
+Delayed development,DD
+Developmental coordination disorder,MO
+developmental delay,DD
+Developmental delay,DD
+developmental delays due to premature birth,DD
+Developmental Disability,DD
+developmentally delayed,DD
+Developmentally delayed,DD
+FASD,FASD
+"Front lobe/excessive functioning deficit; Lack of coordination, muscle weakness, Other D/O of nervous system; Expressive Language Disorder, Childhood onset stuttering",SLP
+Hearing impaired,HEA
+Hearing Impairment,HEA
+Hearing loss,HEA
+"Hearing loss, Microtia of left ear.",HEA
+IDD_Mild,ID
+"moderate/severe autism, and pediatric epilepsy",ASD
+"Nystagmu, Optic Atrophy/Hypempia",VIS
+PTSD,MH
+"PTSD, RAD",MH
+Sensorineural hearing loss,HEA
+SI/PD,SPD
+SLP,SLP
+SLP: Language Disorder,SLP
+SLP: Language Disorder & Speech Sound Disorder,SLP
+SLP: Speech Sound Disorder,SLP
+Spastic CP,MO
+speech language pathology,SLP
+Treacher Collins syndrome,OTH
+Unilaterally deaf,HEA
+Visual Impairment,VIS
+ADHD,ADHD
+ADHD and ODD,ADHD
+ASD,ASD
+Autism,ASD
+Autism Spectrum Disorder,ASD
+"Autism, developmental delay",ASD
+Autistic Spectrum Disorder,ASD
+Cerebral Palsy,MO
+cleft lip (repaired); SLP,SLP
+conductive hearing loss,HEA
+CP/Motor Impairment,MO
+DCD,MO
+deaf,HEA
+Deaf or Hard of Hearing,HEA
+developmental delay,DD
+Developmental delay,DD
+Developmental Delay,DD
+"developmental delay, strabismus",DD
+Developmental Disability,DD
+FASD,FASD
+"Front lobe/excessive functioning deficit; Lack of coordination, muscle weakness, Other D/O of nervous system; Expressive Language Disorder, Childhood onset stuttering",SLP
+has a developmental delay,DD
+Hearing impaired,HEA
+Hearing Impairment,HEA
+hearing loss,HEA
+Hearing loss,HEA
+Hearing Loss,HEA
+HOH,OTH
+IDD_Mild,ID
+non-verbal autistic,ASD
+"Nystagmus, Optic Atrophy/Hypempia",VIS
+PTSD,MH
+sensory processing,SPD
+Sensory Processing Disorder,SPD
+SI/PD,SPD
+SLP,SLP
+SLP: Language Disorder,SLP
+SLP: Language Disorder & Speech Sound Disorder,SLP
+SLP: Speech Sound Disorder,SLP
+Speech language pathology,SLP
+speech pathology,SLP
+Speech/Language Impairment,SLP
+Treacher Collins Syndrome,OTH
+Vision impaired / blind,VIS
+Visual Impairment,VIS
+"ADD, and Autism",ASD
+"ADD, Dyslexia",ADHD
+Adhd,ADHD
+ADHD,ADHD
+ADHD cerebral palsy,MO
+ADHD with delayed learning,LD
+"ADHD, Anxiety",ADHD
+"ADHD, dyslexia",ADHD
+"ADHD, dyslexia, anxiety",ADHD
+"ADHD, emotional disorder",ADHD
+"ADHD, ODD",ADHD
+"adhd, sensory disorder",SPD
+Anx,MH
+anxiety,MH
+Anxiety,MH
+"anxiety disorder, adhd",ADHD
+"anxiety, PTSD",MH
+"Aprixia, dyspraxia and low muscle tone",MO
+ASD,ASD
+"ASD, ADHD",ASD
+ASD/PDD,ASD
+Austism,ASD
+autism,ASD
+Autism,ASD
+"autism & ADHD, heart condition",ASD
+Autism Spectrum,ASD
+Autism spectrum disorder,ASD
+Autism Spectrum Disorder,ASD
+"Autism, ADHD",ASD
+"autism, ADHD, anxiety, sensory processing disorder",ASD
+"Autism, Anxiety",ASD
+"Autism, anxiety, ocd, ADHD, Chromosone 14 duplication",ASD
+"Autism, Intellectually Delayed, Expressive Receptive Speech Disorder",ASD
+"autism,developmentally delayed",ASD
+Behavior,MH
+Bilateral sensorineural hearing loss,HEA
+Bilateral sensroinerural hearing loss,HEA
+Bipolar,MH
+Cerebral Palsy,MO
+Cerebral palsy and Hearing Impairment,MO
+"Cerebral Palsy, Deaf with Cochlear Implants",MO
+"Colorectal issues celiac, adhd",ADHD
+Cortical vision impairment,VIS
+Cystic fibrosis ADHD,ADHD
+DCD,MO
+Deaf,HEA
+"Deaf (Cochlear Implants), Low Muscle Tone, Incoordination, GERD",HEA
+Deaf Hard of Hearing (Cochlear Implant Recipient),HEA
+Deaf with CI,HEA
+"depression, anxiety",MH
+Developmental Coordination Disorder,MO
+Developmental Delay,DD
+"Developmental delay, autism, non verbal",ASD
+developmentally delayed,DD
+Down syndrome,ID
+Down Syndrome,ID
+"Down syndrome, Autism",ASD
+Down Syndrome/Trisomy 21,ID
+"Dysthymia, ADHD, anxiety",MH
+emotional disability,MH
+"emotional disturbance, ODD",MH
+Epilepsy,OTH
+Fatty Acid Oxidation Disorder,OTH
+"Fetal Alcohol Syndrome, ADHD, Autism",FASD
+Golden Har Syndrome,OTH
+hearing impairment,HEA
+Hearing Impairment,HEA
+Hearing Loss,HEA
+High Functioning Autism,ASD
+IDD_Mild,ID
+IDD_Moderate,ID
+Intellectual Disability,ID
+Language Disorder,SLP
+LD,LD
+Learning Disability,LD
+Legally blind,VIS
+Mental delays learning,LD
+Mental learning disability,LD
+moderate to severe hearing loss,HEA
+Mood,MH
+Mood/behavior,MH
+Mood/Intellectual Disability,ID
+ODD and ADHD,MH
+PPD/NOS  ADHD,ADHD
+Profound Hearing Loss,HEA
+Profoundly Deaf,HEA
+"Sensory Intergration Disorder, Erbspalsy, Mild Estatic Encampanthaty, Right Hands Klumpksy, etc.",SPD
+sensory intergration issues,SPD
+Sensory processing disorder,SPD
+Sensory Processing Disorder,SPD
+sensory processing issues,SPD
+SI/PD,SPD
+SI/PD Comorbid,SPD
+"SI/PD, ADHD",SPD
+SLP,SLP
+SLP-Speech Sound Disorder,SLP
+SLP: Language Disorder & Speech Sound Disorder,SLP
+"Spastic diplegia CP, EoE, FPIES, GAD, medical PTSD, legally blind, deaf in L ear",MO
+"Spastic Quadriplegic Cerebral Palsy ,Non Verbal, Non Mobile  CVI, Hydrocyphls",MO
+SPD,SPD
+Specific Learning Disability,LD
+Speech and Language,SLP
+speech and language impairment,SLP
+Speech and Language Impairment,SLP
+Speech and Language impairment-language,SLP
+Speech and Language Pathology-language & SSD,SLP
+speech language impairment,SLP
+Speech Language Impairment-articulation,SLP
+Speech or Language Impairment,SLP
+Stroke at birth; left hemiplegia,MO
+Traumatic brain injury,TBI
+ADHD,ADHD
+ADHD and Sensory Processing,SPD
+ADHD cerebral palsy,MO
+"ADHD, Anxiety",ADHD
+"ADHD, anxiety, learning difficulties",ADHD
+"ADHD, ASD",ASD
+"ADHD, learning difficulties",LD
+ADHD; Disgraphia,ADHD
+ADHD/Autism,ASD
+ADHD/Dyslexia probable,ADHD
+anxiety,MH
+Anxiety,MH
+"Anxiety, ADHD, sensory issues",SPD
+ASD,ASD
+autism,ASD
+Autism,ASD
+autism and downs syndrome,ASD
+Autism Spectrum Disorder,ASD
+Autism with Communication Impairment,ASD
+"autism, adhd",ASD
+"Autism, Expressive/Receptive Language Deficit, Other Health Impairment (school diagnosis)",ASD
+"Autism, Pica, ADHD",ASD
+"Autism, sensory processing disorder",ASD
+"Autism, Specific Learning Disability in math and reading",ASD
+Behavior,MH
+Bipolar,MH
+Cerebral Palsy,MO
+"Cerebral Palsy, Eosinophilic Esophogitis, FPIES, Emotional disorder, visual impairment, auditory impairment",SPD
+"cerebral palsy, hydrocephalus, significant developmental delay, cortical visual impairment, and epilepsy",MO
+cortical visual impairment,VIS
+DCD,MO
+DD/ID,DD
+Deaf,HEA
+"Deaf, wears cochlear implants",HEA
+Developmental Coordination Disorder; Dyspraxia,MO
+Developmental delay,DD
+Developmental Delay,DD
+Developmental Disability,DD
+Down Syndrome,ID
+Emotional,MH
+Emotional Disturbance,MH
+"Emotional Disturbance, PTSD",MH
+Erb's Palsy,OTH
+"Fatty Acid Oxidation Disorder, SI/PD",SPD
+"Fetal alcohol syndrome, attention deficit hyperactivity disorder, autism",FASD
+"Hard of hearing, Hearing aid, missing right ear from birth",HEA
+Hearing impaired,HEA
+Hearing Impairment,HEA
+hearing loss,HEA
+Hearing loss,HEA
+Hearing Loss,HEA
+HI,MO
+ID-DD,ID
+IDD,ID
+IDD_Mild,ID
+IDD_Moderate,ID
+Intellectual Disability,ID
+Intellectual Disability and Other Health Impairment,ID
+Language Disorder,SLP
+LD,LD
+Learning Disability,LD
+"moderate intellectual disability, speech and language impairments",ID
+Mood,MH
+Mood Disorder,MH
+Mood/behavior,MH
+Mood/Intellectual disability,ID
+"Non verbal, chairfast",OTH
+"ODD, emotional disturbance",MH
+profound deafness,HEA
+profoundly deaf,HEA
+"PTSD, anxiety",MH
+right middle cerebral artery stroke with left sided weakness,MO
+"SDD- Significantly Developmentally Delayed, & Speech Impairment",DD
+"Seizure disorder, MI",OTH
+Sensory Integration/Processing Disorder,SPD
+sensory processing disorder,SPD
+Sensory Processing Disorder,SPD
+Sesory Processing Disorder Co-Morbid,SPD
+SI/PD,SPD
+"SI/PD, ADHD",SPD
+"SI/PD, VI",SPD
+significant developmental delay,DD
+SLP,SLP
+SLP: Language Disorder,SLP
+SLP: Language Disorder & Speech Sound Disorder,SLP
+SPD,SPD
+Specific Learning Disability,LD
+Specific learning disability. Speech and language impairment,LD
+Speech and Language,SLP
+speech and language impairment,SLP
+Speech and Language impairment-language,SLP
+Speech disorder,SLP
+Speech or Language Impairment,SLP
+Speech/Language,SLP
+speech/language impairment,SLP
+Traumatic Brain Injury,TBI
+Visually impaired,VIS
+adhd,ADHD
+Adhd,ADHD
+ADHD,ADHD
+ADHD and ASD,ASD
+"ADHD, Aspergers, Mood Disorder, Sleep Disorder, Anxiety Disorder",ASD
+"adhd, autism",ASD
+"ADHD, autism",ASD
+"ADHD, Dysgraphia",ADHD
+"ADHD, OCD, Anxiety Disorder, ASD",ADHD
+anxiety,MH
+Anxiety,MH
+"anxiety, ADHD, autism",ASD
+ASD,ASD
+"ASD, ADHD, anxiety",ASD
+"ASD, Anxiety, depression",ASD
+autism,ASD
+Autism,ASD
+Autism Spectrum Disorder,ASD
+"Autism, ADHD, Anxiety",ASD
+"Autism, Anxiety, Depression, OCD, DMDD",ASD
+"autism,seizures",ASD
+"bipolar, autism danny walkers",ASD
+"Blind, Cerebral Palsy",VIS
+"Cancer, ASD, anxiety, depression, post pardon trauma, brain cyst",ASD
+cerebral palsy,MO
+"CP, ASD",MO
+depression,MH
+Depression,MH
+"Depression, anxiety",MH
+"depression, PTSD",MH
+Down syndrome,ID
+Down Syndrome,ID
+Dyslexia and ADHD,ADHD
+FASD,FASD
+FASD Developmental Delay ASD,FASD
+Hearing impaired,HEA
+Hearing Impaired,HEA
+hearing loss,HEA
+Hearing loss,HEA
+"hemiplegia, cp",MO
+IDD,ID
+Intellectual Disability Moderate,ID
+LD,LD
+Learning Disability,LD
+Mild CP,MO
+Mood Disorder,MH
+Oppositional Defient Disoder and ADHD,ADHD
+"pFAS (partial Fetal alcohol syndrome, has all facial, behavioral, and sensory dx, but is missing the 2nd growth lag required for a full FASD diagnoses)",FASD
+ptsd,MH
+"PTSD, ODD",MH
+SLP,SLP
+SLP: Language Disorder,SLP
+SLP: Language Disorder & Speech Sound Disorder,SLP
+"spastic diplegia, cerebral palsy, Periventricular leukomalacia, asthma, non-verbal learning disorder",MO
+syndactily and adhd,ADHD
+TBI,TBI
+traumatic brain injury,TBI
+Traumatic Brain injury,TBI
+"299.00 Autism Spectrum Disorder (F84.0) Level 2 Requiring Substantial Support with social communication impairments; Level 2 Requiring substantial support with restricted, repetitive behaviors; without accompanying intellectual impairment. With accompanying language impairment deficits in social communication, exhibits little variation in intonation and difficulties with voice quality. Has been diagnosed with anxiety.",ASD
+ADD/ADHD,ADHD
+ADHD,ADHD
+"ADHD, birth defect right hand, missing middle finger",ADHD
+"ADHD, Dyslexia",ADHD
+"ADHD, learning difficulties",LD
+anxiety,MH
+Anxiety,MH
+"Anxiety, OCD",MH
+ASD,ASD
+ASD PDD-NOS,ASD
+"ASD, ADHD",ASD
+ASD; Hard of hearing in his right ear (not sure what the specific diagnosis is called).,ASD
+"Austism, ADHD, OCD, Anxiety Disorder",ASD
+Autism,ASD
+Autism Spectrum Disorder,ASD
+"Autism Spectrum Disorder, ADHD",ASD
+"Autism Spectrum Disorder, Emotional / Behavioral DIsorder",ASD
+"Autism, Other Health Impairment",ASD
+"Blindness, Cerebral Palsy",VIS
+Cerebral Palsy,MO
+CEREBRAL PALSY,MO
+"Cerebral Palsy, ADHD",MO
+"Cerebral Palsy, Autism Spectrum Disorder",ASD
+CP,MO
+depression,MH
+Depression,MH
+"Diagnosed with Asperger's disorder with features of anxiety, Attention Deficit Hyperactivity Disorder combined type and Mixed expressive and receptive language disorder.",ASD
+Emotional / Behavioral Disorder,MH
+FASD,FASD
+"Fetal Alcohol Syndrome, ADHD",ADHD
+Hearing Impaired,HEA
+HOH,OTH
+IDD_Mild,ID
+Intellectual disability,ID
+Intellectual Disability Moderate,ID
+"language disorder (expressive), learning disorders",SLP
+"language disorder, learning disorders (reading, writing)",SLP
+Learning disability,LD
+Learning Disability,LD
+Mild Intellectual Disability and Speech and Language Impaired,ID
+Mood Disorder,MH
+"POTS, ASD",ASD
+profound hearing loss,HEA
+PTSD,MH
+"PTSD, depression",MH
+"PTSD, ODD",MH
+SLP,SLP
+SLP: Language Disorder,SLP
+SLP: Language Disorder & Speech Sound Disorder,SLP
+SLP: Speech Sound Disorder,SLP
+SPD,SPD
+Specific Learning Disability,LD
+TBI,TBI
+Traumatic brain injury,TBI
+Traumatic Brain Injury,TBI
+adhd,ADHD
+ADHD,ADHD
+"ADHD, ASD",ASD
+"adhd, autism",ASD
+"ADHD, OCD, Anxiety Disorder, ASD",ADHD
+"Adhd, sensory processing disorder, auditory processing disorder",SPD
+anxiety,MH
+Anxiety,MH
+Anxiety disorder,MH
+ASD,ASD
+"ASD, ADHD, anxiety",ASD
+autism,ASD
+Autism,ASD
+Autism Spectrum Disorder,ASD
+Autism-ADHD,ASD
+"autism, adhd, and hearing loss",ASD
+"autism, ADHD, anxiety",ASD
+"Autism, ADHD, Anxiety",ASD
+"Autism, Anxiety, Depression, OCD, DMDD",ASD
+Behavioral Disorder,MH
+"Blind, cerebral palsy",VIS
+"Cancer, ASD, anxiety, depression, post pardon trauma, brain cyst",ASD
+Cerebral Palsy,MO
+"dandy walkers syndrome, behavioral disorder",OTH
+Deaf,HEA
+depression,MH
+Depression,MH
+"depression, anxiety",MH
+"Dyslexia, Autism Spectrum Disorder, SLP",ASD
+"dyslexia, language disorder",SLP
+"dyslexia, language disorder, IDD_Mild",ID
+FASD,FASD
+Hearing,HEA
+Hearing loss,HEA
+High functioning autism,ASD
+Intellectual Disability Moderate,ID
+Learning Disability,LD
+mild CP,MO
+Mood Disorder,MH
+"Periventricular leukomalacia, ADD, non verbal learning disorder",ASD
+"pFASD, ADHD",FASD
+PTSD,MH
+sld,SLP
+SLD,SLP
+SLP,SLP
+SLP: Language Disorder,SLP
+SLP: Language Disorder & Speech Sound Disorder,SLP
+TBI,TBI
+Traumatic Brain Injury,TBI
+Traumaticbraininjury,TBI
+ADHD,ADHD
+ADHD: Inattentive Presentation,ADHD
+Anxiety,MH
+"Anxiety, panic disorder and agoraphobia",MH
+ASD,ASD
+"ASD, fibromyalgia, Hashimoto's Syndrome",ASD
+"Attention Deficit Hyperactivity Disorder, Behavioral Disorder, FASD",FASD
+Autism Spectrum Disorder (leaning towards Asperger's),ASD
+bi polar,MH
+Cerebral Palsy,MO
+"Chiari Malformation, Occipital Neuralgia, anxiety, depression",MH
+CP,MO
+deaf in right ear; atypical hemolytic uremia syndrome,HEA
+depression,MH
+Depression,MH
+"Depression, anxiety, ADHD",MH
+"Depression, PTSD, idiopathic hypersomnia, sleep apnea",MH
+Developmental Delay,DD
+Down syndrome,ID
+"dyscalcula, ADD",ADHD
+FASD,FASD
+Heading loss,HEA
+Hearing Impairment,HEA
+Hearing Loss,HEA
+ID,ID
+IDD,ID
+LD,LD
+LD: Mathematics,LD
+LD: Reading,LD
+LD: Reading and Written Expression,LD
+"LD: Reading, Written Expression and Mathematics",LD
+LD: Written Expression,LD
+Learning disability,LD
+Learning Disability - Mild ADHD,LD
+Leber's Optic Neuropathy,VIS
+Mood Disorder,MH
+P.T.S.D.,MH
+Reading and writing disorder,SLP
+Sensory processing,SPD
+SI/PD,SPD
+SIPD,SPD
+SLP,SLP
+SLP: Language Disorder,SLP
+TBI,TBI
+TBI and depression,TBI
+TBI due to a motorcycle wreck and paralysis,MO
+"TBI, no right temporal lobe; migraines and epilepsy",TBI
+"Traumatic Brain Injury, anxiety",TBI
+Visual Impairment,VIS
+adhd,ADHD
+ADHD,ADHD
+"ADHD, high functioning autism",ASD
+ADHD: Inattentive Presentation,ADHD
+Anxiety,MH
+"Anxiety, panic disorder, agoraphobia",MH
+ASD,ASD
+"Attention Deficit Hyperactivity Disorder, Behavioral Disorder, FASD",FASD
+autism,ASD
+Autism,ASD
+Autism and Depressive Disorder,ASD
+"Autism spectrum, ADHD",ASD
+Bilateral hearing loss,HEA
+bipolar,MH
+Cerebral palsy,MO
+Cerebral Palsy,MO
+CP,MO
+depression,MH
+Depression,MH
+Down syndrome,ID
+"F33.1, F41.0 F43.10 COPD and TBI",OTH
+FASD,FASD
+hearing impairment,HEA
+Hearing Impairment,HEA
+Intellectual disability,ID
+Intellectual Disability,ID
+Intellectual Disability Disorder,ID
+LD,LD
+LD: Mathematics,LD
+LD: Reading,LD
+LD: Reading and Written Expression,LD
+"LD: Reading, Written Expression and Mathematics",LD
+LD: Written Expression,LD
+Learning Disability,LD
+Learning disorder in reading,LD
+Leber's Optic Neuropathy,VIS
+Mild intellectual disability,ID
+Mood Disorder,MH
+permanent injury - atypical hemolytic uremic syndrome,OTH
+"recent TBI, anxiety",MH
+sensory processing,SPD
+Sensory processing,SPD
+SI/PD,SPD
+SLP,SLP
+SLP: Language Disorder,SLP
+Supra vavular aurta stenosis,OTH
+TBI,TBI
+TBI and depression,TBI
+TBI and quadriplegic paralysis,TBI
+"Traumatic brain injury (last 3-4 months), anxiety",TBI
+Visual Impairment,VIS

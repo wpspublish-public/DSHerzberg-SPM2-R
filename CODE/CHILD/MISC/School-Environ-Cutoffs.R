@@ -68,6 +68,9 @@ ART_data <- suppressMessages(read_csv(
   # remove outliers
   filter(TOT_raw < 50)
 
+# write data
+write_csv(ART_data, here('INPUT-FILES/CHILD/SCHOOL-ENVIRON-DRIVING-DATA/ART-data.csv'))
+
 # Freq table
 ART_TOT_freq <- ART_data %>% 
   count(TOT_raw) %>%
@@ -172,6 +175,9 @@ BUS_data <- suppressMessages(read_csv(
   # remove outliers
   # filter(TOT_raw < 50)
 
+# write data
+write_csv(BUS_data, here('INPUT-FILES/CHILD/SCHOOL-ENVIRON-DRIVING-DATA/BUS-data.csv'))
+
 # Freq table
 BUS_TOT_freq <- BUS_data %>% 
   count(TOT_raw) %>%
@@ -274,6 +280,9 @@ CAF_data <- suppressMessages(read_csv(
 # remove outliers
 filter(TOT_raw < 45)
 
+# write data
+write_csv(CAF_data, here('INPUT-FILES/CHILD/SCHOOL-ENVIRON-DRIVING-DATA/CAF-data.csv'))
+
 CAF_TOT_freq <- CAF_data %>% 
   count(TOT_raw) %>%
   mutate(
@@ -373,6 +382,9 @@ MUS_data <- suppressMessages(read_csv(
   ) #%>% 
   # remove outliers
   # filter(TOT_raw < 40)
+
+# write data
+write_csv(MUS_data, here('INPUT-FILES/CHILD/SCHOOL-ENVIRON-DRIVING-DATA/MUS-data.csv'))
 
 MUS_TOT_freq <- MUS_data %>% 
   count(TOT_raw) %>%
@@ -475,6 +487,9 @@ PHY_data <- suppressMessages(read_csv(
 # remove outliers
 filter(TOT_raw < 40)
 
+# write data
+write_csv(PHY_data, here('INPUT-FILES/CHILD/SCHOOL-ENVIRON-DRIVING-DATA/PHY-data.csv'))
+
 PHY_TOT_freq <- PHY_data %>% 
   count(TOT_raw) %>%
   mutate(
@@ -574,6 +589,9 @@ REC_data <- suppressMessages(read_csv(
   ) #%>% 
   # remove outliers
   # filter(TOT_raw < 40)
+
+# write data
+write_csv(REC_data, here('INPUT-FILES/CHILD/SCHOOL-ENVIRON-DRIVING-DATA/REC-data.csv'))
 
 REC_TOT_freq <- REC_data %>% 
   count(TOT_raw) %>%

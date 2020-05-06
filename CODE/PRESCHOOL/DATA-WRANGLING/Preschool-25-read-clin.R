@@ -91,7 +91,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_24 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                      ~
                        Preschool_24_Home_clin %>% left_join(eval(as.name(
                          str_c(.x, '_24_lookup_col')
@@ -100,7 +100,11 @@ output_24 <- map_dfc(score_names,
                        select(!!str_c(.x, '_NT'))) %>%
   bind_cols(Preschool_24_Home_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_24 <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_24,
@@ -109,7 +113,7 @@ write_csv(
   )
 )
 
-rm(list = ls(pattern = 'col'))
+rm(list = ls(pattern = 'col|recode'))
 
 # 5 DATA
 
@@ -129,7 +133,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_5 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                      ~
                        Preschool_5_Home_clin %>% left_join(eval(as.name(
                          str_c(.x, '_5_lookup_col')
@@ -138,7 +142,11 @@ output_5 <- map_dfc(score_names,
                        select(!!str_c(.x, '_NT'))) %>%
   bind_cols(Preschool_5_Home_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_5 <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_5,
@@ -239,7 +247,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_24 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                      ~
                        Preschool_24_School_clin %>% left_join(eval(as.name(
                          str_c(.x, '_24_lookup_col')
@@ -248,7 +256,11 @@ output_24 <- map_dfc(score_names,
                        select(!!str_c(.x, '_NT'))) %>%
   bind_cols(Preschool_24_School_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_24 <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_24,
@@ -257,7 +269,7 @@ write_csv(
   )
 )
 
-rm(list = ls(pattern = 'col'))
+rm(list = ls(pattern = 'col|recode'))
 
 # 5 DATA
 
@@ -277,7 +289,7 @@ map_df(
 )
 
 # look up T scores with left_join, bind T score columns to main data set
-output_5 <- map_dfc(score_names,
+dx_recode_in <- map_dfc(score_names,
                     ~
                       Preschool_5_School_clin %>% left_join(eval(as.name(
                         str_c(.x, '_5_lookup_col')
@@ -286,7 +298,11 @@ output_5 <- map_dfc(score_names,
                       select(!!str_c(.x, '_NT'))) %>%
   bind_cols(Preschool_5_School_clin, .)
 
-# write outuput for analysis
+source(here('CODE/MISC/clin-dx-orig-map-clin-dx-rev.R'))
+
+output_5 <- dx_recode_out
+
+# write output for analysis
 
 write_csv(
   output_5,

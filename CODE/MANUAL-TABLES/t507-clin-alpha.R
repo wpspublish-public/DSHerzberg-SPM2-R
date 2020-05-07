@@ -4,7 +4,53 @@ suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(psych))
 #### IT 49 HOME CLIN--------------------------------------------------------------
 
-# only 11 cases, alphas can be estimated
+# IT49 has only 11 clinical cases, this code section reads IT 49 data and
+# selects subset of items that are equivalent to IT 1030 items. Code the reads
+# IT 1030 data, selects subset of equivalent items, and renames those items to
+# the IT 49 names, so the two data sets can be combined. Alpha is then
+# calculated on this shared set of items over the two data sets, providing a
+# large enough sample that we can get an alpha on data that includes IT 49 data.
+
+source(here("CODE/MISC/IT-430-names-shared-item-cols.R"))
+
+IT_49_Home_Clin_shared_items <- bind_rows(
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-clin-T-Scores-per-case.csv")
+  ))),
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-79-Home-clin-T-Scores-per-case.csv")
+  )))
+) %>% 
+  arrange(IDNumber) %>% 
+  select(IT_49_names_item_cols_shared_with_IT_1030)
+
+IT_1030_Home_Clin_shared_items <- bind_rows(
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-clin-T-Scores-per-case.csv")
+  ))),
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-2130-Home-clin-T-Scores-per-case.csv")
+  )))
+) %>% 
+  arrange(IDNumber) %>% 
+  select(IT_1030_names_item_cols_shared_with_IT_49)
+
+rename_IT_1030_col_in <- IT_1030_Home_Clin_shared_items
+
+source(here("CODE/MISC/rename-IT-1030-shared-item-cols-to-IT-49-names.R"))
+
+IT_430_Home_Clin_shared_items <- bind_rows(
+  IT_49_Home_Clin_shared_items,
+  rename_IT_1030_col_out
+)
+
+alpha_IT_430_Home_shared_items <-
+  alpha(cor(IT_430_Home_Clin_shared_items))[["total"]] %>%
+  select(raw_alpha) %>%
+  rename(alpha_IT_430_Home_shared_items = raw_alpha)
+
+rm(list = setdiff(ls(), ls(pattern = 'alpha')))
+
 
 #### IT 1030 HOME CLIN----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/IT-1030-Home-item-vectors.R"))

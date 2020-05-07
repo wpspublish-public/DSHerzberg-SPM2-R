@@ -1,77 +1,108 @@
 ###### LOAD PACKAGES -----------------------------------------------------------
 suppressPackageStartupMessages(library(here))
 suppressMessages(suppressWarnings(library(tidyverse)))
+suppressMessages(library(data.table))
 suppressMessages(library(psych))
-#### IT 49 HOME CLIN--------------------------------------------------------------
+## IT 49 HOME STAND--------------------------------------------------------------
+scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
+                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
 
-# only 11 cases, alphas can be estimated
-
-#### IT 1030 HOME CLIN----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/IT-1030-Home-item-vectors.R"))
-
-IT_1030_Home_Clin <- bind_rows(
+IT_49_Home_Stand_T_scores <- bind_rows(
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-clin-T-Scores-per-case.csv")
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-T-Scores-per-case.csv")
   ))),
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-2130-Home-clin-T-Scores-per-case.csv")
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-79-Home-T-Scores-per-case.csv")
   )))
 ) %>% 
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(contains("_NT"))
 
-map_df(scale_order,
-       ~
-         IT_1030_Home_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_IT_1030_Home')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_IT_1030_Home'), ., envir = .GlobalEnv))
+IT_49_Home_Stand_output <- data.frame(cor(IT_49_Home_Stand_T_scores)) %>% 
+  rownames_to_column() %>% 
+  rename(scale = rowname) %>% 
+  mutate_if(is.numeric, ~ round(., 3)) %>% 
+  arrange(match(scale, scale_order)) %>% 
+  mutate(form = case_when(
+    scale =="SOC_NT" ~ "IT-49-Home",
+    T ~ NA_character_
+  )) %>% 
+  select(form, scale, scale_order)
 
-alpha_IT_1030_Home <- map_df(scale_order, ~
-                               alpha(
-                                 cor(
-                                   eval(as.name(str_c(.x, '_item_cols_IT_1030_Home')))
-                                 ),
-                                 check.keys = TRUE
-                               )[["total"]] %>%
-                               mutate(scale = .x) %>% 
-                               select(scale, raw_alpha) %>% 
-                               rename(alpha_IT_1030_Home = raw_alpha)
-)
+rm(list = setdiff(ls(), ls(pattern = "output")))
+  
+## IT 1030 HOME STAND----------------------------------------------------------
+scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
+                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
 
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))
-
-#### IT CAREGIVER CLIN----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/IT-Caregiver-item-vectors.R"))
-
-IT_Caregiver_Clin <-
+IT_1030_Home_Stand_T_scores <- bind_rows(
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-Caregiver-clin-T-Scores-per-case.csv")
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-T-Scores-per-case.csv")
+  ))),
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-2130-Home-T-Scores-per-case.csv")
   )))
+) %>% 
+  arrange(IDNumber) %>% 
+  select(contains("_NT"))
 
-map_df(scale_order,
-       ~
-         IT_Caregiver_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_IT_Caregiver')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_IT_Caregiver'), ., envir = .GlobalEnv))
+IT_1030_Home_Stand_output <- data.frame(cor(IT_1030_Home_Stand_T_scores)) %>% 
+  rownames_to_column() %>% 
+  rename(scale = rowname) %>% 
+  mutate_if(is.numeric, ~ round(., 3)) %>% 
+  arrange(match(scale, scale_order)) %>% 
+  mutate(form = case_when(
+    scale =="SOC_NT" ~ "IT-1030-Home",
+    T ~ NA_character_
+  )) %>% 
+  select(form, scale, scale_order)
 
-alpha_IT_Caregiver <- map_df(scale_order, ~
-                               alpha(
-                                 cor(
-                                   eval(as.name(str_c(.x, '_item_cols_IT_Caregiver')))
-                                 ),
-                                 check.keys = TRUE
-                               )[["total"]] %>%
-                               mutate(scale = .x) %>% 
-                               select(scale, raw_alpha) %>% 
-                               rename(alpha_IT_Caregiver = raw_alpha)
+rm(list = setdiff(ls(), ls(pattern = "output")))
+
+## IT CAREGIVER STAND----------------------------------------------------------
+scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
+                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+
+IT_Caregiver_Stand_T_scores <-
+  suppressMessages(as_tibble(read_csv(
+    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-Caregiver-T-Scores-per-case.csv")
+  ))) %>% 
+  select(contains("_NT"))
+
+IT_Caregiver_Stand_output <- data.frame(cor(IT_Caregiver_Stand_T_scores)) %>% 
+  rownames_to_column() %>% 
+  rename(scale = rowname) %>% 
+  mutate_if(is.numeric, ~ round(., 3)) %>% 
+  arrange(match(scale, scale_order)) %>% 
+  mutate(form = case_when(
+    scale =="SOC_NT" ~ "IT-Caregiver",
+    T ~ NA_character_
+  )) %>% 
+  select(form, scale, scale_order)
+
+rm(list = setdiff(ls(), ls(pattern = "output")))
+###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------
+
+IT_output <- bind_rows(
+  IT_49_Home_Stand_output,
+  IT_1030_Home_Stand_output,
+  IT_Caregiver_Stand_output
 )
 
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))
+write_csv(IT_output,
+          here(
+            paste0(
+              'OUTPUT-FILES/MANUAL-TABLES/t509-IT-430-stand-interscale-',
+              format(Sys.Date(), "%Y-%m-%d"),
+              '.csv'
+            )
+          ),
+          na = '')
 
-#### PRESCHOOL 25 HOME CLIN----------------------------------------------------------
+
+
+
+#### PRESCHOOL 25 HOME STAND----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/Preschool-25-Home-item-vectors.R"))
 
 Preschool_25_Home_Clin <- bind_rows(
@@ -105,7 +136,7 @@ alpha_Preschool_25_Home <- map_df(scale_order, ~
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
-#### PRESCHOOL 25 SCHOOL CLIN----------------------------------------------------------
+#### PRESCHOOL 25 SCHOOL STAND----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/Preschool-25-School-item-vectors.R"))
 
 Preschool_25_School_Clin <- bind_rows(
@@ -139,7 +170,7 @@ alpha_Preschool_25_School <- map_df(scale_order, ~
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
-#### CHILD 512 HOME CLIN----------------------------------------------------------
+#### CHILD 512 HOME STAND----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/Child-512-Home-item-vectors.R"))
 
 Child_512_Home_Clin <-
@@ -168,7 +199,7 @@ alpha_Child_512_Home <- map_df(scale_order, ~
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
-#### CHILD 512 SCHOOL CLIN----------------------------------------------------------
+#### CHILD 512 SCHOOL STAND----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/Child-512-School-item-vectors.R"))
 
 Child_512_School_Clin <-
@@ -197,7 +228,7 @@ alpha_Child_512_School <- map_df(scale_order, ~
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
-#### TEEN 1221 HOME CLIN----------------------------------------------------------
+#### TEEN 1221 HOME STAND----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/Teen-1221-Home-item-vectors.R"))
 
 Teen_1221_Home_Clin <-
@@ -225,7 +256,7 @@ alpha_Teen_1221_Home <- map_df(scale_order, ~
 )
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
-#### TEEN 1221 SCHOOL CLIN----------------------------------------------------------
+#### TEEN 1221 SCHOOL STAND----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/Teen-1221-School-item-vectors.R"))
 
 Teen_1221_School_Clin <-
@@ -254,7 +285,7 @@ alpha_Teen_1221_School <- map_df(scale_order, ~
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
-#### TEEN 1221 SELF CLIN----------------------------------------------------------
+#### TEEN 1221 SELF STAND----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/Teen-1221-Self-item-vectors.R"))
 
 Teen_1221_Self_Clin <-
@@ -283,7 +314,7 @@ alpha_Teen_1221_Self <- map_df(scale_order, ~
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
-#### ADULT SELF CLIN----------------------------------------------------------
+#### ADULT SELF STAND----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/Adult-Self-item-vectors.R"))
 
 Adult_Self_Clin <-
@@ -312,7 +343,7 @@ alpha_Adult_Self <- map_df(scale_order, ~
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
-#### ADULT OTHER CLIN----------------------------------------------------------
+#### ADULT OTHER STAND----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/Adult-Other-item-vectors.R"))
 
 Adult_Other_Clin <-

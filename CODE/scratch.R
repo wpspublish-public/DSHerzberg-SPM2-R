@@ -3,371 +3,58 @@ suppressPackageStartupMessages(library(here))
 suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(data.table))
 suppressMessages(library(psych))
-## IT 49 HOME STAND--------------------------------------------------------------
-scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
-                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+## IT HOME 49 DATA ---------------------------------------------
+source(here("CODE/READ-T-SCORES-PER-CASE/read-IT-49-Home-stand.R"))
 
-IT_49_Home_Stand_T_scores <- bind_rows(
+IT_49_Home_stand <-  IT_49_Home_stand  %>% 
+  select(IDNumber:clin_dx, contains('_NT'))
+
+# read IRR (Form B)
+IT_49_Home_B <- bind_rows(
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-T-Scores-per-case.csv")
+    here('OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-46-Home-IRR-T-Scores-per-case.csv')
   ))),
   suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-79-Home-T-Scores-per-case.csv")
+    here('OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-79-Home-IRR-T-Scores-per-case.csv')
   )))
 ) %>% 
   arrange(IDNumber) %>% 
-  select(contains("_NT"))
+  select(IDNumber, contains('_NT'))
 
-IT_49_Home_Stand_output <- data.frame(cor(IT_49_Home_Stand_T_scores)) %>% 
-  rownames_to_column() %>% 
-  rename(scale = rowname) %>% 
-  mutate_if(is.numeric, ~ round(., 3)) %>% 
-  arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "IT-49-Home",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
+IT_49_Home_IRR <- IT_49_Home_stand %>% 
+  inner_join(
+    IT_49_Home_B,
+    by = 'IDNumber',
+    suffix = c('_stand', '_IRR')
+  ) %>% 
+  mutate(TOT_NT_dif = abs(TOT_NT_stand - TOT_NT_IRR)) %>% 
+  select(TOT_NT_dif, everything()) %>%  
+  arrange(TOT_NT_dif) %>% 
+  filter(TOT_NT_dif < 10)
 
-rm(list = setdiff(ls(), ls(pattern = "output")))
-  
-## IT 1030 HOME STAND----------------------------------------------------------
-scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
-                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+cor_cols <- IT_49_Home_IRR %>% 
+  select(contains('_NT'), -TOT_NT_dif)
 
-IT_1030_Home_Stand_T_scores <- bind_rows(
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-1020-Home-T-Scores-per-case.csv")
-  ))),
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-2130-Home-T-Scores-per-case.csv")
-  )))
-) %>% 
-  arrange(IDNumber) %>% 
-  select(contains("_NT"))
+cor_row <- c('TOT_NT_s-TOT_NT_I', 'SOC_NT_s-SOC_NT_I', 'VIS_NT_s-VIS_NT_I',
+             'HEA_NT_s-HEA_NT_I', 'TOU_NT_s-TOU_NT_I', 'TS_NT_s-TS_NT_I',
+             'BOD_NT_s-BOD_NT_I', 'BAL_NT_s-BAL_NT_I', 'PLA_NT_s-PLA_NT_I')
 
-IT_1030_Home_Stand_output <- data.frame(cor(IT_1030_Home_Stand_T_scores)) %>% 
-  rownames_to_column() %>% 
-  rename(scale = rowname) %>% 
-  mutate_if(is.numeric, ~ round(., 3)) %>% 
-  arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "IT-1030-Home",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
+IT_49_Home_IRR_cor_table <-
+  corr.test(cor_cols)[['ci']] %>%
+  rownames_to_column(var = 'pair') %>%
+  filter(pair %in% cor_row) %>%
+  mutate(scale1 = str_sub(pair, 1, 3),
+         scale = str_replace(scale1, '_', '')) %>%
+  arrange(match(scale, scale_order)) %>%
+  mutate(
+    form = case_when(scale == 'SOC' ~ 'IT-49-Home',
+                     T ~ NA_character_),
+    n = case_when(scale == 'SOC' ~ corr.test(cor_cols)[['n']],
+                  T ~ NA_real_)
+  ) %>%
+  select(form, scale, n, r, p) %>%
+  mutate_if(is.numeric, ~ round(., 3))
 
-rm(list = setdiff(ls(), ls(pattern = "output")))
-
-## IT CAREGIVER STAND----------------------------------------------------------
-scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
-                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
-
-IT_Caregiver_Stand_T_scores <-
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/IT/T-SCORES-PER-CASE/IT-Caregiver-T-Scores-per-case.csv")
-  ))) %>% 
-  select(contains("_NT"))
-
-IT_Caregiver_Stand_output <- data.frame(cor(IT_Caregiver_Stand_T_scores)) %>% 
-  rownames_to_column() %>% 
-  rename(scale = rowname) %>% 
-  mutate_if(is.numeric, ~ round(., 3)) %>% 
-  arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "IT-Caregiver",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
-
-rm(list = setdiff(ls(), ls(pattern = "output")))
-###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------
-
-IT_output <- bind_rows(
-  IT_49_Home_Stand_output,
-  IT_1030_Home_Stand_output,
-  IT_Caregiver_Stand_output
-)
-
-write_csv(IT_output,
-          here(
-            paste0(
-              'OUTPUT-FILES/MANUAL-TABLES/t509-IT-430-stand-interscale-',
-              format(Sys.Date(), "%Y-%m-%d"),
-              '.csv'
-            )
-          ),
-          na = '')
+rm(list = setdiff(ls(), ls(pattern = 'table')))
 
 
-
-
-#### PRESCHOOL 25 HOME STAND----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/Preschool-25-Home-item-vectors.R"))
-
-Preschool_25_Home_Clin <- bind_rows(
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-24-Home-clin-T-Scores-per-case.csv")
-  ))),
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-5-Home-clin-T-Scores-per-case.csv")
-  )))
-) %>% 
-  arrange(IDNumber)
-
-map_df(scale_order,
-       ~
-         Preschool_25_Home_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_Preschool_25_Home')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_Preschool_25_Home'), ., envir = .GlobalEnv))
-
-alpha_Preschool_25_Home <- map_df(scale_order, ~
-                                    alpha(
-                                      cor(
-                                        eval(as.name(str_c(.x, '_item_cols_Preschool_25_Home')))
-                                      )
-                                    )[["total"]] %>%
-                                    mutate(scale = .x) %>% 
-                                    select(scale, raw_alpha) %>% 
-                                    rename(alpha_Preschool_25_Home = raw_alpha)
-)
-
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))
-
-#### PRESCHOOL 25 SCHOOL STAND----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/Preschool-25-School-item-vectors.R"))
-
-Preschool_25_School_Clin <- bind_rows(
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-24-School-clin-T-Scores-per-case.csv")
-  ))),
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/PRESCHOOL/T-SCORES-PER-CASE/Preschool-5-School-clin-T-Scores-per-case.csv")
-  )))
-) %>% 
-  arrange(IDNumber)
-
-map_df(scale_order,
-       ~
-         Preschool_25_School_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_Preschool_25_School')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_Preschool_25_School'), ., envir = .GlobalEnv))
-
-alpha_Preschool_25_School <- map_df(scale_order, ~
-                                      alpha(
-                                        cor(
-                                          eval(as.name(str_c(.x, '_item_cols_Preschool_25_School')))
-                                        )
-                                      )[["total"]] %>%
-                                      mutate(scale = .x) %>% 
-                                      select(scale, raw_alpha) %>% 
-                                      rename(alpha_Preschool_25_School = raw_alpha)
-)
-
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))
-
-#### CHILD 512 HOME STAND----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/Child-512-Home-item-vectors.R"))
-
-Child_512_Home_Clin <-
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/CHILD/T-SCORES-PER-CASE/Child-512-Home-clin-T-Scores-per-case.csv")
-  )))
-
-map_df(scale_order,
-       ~
-         Child_512_Home_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_Child_512_Home')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_Child_512_Home'), ., envir = .GlobalEnv))
-
-alpha_Child_512_Home <- map_df(scale_order, ~
-                                 alpha(
-                                   cor(
-                                     eval(as.name(str_c(.x, '_item_cols_Child_512_Home')))
-                                   )
-                                 )[["total"]] %>%
-                                 mutate(scale = .x) %>% 
-                                 select(scale, raw_alpha) %>% 
-                                 rename(alpha_Child_512_Home = raw_alpha)
-)
-
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))
-
-#### CHILD 512 SCHOOL STAND----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/Child-512-School-item-vectors.R"))
-
-Child_512_School_Clin <-
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/CHILD/T-SCORES-PER-CASE/Child-512-School-clin-T-Scores-per-case.csv")
-  )))
-
-map_df(scale_order,
-       ~
-         Child_512_School_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_Child_512_School')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_Child_512_School'), ., envir = .GlobalEnv))
-
-alpha_Child_512_School <- map_df(scale_order, ~
-                                   alpha(
-                                     cor(
-                                       eval(as.name(str_c(.x, '_item_cols_Child_512_School')))
-                                     )
-                                   )[["total"]] %>%
-                                   mutate(scale = .x) %>% 
-                                   select(scale, raw_alpha) %>% 
-                                   rename(alpha_Child_512_School = raw_alpha)
-)
-
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))
-
-#### TEEN 1221 HOME STAND----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/Teen-1221-Home-item-vectors.R"))
-
-Teen_1221_Home_Clin <-
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/TEEN/T-SCORES-PER-CASE/Teen-1221-Home-clin-T-Scores-per-case.csv")
-  )))
-
-map_df(scale_order,
-       ~
-         Teen_1221_Home_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_Teen_1221_Home')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_Teen_1221_Home'), ., envir = .GlobalEnv))
-
-alpha_Teen_1221_Home <- map_df(scale_order, ~
-                                 alpha(
-                                   cor(
-                                     eval(as.name(str_c(.x, '_item_cols_Teen_1221_Home')))
-                                   )
-                                 )[["total"]] %>%
-                                 mutate(scale = .x) %>% 
-                                 select(scale, raw_alpha) %>% 
-                                 rename(alpha_Teen_1221_Home = raw_alpha)
-)
-
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))
-#### TEEN 1221 SCHOOL STAND----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/Teen-1221-School-item-vectors.R"))
-
-Teen_1221_School_Clin <-
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/TEEN/T-SCORES-PER-CASE/Teen-1221-School-clin-T-Scores-per-case.csv")
-  )))
-
-map_df(scale_order,
-       ~
-         Teen_1221_School_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_Teen_1221_School')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_Teen_1221_School'), ., envir = .GlobalEnv))
-
-alpha_Teen_1221_School <- map_df(scale_order, ~
-                                   alpha(
-                                     cor(
-                                       eval(as.name(str_c(.x, '_item_cols_Teen_1221_School')))
-                                     )
-                                   )[["total"]] %>%
-                                   mutate(scale = .x) %>% 
-                                   select(scale, raw_alpha) %>% 
-                                   rename(alpha_Teen_1221_School = raw_alpha)
-)
-
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))
-
-#### TEEN 1221 SELF STAND----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/Teen-1221-Self-item-vectors.R"))
-
-Teen_1221_Self_Clin <-
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/TEEN/T-SCORES-PER-CASE/Teen-1221-Self-clin-T-Scores-per-case.csv")
-  )))
-
-map_df(scale_order,
-       ~
-         Teen_1221_Self_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_Teen_1221_Self')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_Teen_1221_Self'), ., envir = .GlobalEnv))
-
-alpha_Teen_1221_Self <- map_df(scale_order, ~
-                                 alpha(
-                                   cor(
-                                     eval(as.name(str_c(.x, '_item_cols_Teen_1221_Self')))
-                                   )
-                                 )[["total"]] %>%
-                                 mutate(scale = .x) %>% 
-                                 select(scale, raw_alpha) %>% 
-                                 rename(alpha_Teen_1221_Self = raw_alpha)
-)
-
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))
-
-#### ADULT SELF STAND----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/Adult-Self-item-vectors.R"))
-
-Adult_Self_Clin <-
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/ADULT/T-SCORES-PER-CASE/Adult-Self-clin-T-Scores-per-case.csv")
-  )))
-
-map_df(scale_order,
-       ~
-         Adult_Self_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_Adult_Self')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_Adult_Self'), ., envir = .GlobalEnv))
-
-alpha_Adult_Self <- map_df(scale_order, ~
-                             alpha(
-                               cor(
-                                 eval(as.name(str_c(.x, '_item_cols_Adult_Self')))
-                               )
-                             )[["total"]] %>%
-                             mutate(scale = .x) %>% 
-                             select(scale, raw_alpha) %>% 
-                             rename(alpha_Adult_Self = raw_alpha)
-)
-
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))
-
-#### ADULT OTHER STAND----------------------------------------------------------
-source(here("CODE/ITEM-VECTORS/Adult-Other-item-vectors.R"))
-
-Adult_Other_Clin <-
-  suppressMessages(as_tibble(read_csv(
-    here("OUTPUT-FILES/ADULT/T-SCORES-PER-CASE/Adult-Other-clin-T-Scores-per-case.csv")
-  )))
-
-map_df(scale_order,
-       ~
-         Adult_Other_Clin %>%
-         select(eval(as.name(
-           str_c(.x, '_items_Adult_Other')
-         ))) %>%
-         assign(str_c(.x, '_item_cols_Adult_Other'), ., envir = .GlobalEnv))
-
-alpha_Adult_Other <- map_df(scale_order, ~
-                              alpha(
-                                cor(
-                                  eval(as.name(str_c(.x, '_item_cols_Adult_Other')))
-                                )
-                              )[["total"]] %>%
-                              mutate(scale = .x) %>% 
-                              select(scale, raw_alpha) %>% 
-                              rename(alpha_Adult_Other = raw_alpha)
-)
-
-rm(list = setdiff(ls(), ls(pattern = 'alpha')))

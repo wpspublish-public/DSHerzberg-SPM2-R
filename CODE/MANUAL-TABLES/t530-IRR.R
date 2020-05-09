@@ -378,11 +378,11 @@ IRR_table <- bind_rows(
   IT_49_Home_IRR_cor_table,
   IT_1030_Home_IRR_cor_table,
   # IT_Caregiver_IRR_cor_table,
-  # Preschool_25_Home_IRR_cor_table,
+  Preschool_25_Home_IRR_cor_table,
   Preschool_25_School_IRR_cor_table,
-  # Child_512_Home_IRR_cor_table,
+  Child_512_Home_IRR_cor_table,
   Child_512_School_IRR_cor_table,
-  # Teen_1221_Home_IRR_cor_table,
+  Teen_1221_Home_IRR_cor_table,
   Teen_1221_School_IRR_cor_table,
   Adult_Other_IRR_cor_table
 )

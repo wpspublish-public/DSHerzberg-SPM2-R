@@ -14,7 +14,7 @@ Teen_1221_Home_Stand_T_scores <-
 ) %>% 
   select(contains("_NT"))
 
-Teen_1221_Home_Stand_output <- data.frame(cor(Teen_1221_Home_Stand_T_scores)) %>% 
+Teen_1221_Home_Stand_output <- data.frame(cor(Teen_1221_Home_Stand_T_scores)) %>%
   rownames_to_column() %>% 
   rename(scale = rowname) %>% 
   mutate_if(is.numeric, ~ round(., 3)) %>% 

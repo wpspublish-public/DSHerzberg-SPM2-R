@@ -45,11 +45,17 @@ IT_430_clin_dx_counts <- IT_430_Home_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'IT 430',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(IT_430_Home_Clin), 3)
+    pct_samp = round(((n / nrow(IT_430_Home_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
-rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
+IT_430_clin_dx_cases <- IT_430_Home_Clin %>%
+  mutate(HighestEducation = NA,
+         form = "IT-430-Home",
+         ) %>% 
+  select(IDNumber, form, age_range:ParentHighestEducation, HighestEducation, everything(), -AgeInMonths)
+
+rm(list = setdiff(ls(), ls(pattern = 'counts|cases')))
 
 #### IT CAREGIVER DATA -----------------------------------------------------
 # READ AND COMBINE FINALIZED SAMPLES --------------------------------------------------
@@ -61,7 +67,8 @@ IT_Caregiver_Clin <-
     )
   ))) %>%
   drop_na(clin_dx) %>%
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(IDNumber:Region, clin_dx)
 
 # GENERATE TABLE OF DISORDER COUNTS ------------------------------------------
 
@@ -74,11 +81,17 @@ IT_Caregiver_clin_dx_counts <- IT_Caregiver_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'IT Caregiver',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(IT_Caregiver_Clin), 3)
+    pct_samp = round(((n / nrow(IT_Caregiver_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
-rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
+IT_Caregiver_clin_dx_cases <- IT_Caregiver_Clin %>%
+  mutate(HighestEducation = NA,
+         form = "IT-Caregiver",
+  ) %>% 
+  select(IDNumber, form, age_range:ParentHighestEducation, HighestEducation, everything(), -AgeInMonths)
+
+rm(list = setdiff(ls(), ls(pattern = 'counts|cases')))
 
 #### PRESCHOOL 25  DATA -----------------------------------------------------
 
@@ -99,7 +112,8 @@ Preschool_25_Home_Clin <- bind_rows(
   Preschool_5_Home_Clin
 ) %>% 
   drop_na(clin_dx) %>% 
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(IDNumber:Region, clin_dx)
 
 Preschool_24_School_Clin <-
   suppressMessages(as_tibble(read_csv(
@@ -116,7 +130,8 @@ Preschool_25_School_Clin <- bind_rows(
   Preschool_5_School_Clin
 ) %>% 
   drop_na(clin_dx) %>% 
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(IDNumber:Region, clin_dx)
 
 # GENERATE TABLE OF DISORDER COUNTS ------------------------------------------
 
@@ -129,7 +144,7 @@ Preschool_25_Home_clin_dx <- Preschool_25_Home_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'Preschool 25 Home',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(Preschool_25_Home_Clin), 3)
+    pct_samp = round(((n / nrow(Preschool_25_Home_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
@@ -142,7 +157,7 @@ Preschool_25_School_clin_dx <- Preschool_25_School_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'Preschool 25 School',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(Preschool_25_School_Clin), 3)
+    pct_samp = round(((n / nrow(Preschool_25_School_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
@@ -151,7 +166,25 @@ Preschool_25_clin_dx_counts <- bind_rows(
   Preschool_25_School_clin_dx
 )
 
-rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
+Preschool_25_Home_clin_dx_cases <- Preschool_25_Home_Clin %>%
+  mutate(HighestEducation = NA,
+         form = "Preschool-25-Home",
+  ) %>% 
+  select(IDNumber, form, age_range:ParentHighestEducation, HighestEducation, everything(), -Age)
+
+Preschool_25_School_clin_dx_cases <- Preschool_25_School_Clin %>%
+  mutate(ParentHighestEducation = NA,
+         HighestEducation = NA,
+         form = "Preschool-25-School",
+  ) %>% 
+  select(IDNumber, form, age_range:ParentHighestEducation, HighestEducation, everything(), -Age)
+
+Preschool_25_clin_dx_cases <- bind_rows(
+  Preschool_25_Home_clin_dx_cases,
+  Preschool_25_School_clin_dx_cases
+)
+
+rm(list = setdiff(ls(), ls(pattern = 'counts|cases')))
 
 #### CHILD 512  DATA -----------------------------------------------------
 
@@ -164,7 +197,8 @@ Child_512_Home_Clin <-
     )
   ))) %>%
   drop_na(clin_dx) %>%
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(IDNumber:Region, clin_dx)
 
 Child_512_School_Clin <-
   suppressMessages(as_tibble(read_csv(
@@ -173,7 +207,8 @@ Child_512_School_Clin <-
     )
   ))) %>%
   drop_na(clin_dx) %>%
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(IDNumber:Region, clin_dx)
 
 # GENERATE TABLE OF DISORDER COUNTS ------------------------------------------
 
@@ -186,7 +221,7 @@ Child_512_Home_clin_dx <- Child_512_Home_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'Child 512 Home',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(Child_512_Home_Clin), 3)
+    pct_samp = round(((n / nrow(Child_512_Home_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
@@ -199,7 +234,7 @@ Child_512_School_clin_dx <- Child_512_School_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'Child 512 School',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(Child_512_School_Clin), 3)
+    pct_samp = round(((n / nrow(Child_512_School_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
@@ -208,7 +243,25 @@ Child_512_clin_dx_counts <- bind_rows(
   Child_512_School_clin_dx
 )
 
-rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
+Child_512_Home_clin_dx_cases <- Child_512_Home_Clin %>%
+  mutate(HighestEducation = NA,
+         form = "Child-512-Home",
+  ) %>% 
+  select(IDNumber, form, age_range:ParentHighestEducation, HighestEducation, everything(), -Age)
+
+Child_512_School_clin_dx_cases <- Child_512_School_Clin %>%
+  mutate(ParentHighestEducation = NA,
+         HighestEducation = NA,
+         form = "Child-512-School",
+  ) %>% 
+  select(IDNumber, form, age_range:ParentHighestEducation, HighestEducation, everything(), -Age)
+
+Child_512_clin_dx_cases <- bind_rows(
+  Child_512_Home_clin_dx_cases,
+  Child_512_School_clin_dx_cases
+)
+
+rm(list = setdiff(ls(), ls(pattern = 'counts|cases')))
 
 #### TEEN 1221  DATA -----------------------------------------------------
 
@@ -221,7 +274,8 @@ Teen_1221_Home_Clin <-
     )
   ))) %>%
   drop_na(clin_dx) %>%
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(IDNumber:Region, clin_dx)
 
 Teen_1221_School_Clin <-
   suppressMessages(as_tibble(read_csv(
@@ -230,7 +284,8 @@ Teen_1221_School_Clin <-
     )
   ))) %>%
   drop_na(clin_dx) %>%
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(IDNumber:Region, clin_dx)
 
 Teen_1221_Self_Clin <-
   suppressMessages(as_tibble(read_csv(
@@ -239,7 +294,8 @@ Teen_1221_Self_Clin <-
     )
   ))) %>%
   drop_na(clin_dx) %>%
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(IDNumber:Region, clin_dx)
 
 # GENERATE TABLE OF DISORDER COUNTS ------------------------------------------
 
@@ -252,7 +308,7 @@ Teen_1221_Home_clin_dx <- Teen_1221_Home_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'Teen 1221 Home',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(Teen_1221_Home_Clin), 3)
+    pct_samp = round(((n / nrow(Teen_1221_Home_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
@@ -265,7 +321,7 @@ Teen_1221_School_clin_dx <- Teen_1221_School_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'Teen 1221 School',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(Teen_1221_School_Clin), 3)
+    pct_samp = round(((n / nrow(Teen_1221_School_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
@@ -278,7 +334,7 @@ Teen_1221_Self_clin_dx <- Teen_1221_Self_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'Teen 1221 Self',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(Teen_1221_Self_Clin), 3)
+    pct_samp = round(((n / nrow(Teen_1221_Self_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
@@ -288,9 +344,34 @@ Teen_1221_clin_dx_counts <- bind_rows(
   Teen_1221_Self_clin_dx
 )
 
-rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
+Teen_1221_Home_clin_dx_cases <- Teen_1221_Home_Clin %>%
+  mutate(HighestEducation = NA,
+         form = "Teen-1221-Home",
+  ) %>% 
+  select(IDNumber, form, age_range:ParentHighestEducation, HighestEducation, everything(), -Age)
 
-####ADULT DATA -----------------------------------------------------
+Teen_1221_School_clin_dx_cases <- Teen_1221_School_Clin %>%
+  mutate(ParentHighestEducation = NA,
+         HighestEducation = NA,
+         form = "Teen-1221-School",
+  ) %>% 
+  select(IDNumber, form, age_range:ParentHighestEducation, HighestEducation, everything(), -Age)
+
+Teen_1221_Self_clin_dx_cases <- Teen_1221_Self_Clin %>%
+  mutate(HighestEducation = NA,
+         form = "Teen-1221-Self",
+  ) %>% 
+  select(IDNumber, form, age_range:ParentHighestEducation, HighestEducation, everything(), -Age)
+
+Teen_1221_clin_dx_cases <- bind_rows(
+  Teen_1221_Home_clin_dx_cases,
+  Teen_1221_School_clin_dx_cases,
+  Teen_1221_Self_clin_dx_cases
+)
+
+rm(list = setdiff(ls(), ls(pattern = 'counts|cases')))
+
+#### ADULT DATA -----------------------------------------------------
 
 # READ AND COMBINE FINALIZED SAMPLES --------------------------------------------------
 
@@ -301,7 +382,8 @@ Adult_Self_Clin <-
     )
   ))) %>%
   drop_na(clin_dx) %>%
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(IDNumber:Region, clin_dx)
 
 Adult_Other_Clin <-
   suppressMessages(as_tibble(read_csv(
@@ -310,7 +392,8 @@ Adult_Other_Clin <-
     )
   ))) %>%
   drop_na(clin_dx) %>%
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  select(IDNumber:Region, clin_dx)
 
 # GENERATE TABLE OF DISORDER COUNTS ------------------------------------------
 
@@ -323,7 +406,7 @@ Adult_Self_clin_dx <- Adult_Self_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'Adult Self',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(Adult_Self_Clin), 3)
+    pct_samp = round(((n / nrow(Adult_Self_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
@@ -336,7 +419,7 @@ Adult_Other_clin_dx <- Adult_Other_Clin %>%
   mutate(
     form = case_when(is.na(lag(dx)) ~ 'Adult Other',
                      T ~ NA_character_),
-    pct_samp = round(n / nrow(Adult_Other_Clin), 3)
+    pct_samp = round(((n / nrow(Adult_Other_Clin)) * 100), 1)
   ) %>%
   select(form, dx, n, pct_samp)
 
@@ -345,9 +428,26 @@ Adult_clin_dx_counts <- bind_rows(
   Adult_Other_clin_dx
 )
 
-rm(list = setdiff(ls(), ls(pattern = 'clin_dx_counts')))
+Adult_Self_clin_dx_cases <- Adult_Self_Clin %>%
+  mutate(ParentHighestEducation = NA,
+         form = "Adult-Self",
+  ) %>% 
+  select(IDNumber, form, age_range:Gender, ParentHighestEducation, HighestEducation, everything(), -Age)
 
-###### WRITE MANUAL TABLES -----------------------------------------------------
+Adult_Other_clin_dx_cases <- Adult_Other_Clin %>%
+  mutate(ParentHighestEducation = NA,
+         form = "Adult-Other",
+  ) %>% 
+  select(IDNumber, form, age_range:Gender, ParentHighestEducation, HighestEducation, everything(), -Age)
+
+Adult_clin_dx_cases <- bind_rows(
+  Adult_Self_clin_dx_cases,
+  Adult_Other_clin_dx_cases,
+)
+
+rm(list = setdiff(ls(), ls(pattern = 'counts|cases')))
+
+###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------
 
 # write table of combined matched typical, clinical demo counts.
 clin_dx_counts <- bind_rows(
@@ -368,4 +468,39 @@ write_csv(clin_dx_counts,
             )
           ),
           na = '')
+
+# join case counts across forms, ages
+clin_dx_cases <- bind_rows(
+  IT_430_clin_dx_cases,
+  IT_Caregiver_clin_dx_cases,
+  Preschool_25_clin_dx_cases,
+  Child_512_clin_dx_cases,
+  Teen_1221_clin_dx_cases,
+  Adult_clin_dx_cases
+)
+
+# get clin dx counts across collapsed sample
+all_clin_dx_counts <- clin_dx_cases %>%
+  select(clin_dx) %>%
+  gather("Variable", "dx") %>%
+  group_by(Variable, dx) %>%
+  count(Variable, dx) %>%
+  ungroup() %>%
+  mutate(
+    data = case_when(is.na(lag(dx)) ~ 'Combined Clinical Sample',
+                     T ~ NA_character_),
+    pct_samp = round(((n / nrow(clin_dx_cases)) * 100), 1)
+  ) %>%
+  select(data, dx, n, pct_samp)
+
+write_csv(all_clin_dx_counts,
+          here(
+            str_c(
+              'OUTPUT-FILES/MANUAL-TABLES/t417-clin-dx-counts-all-',
+              format(Sys.Date(), "%Y-%m-%d"),
+              '.csv'
+            )
+          ),
+          na = '')
+
 

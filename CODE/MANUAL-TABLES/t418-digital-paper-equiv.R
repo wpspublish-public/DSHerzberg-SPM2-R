@@ -235,7 +235,7 @@ IT_49_Home_paper_dig_cor_table <-
   select(form, scale, n, r, p) %>%
   mutate_if(is.numeric, ~ round(., 3))
 
-rm(list = setdiff(ls(), ls(pattern = 'table')))
+rm(list = setdiff(ls(), ls(pattern = 'table|dig_T')))
 
 ### IT-1030-Home DATA ---------------------------------------------------------
 # READ PAPER FORMS, OBTAIN T-SCORES ---------------------------------------
@@ -470,8 +470,7 @@ IT_1030_Home_paper_dig_cor_table <-
   select(form, scale, n, r, p) %>%
   mutate_if(is.numeric, ~ round(., 3))
 
-rm(list = setdiff(ls(), ls(pattern = 'table')))
-
+rm(list = setdiff(ls(), ls(pattern = 'table|dig_T')))
 
 ### IT-Caregiver DATA ---------------------------------------------------------
 # READ PAPER FORMS, OBTAIN T-SCORES ---------------------------------------
@@ -623,8 +622,7 @@ IT_Caregiver_paper_dig_cor_table <-
   select(form, scale, n, r, p) %>%
   mutate_if(is.numeric, ~ round(., 3))
 
-rm(list = setdiff(ls(), ls(pattern = 'table')))
-
+rm(list = setdiff(ls(), ls(pattern = 'table|dig_T')))
 
 ### Preschool-25-Home DATA ---------------------------------------------------------
 # READ PAPER FORMS, OBTAIN T-SCORES ---------------------------------------
@@ -687,7 +685,7 @@ Preschool_5_Home_paper <- Preschool_25_Home_paper %>% filter(Age >= 5)
 # 24 DATA
 
 # read raw-to-t lookup tables, create lookup cols by scale
-IT_24_rawToT <-
+Preschool24_rawToT <-
   suppressMessages(as_tibble(read_csv(
     here("OUTPUT-FILES/PRESCHOOL/RAW-T-LOOKUP-TABLES/Preschool-24-Home-raw-T-lookup.csv")
   )))
@@ -695,7 +693,7 @@ IT_24_rawToT <-
 map_df(
   score_names,
   ~
-    IT_24_rawToT %>%
+    Preschool24_rawToT %>%
     select(raw,!!str_c(.x, '_NT')) %>%
     rename(!!str_c(.x, "_raw") := raw) %>%
     assign(str_c(.x, '_24_lookup_col'), ., envir = .GlobalEnv)
@@ -718,7 +716,7 @@ rm(list = ls(pattern = "col"))
 # 5 DATA
 
 # read raw-to-t lookup tables, create lookup cols by scale
-IT_5_rawToT <-
+Preschool5_rawToT <-
   suppressMessages(as_tibble(read_csv(
     here("OUTPUT-FILES/PRESCHOOL/RAW-T-LOOKUP-TABLES/Preschool-5-Home-raw-T-lookup.csv")
   )))
@@ -726,7 +724,7 @@ IT_5_rawToT <-
 map_df(
   score_names,
   ~
-    IT_5_rawToT %>%
+    Preschool5_rawToT %>%
     select(raw,!!str_c(.x, '_NT')) %>%
     rename(!!str_c(.x, "_raw") := raw) %>%
     assign(str_c(.x, '_5_lookup_col'), ., envir = .GlobalEnv)
@@ -781,7 +779,7 @@ Preschool_5_Home_paper_T_dig_raw <- Preschool_25_Home_paper_T_dig_raw %>% filter
 map_df(
   score_names,
   ~
-    IT_24_rawToT %>%
+    Preschool24_rawToT %>%
     select(raw,!!str_c(.x, '_NT')) %>%
     rename(!!str_c(.x, "_raw") := raw) %>%
     assign(str_c(.x, '_24_lookup_col'), ., envir = .GlobalEnv)
@@ -806,7 +804,7 @@ rm(list = ls(pattern = "col"))
 map_df(
   score_names,
   ~
-    IT_5_rawToT %>%
+    Preschool5_rawToT %>%
     select(raw,!!str_c(.x, '_NT')) %>%
     rename(!!str_c(.x, "_raw") := raw) %>%
     assign(str_c(.x, '_5_lookup_col'), ., envir = .GlobalEnv)
@@ -860,8 +858,7 @@ Preschool_25_Home_paper_dig_cor_table <-
   select(form, scale, n, r, p) %>%
   mutate_if(is.numeric, ~ round(., 3))
 
-rm(list = setdiff(ls(), ls(pattern = 'table')))
-
+rm(list = setdiff(ls(), ls(pattern = 'table|dig_T')))
 
 ### Child-512-Home DATA ---------------------------------------------------------
 # READ PAPER FORMS, OBTAIN T-SCORES ---------------------------------------
@@ -1014,7 +1011,7 @@ Child_512_Home_paper_dig_cor_table <-
   select(form, scale, n, r, p) %>%
   mutate_if(is.numeric, ~ round(., 3))
 
-rm(list = setdiff(ls(), ls(pattern = 'table')))
+rm(list = setdiff(ls(), ls(pattern = 'table|dig_T')))
 
 ### Teen-1221-Home DATA ---------------------------------------------------------
 # READ PAPER FORMS, OBTAIN T-SCORES ---------------------------------------
@@ -1167,9 +1164,7 @@ Teen_1221_Home_paper_dig_cor_table <-
   select(form, scale, n, r, p) %>%
   mutate_if(is.numeric, ~ round(., 3))
 
-rm(list = setdiff(ls(), ls(pattern = 'table')))
-
-
+rm(list = setdiff(ls(), ls(pattern = 'table|dig_T')))
 
 ### Adult-Other DATA ---------------------------------------------------------
 # READ PAPER FORMS, OBTAIN T-SCORES ---------------------------------------
@@ -1322,7 +1317,7 @@ Adult_Other_paper_dig_cor_table <-
   select(form, scale, n, r, p) %>%
   mutate_if(is.numeric, ~ round(., 3))
 
-rm(list = setdiff(ls(), ls(pattern = 'table')))
+rm(list = setdiff(ls(), ls(pattern = 'table|dig_T')))
 
 ###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------
 dig_paper_equiv_cor_table <- bind_rows(
@@ -1339,6 +1334,54 @@ write_csv(dig_paper_equiv_cor_table,
           here(
             paste0(
               'OUTPUT-FILES/MANUAL-TABLES/t418-digital-paper-equiv-',
+              format(Sys.Date(), "%Y-%m-%d"),
+              '.csv'
+            )
+          ),
+          na = '')
+
+# join case counts across forms, ages
+dig_paper_equiv_cases <- bind_rows(
+  IT_49_Home_paper_dig_T,
+  IT_1030_Home_paper_dig_T,
+  IT_Caregiver_paper_dig_T,
+  Preschool_25_Home_paper_dig_T,
+  Child_512_Home_paper_dig_T,
+  Teen_1221_Home_paper_dig_T,
+  Adult_Other_paper_dig_T,
+) 
+
+# corr table
+cor_cols <- dig_paper_equiv_cases %>% 
+  select(contains('_NT'), -TOT_NT_dif)
+
+cor_row <- c('TOT_NT_-TOT_NT', 'SOC_NT_-SOC_NT', 'VIS_NT_-VIS_NT',
+             'HEA_NT_-HEA_NT', 'TOU_NT_-TOU_NT', 'TS_NT_-TS_NT',
+             'BOD_NT_-BOD_NT', 'BAL_NT_-BAL_NT', 'PLA_NT_-PLA_NT')
+
+scale_order <- c("SOC", "VIS", "HEA", "TOU", 
+                 "TS", "BOD", "BAL", "PLA", "TOT")
+
+all_paper_dig_cor_table <-
+  corr.test(cor_cols)[['ci']] %>%
+  rownames_to_column(var = 'pair') %>%
+  filter(pair %in% cor_row) %>%
+  mutate(scale1 = str_sub(pair, 1, 3),
+         scale = str_replace(scale1, '_', '')) %>%
+  arrange(match(scale, scale_order)) %>%
+  mutate(
+    form = case_when(scale == 'SOC' ~ 'Combined Sample',
+                     T ~ NA_character_),
+    n = case_when(scale == 'SOC' ~ corr.test(cor_cols)[['n']][1],
+                  T ~ NA_real_)
+  ) %>%
+  select(form, scale, n, r, p) %>%
+  mutate_if(is.numeric, ~ round(., 3))
+
+write_csv(all_paper_dig_cor_table,
+          here(
+            paste0(
+              'OUTPUT-FILES/MANUAL-TABLES/t418-digital-paper-equiv-all-',
               format(Sys.Date(), "%Y-%m-%d"),
               '.csv'
             )

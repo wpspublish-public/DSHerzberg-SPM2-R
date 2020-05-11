@@ -1,7 +1,6 @@
 ###### LOAD PACKAGES -----------------------------------------------------------
 suppressPackageStartupMessages(library(here))
 suppressMessages(suppressWarnings(library(tidyverse)))
-suppressMessages(library(data.table))
 suppressMessages(library(psych))
 ### Adult-Self-Stand DATA ---------------------------------------------------------
 # READ SP2 FORMS---------------------------------------

@@ -31,7 +31,7 @@ orig_data <-
 # 
 # orig_data <- IT_49_Home_Stand
 
-# READ SPM-2 FORMS, OBTAIN T-SCORES ---------------------------------------
+# READ SPM-2 FORMS ---------------------------------------
 # join with SP2 data, obtain SPM2 raw scores
 
 IT_49_Home_Stand_SP2_SPM2_raw <- IT_49_Home_Stand_SP2_raw %>% 
@@ -85,7 +85,7 @@ source(here("CODE/READ-T-SCORES-PER-CASE/read-IT-49-Home-Clin.R"))
 
 orig_data <- IT_49_Home_Clin
 
-# READ SPM-2 FORMS, OBTAIN T-SCORES ---------------------------------------
+# READ SPM-2 FORMS ---------------------------------------
 # join with SP2 data, obtain SPM2 raw scores
 
 IT_49_Home_Clin_SP2_SPM2_raw <- IT_49_Home_Clin_SP2_raw %>% 
@@ -149,7 +149,7 @@ orig_data <-
 # 
 # orig_data <- IT_1030_Home_Stand
 
-# READ SPM-2 FORMS, OBTAIN T-SCORES ---------------------------------------
+# READ SPM-2 FORMS ---------------------------------------
 # join with SP2 data, obtain SPM2 raw scores
 
 IT_1030_Home_Stand_SP2_SPM2_raw <- IT_1030_Home_Stand_SP2_raw %>% 
@@ -203,7 +203,7 @@ source(here("CODE/READ-T-SCORES-PER-CASE/read-IT-1030-Home-Clin.R"))
 
 orig_data <- IT_1030_Home_Clin
 
-# READ SPM-2 FORMS, OBTAIN T-SCORES ---------------------------------------
+# READ SPM-2 FORMS ---------------------------------------
 # join with SP2 data, obtain SPM2 raw scores
 
 IT_1030_Home_Clin_SP2_SPM2_raw <- IT_1030_Home_Clin_SP2_raw %>% 
@@ -250,6 +250,206 @@ write_csv(SP2_SPM2_cor_table,
           here(
             paste0(
               'OUTPUT-FILES/MANUAL-TABLES/t517-IT-SP2-SPM2-cor-',
+              format(Sys.Date(), "%Y-%m-%d"),
+              '.csv'
+            )
+          ),
+          na = '')
+
+rm(list = ls())
+
+### IT-430-Home-Stand DATA ---------------------------------------------------------
+# READ SP2 FORMS---------------------------------------
+
+# 49 DATA
+
+source(here("CODE/ITEM-VECTORS/IT-49-Home-item-vectors.R"))
+
+IT_49_Home_Stand_SP2_raw <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/PAPER-FORMS/SP2_Infant_Standard.csv")
+  ))) %>% 
+  rename(IDNumber = ID) %>% 
+  drop_na(IDNumber) %>% 
+  arrange(IDNumber) %>%
+  rename(TSS_RS = RawScore_TOT) 
+
+orig_data <-
+  suppressMessages(as_tibble(read_csv(
+    here('INPUT-FILES/IT/SM-QUAL-COMBO-NORMS-INPUT/IT-49-Home-combo-norms-input.csv')
+  )))
+
+# READ SPM-2 FORMS ---------------------------------------
+# join with SP2 data, obtain SPM2 raw scores
+
+IT_49_Home_Stand_SP2_SPM2_raw <- IT_49_Home_Stand_SP2_raw %>% 
+  inner_join(orig_data, by = "IDNumber") %>% 
+  select(IDNumber, contains("RS"), SOC_raw, VIS_raw, HEA_raw, TOU_raw, 
+         TS_raw, BOD_raw, BAL_raw, PLA_raw, TOT_raw) %>% 
+  rename_at(vars(contains("raw")), ~ str_c("c.", .))%>% 
+  rename_at(vars(contains("RS")), ~ str_c("r.", .)) %>% 
+  rename_at(vars(contains("RS")), ~ str_replace(., "RS", "raw")) %>% 
+  select(-r.TSS_raw)
+
+# 1030 DATA
+
+source(here("CODE/ITEM-VECTORS/IT-1030-Home-item-vectors.R"))
+
+IT_1030_Home_Stand_SP2_raw <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/PAPER-FORMS/SP2_Toddler_Standard.csv")
+  ))) %>% 
+  rename(IDNumber = ID) %>% 
+  drop_na(IDNumber) %>% 
+  arrange(IDNumber)
+
+orig_data <-
+  suppressMessages(as_tibble(read_csv(
+    here('INPUT-FILES/IT/SM-QUAL-COMBO-NORMS-INPUT/IT-1030-Home-combo-norms-input.csv')
+  )))
+
+# join with SP2 data, obtain SPM2 raw scores
+
+IT_1030_Home_Stand_SP2_SPM2_raw <- IT_1030_Home_Stand_SP2_raw %>% 
+  inner_join(orig_data, by = "IDNumber") %>% 
+  select(IDNumber, contains("RS"), SOC_raw, VIS_raw, HEA_raw, TOU_raw, 
+         TS_raw, BOD_raw, BAL_raw, PLA_raw, TOT_raw) %>% 
+  rename_at(vars(contains("raw")), ~ str_c("c.", .))%>% 
+  rename_at(vars(contains("RS")), ~ str_c("r.", .)) %>% 
+  rename_at(vars(contains("RS")), ~ str_replace(., "RS", "raw")) %>% 
+  select(-(r.Behavioral_raw:r.Registratoin_Bystander_raw)) %>% 
+  rename(r.OralSensory_raw = r.Oral_raw)
+
+# stack 49 and 1030 data
+IT_430_Home_Stand_SP2_SPM2_raw <- bind_rows(
+  IT_49_Home_Stand_SP2_SPM2_raw,
+  IT_1030_Home_Stand_SP2_SPM2_raw
+)
+
+# GENERATE SP2-SPM CORR TABLE -------------------------------------
+cor_cols <- IT_430_Home_Stand_SP2_SPM2_raw %>% 
+  select(contains('_raw'))
+
+IT_430_Home_Stand_SP2_SPM2_cor_table <-
+  corr.test(cor_cols)[['ci']] %>%
+  rownames_to_column(var = 'pair') %>%
+  separate(pair, c("row", "col"), sep = "-") %>%
+  filter((str_detect(row, "r.") &
+            str_detect(col, "c.")) & !str_detect(col, "r.")) %>%
+  mutate_at(vars(row, col), ~ str_replace(str_sub(., 3), "_", "")) %>%
+  mutate(
+    form = case_when(rownames(.) == "1" ~ 'IT-430-Home-Stand',
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ corr.test(cor_cols)[['n']][1],
+                  T ~ NA_real_)
+  ) %>%
+  mutate_if(is.numeric, ~ round(., 3)) %>%
+  select(form, n, col, row, r, p) %>% 
+  rename(SP2_col_label = row, SPM2_row_label = col)
+
+rm(list = setdiff(ls(), ls(pattern = 'table')))
+
+
+
+### IT-430-Home-Clin DATA ---------------------------------------------------------
+# READ SP2 FORMS---------------------------------------
+
+# 49 DATA
+
+source(here("CODE/ITEM-VECTORS/IT-49-Home-item-vectors.R"))
+
+IT_49_Home_Clin_SP2_raw <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/PAPER-FORMS/SP2_Infant_Clinical.csv")
+  ))) %>% 
+  rename(IDNumber = ID) %>% 
+  drop_na(IDNumber) %>% 
+  arrange(IDNumber) %>%
+  rename(TSS_RS = RawScore_TOT) 
+
+source(here("CODE/READ-T-SCORES-PER-CASE/read-IT-49-Home-Clin.R"))
+
+orig_data <- IT_49_Home_Clin
+
+# READ SPM-2 FORMS ---------------------------------------
+# join with SP2 data, obtain SPM2 raw scores
+
+IT_49_Home_Clin_SP2_SPM2_raw <- IT_49_Home_Clin_SP2_raw %>% 
+  inner_join(orig_data, by = "IDNumber") %>% 
+  select(IDNumber, contains("RS"), SOC_raw, VIS_raw, HEA_raw, TOU_raw, 
+         TS_raw, BOD_raw, BAL_raw, PLA_raw, TOT_raw) %>% 
+  rename_at(vars(contains("raw")), ~ str_c("c.", .))%>% 
+  rename_at(vars(contains("RS")), ~ str_c("r.", .)) %>% 
+  rename_at(vars(contains("RS")), ~ str_replace(., "RS", "raw")) %>% 
+  select(-r.TSS_raw)
+
+# 1030 DATA
+
+source(here("CODE/ITEM-VECTORS/IT-1030-Home-item-vectors.R"))
+
+IT_1030_Home_Clin_SP2_raw <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/IT/PAPER-FORMS/SP2_Toddler_Clinical.csv")
+  ))) %>% 
+  rename(IDNumber = ID) %>% 
+  drop_na(IDNumber) %>% 
+  arrange(IDNumber)
+
+source(here("CODE/READ-T-SCORES-PER-CASE/read-IT-1030-Home-Clin.R"))
+
+orig_data <- IT_1030_Home_Clin
+
+# join with SP2 data, obtain SPM2 raw scores
+
+IT_1030_Home_Clin_SP2_SPM2_raw <- IT_1030_Home_Clin_SP2_raw %>% 
+  inner_join(orig_data, by = "IDNumber") %>% 
+  select(IDNumber, contains("RS"), SOC_raw, VIS_raw, HEA_raw, TOU_raw, 
+         TS_raw, BOD_raw, BAL_raw, PLA_raw, TOT_raw) %>% 
+  rename_at(vars(contains("raw")), ~ str_c("c.", .))%>% 
+  rename_at(vars(contains("RS")), ~ str_c("r.", .)) %>% 
+  rename_at(vars(contains("RS")), ~ str_replace(., "RS", "raw")) %>% 
+  select(-(r.Behavioral_raw:r.Registratoin_Bystander_raw)) %>% 
+  rename(r.OralSensory_raw = r.Oral_raw)
+
+# stack 49 and 1030 data
+IT_430_Home_Clin_SP2_SPM2_raw <- bind_rows(
+  IT_49_Home_Clin_SP2_SPM2_raw,
+  IT_1030_Home_Clin_SP2_SPM2_raw
+)
+
+# GENERATE SP2-SPM CORR TABLE -------------------------------------
+cor_cols <- IT_430_Home_Clin_SP2_SPM2_raw %>% 
+  select(contains('_raw'))
+
+IT_430_Home_Clin_SP2_SPM2_cor_table <-
+  corr.test(cor_cols)[['ci']] %>%
+  rownames_to_column(var = 'pair') %>%
+  separate(pair, c("row", "col"), sep = "-") %>%
+  filter((str_detect(row, "r.") &
+            str_detect(col, "c.")) & !str_detect(col, "r.")) %>%
+  mutate_at(vars(row, col), ~ str_replace(str_sub(., 3), "_", "")) %>%
+  mutate(
+    form = case_when(rownames(.) == "1" ~ 'IT-430-Home-Clin',
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ corr.test(cor_cols)[['n']][1],
+                  T ~ NA_real_)
+  ) %>%
+  mutate_if(is.numeric, ~ round(., 3)) %>%
+  select(form, n, col, row, r, p) %>% 
+  rename(SP2_col_label = row, SPM2_row_label = col)
+
+rm(list = setdiff(ls(), ls(pattern = 'table')))
+
+###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------
+SP2_SPM2_cor_table <- bind_rows(
+  IT_430_Home_Stand_SP2_SPM2_cor_table,
+  IT_430_Home_Clin_SP2_SPM2_cor_table
+)
+
+write_csv(SP2_SPM2_cor_table,
+          here(
+            paste0(
+              'OUTPUT-FILES/MANUAL-TABLES/t517-IT-430-SP2-SPM2-cor-',
               format(Sys.Date(), "%Y-%m-%d"),
               '.csv'
             )

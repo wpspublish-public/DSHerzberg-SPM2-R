@@ -479,6 +479,16 @@ clin_dx_cases <- bind_rows(
   Adult_clin_dx_cases
 )
 
+# Identify and remove dup IDs
+# Check for any dupIDs (anyDuplicated() returns row number of FIRST dup ID encountered)
+anyDuplicated(clin_dx_cases$IDNumber)
+
+# extract cases with Dup ID numbers
+clin_dx_cases_dupIDs <- clin_dx_cases %>%
+  mutate(dup = duplicated(IDNumber)) %>%
+  filter(dup == TRUE) %>%
+  select(IDNumber)
+
 # get clin dx counts across collapsed sample
 all_clin_dx_counts <- clin_dx_cases %>%
   select(clin_dx) %>%

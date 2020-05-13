@@ -1,0 +1,108 @@
+form_dx,group,Variable,Category,n
+Home-ASD,ASD,age_range,21 to 31.5 mo,2
+,,"",2 to 4 years,9
+,,"",5 years,3
+,,"",5 to 8 years,27
+,,"",9 to 12 years,22
+,,"",12 to 13 years,7
+,,"",14 to 15 years,13
+,,"",16 to 17 years,4
+,,"",18 to 21 years,4
+,,Gender,Male,69
+,,"",Female,22
+,,ParentHighestEducation,High school graduate (including GED),9
+,,"",Some college or associate degree,31
+,,"",Bachelor's degree or higher,51
+,,Ethnicity,Hispanic,13
+,,"",Asian,2
+,,"",Black,9
+,,"",White,59
+,,"",MultiRacial,5
+,,"",Other,3
+,Matched typical,age_range,21 to 31.5 mo,1
+,,"",2 to 4 years,9
+,,"",5 years,3
+,,"",5 to 8 years,27
+,,"",9 to 12 years,23
+,,"",12 to 13 years,7
+,,"",14 to 15 years,13
+,,"",16 to 17 years,4
+,,"",18 to 21 years,4
+,,Gender,Male,69
+,,"",Female,22
+,,ParentHighestEducation,High school graduate (including GED),10
+,,"",Some college or associate degree,30
+,,"",Bachelor's degree or higher,51
+,,Ethnicity,Hispanic,13
+,,"",Asian,2
+,,"",Black,9
+,,"",White,60
+,,"",MultiRacial,5
+,,"",Other,2
+School-ASD,ASD,age_range,2 to 4 years,7
+,,"",5 years,2
+,,"",5 to 8 years,17
+,,"",9 to 12 years,19
+,,"",12 to 13 years,4
+,,"",14 to 15 years,11
+,,"",16 to 17 years,5
+,,"",18 to 21 years,3
+,,Gender,Male,51
+,,"",Female,17
+,,Ethnicity,Hispanic,7
+,,"",Asian,1
+,,"",Black,5
+,,"",White,51
+,,"",NativeHawPacIsl,1
+,,"",MultiRacial,3
+,Matched typical,age_range,2 to 4 years,7
+,,"",5 years,2
+,,"",5 to 8 years,17
+,,"",9 to 12 years,19
+,,"",12 to 13 years,4
+,,"",14 to 15 years,11
+,,"",16 to 17 years,5
+,,"",18 to 21 years,3
+,,Gender,Male,51
+,,"",Female,17
+,,Ethnicity,Hispanic,7
+,,"",Asian,1
+,,"",Black,5
+,,"",White,51
+,,"",NativeHawPacIsl,1
+,,"",MultiRacial,3
+Self-ASD,ASD,age_range,12 to 13 years,6
+,,"",14 to 15 years,13
+,,"",16 to 17 years,6
+,,"",18 to 21 years,2
+,,"",21.00 to 30.99 years,3
+,,"",31.00 to 40.99 years,2
+,,"",41.00 to 50.99 years,3
+,,Gender,Male,20
+,,"",Female,15
+,,ParentHighestEducation,Did not complete high school (no diploma),5
+,,"",High school graduate (including GED),2
+,,"",Some college or associate degree,4
+,,"",Bachelor's degree or higher,16
+,,"",999,8
+,,Ethnicity,Black,1
+,,"",White,32
+,,"",AmericanIndAlaskanNat,1
+,,"",MultiRacial,1
+,Matched typical,age_range,12 to 13 years,6
+,,"",14 to 15 years,13
+,,"",16 to 17 years,6
+,,"",18 to 21 years,2
+,,"",21.00 to 30.99 years,3
+,,"",31.00 to 40.99 years,2
+,,"",41.00 to 50.99 years,3
+,,Gender,Male,19
+,,"",Female,16
+,,ParentHighestEducation,Did not complete high school (no diploma),6
+,,"",High school graduate (including GED),2
+,,"",Some college or associate degree,4
+,,"",Bachelor's degree or higher,15
+,,"",999,8
+,,Ethnicity,Black,1
+,,"",White,33
+,,"",MultiRacial,1

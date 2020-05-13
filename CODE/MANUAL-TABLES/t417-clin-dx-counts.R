@@ -447,6 +447,58 @@ Adult_clin_dx_cases <- bind_rows(
 
 rm(list = setdiff(ls(), ls(pattern = 'counts|cases')))
 
+#### ALL AGES - UNIQUE CASES -----------------------------------------------------
+
+# READ ALL CLINICAL CASES --------------------------------------------------
+
+source(here("CODE/READ-T-SCORES-PER-CASE/read-Clin-all-forms-ages.R"))
+
+# extract cases with Dup ID numbers
+all_clin_dupIDs <- Clin_all_forms_ages %>%
+  mutate(dup = duplicated(IDNumber)) %>%
+  filter(dup == TRUE) %>%
+  select(IDNumber) %>% 
+  arrange(IDNumber)
+
+# remove dupID cases
+# Clin_all_forms_ages_noDups <- Clin_all_forms_ages %>% 
+#   semi_join(all_clin_dupIDs, by = "IDNumber") %>% 
+#   arrange(IDNumber)
+
+# among all clinical cases, keep only first instance of IDNumber
+Clin_all_forms_ages_noDups <- Clin_all_forms_ages %>%
+  arrange(IDNumber) %>% 
+  filter((IDNumber != lag(IDNumber) | is.na(lag(IDNumber))))
+
+# Write unique clin cases for analysis
+write_csv(
+  Clin_all_forms_ages_noDups,
+  here(
+    "OUTPUT-FILES/COMBINED-T-SCORES-PER-CASE/Clin-all-uniqueIDs-T-scores-per-case.csv"
+  ),
+  na = ""
+)
+
+# GENERATE TABLE OF DISORDER COUNTS ------------------------------------------
+
+all_clin_uniqueIDs_dx_counts <- Clin_all_forms_ages_noDups %>%
+  select(clin_dx) %>%
+  gather("Variable", "dx") %>%
+  group_by(Variable, dx) %>%
+  count(Variable, dx) %>%
+  ungroup() %>%
+  mutate(
+    form = case_when(rownames(.) == "1" ~ 'All Unique Clinical Cases',
+                     T ~ NA_character_),
+    pct_samp = round(((n / nrow(Clin_all_forms_ages_noDups)) * 100), 1)
+  ) %>%
+  select(form, dx, n, pct_samp)
+
+
+rm(list = setdiff(ls(), ls(pattern = 'counts|cases')))
+
+
+
 ###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------
 
 # write table of combined matched typical, clinical demo counts.
@@ -469,41 +521,8 @@ write_csv(clin_dx_counts,
           ),
           na = '')
 
-# join case counts across forms, ages
-clin_dx_cases <- bind_rows(
-  IT_430_clin_dx_cases,
-  IT_Caregiver_clin_dx_cases,
-  Preschool_25_clin_dx_cases,
-  Child_512_clin_dx_cases,
-  Teen_1221_clin_dx_cases,
-  Adult_clin_dx_cases
-)
 
-# Identify and remove dup IDs
-# Check for any dupIDs (anyDuplicated() returns row number of FIRST dup ID encountered)
-anyDuplicated(clin_dx_cases$IDNumber)
-
-# extract cases with Dup ID numbers
-clin_dx_cases_dupIDs <- clin_dx_cases %>%
-  mutate(dup = duplicated(IDNumber)) %>%
-  filter(dup == TRUE) %>%
-  select(IDNumber)
-
-# get clin dx counts across collapsed sample
-all_clin_dx_counts <- clin_dx_cases %>%
-  select(clin_dx) %>%
-  gather("Variable", "dx") %>%
-  group_by(Variable, dx) %>%
-  count(Variable, dx) %>%
-  ungroup() %>%
-  mutate(
-    data = case_when(is.na(lag(dx)) ~ 'Combined Clinical Sample',
-                     T ~ NA_character_),
-    pct_samp = round(((n / nrow(clin_dx_cases)) * 100), 1)
-  ) %>%
-  select(data, dx, n, pct_samp)
-
-write_csv(all_clin_dx_counts,
+write_csv(all_clin_uniqueIDs_dx_counts,
           here(
             str_c(
               'OUTPUT-FILES/MANUAL-TABLES/t417-clin-dx-counts-all-',

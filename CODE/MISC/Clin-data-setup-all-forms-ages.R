@@ -33,63 +33,63 @@ NT_order <- scale_order %>% str_c(., "_NT")
 
 IT_49_Home_Clin_common <- IT_49_Home_Clin %>% 
   mutate(Age = NA_real_, HighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 IT_1030_Home_Clin_common <- IT_1030_Home_Clin %>% 
   mutate(Age = NA_real_, HighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 Preschool_25_Home_Clin_common <- Preschool_25_Home_Clin %>% 
   mutate(AgeInMonths = NA_real_, HighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 Child_512_Home_Clin_common <- Child_512_Home_Clin %>% 
   mutate(AgeInMonths = NA_real_, HighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 Teen_1221_Home_Clin_common <- Teen_1221_Home_Clin %>% 
   mutate(AgeInMonths = NA_real_, HighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 # SCHOOL
 
 Preschool_25_School_Clin_common <- Preschool_25_School_Clin %>% 
   mutate(AgeInMonths = NA_real_, ParentHighestEducation = NA_character_, HighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 Child_512_School_Clin_common <- Child_512_School_Clin %>% 
   mutate(AgeInMonths = NA_real_, ParentHighestEducation = NA_character_, HighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 Teen_1221_School_Clin_common <- Teen_1221_School_Clin %>% 
   mutate(AgeInMonths = NA_real_, ParentHighestEducation = NA_character_, HighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 # SELF
 
 Teen_1221_Self_Clin_common <- Teen_1221_Self_Clin %>% 
   mutate(AgeInMonths = NA_real_, HighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 Adult_Self_Clin_common <- Adult_Self_Clin %>% 
   mutate(AgeInMonths = NA_real_, ParentHighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 # OTHER
 
 Adult_Other_Clin_common <- Adult_Other_Clin %>% 
   mutate(AgeInMonths = NA_real_, ParentHighestEducation = NA_character_) %>% 
-  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, Gender, ParentHighestEducation, HighestEducation, 
+  select(IDNumber, clin_status, clin_dx, AgeInMonths, Age, age_range, Gender, ParentHighestEducation, HighestEducation, 
          Ethnicity, Region, NT_order)
 
 rm(list = setdiff(ls(), ls(pattern = "common")))

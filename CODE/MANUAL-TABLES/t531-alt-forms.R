@@ -9,12 +9,12 @@ source(here('CODE/ITEM-VECTORS/IT-1030-Home-item-vectors.R'))
 
 IT_1030_Home_alt_form1 <-
   suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/IT/ALT/SPM-2 InfantToddler 1030 Months ALT Paired.csv")
+    here("INPUT-FILES/IT/ALT/SPM-2 InfantToddler 1030 Months Alt-form1.csv")
   ))) %>% select(
     IDNumber,
     AgeInMonths,
     Gender,
-    ParentHighestEducation,
+    # ParentHighestEducation,
     Ethnicity,
     Region,
     All_items_IT_1030_Home
@@ -62,11 +62,11 @@ IT_1030_Home_alt_form1 <-
 
 ############## START HERE
 
-IT_1030_Home_alt_form1 <-
+IT_1030_Home_alt_form2 <-
   suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/IT/ALT/SPM-2 InfantToddler 1030 Months ALT Paired.csv")
+    here("INPUT-FILES/IT/ALT/SPM-2 InfantToddler 1030 Months Alt-form2.csv")
   ))) %>% 
-  select(IDNumber, AgeInMonths, StandForm:q0125_1) %>% 
+  select(IDNumber, AgeInMonths, All_items_IT_1030_Home) %>% 
   rename_at(vars(contains("_1")), ~ str_replace(., "_1", "")) %>% 
   select(IDNumber, StandForm, AgeInMonths, All_items_IT_1030_Home)
 
@@ -161,15 +161,116 @@ IT_2130_Home_alt_T <- map_dfc(score_names,
 
 rm(list = setdiff(ls(), ls(pattern = "alt_T")))
 
-# read Preschool-25-Home data
+## Preschool-25-Home DATA --------------------------------------------------
+source(here('CODE/ITEM-VECTORS/Preschool-25-Home-item-vectors.R'))
 
-source(here("CODE/READ-T-SCORES-PER-CASE/read-Preschool-25-Home-Stand.R"))
-source(here("CODE/READ-T-SCORES-PER-CASE/read-Preschool-25-School-Stand.R"))
-source(here("CODE/READ-T-SCORES-PER-CASE/read-IT-49-Home-Stand.R"))
+Preschool_25_Home_alt_form1 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/PRESCHOOL/ALT/SPM-2 Preschooler ages 25 Home Report Questionnaire Alt-form1.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Preschool_25_Home)
 
-test <- IT_2130_Home_alt_T %>% 
-  inner_join(Preschool_25_School_Stand, by = "IDNumber")
+Preschool_25_Home_alt_form2 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/PRESCHOOL/ALT/SPM-2 Preschooler ages 25 Home Report Questionnaire Alt-form2.csv")
+  ))) %>% 
+  select(IDNumber, All_items_Preschool_25_Home)
 
-alt_ID <- IT_2130_Home_alt_T$IDNumber
+## Child-512-Home DATA -----------------------------------------------------
 
-test1 <- filter(Preschool_25_Home_Stand, IDNumber == alt_ID)
+source(here('CODE/ITEM-VECTORS/Child-512-Home-item-vectors.R'))
+
+Child_512_Home_alt_form1 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/CHILD/ALT/SPM-2 Child ages 512 Home Report Questionnaire Alt-form1.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Child_512_Home)
+
+Child_512_Home_alt_form2 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/CHILD/ALT/SPM-2 Child ages 512 Home Report Questionnaire Alt-form2.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Child_512_Home)
+
+## Child-512-School DATA -----------------------------------------------------
+
+source(here('CODE/ITEM-VECTORS/Child-512-School-item-vectors.R'))
+
+Child_512_School_alt_form1 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/CHILD/ALT/SPM-2 Child ages 512 School Report Questionnaire Alt-form1.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Child_512_School)
+
+Child_512_School_alt_form2 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/CHILD/ALT/SPM-2 Child ages 512 School Report Questionnaire Alt-form2.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Child_512_School)
+
+## Teen-1221-Home DATA -----------------------------------------------------
+
+source(here('CODE/ITEM-VECTORS/Teen-1221-Home-item-vectors.R'))
+
+Teen_1221_Home_alt_form1 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/ALT/SPM-2 Teen ages 1221 Home Report Questionnaire Alt-form1.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Teen_1221_Home)
+
+Teen_1221_Home_alt_form2 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/ALT/SPM-2 Teen ages 1221 Home Report Questionnaire Alt-form2.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Teen_1221_Home)
+
+## Teen-1221-School DATA -----------------------------------------------------
+
+source(here('CODE/ITEM-VECTORS/Teen-1221-School-item-vectors.R'))
+
+Teen_1221_School_alt_form1 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/ALT/SPM-2 Teen ages 1221 School Report Questionnaire Alt-form1.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Teen_1221_School)
+
+Teen_1221_School_alt_form2 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/TEEN/ALT/SPM-2 Teen ages 1221 School Report Questionnaire Alt-form2.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Teen_1221_School)
+
+## Adult-Self DATA -----------------------------------------------------
+
+source(here('CODE/ITEM-VECTORS/Adult-Self-item-vectors.R'))
+
+Adult_Self_alt_form1 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/ADULT/ALT/SPM-2 Adult ages 1690 Self-Report Questionnaire Alt-form1.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Adult_Self)
+
+Adult_Self_alt_form2 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/ADULT/ALT/SPM-2 Adult ages 1690 Self-Report Questionnaire Alt-form2.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Adult_Self)
+
+## Adult-Other DATA -----------------------------------------------------
+
+source(here('CODE/ITEM-VECTORS/Adult-Other-item-vectors.R'))
+
+Adult_Other_alt_form1 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/ADULT/ALT/SPM-2 Adult ages 1690 Other Report Questionnaire Alt-form1.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Adult_Other)
+
+Adult_Other_alt_form2 <-
+  suppressMessages(as_tibble(read_csv(
+    here("INPUT-FILES/ADULT/ALT/SPM-2 Adult ages 1690 Other Report Questionnaire Alt-form2.csv")
+  ))) %>% 
+  select(IDNumber, Age, All_items_Adult_Other)
+
+
+

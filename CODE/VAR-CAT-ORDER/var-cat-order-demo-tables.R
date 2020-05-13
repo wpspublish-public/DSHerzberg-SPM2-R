@@ -9,8 +9,8 @@ cat_order <- c(
   # age_range
   NA, "3.5 to 6 mo", "03.5 to 10 mo", "4 to 10 mo", "7 to 10.5 mo", "09.5 to 20 mo",  
   "11 to 20 mo", "11 to 31.5 mo", "21 to 30 mo",
-  "21 to 31.5 mo", "5 to 8 years", "9 to 12 years", "12 to 13 years", "14 to 15 years", 
-  "16 to 17 years", "18 to 21 years", "21.00 to 30.99 years", "31.00 to 40.99 years", 
+  "21 to 31.5 mo", "2 to 4 years", "5 years", "5 to 8 years", "9 to 12 years", "12 to 13 years", 
+  "14 to 15 years", "16 to 17 years", "18 to 21 years", "21.00 to 30.99 years", "31.00 to 40.99 years", 
   "41.00 to 50.99 years", "51.00 to 64.99 years", "65.00 to 99.99 years",
   # Age
   "2", "3", "4", "5",

@@ -32,6 +32,22 @@ Home_SPD_Clin_Stand_preMatch <- bind_rows(
     TRUE ~ FALSE
   ))
 
+# write file for conditional probability analysis on TOT t score
+
+cond_prob_SPD <- Home_SPD_Clin_Stand_preMatch %>% 
+  mutate(case = case_when(
+    clin_status == "clin" ~ 1,
+    T ~ 0
+  )) %>% 
+  select(IDNumber, case, TOT_NT)
+
+write_csv(
+  cond_prob_SPD,
+  here(
+    "INPUT-FILES/COND-PROB-SPD/cond-prob-SPD-inputData.csv"
+  )
+)
+
 # matchit cannot process NA. First get sum of NA for data. If that is 0,
 # proceed. If sum NA is positive, recode all NA to 999
 sum(is.na(Home_SPD_Clin_Stand_preMatch))

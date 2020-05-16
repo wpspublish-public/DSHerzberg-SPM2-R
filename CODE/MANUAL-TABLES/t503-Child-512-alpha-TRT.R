@@ -41,6 +41,10 @@ map_df(
     assign(str_c(.x, '_item_scores_912'), ., envir = .GlobalEnv)
 )
 
+n_512 <- nrow(TOT_item_scores_512)
+n_58 <- nrow(TOT_item_scores_58)
+n_912 <- nrow(TOT_item_scores_912)
+
 rm(list = item_vectors)
 
 # COMPUTE SCALE ALPHAS FOR EACH AGE RANGE ---------------------------------
@@ -107,11 +111,17 @@ output_Home <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_512,
          CV_95 = 1.96*SEM_512) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "Home Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_512) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Home Form",
+                     T ~ NA_character_),
+    n_512 = case_when(rownames(.) == "1" ~ n_512,
+                     T ~ NA_integer_),
+    n_58 = case_when(rownames(.) == "1" ~ n_58,
+                     T ~ NA_integer_),
+    n_912 = case_when(rownames(.) == "1" ~ n_912,
+                    T ~ NA_integer_),
+  ) %>%
+  select(form:n_912, everything(),-sd_512)
 
 rm(list=setdiff(ls(), c("output_Home")))
 
@@ -151,6 +161,10 @@ map_df(
     ))) %>%
     assign(str_c(.x, '_item_scores_912'), ., envir = .GlobalEnv)
 )
+
+n_512 <- nrow(TOT_item_scores_512)
+n_58 <- nrow(TOT_item_scores_58)
+n_912 <- nrow(TOT_item_scores_912)
 
 rm(list = item_vectors)
 
@@ -218,11 +232,17 @@ output_School <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_512,
          CV_95 = 1.96*SEM_512) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "School Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_512) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "School Form",
+                     T ~ NA_character_),
+    n_512 = case_when(rownames(.) == "1" ~ n_512,
+                      T ~ NA_integer_),
+    n_58 = case_when(rownames(.) == "1" ~ n_58,
+                     T ~ NA_integer_),
+    n_912 = case_when(rownames(.) == "1" ~ n_912,
+                      T ~ NA_integer_),
+  ) %>%
+  select(form:n_912, everything(),-sd_512)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 

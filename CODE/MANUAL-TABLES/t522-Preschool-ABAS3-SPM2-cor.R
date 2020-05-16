@@ -14,7 +14,8 @@ Preschool_25_Home_Stand_ABAS3_T <-
   rename(IDNumber = ID) %>% 
   drop_na(IDNumber) %>% 
   arrange(IDNumber) %>% 
-  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))
+  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss")) %>% 
+  rename(HomeSchool_ss = Home_ss)
 
 # orig_data <-
 #   suppressMessages(as_tibble(read_csv(
@@ -111,7 +112,7 @@ Preschool_25_Home_Stand_ABAS3_ss_SPM2_T <- bind_rows(
   output_5
 ) %>% 
   arrange(IDNumber) %>% 
-  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss, -r.Home_ss)
+  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss)
 
 rm(list = setdiff(ls(), ls(pattern = "ss")))
 
@@ -125,7 +126,9 @@ Preschool_25_School_Stand_ABAS3_T <-
   rename(IDNumber = ID) %>% 
   drop_na(IDNumber) %>% 
   arrange(IDNumber) %>% 
-  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))
+  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss")) %>% 
+  rename(HomeSchool_ss = School_ss)
+
 
 # orig_data <-
 #   suppressMessages(as_tibble(read_csv(
@@ -143,8 +146,7 @@ Preschool_25_School_Stand_ABAS3_ss_SPM2_T <- Preschool_25_School_Stand_ABAS3_T %
   select(IDNumber, contains("ss"), SOC_NT, VIS_NT, HEA_NT, TOU_NT, 
          TS_NT, BOD_NT, BAL_NT, PLA_NT, TOT_NT) %>% 
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
-  rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
-  select(-r.School_ss)
+  rename_at(vars(contains("NT")), ~ str_c("c.", .))
 
 rm(list = setdiff(ls(), ls(pattern = "ss")))
 
@@ -189,7 +191,8 @@ Preschool_25_Home_Clin_ABAS3_T <-
   rename(IDNumber = ID) %>% 
   drop_na(IDNumber) %>% 
   arrange(IDNumber) %>% 
-  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))
+  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss")) %>% 
+  rename(HomeSchool_ss = Home_ss)
 
 # orig_data <-
 #   suppressMessages(as_tibble(read_csv(
@@ -212,7 +215,7 @@ Preschool_25_Home_Clin_ABAS3_ss_SPM2_T <- Preschool_25_Home_Clin_ABAS3_T %>%
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
   rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
   arrange(IDNumber) %>% 
-  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss, -r.Home_ss)
+  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss)
 
 rm(list = setdiff(ls(), ls(pattern = "ss|table")))
 
@@ -226,7 +229,8 @@ Preschool_25_School_Clin_ABAS3_T <-
   rename(IDNumber = ID) %>% 
   drop_na(IDNumber) %>% 
   arrange(IDNumber) %>% 
-  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))
+  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss")) %>% 
+  rename(HomeSchool_ss = School_ss)
 
 # find shared cases with desampled data that has T-scores already
 source(here("CODE/READ-T-SCORES-PER-CASE/read-Preschool-25-School-Clin.R"))
@@ -239,8 +243,7 @@ Preschool_25_School_Clin_ABAS3_ss_SPM2_T <- Preschool_25_School_Clin_ABAS3_T %>%
   select(IDNumber, contains("ss"), SOC_NT, VIS_NT, HEA_NT, TOU_NT, 
          TS_NT, BOD_NT, BAL_NT, PLA_NT, TOT_NT) %>% 
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
-  rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
-  select(-r.School_ss)
+  rename_at(vars(contains("NT")), ~ str_c("c.", .)) 
 
 rm(list = setdiff(ls(), ls(pattern = "ss|table")))
 

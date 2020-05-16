@@ -61,6 +61,12 @@ map_df(
     assign(str_c(.x, '_item_scores_1821'), ., envir = .GlobalEnv)
 )
 
+n_1221 <- nrow(TOT_item_scores_1221)
+n_1213 <- nrow(TOT_item_scores_1213)
+n_1415 <- nrow(TOT_item_scores_1415)
+n_1617 <- nrow(TOT_item_scores_1617)
+n_1821 <- nrow(TOT_item_scores_1821)
+
 rm(list = item_vectors)
 
 # COMPUTE SCALE ALPHAS FOR EACH AGE RANGE ---------------------------------
@@ -150,11 +156,21 @@ output_Home <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_1221,
          CV_95 = 1.96*SEM_1221) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "Home Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_1221) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Home Form",
+                     T ~ NA_character_),
+    n_1221 = case_when(rownames(.) == "1" ~ n_1221,
+                     T ~ NA_integer_),
+    n_1213 = case_when(rownames(.) == "1" ~ n_1213,
+                     T ~ NA_integer_),
+    n_1415 = case_when(rownames(.) == "1" ~ n_1415,
+                     T ~ NA_integer_),
+    n_1617 = case_when(rownames(.) == "1" ~ n_1617,
+                     T ~ NA_integer_),
+    n_1821 = case_when(rownames(.) == "1" ~ n_1821,
+                     T ~ NA_integer_)
+  ) %>%
+  select(form:n_1821, everything(),-sd_1221)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
@@ -215,8 +231,13 @@ map_df(
     assign(str_c(.x, '_item_scores_1821'), ., envir = .GlobalEnv)
 )
 
-rm(list = item_vectors)
+n_1221 <- nrow(TOT_item_scores_1221)
+n_1213 <- nrow(TOT_item_scores_1213)
+n_1415 <- nrow(TOT_item_scores_1415)
+n_1617 <- nrow(TOT_item_scores_1617)
+n_1821 <- nrow(TOT_item_scores_1821)
 
+rm(list = item_vectors)
 
 # COMPUTE SCALE ALPHAS FOR EACH AGE RANGE ---------------------------------
 alpha_1221 <- map_df(scale_order, ~
@@ -305,11 +326,21 @@ output_School <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_1221,
          CV_95 = 1.96*SEM_1221) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "School Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_1221) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "School Form",
+                     T ~ NA_character_),
+    n_1221 = case_when(rownames(.) == "1" ~ n_1221,
+                       T ~ NA_integer_),
+    n_1213 = case_when(rownames(.) == "1" ~ n_1213,
+                       T ~ NA_integer_),
+    n_1415 = case_when(rownames(.) == "1" ~ n_1415,
+                       T ~ NA_integer_),
+    n_1617 = case_when(rownames(.) == "1" ~ n_1617,
+                       T ~ NA_integer_),
+    n_1821 = case_when(rownames(.) == "1" ~ n_1821,
+                       T ~ NA_integer_)
+  ) %>%
+  select(form:n_1821, everything(),-sd_1221)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
@@ -369,6 +400,12 @@ map_df(
     ))) %>%
     assign(str_c(.x, '_item_scores_1821'), ., envir = .GlobalEnv)
 )
+
+n_1221 <- nrow(TOT_item_scores_1221)
+n_1213 <- nrow(TOT_item_scores_1213)
+n_1415 <- nrow(TOT_item_scores_1415)
+n_1617 <- nrow(TOT_item_scores_1617)
+n_1821 <- nrow(TOT_item_scores_1821)
 
 rm(list = item_vectors)
 
@@ -458,11 +495,21 @@ output_Self <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_1221,
          CV_95 = 1.96*SEM_1221) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "Self Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_1221) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Self Form",
+                     T ~ NA_character_),
+    n_1221 = case_when(rownames(.) == "1" ~ n_1221,
+                       T ~ NA_integer_),
+    n_1213 = case_when(rownames(.) == "1" ~ n_1213,
+                       T ~ NA_integer_),
+    n_1415 = case_when(rownames(.) == "1" ~ n_1415,
+                       T ~ NA_integer_),
+    n_1617 = case_when(rownames(.) == "1" ~ n_1617,
+                       T ~ NA_integer_),
+    n_1821 = case_when(rownames(.) == "1" ~ n_1821,
+                       T ~ NA_integer_)
+  ) %>%
+  select(form:n_1821, everything(),-sd_1221)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
@@ -481,8 +528,6 @@ write_csv(bind_rows(output_Home,
           na = '')
 
 rm(list = ls())
-
-
 
 ###### TRT SECTION ----------------------------------------------------
 #### TEEN HOME DATA ---------------------------------------------

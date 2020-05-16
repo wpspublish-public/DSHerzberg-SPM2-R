@@ -74,6 +74,13 @@ map_df(
     assign(str_c(.x, '_item_scores_6599'), ., envir = .GlobalEnv)
 )
 
+n_2199 <- nrow(TOT_item_scores_2199)
+n_2130 <- nrow(TOT_item_scores_2130)
+n_3140 <- nrow(TOT_item_scores_3140)
+n_4150 <- nrow(TOT_item_scores_4150)
+n_5164 <- nrow(TOT_item_scores_5164)
+n_6599 <- nrow(TOT_item_scores_6599)
+
 rm(list = item_vectors)
 
 # COMPUTE SCALE ALPHAS FOR EACH AGE RANGE ---------------------------------
@@ -175,11 +182,23 @@ output_Self <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_2199,
          CV_95 = 1.96*SEM_2199) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "Self Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_2199) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Self Form",
+                     T ~ NA_character_),
+    n_2199 = case_when(rownames(.) == "1" ~ n_2199,
+                     T ~ NA_integer_),
+    n_2130 = case_when(rownames(.) == "1" ~ n_2130,
+                     T ~ NA_integer_),
+    n_3140 = case_when(rownames(.) == "1" ~ n_3140,
+                     T ~ NA_integer_),
+    n_4150 = case_when(rownames(.) == "1" ~ n_4150,
+                     T ~ NA_integer_),
+    n_5164 = case_when(rownames(.) == "1" ~ n_5164,
+                     T ~ NA_integer_),
+    n_6599 = case_when(rownames(.) == "1" ~ n_6599,
+                     T ~ NA_integer_)
+  ) %>%
+  select(form:n_6599, everything(),-sd_2199)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
@@ -251,8 +270,14 @@ map_df(
     assign(str_c(.x, '_item_scores_6599'), ., envir = .GlobalEnv)
 )
 
-rm(list = item_vectors)
+n_2199 <- nrow(TOT_item_scores_2199)
+n_2130 <- nrow(TOT_item_scores_2130)
+n_3140 <- nrow(TOT_item_scores_3140)
+n_4150 <- nrow(TOT_item_scores_4150)
+n_5164 <- nrow(TOT_item_scores_5164)
+n_6599 <- nrow(TOT_item_scores_6599)
 
+rm(list = item_vectors)
 
 # COMPUTE SCALE ALPHAS FOR EACH AGE RANGE ---------------------------------
 alpha_2199 <- map_df(scale_order, ~
@@ -352,11 +377,23 @@ output_Other <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_2199,
          CV_95 = 1.96*SEM_2199) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "Rater Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_2199) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Rater Form",
+                     T ~ NA_character_),
+    n_2199 = case_when(rownames(.) == "1" ~ n_2199,
+                       T ~ NA_integer_),
+    n_2130 = case_when(rownames(.) == "1" ~ n_2130,
+                       T ~ NA_integer_),
+    n_3140 = case_when(rownames(.) == "1" ~ n_3140,
+                       T ~ NA_integer_),
+    n_4150 = case_when(rownames(.) == "1" ~ n_4150,
+                       T ~ NA_integer_),
+    n_5164 = case_when(rownames(.) == "1" ~ n_5164,
+                       T ~ NA_integer_),
+    n_6599 = case_when(rownames(.) == "1" ~ n_6599,
+                       T ~ NA_integer_)
+  ) %>%
+  select(form:n_6599, everything(),-sd_2199)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 

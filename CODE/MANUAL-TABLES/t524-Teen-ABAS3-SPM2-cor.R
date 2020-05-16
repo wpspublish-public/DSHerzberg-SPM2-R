@@ -14,7 +14,8 @@ Teen_1221_Home_Stand_ABAS3_T <-
   rename(IDNumber = ID) %>% 
   drop_na(IDNumber) %>% 
   arrange(IDNumber) %>% 
-  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))
+  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss")) %>% 
+  rename(HomeSchool_ss = Home_ss)
 
 # orig_data <-
 #   suppressMessages(as_tibble(read_csv(
@@ -37,8 +38,7 @@ Teen_1221_Home_Stand_ABAS3_ss_SPM2_T <- Teen_1221_Home_Stand_ABAS3_T %>%
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
   rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
   arrange(IDNumber) %>% 
-  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss, -r.Home_ss)
-
+  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss)
 
 rm(list = setdiff(ls(), ls(pattern = "ss")))
 
@@ -52,7 +52,8 @@ Teen_1221_School_Stand_ABAS3_T <-
   rename(IDNumber = ID) %>% 
   drop_na(IDNumber) %>% 
   arrange(IDNumber) %>% 
-  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))
+  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))%>% 
+  rename(HomeSchool_ss = School_ss)
 
 # orig_data <-
 #   suppressMessages(as_tibble(read_csv(
@@ -71,7 +72,7 @@ Teen_1221_School_Stand_ABAS3_ss_SPM2_T <- Teen_1221_School_Stand_ABAS3_T %>%
          TS_NT, BOD_NT, BAL_NT, PLA_NT, TOT_NT) %>% 
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
   rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
-  select(-r.School_ss, -r.CommunityUse_ss)
+  select(-r.CommunityUse_ss)
 
 rm(list = setdiff(ls(), ls(pattern = "ss")))
 
@@ -85,7 +86,8 @@ Teen_1221_Self_Stand_ABAS3_T <-
   rename(IDNumber = ID) %>% 
   drop_na(IDNumber) %>% 
   arrange(IDNumber) %>% 
-  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))
+  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss")) %>% 
+  rename(HomeSchool_ss = Home_ss)
 
 # orig_data <-
 #   suppressMessages(as_tibble(read_csv(
@@ -104,7 +106,7 @@ Teen_1221_Self_Stand_ABAS3_ss_SPM2_T <- Teen_1221_Self_Stand_ABAS3_T %>%
          TS_NT, BOD_NT, BAL_NT, PLA_NT, TOT_NT) %>% 
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
   rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
-  select(-r.Home_ss, -r.CommunityUse_ss)
+  select(-r.CommunityUse_ss)
 
 rm(list = setdiff(ls(), ls(pattern = "ss")))
 
@@ -150,7 +152,8 @@ Teen_1221_Home_Clin_ABAS3_T <-
   rename(IDNumber = ID) %>% 
   drop_na(IDNumber) %>% 
   arrange(IDNumber) %>% 
-  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))
+  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss")) %>% 
+  rename(HomeSchool_ss = Home_ss)
 
 # orig_data <-
 #   suppressMessages(as_tibble(read_csv(
@@ -173,7 +176,7 @@ Teen_1221_Home_Clin_ABAS3_ss_SPM2_T <- Teen_1221_Home_Clin_ABAS3_T %>%
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
   rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
   arrange(IDNumber) %>% 
-  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss, -r.Home_ss)
+  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss)
 
 rm(list = setdiff(ls(), ls(pattern = "ss|table")))
 
@@ -187,7 +190,8 @@ Teen_1221_School_Clin_ABAS3_T <-
   rename(IDNumber = ID) %>% 
   drop_na(IDNumber) %>% 
   arrange(IDNumber) %>% 
-  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))
+  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss")) %>% 
+  rename(HomeSchool_ss = School_ss)
 
 # find shared cases with desampled data that has T-scores already
 source(here("CODE/READ-T-SCORES-PER-CASE/read-Teen-1221-School-Clin.R"))
@@ -201,7 +205,7 @@ Teen_1221_School_Clin_ABAS3_ss_SPM2_T <- Teen_1221_School_Clin_ABAS3_T %>%
          TS_NT, BOD_NT, BAL_NT, PLA_NT, TOT_NT) %>% 
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
   rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
-  select(-r.School_ss, -r.CommunityUse_ss)
+  select(-r.CommunityUse_ss)
 
 rm(list = setdiff(ls(), ls(pattern = "ss|table")))
 
@@ -215,7 +219,8 @@ Teen_1221_Self_Clin_ABAS3_T <-
   rename(IDNumber = ID) %>% 
   drop_na(IDNumber) %>% 
   arrange(IDNumber) %>% 
-  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss"))
+  rename_at(vars(contains("_StanS")), ~ str_replace(., "_StanS", "_ss")) %>% 
+  rename(HomeSchool_ss = Home_ss)
 
 # orig_data <-
 #   suppressMessages(as_tibble(read_csv(
@@ -238,7 +243,7 @@ Teen_1221_Self_Clin_ABAS3_ss_SPM2_T <- Teen_1221_Self_Clin_ABAS3_T %>%
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
   rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
   arrange(IDNumber) %>% 
-  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss, -r.Home_ss)
+  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss)
 
 rm(list = setdiff(ls(), ls(pattern = "ss|table")))
 
@@ -261,7 +266,7 @@ Teen_1221_Clin_ABAS3_SPM2_cor_table <-
             str_detect(col, "c.")) & !str_detect(col, "r.")) %>%
   mutate_at(vars(row, col), ~ str_replace(str_sub(., 3), "_", "")) %>%
   mutate(
-    form = case_when(rownames(.) == "1" ~ 'Teen-1221-Home-School-Clin',
+    form = case_when(rownames(.) == "1" ~ 'Teen-1221-Home-School-Self-Clin',
                      T ~ NA_character_),
     n = case_when(rownames(.) == "1" ~ corr.test(cor_cols)[['n']][1],
                   T ~ NA_real_)

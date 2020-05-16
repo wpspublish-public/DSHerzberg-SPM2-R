@@ -45,6 +45,10 @@ map_df(
     assign(str_c(.x, '_item_scores_79'), ., envir = .GlobalEnv)
 )
 
+n_49 <- nrow(TOT_item_scores_49)
+n_46 <- nrow(TOT_item_scores_46)
+n_79 <- nrow(TOT_item_scores_79)
+
 rm(list = item_vectors)
 
 # COMPUTE SCALE ALPHAS FOR EACH AGE RANGE ---------------------------------
@@ -103,19 +107,25 @@ IT_49_Home_T_sd_49 <-
   arrange(match(scale, scale_order)) %>% 
   select(scale, sd_49)
 
-output_49 <- alpha %>% left_join(
-  IT_49_Home_T_sd_49, 
-  by = 'scale'
-) %>% 
-  mutate(SEM_49 = sd_49*(sqrt(1-alpha_49)),
-         CV_90 = 1.6449*SEM_49,
-         CV_95 = 1.96*SEM_49) %>% 
-  mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "Infant Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_49) 
+output_49 <- alpha %>% left_join(IT_49_Home_T_sd_49,
+                                 by = 'scale') %>%
+  mutate(
+    SEM_49 = sd_49 * (sqrt(1 - alpha_49)),
+    CV_90 = 1.6449 * SEM_49,
+    CV_95 = 1.96 * SEM_49
+  ) %>%
+  mutate_if(is.numeric, ~ round(., 2)) %>%
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Infant Form",
+                     T ~ NA_character_),
+    n_49 = case_when(rownames(.) == "1" ~ n_49,
+                     T ~ NA_integer_),
+    n_46 = case_when(rownames(.) == "1" ~ n_46,
+                     T ~ NA_integer_),
+    n_79 = case_when(rownames(.) == "1" ~ n_79,
+                     T ~ NA_integer_),
+  ) %>%
+  select(form:n_79, everything(),-sd_49)
 
 rm(list = setdiff(ls(), c("output_49")))
 
@@ -159,6 +169,10 @@ map_df(
     ))) %>%
     assign(str_c(.x, '_item_scores_2130'), ., envir = .GlobalEnv)
 )
+
+n_1030 <- nrow(TOT_item_scores_1030)
+n_1020 <- nrow(TOT_item_scores_1020)
+n_2130 <- nrow(TOT_item_scores_2130)
 
 rm(list = item_vectors)
 
@@ -226,11 +240,17 @@ output_1030 <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_1030,
          CV_95 = 1.96*SEM_1030) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "Toddler Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_1030) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Toddler Form",
+                     T ~ NA_character_),
+    n_1030 = case_when(rownames(.) == "1" ~ n_1030,
+                     T ~ NA_integer_),
+    n_1020 = case_when(rownames(.) == "1" ~ n_1020,
+                     T ~ NA_integer_),
+    n_2130 = case_when(rownames(.) == "1" ~ n_2130,
+                     T ~ NA_integer_),
+  ) %>%
+  select(form:n_2130, everything(),-sd_1030)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
@@ -270,6 +290,10 @@ map_df(
     ))) %>%
     assign(str_c(.x, '_item_scores_1130'), ., envir = .GlobalEnv)
 )
+
+n_430 <- nrow(TOT_item_scores_430)
+n_410 <- nrow(TOT_item_scores_410)
+n_1130 <- nrow(TOT_item_scores_1130)
 
 rm(list = item_vectors)
 
@@ -338,11 +362,17 @@ output_Caregiver <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_430,
          CV_95 = 1.96*SEM_430) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "Caregiver Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_430) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Caregiver Form",
+                     T ~ NA_character_),
+    n_430 = case_when(rownames(.) == "1" ~ n_430,
+                     T ~ NA_integer_),
+    n_410 = case_when(rownames(.) == "1" ~ n_410,
+                     T ~ NA_integer_),
+    n_1130 = case_when(rownames(.) == "1" ~ n_1130,
+                     T ~ NA_integer_),
+  ) %>%
+  select(form:n_1130, everything(),-sd_430)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
@@ -361,8 +391,6 @@ map(forms, ~
         )
       ),
       na = ''))
-
-
 
 ###### TRT SECTION ----------------------------------------------------
 

@@ -5,7 +5,7 @@ suppressMessages(library(psych))
 #### IT 49 HOME CLIN--------------------------------------------------------------
 
 # IT49 has only 11 clinical cases, this code section reads IT 49 data and
-# selects subset of items that are equivalent to IT 1030 items. Code the reads
+# selects subset of items that are equivalent to IT 1030 items. Code then reads
 # IT 1030 data, selects subset of equivalent items, and renames those items to
 # the IT 49 names, so the two data sets can be combined. Alpha is then
 # calculated on this shared set of items over the two data sets, providing a
@@ -51,7 +51,6 @@ alpha_IT_430_Home_shared_items <-
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
-
 #### IT 1030 HOME CLIN----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/IT-1030-Home-item-vectors.R"))
 
@@ -73,17 +72,21 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_IT_1030_Home'), ., envir = .GlobalEnv))
 
-alpha_IT_1030_Home <- map_df(scale_order, ~
-                               alpha(
-                                 cor(
-                                   eval(as.name(str_c(.x, '_item_cols_IT_1030_Home')))
-                                 ),
-                                 check.keys = TRUE
-                               )[["total"]] %>%
-                               mutate(scale = .x) %>% 
-                               select(scale, raw_alpha) %>% 
-                               rename(alpha_IT_1030_Home = raw_alpha)
-)
+n_IT_1030_Home <- nrow(TOT_item_cols_IT_1030_Home)
+
+alpha_IT_1030_Home <- map_df(
+  scale_order,
+  ~
+    alpha(cor(eval(as.name(
+      str_c(.x, '_item_cols_IT_1030_Home')
+    ))),
+    check.keys = TRUE)[["total"]] %>%
+    mutate(scale = .x) %>%
+    select(scale, raw_alpha) %>%
+    rename(alpha_IT_1030_Home = raw_alpha)
+) %>%
+  mutate(n_IT_1030_Home = case_when(rownames(.) == "1" ~ n_IT_1030_Home,
+                                    T ~ NA_integer_))
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
@@ -103,6 +106,8 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_IT_Caregiver'), ., envir = .GlobalEnv))
 
+n_IT_Caregiver <- nrow(TOT_item_cols_IT_Caregiver)
+
 alpha_IT_Caregiver <- map_df(scale_order, ~
                                alpha(
                                  cor(
@@ -113,7 +118,10 @@ alpha_IT_Caregiver <- map_df(scale_order, ~
                                mutate(scale = .x) %>% 
                                select(scale, raw_alpha) %>% 
                                rename(alpha_IT_Caregiver = raw_alpha)
-)
+) %>%
+  mutate(n_IT_Caregiver = case_when(rownames(.) == "1" ~ n_IT_Caregiver,
+                                    T ~ NA_integer_))
+
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
@@ -138,6 +146,8 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_Preschool_25_Home'), ., envir = .GlobalEnv))
 
+n_Preschool_25_Home <- nrow(TOT_item_cols_Preschool_25_Home)
+
 alpha_Preschool_25_Home <- map_df(scale_order, ~
                                     alpha(
                                       cor(
@@ -147,7 +157,9 @@ alpha_Preschool_25_Home <- map_df(scale_order, ~
                                     mutate(scale = .x) %>% 
                                     select(scale, raw_alpha) %>% 
                                     rename(alpha_Preschool_25_Home = raw_alpha)
-)
+) %>%
+  mutate(n_Preschool_25_Home = case_when(rownames(.) == "1" ~ n_Preschool_25_Home,
+                                    T ~ NA_integer_))
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
@@ -172,6 +184,8 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_Preschool_25_School'), ., envir = .GlobalEnv))
 
+n_Preschool_25_School <- nrow(TOT_item_cols_Preschool_25_School)
+
 alpha_Preschool_25_School <- map_df(scale_order, ~
                                       alpha(
                                         cor(
@@ -181,7 +195,9 @@ alpha_Preschool_25_School <- map_df(scale_order, ~
                                       mutate(scale = .x) %>% 
                                       select(scale, raw_alpha) %>% 
                                       rename(alpha_Preschool_25_School = raw_alpha)
-)
+) %>%
+  mutate(n_Preschool_25_School = case_when(rownames(.) == "1" ~ n_Preschool_25_School,
+                                    T ~ NA_integer_))
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
@@ -201,6 +217,8 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_Child_512_Home'), ., envir = .GlobalEnv))
 
+n_Child_512_Home <- nrow(TOT_item_cols_Child_512_Home)
+
 alpha_Child_512_Home <- map_df(scale_order, ~
                                  alpha(
                                    cor(
@@ -210,7 +228,9 @@ alpha_Child_512_Home <- map_df(scale_order, ~
                                  mutate(scale = .x) %>% 
                                  select(scale, raw_alpha) %>% 
                                  rename(alpha_Child_512_Home = raw_alpha)
-)
+) %>%
+  mutate(n_Child_512_Home = case_when(rownames(.) == "1" ~ n_Child_512_Home,
+                                    T ~ NA_integer_))
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
@@ -230,6 +250,8 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_Child_512_School'), ., envir = .GlobalEnv))
 
+n_Child_512_School <- nrow(TOT_item_cols_Child_512_School)
+
 alpha_Child_512_School <- map_df(scale_order, ~
                                    alpha(
                                      cor(
@@ -239,7 +261,9 @@ alpha_Child_512_School <- map_df(scale_order, ~
                                    mutate(scale = .x) %>% 
                                    select(scale, raw_alpha) %>% 
                                    rename(alpha_Child_512_School = raw_alpha)
-)
+) %>%
+  mutate(n_Child_512_School = case_when(rownames(.) == "1" ~ n_Child_512_School,
+                                    T ~ NA_integer_))
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
@@ -259,6 +283,8 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_Teen_1221_Home'), ., envir = .GlobalEnv))
 
+n_Teen_1221_Home <- nrow(TOT_item_cols_Teen_1221_Home)
+
 alpha_Teen_1221_Home <- map_df(scale_order, ~
                                  alpha(
                                    cor(
@@ -268,9 +294,12 @@ alpha_Teen_1221_Home <- map_df(scale_order, ~
                                  mutate(scale = .x) %>% 
                                  select(scale, raw_alpha) %>% 
                                  rename(alpha_Teen_1221_Home = raw_alpha)
-)
+) %>%
+  mutate(n_Teen_1221_Home = case_when(rownames(.) == "1" ~ n_Teen_1221_Home,
+                                    T ~ NA_integer_))
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
+
 #### TEEN 1221 SCHOOL CLIN----------------------------------------------------------
 source(here("CODE/ITEM-VECTORS/Teen-1221-School-item-vectors.R"))
 
@@ -287,6 +316,8 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_Teen_1221_School'), ., envir = .GlobalEnv))
 
+n_Teen_1221_School <- nrow(TOT_item_cols_Teen_1221_School)
+
 alpha_Teen_1221_School <- map_df(scale_order, ~
                                    alpha(
                                      cor(
@@ -296,7 +327,9 @@ alpha_Teen_1221_School <- map_df(scale_order, ~
                                    mutate(scale = .x) %>% 
                                    select(scale, raw_alpha) %>% 
                                    rename(alpha_Teen_1221_School = raw_alpha)
-)
+) %>%
+  mutate(n_Teen_1221_School = case_when(rownames(.) == "1" ~ n_Teen_1221_School,
+                                    T ~ NA_integer_))
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
@@ -316,6 +349,8 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_Teen_1221_Self'), ., envir = .GlobalEnv))
 
+n_Teen_1221_Self <- nrow(TOT_item_cols_Teen_1221_Self)
+
 alpha_Teen_1221_Self <- map_df(scale_order, ~
                                  alpha(
                                    cor(
@@ -325,7 +360,9 @@ alpha_Teen_1221_Self <- map_df(scale_order, ~
                                  mutate(scale = .x) %>% 
                                  select(scale, raw_alpha) %>% 
                                  rename(alpha_Teen_1221_Self = raw_alpha)
-)
+) %>%
+  mutate(n_Teen_1221_Self = case_when(rownames(.) == "1" ~ n_Teen_1221_Self,
+                                    T ~ NA_integer_))
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
@@ -345,6 +382,8 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_Adult_Self'), ., envir = .GlobalEnv))
 
+n_Adult_Self <- nrow(TOT_item_cols_Adult_Self)
+
 alpha_Adult_Self <- map_df(scale_order, ~
                              alpha(
                                cor(
@@ -354,7 +393,9 @@ alpha_Adult_Self <- map_df(scale_order, ~
                              mutate(scale = .x) %>% 
                              select(scale, raw_alpha) %>% 
                              rename(alpha_Adult_Self = raw_alpha)
-)
+) %>%
+  mutate(n_Adult_Self = case_when(rownames(.) == "1" ~ n_Adult_Self,
+                                    T ~ NA_integer_))
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
@@ -374,6 +415,8 @@ map_df(scale_order,
          ))) %>%
          assign(str_c(.x, '_item_cols_Adult_Other'), ., envir = .GlobalEnv))
 
+n_Adult_Other <- nrow(TOT_item_cols_Adult_Other)
+
 alpha_Adult_Other <- map_df(scale_order, ~
                               alpha(
                                 cor(
@@ -383,19 +426,29 @@ alpha_Adult_Other <- map_df(scale_order, ~
                               mutate(scale = .x) %>% 
                               select(scale, raw_alpha) %>% 
                               rename(alpha_Adult_Other = raw_alpha)
-)
+) %>%
+  mutate(n_Adult_Other = case_when(rownames(.) == "1" ~ n_Adult_Other,
+                                    T ~ NA_integer_))
 
 rm(list = setdiff(ls(), ls(pattern = 'alpha')))
 
 ###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------
 
-list <- mget(ls(pattern = "alpha"))
+list <- list(
+  alpha_IT_1030_Home,
+  alpha_IT_Caregiver,
+  alpha_Preschool_25_Home,
+  alpha_Preschool_25_School,
+  alpha_Child_512_Home,
+  alpha_Child_512_School,
+  alpha_Teen_1221_Home,
+  alpha_Teen_1221_School,
+  alpha_Teen_1221_Self,
+  alpha_Adult_Self, 
+  alpha_Adult_Other
+)
 
 alpha_clin <- list %>% reduce(left_join, by = "scale") %>% 
-  select(scale, alpha_IT_1030_Home, alpha_IT_Caregiver, alpha_Preschool_25_Home,
-         alpha_Preschool_25_School, alpha_Child_512_Home, alpha_Child_512_School,
-         alpha_Teen_1221_Home, alpha_Teen_1221_School, alpha_Teen_1221_Self,
-         alpha_Adult_Self, alpha_Adult_Other) %>% 
   mutate_if(is.numeric, ~round(., 3))
   
 write_csv(alpha_clin,

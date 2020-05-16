@@ -45,6 +45,10 @@ map_df(
     assign(str_c(.x, '_item_scores_5'), ., envir = .GlobalEnv)
 )
 
+n_25 <- nrow(TOT_item_scores_25)
+n_24 <- nrow(TOT_item_scores_24)
+n_5 <- nrow(TOT_item_scores_5)
+
 rm(list = item_vectors)
 
 # COMPUTE SCALE ALPHAS FOR EACH AGE RANGE ---------------------------------
@@ -111,11 +115,17 @@ output_Home <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_25,
          CV_95 = 1.96*SEM_25) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "Home Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_25) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Home Form",
+                     T ~ NA_character_),
+    n_25 = case_when(rownames(.) == "1" ~ n_25,
+                     T ~ NA_integer_),
+    n_24 = case_when(rownames(.) == "1" ~ n_24,
+                     T ~ NA_integer_),
+    n_5 = case_when(rownames(.) == "1" ~ n_5,
+                     T ~ NA_integer_),
+  ) %>%
+  select(form:n_5, everything(),-sd_25)
 
 rm(list=setdiff(ls(), c("output_Home")))
 
@@ -159,6 +169,10 @@ map_df(
     ))) %>%
     assign(str_c(.x, '_item_scores_5'), ., envir = .GlobalEnv)
 )
+
+n_25 <- nrow(TOT_item_scores_25)
+n_24 <- nrow(TOT_item_scores_24)
+n_5 <- nrow(TOT_item_scores_5)
 
 rm(list = item_vectors)
 
@@ -226,11 +240,17 @@ output_School <- alpha %>% left_join(
          CV_90 = 1.6449*SEM_25,
          CV_95 = 1.96*SEM_25) %>% 
   mutate_if(is.numeric, ~ round(., 2)) %>% 
-  mutate(form = case_when(
-    scale =="SOC" ~ "School Form",
-    T ~ NA_character_
-  )) %>% 
-  select(form, everything(), -sd_25) 
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "School Form",
+                     T ~ NA_character_),
+    n_25 = case_when(rownames(.) == "1" ~ n_25,
+                     T ~ NA_integer_),
+    n_24 = case_when(rownames(.) == "1" ~ n_24,
+                     T ~ NA_integer_),
+    n_5 = case_when(rownames(.) == "1" ~ n_5,
+                    T ~ NA_integer_),
+  ) %>%
+  select(form:n_5, everything(),-sd_25)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 

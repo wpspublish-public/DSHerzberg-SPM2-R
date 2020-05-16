@@ -1,0 +1,80 @@
+form1,form2,sample,DIF_range,n,pct_samp
+IT-49-Home,IT-Caregiver,Stand,<=-15 (Definite Difference),10,3.9
+,,,-10 to -14 (Probable Difference),21,8.3
+,,,-9 to 9 (No Difference),182,71.7
+,,,10 to 14 (Probable Difference),23,9.1
+,,,>=15 (Definite Difference),18,7.1
+IT-49-Home,IT-Caregiver,Clin,-10 to -14 (Probable Difference),2,18.2
+,,,-9 to 9 (No Difference),6,54.5
+,,,10 to 14 (Probable Difference),2,18.2
+,,,>=15 (Definite Difference),1,9.1
+IT-1030-Home,IT-Caregiver,Stand,<=-15 (Definite Difference),33,8.2
+,,,-10 to -14 (Probable Difference),24,6
+,,,-9 to 9 (No Difference),297,73.7
+,,,10 to 14 (Probable Difference),29,7.2
+,,,>=15 (Definite Difference),20,5
+IT-1030-Home,IT-Caregiver,Clin,<=-15 (Definite Difference),1,2.3
+,,,-10 to -14 (Probable Difference),1,2.3
+,,,-9 to 9 (No Difference),25,58.1
+,,,10 to 14 (Probable Difference),3,7
+,,,>=15 (Definite Difference),13,30.2
+Preschool-25-Home,Preschool-25-School,Stand,<=-15 (Definite Difference),30,10
+,,,-10 to -14 (Probable Difference),31,10.3
+,,,-9 to 9 (No Difference),201,67
+,,,10 to 14 (Probable Difference),9,3
+,,,>=15 (Definite Difference),29,9.7
+Preschool-25-Home,Preschool-25-School,Clin,<=-15 (Definite Difference),11,11.2
+,,,-10 to -14 (Probable Difference),12,12.2
+,,,-9 to 9 (No Difference),60,61.2
+,,,10 to 14 (Probable Difference),8,8.2
+,,,>=15 (Definite Difference),7,7.1
+Child-512-Home,Child-512-School,Stand,<=-15 (Definite Difference),36,8.7
+,,,-10 to -14 (Probable Difference),46,11.1
+,,,-9 to 9 (No Difference),271,65.3
+,,,10 to 14 (Probable Difference),40,9.6
+,,,>=15 (Definite Difference),22,5.3
+Child-512-Home,Child-512-School,Clin,<=-15 (Definite Difference),8,4.4
+,,,-10 to -14 (Probable Difference),29,15.8
+,,,-9 to 9 (No Difference),112,61.2
+,,,10 to 14 (Probable Difference),12,6.6
+,,,>=15 (Definite Difference),22,12
+Teen-1221-Home,Teen-1221-School,Stand,<=-15 (Definite Difference),43,7.2
+,,,-10 to -14 (Probable Difference),58,9.8
+,,,-9 to 9 (No Difference),398,67
+,,,10 to 14 (Probable Difference),48,8.1
+,,,>=15 (Definite Difference),47,7.9
+Teen-1221-Home,Teen-1221-School,Clin,<=-15 (Definite Difference),4,4.8
+,,,-10 to -14 (Probable Difference),6,7.2
+,,,-9 to 9 (No Difference),62,74.7
+,,,10 to 14 (Probable Difference),5,6
+,,,>=15 (Definite Difference),6,7.2
+Teen-1221-Home,Teen-1221-Self,Stand,<=-15 (Definite Difference),37,5.1
+,,,-10 to -14 (Probable Difference),55,7.6
+,,,-9 to 9 (No Difference),538,74.3
+,,,10 to 14 (Probable Difference),69,9.5
+,,,>=15 (Definite Difference),25,3.5
+Teen-1221-Home,Teen-1221-Self,Clin,<=-15 (Definite Difference),2,2.4
+,,,-10 to -14 (Probable Difference),3,3.6
+,,,-9 to 9 (No Difference),59,70.2
+,,,10 to 14 (Probable Difference),13,15.5
+,,,>=15 (Definite Difference),7,8.3
+Teen-1221-School,Teen-1221-Self,Stand,<=-15 (Definite Difference),50,8.6
+,,,-10 to -14 (Probable Difference),46,7.9
+,,,-9 to 9 (No Difference),325,55.7
+,,,10 to 14 (Probable Difference),102,17.5
+,,,>=15 (Definite Difference),61,10.4
+Teen-1221-School,Teen-1221-Self,Clin,<=-15 (Definite Difference),7,8.3
+,,,-10 to -14 (Probable Difference),9,10.7
+,,,-9 to 9 (No Difference),44,52.4
+,,,10 to 14 (Probable Difference),18,21.4
+,,,>=15 (Definite Difference),6,7.1
+Adult-Self,Adult-Other,Stand,<=-15 (Definite Difference),35,7.4
+,,,-10 to -14 (Probable Difference),54,11.4
+,,,-9 to 9 (No Difference),314,66.2
+,,,10 to 14 (Probable Difference),41,8.6
+,,,>=15 (Definite Difference),30,6.3
+Adult-Self,Adult-Other,Clin,<=-15 (Definite Difference),1,0.9
+,,,-10 to -14 (Probable Difference),9,8
+,,,-9 to 9 (No Difference),88,78.6
+,,,10 to 14 (Probable Difference),6,5.4
+,,,>=15 (Definite Difference),8,7.1

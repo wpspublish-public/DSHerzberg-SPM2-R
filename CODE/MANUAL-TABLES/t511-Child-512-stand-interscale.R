@@ -19,11 +19,13 @@ Child_512_Home_Stand_output <- data.frame(cor(Child_512_Home_Stand_T_scores)) %>
   rename(scale = rowname) %>% 
   mutate_if(is.numeric, ~ round(., 3)) %>% 
   arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "Child-512-Home",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Child-512-Home",
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ nrow(Child_512_Home_Stand_T_scores),
+                  T ~ NA_integer_)
+  ) %>%
+  select(form, n, scale, scale_order)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
   
@@ -43,11 +45,13 @@ Child_512_School_Stand_output <- data.frame(cor(Child_512_School_Stand_T_scores)
   rename(scale = rowname) %>% 
   mutate_if(is.numeric, ~ round(., 3)) %>% 
   arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "Child-512-School",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Child-512-School",
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ nrow(Child_512_School_Stand_T_scores),
+                  T ~ NA_integer_)
+  ) %>%
+  select(form, n, scale, scale_order)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 

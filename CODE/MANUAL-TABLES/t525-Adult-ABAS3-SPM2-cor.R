@@ -32,7 +32,7 @@ Adult_Self_Stand_ABAS3_SPM2_T <- Adult_Self_Stand_ABAS3_T %>%
   select(IDNumber, contains("ss"), SOC_raw, VIS_raw, HEA_raw, TOU_raw, 
          TS_raw, BOD_raw, BAL_raw, PLA_raw, TOT_raw) %>% 
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
-  select(-r.Home_ss, -r.CommunityUse_ss)
+  select(-r.CommunityUse_ss)
 
 # read raw-to-t lookup tables, create lookup cols by scale
 Adult_Self_rawToT <-
@@ -99,7 +99,7 @@ Adult_Other_Stand_ABAS3_SPM2_T <- Adult_Other_Stand_ABAS3_T %>%
   select(IDNumber, contains("ss"), SOC_raw, VIS_raw, HEA_raw, TOU_raw, 
          TS_raw, BOD_raw, BAL_raw, PLA_raw, TOT_raw) %>% 
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
-  select(-r.Home_ss, -r.CommunityUse_ss)
+  select(-r.CommunityUse_ss)
 
 # read raw-to-t lookup tables, create lookup cols by scale
 Adult_Other_rawToT <-
@@ -202,7 +202,7 @@ Adult_Self_Clin_ABAS3_ss_SPM2_T <- Adult_Self_Clin_ABAS3_T %>%
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
   rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
   arrange(IDNumber) %>% 
-  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss, -r.Home_ss)
+  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss)
 
 rm(list = setdiff(ls(), ls(pattern = "ss|table")))
 
@@ -239,7 +239,7 @@ Adult_Other_Clin_ABAS3_ss_SPM2_T <- Adult_Other_Clin_ABAS3_T %>%
   rename_at(vars(contains("ss")), ~ str_c("r.", .)) %>% 
   rename_at(vars(contains("NT")), ~ str_c("c.", .)) %>% 
   arrange(IDNumber) %>% 
-  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss, -r.Home_ss)
+  select(IDNumber:r.Prac_ss, scale_order, -r.CommunityUse_ss)
 
 rm(list = setdiff(ls(), ls(pattern = "ss|table")))
 

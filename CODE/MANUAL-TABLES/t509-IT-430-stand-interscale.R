@@ -18,16 +18,19 @@ IT_49_Home_Stand_T_scores <- bind_rows(
   arrange(IDNumber) %>% 
   select(contains("_NT"))
 
-IT_49_Home_Stand_output <- data.frame(cor(IT_49_Home_Stand_T_scores)) %>% 
-  rownames_to_column() %>% 
-  rename(scale = rowname) %>% 
-  mutate_if(is.numeric, ~ round(., 3)) %>% 
-  arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "IT-49-Home",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
+IT_49_Home_Stand_output <-
+  data.frame(cor(IT_49_Home_Stand_T_scores)) %>%
+  rownames_to_column() %>%
+  rename(scale = rowname) %>%
+  mutate_if(is.numeric, ~ round(., 3)) %>%
+  arrange(match(scale, scale_order)) %>%
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "IT-49-Home",
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ nrow(IT_49_Home_Stand_T_scores),
+                  T ~ NA_integer_)
+  ) %>%
+  select(form, n, scale, scale_order)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
   
@@ -51,11 +54,13 @@ IT_1030_Home_Stand_output <- data.frame(cor(IT_1030_Home_Stand_T_scores)) %>%
   rename(scale = rowname) %>% 
   mutate_if(is.numeric, ~ round(., 3)) %>% 
   arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "IT-1030-Home",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "IT-1030-Home",
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ nrow(IT_1030_Home_Stand_T_scores),
+                  T ~ NA_integer_)
+  ) %>%
+  select(form, n, scale, scale_order)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
@@ -74,11 +79,13 @@ IT_Caregiver_Stand_output <- data.frame(cor(IT_Caregiver_Stand_T_scores)) %>%
   rename(scale = rowname) %>% 
   mutate_if(is.numeric, ~ round(., 3)) %>% 
   arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "IT-Caregiver",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "IT-Caregiver",
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ nrow(IT_Caregiver_Stand_T_scores),
+                  T ~ NA_integer_)
+  ) %>%
+  select(form, n, scale, scale_order)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 ###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------

@@ -19,11 +19,13 @@ Teen_1221_Home_Stand_output <- data.frame(cor(Teen_1221_Home_Stand_T_scores)) %>
   rename(scale = rowname) %>% 
   mutate_if(is.numeric, ~ round(., 3)) %>% 
   arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "Teen-1221-Home",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Teen-1221-Home",
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ nrow(Teen_1221_Home_Stand_T_scores),
+                  T ~ NA_integer_)
+  ) %>%
+  select(form, n, scale, scale_order)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
   
@@ -43,11 +45,13 @@ Teen_1221_School_Stand_output <- data.frame(cor(Teen_1221_School_Stand_T_scores)
   rename(scale = rowname) %>% 
   mutate_if(is.numeric, ~ round(., 3)) %>% 
   arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "Teen-1221-School",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Teen-1221-School",
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ nrow(Teen_1221_School_Stand_T_scores),
+                  T ~ NA_integer_)
+  ) %>%
+  select(form, n, scale, scale_order)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
@@ -67,11 +71,13 @@ Teen_1221_Self_Stand_output <- data.frame(cor(Teen_1221_Self_Stand_T_scores)) %>
   rename(scale = rowname) %>% 
   mutate_if(is.numeric, ~ round(., 3)) %>% 
   arrange(match(scale, scale_order)) %>% 
-  mutate(form = case_when(
-    scale =="SOC_NT" ~ "Teen-1221-Self",
-    T ~ NA_character_
-  )) %>% 
-  select(form, scale, scale_order)
+  mutate(
+    form = case_when(rownames(.) == "1" ~ "Teen-1221-Self",
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ nrow(Teen_1221_Self_Stand_T_scores),
+                  T ~ NA_integer_)
+  ) %>%
+  select(form, n, scale, scale_order)
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 

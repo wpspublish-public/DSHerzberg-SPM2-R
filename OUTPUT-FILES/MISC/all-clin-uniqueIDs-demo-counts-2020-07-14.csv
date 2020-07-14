@@ -1,0 +1,25 @@
+Variable,Category,n,sample_pct
+Gender,Male,412,64.5
+,Female,227,35.5
+age_level,Infant-Toddler,54,8.5
+,Preschool,108,16.9
+,Child,227,35.5
+,Adolescent,127,19.9
+,Adult,123,19.2
+Ethnicity,Hispanic,105,16.4
+,Asian,14,2.2
+,Black,81,12.7
+,White,405,63.4
+,AmericanIndAlaskanNat,4,0.6
+,NativeHawPacIsl,1,0.2
+,MultiRacial,20,3.1
+,Other,9,1.4
+educ,(missing),29,4.5
+,Did not complete high school (no diploma),23,3.6
+,High school graduate (including GED),115,18
+,Some college or associate degree,176,27.5
+,Bachelor's degree or higher,296,46.3
+Region,northeast,86,13.5
+,midwest,75,11.7
+,south,372,58.2
+,west,106,16.6

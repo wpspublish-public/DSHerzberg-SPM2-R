@@ -4,8 +4,10 @@ suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(data.table))
 suppressMessages(library(psych))
 ## PRESHOOL 25 HOME STAND--------------------------------------------------------------
-scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
-                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+# scale_order_old <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
+#                  "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+scale_order <- c("VIS_NT", "HEA_NT", "TOU_NT", 
+                 "TS_NT", "BOD_NT", "BAL_NT", "TOT_NT", "PLA_NT", "SOC_NT")
 
 Preschool_25_Home_Stand_T_scores <- bind_rows(
   suppressMessages(as_tibble(read_csv(
@@ -29,13 +31,13 @@ Preschool_25_Home_Stand_output <- data.frame(cor(Preschool_25_Home_Stand_T_score
     n = case_when(rownames(.) == "1" ~ nrow(Preschool_25_Home_Stand_T_scores),
                   T ~ NA_integer_)
   ) %>%
-  select(form, n, scale, scale_order)
+  select(form, n, scale, all_of(scale_order))
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
   
 ## PRESCHOOL 25 SCHOOL STAND----------------------------------------------------------
-scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
-                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+scale_order <- c("VIS_NT", "HEA_NT", "TOU_NT", 
+                 "TS_NT", "BOD_NT", "BAL_NT", "TOT_NT", "PLA_NT", "SOC_NT")
 
 Preschool_25_School_Stand_T_scores <- bind_rows(
   suppressMessages(as_tibble(read_csv(
@@ -59,7 +61,7 @@ Preschool_25_School_Stand_output <- data.frame(cor(Preschool_25_School_Stand_T_s
     n = case_when(rownames(.) == "1" ~ nrow(Preschool_25_School_Stand_T_scores),
                   T ~ NA_integer_)
   ) %>%
-  select(form, n, scale, scale_order)
+  select(form, n, scale, all_of(scale_order))
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 

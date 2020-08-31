@@ -4,8 +4,10 @@ suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(data.table))
 suppressMessages(library(psych))
 ## IT 49 HOME STAND--------------------------------------------------------------
-scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
-                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+# scale_order_old <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
+#                      "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+scale_order <- c("VIS_NT", "HEA_NT", "TOU_NT", 
+                     "TS_NT", "BOD_NT", "BAL_NT", "TOT_NT", "PLA_NT", "SOC_NT")
 
 IT_49_Home_Stand_T_scores <- bind_rows(
   suppressMessages(as_tibble(read_csv(
@@ -30,13 +32,13 @@ IT_49_Home_Stand_output <-
     n = case_when(rownames(.) == "1" ~ nrow(IT_49_Home_Stand_T_scores),
                   T ~ NA_integer_)
   ) %>%
-  select(form, n, scale, scale_order)
+  select(form, n, scale, all_of(scale_order))
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
   
 ## IT 1030 HOME STAND----------------------------------------------------------
-scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
-                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+scale_order <- c("VIS_NT", "HEA_NT", "TOU_NT", 
+                 "TS_NT", "BOD_NT", "BAL_NT", "TOT_NT", "PLA_NT", "SOC_NT")
 
 IT_1030_Home_Stand_T_scores <- bind_rows(
   suppressMessages(as_tibble(read_csv(
@@ -60,13 +62,13 @@ IT_1030_Home_Stand_output <- data.frame(cor(IT_1030_Home_Stand_T_scores)) %>%
     n = case_when(rownames(.) == "1" ~ nrow(IT_1030_Home_Stand_T_scores),
                   T ~ NA_integer_)
   ) %>%
-  select(form, n, scale, scale_order)
+  select(form, n, scale, all_of(scale_order))
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
 ## IT CAREGIVER STAND----------------------------------------------------------
-scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
-                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+scale_order <- c("VIS_NT", "HEA_NT", "TOU_NT", 
+                 "TS_NT", "BOD_NT", "BAL_NT", "TOT_NT", "PLA_NT", "SOC_NT")
 
 IT_Caregiver_Stand_T_scores <-
   suppressMessages(as_tibble(read_csv(
@@ -85,7 +87,7 @@ IT_Caregiver_Stand_output <- data.frame(cor(IT_Caregiver_Stand_T_scores)) %>%
     n = case_when(rownames(.) == "1" ~ nrow(IT_Caregiver_Stand_T_scores),
                   T ~ NA_integer_)
   ) %>%
-  select(form, n, scale, scale_order)
+  select(form, n, scale, all_of(scale_order))
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 ###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------

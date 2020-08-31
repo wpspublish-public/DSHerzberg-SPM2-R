@@ -4,8 +4,10 @@ suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(data.table))
 suppressMessages(library(psych))
 ## ADULT SELF STAND--------------------------------------------------------------
-scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
-                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+# scale_order_old <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
+#                  "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+scale_order <- c("VIS_NT", "HEA_NT", "TOU_NT", 
+                 "TS_NT", "BOD_NT", "BAL_NT", "TOT_NT", "PLA_NT", "SOC_NT")
 
 Adult_Self_Stand_T_scores <-
   suppressMessages(as_tibble(read_csv(
@@ -25,13 +27,13 @@ Adult_Self_Stand_output <- data.frame(cor(Adult_Self_Stand_T_scores)) %>%
     n = case_when(rownames(.) == "1" ~ nrow(Adult_Self_Stand_T_scores),
                   T ~ NA_integer_)
   ) %>%
-  select(form, n, scale, scale_order)
+  select(form, n, scale, all_of(scale_order))
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
 ## ADULT OTHER STAND--------------------------------------------------------------
-scale_order <- c("SOC_NT", "VIS_NT", "HEA_NT", "TOU_NT", 
-                 "TS_NT", "BOD_NT", "BAL_NT", "PLA_NT", "TOT_NT")
+scale_order <- c("VIS_NT", "HEA_NT", "TOU_NT", 
+                 "TS_NT", "BOD_NT", "BAL_NT", "TOT_NT", "PLA_NT", "SOC_NT")
 
 Adult_Other_Stand_T_scores <-
   suppressMessages(as_tibble(read_csv(
@@ -51,7 +53,7 @@ Adult_Other_Stand_output <- data.frame(cor(Adult_Other_Stand_T_scores)) %>%
     n = case_when(rownames(.) == "1" ~ nrow(Adult_Other_Stand_T_scores),
                   T ~ NA_integer_)
   ) %>%
-  select(form, n, scale, scale_order)
+  select(form, n, scale, all_of(scale_order))
 
 rm(list = setdiff(ls(), ls(pattern = "output")))
 

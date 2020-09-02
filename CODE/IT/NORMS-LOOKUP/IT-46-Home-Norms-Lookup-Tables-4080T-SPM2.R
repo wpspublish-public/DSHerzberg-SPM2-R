@@ -12,9 +12,13 @@ IT_46_Home <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/IT/ALLDATA-DESAMP-NORMS-INPUT/IT-49-Home-allData-desamp.csv")
   ))) %>% 
-filter(AgeInMonths <=6)
+filter(AgeInMonths <=6) %>% 
+  relocate(c(VIS_raw, HEA_raw, TOU_raw, TS_raw, BOD_raw, BAL_raw, 
+             TOT_raw, PLA_raw, SOC_raw), .after = "age_range")
 
-score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+# score_names_old <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+score_names <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "TOT", "PLA", "SOC")
+subscale_names <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA", "SOC")
 
 anyDuplicated(IT_46_Home$IDNumber)
 
@@ -220,8 +224,6 @@ TOT_lookup <- IT_46_Home %>% group_by(
   )
 
 # Repeat above for subscale raw-to-T columns.
-subscale_names <- score_names[2:9]
-
 subscale_lookup <- map(
   subscale_names, 
   ~ IT_46_Home %>% group_by(
@@ -256,7 +258,8 @@ subscale_lookup <- map(
   )
 
 # join TOT and subscale columns
-all_lookup <- full_join(TOT_lookup, subscale_lookup, by = 'raw')
+all_lookup <- full_join(TOT_lookup, subscale_lookup, by = 'raw') %>% 
+  relocate(TOT_NT, .after = "BAL_NT")
 
 all_lookup_col_names <- c(paste0(score_names, '_raw'))
 

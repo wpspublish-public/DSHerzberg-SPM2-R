@@ -13,16 +13,16 @@ score_names <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "TOT", "PLA", "SOC")
 subscale_names <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA", "SOC")
 
 
-
-
 # Repeat above for subscale raw-to-T columns.
 subscale_lookup <- map(
   subscale_names, 
-  
-
   
   
   # join TOT and subscale columns
   all_lookup <- full_join(TOT_lookup, subscale_lookup, by = 'raw') %>% 
     relocate(TOT_NT, .after = "BAL_NT")
+  
+  
+  select(T, all_of(all_lookup_col_names)) %>% 
+    
   

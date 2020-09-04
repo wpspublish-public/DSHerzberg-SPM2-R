@@ -22,9 +22,13 @@ IT_Caregiver <- bind_rows(
   IT_Caregiver_Eng,
   IT_Caregiver_Sp
 ) %>% 
-  arrange(IDNumber)
+  arrange(IDNumber) %>% 
+  relocate(c(VIS_raw, HEA_raw, TOU_raw, TS_raw, BOD_raw, BAL_raw, 
+             TOT_raw, PLA_raw, SOC_raw), .after = "age_range")
 
-score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+# score_names_old <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
+score_names <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "TOT", "PLA", "SOC")
+subscale_names <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA", "SOC")
 
 # Check for any dupIDs (anyDuplicated() returns row number of FIRST dup ID encountered)
 anyDuplicated(IT_Caregiver$IDNumber)
@@ -250,8 +254,6 @@ TOT_lookup <- IT_Caregiver %>% group_by(
   )
 
 # Repeat above for subscale raw-to-T columns.
-subscale_names <- score_names[2:9]
-
 subscale_lookup <- map(
   subscale_names, 
   ~ IT_Caregiver %>% group_by(
@@ -286,7 +288,8 @@ subscale_lookup <- map(
   )
 
 # join TOT and subscale columns
-all_lookup <- full_join(TOT_lookup, subscale_lookup, by = 'raw')
+all_lookup <- full_join(TOT_lookup, subscale_lookup, by = 'raw') %>% 
+  relocate(TOT_NT, .after = "BAL_NT")
 
 all_lookup_col_names <- c(paste0(score_names, '_raw'))
 
@@ -338,7 +341,7 @@ all_lookup_pub <- all_lookup %>%
   # rename with desired final column names
   rename_at(vars(ends_with('_NT')), ~ gsub("_NT", "_raw", .)) %>% 
   # order columns left-to-right
-  select(T, all_lookup_col_names) %>% 
+  select(T, all_of(all_lookup_col_names)) %>% 
   # drop row where T == NA
   filter(!is.na(T))
 

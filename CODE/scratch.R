@@ -1,28 +1,33 @@
-# READ FINALIZED STAND SAMPLE ---------------------------------------------
+suppressMessages(library(here))
+suppressMessages(library(tidyverse))
 
-IT_46_Home <-
-  suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/IT/ALLDATA-DESAMP-NORMS-INPUT/IT-49-Home-allData-desamp.csv")
-  ))) %>% 
-  filter(AgeInMonths <=6) %>% 
-  relocate(c(VIS_raw, HEA_raw, TOU_raw, TS_raw, BOD_raw, BAL_raw, 
-             TOT_raw, PLA_raw, SOC_raw), .after = "age_range")
+form <- c(
+  "IT-home", "IT-caregiver", 
+  "preschool-home", "preschool-school", 
+  "child-home", "child-school",
+  "teen-home", "teen-school", "teen-self", 
+  "adult-self", "adult-other"
+  )
 
-# score_names_old <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
-score_names <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "TOT", "PLA", "SOC")
-subscale_names <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA", "SOC")
+scale <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "TOT", "PLA", "SOC")
 
+file_prefix <- c(
+  "IT-46-Home", "IT-79-Home", "IT-1020-Home", "IT-2130-Home", "IT-Caregiver", 
+  "Preschool-24-Home", "Preschool-5-Home", "Preschool-24-School", "Preschool-5-School",  
+  "Child-512-Home", "Child-512-School",
+  "Teen-1221-Home", "Teen-1221-School", "Teen-1221-Self",  
+  "Adult-Self", "Adult-Other"
+  )
 
-# Repeat above for subscale raw-to-T columns.
-subscale_lookup <- map(
-  subscale_names, 
-  
-  
-  # join TOT and subscale columns
-  all_lookup <- full_join(TOT_lookup, subscale_lookup, by = 'raw') %>% 
-    relocate(TOT_NT, .after = "BAL_NT")
-  
-  
-  select(T, all_of(all_lookup_col_names)) %>% 
-    
-  
+file_name <- map_chr(file_prefix, ~ str_c(.x, "-raw-T-lookup-4080T.csv"))
+
+lookup <- file_name %>% map(
+  ~ suppressMessages(read_csv(
+    here(
+      str_c("INPUT-FILES/OES-TABLES/", .x)
+    )
+  ))
+) %>% 
+  set_names(file_prefix) %>% 
+  bind_rows(.id = "file")
+

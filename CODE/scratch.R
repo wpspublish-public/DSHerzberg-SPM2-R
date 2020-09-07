@@ -41,7 +41,20 @@ lookup <- file_name %>% map(
   ))
 ) %>% 
   set_names(form_IDs$file) %>% 
-  bind_rows(.id = "file")
+  bind_rows(.id = "file") %>% 
+  left_join(x = form_IDs, by = "file") %>% 
+  select(-file) %>% 
+  rename_with(
+    ~ str_replace_all( 
+      ., "_NT", ""
+    ),
+    VIS_NT:SOC_NT
+  ) %>% 
+  pivot_longer(
+    VIS:SOC,
+    names_to = "scale",
+    values_to = "t_score"
+  )
 
 
 

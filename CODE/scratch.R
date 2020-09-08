@@ -9,7 +9,12 @@ form <- c(
   "adult-self", "adult-other"
   )
 
-scale <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "TOT", "PLA", "SOC")
+form_order <- c("IT", "Preschool", "Child", "Teen", "Adult")
+environ_order <- c("Home", "Caregiver", "School", "Self", "Other")
+age_group_order <- c("4-6 months", "7-9 months", "10-20 months", 
+                     "21-30 months", NA_character_, "2-4 years", "5 years", 
+                     "5-12 years", "12-21 years", "Adult")
+scale_order <- c("VIS", "HEA", "TOU", "TS", "BOD", "BAL", "TOT", "PLA", "SOC")
 
 form_IDs <- tribble(
   ~file, ~form, ~environ, ~age_group,
@@ -43,7 +48,7 @@ lookup <- file_name %>% map(
   set_names(form_IDs$file) %>% 
   bind_rows(.id = "file") %>% 
   left_join(x = form_IDs, by = "file") %>% 
-  select(-file) %>% 
+  select(-file) %>%
   rename_with(
     ~ str_replace_all( 
       ., "_NT", ""
@@ -54,7 +59,20 @@ lookup <- file_name %>% map(
     VIS:SOC,
     names_to = "scale",
     values_to = "t_score"
-  )
+  ) %>% 
+  relocate(scale, .after = "age_group") %>% 
+  arrange(
+    match(form, all_of(form_order)), 
+    match(environ, all_of(environ_order)), 
+    match(age_group, all_of(age_group_order)), 
+    match(scale, all_of(scale_order)),
+    desc(raw)
+    ) %>% 
+  drop_na(t_score)
+
+
+
+
 
 
 

@@ -91,7 +91,7 @@ ART_TOT_freq <- ART_data %>%
   select(-diff)
 
 # Descriptives table
-ART_TOT_desc <- ART_data %>% 
+ART_TOT_desc_1row <- ART_data %>% 
   summarise(total_n = n(),
             median_TOT_raw = round(median(TOT_raw), 2),
             mean_TOT_raw = round(mean(TOT_raw), 2),
@@ -99,13 +99,13 @@ ART_TOT_desc <- ART_data %>%
 
 # Add enough rows to descriptive table so that it can be combined with freq
 # table into single summary table.
-ART_TOT_desc[nrow(ART_TOT_desc) + (nrow(ART_TOT_freq) - 1),] <- NA
+ART_TOT_desc <- ART_TOT_desc_1row %>% add_row(total_n = rep(NA_integer_, nrow(ART_TOT_freq) - 1))
 ART_summary <- bind_cols(ART_TOT_freq, ART_TOT_desc)
 
 # write summary table
 write_csv(
   ART_summary,
-  here('OUTPUT-FILES/CHILD/SCHOOL-ENVIRON/ART-cutoff-summary.csv'),
+  here('OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/ART-cutoff-summary.csv'),
   na = ''
 )
 
@@ -198,7 +198,7 @@ BUS_TOT_freq <- BUS_data %>%
   select(-diff)
 
 # Descriptives table
-BUS_TOT_desc <- BUS_data %>% 
+BUS_TOT_desc_1row <- BUS_data %>% 
   summarise(total_n = n(),
             median_TOT_raw = round(median(TOT_raw), 2),
             mean_TOT_raw = round(mean(TOT_raw), 2),
@@ -206,13 +206,13 @@ BUS_TOT_desc <- BUS_data %>%
 
 # Add enough rows to descriptive table so that it can be combined with freq
 # table into single summary table.
-BUS_TOT_desc[nrow(BUS_TOT_desc) + (nrow(BUS_TOT_freq) - 1),] <- NA
+BUS_TOT_desc <- BUS_TOT_desc_1row %>% add_row(total_n = rep(NA_integer_, nrow(BUS_TOT_freq) - 1))
 BUS_summary <- bind_cols(BUS_TOT_freq, BUS_TOT_desc)
 
 # write summary table
 write_csv(
   BUS_summary,
-  here('OUTPUT-FILES/CHILD/SCHOOL-ENVIRON/BUS-cutoff-summary.csv'),
+  here('OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/BUS-cutoff-summary.csv'),
   na = ''
 )
 
@@ -302,7 +302,7 @@ CAF_TOT_freq <- CAF_data %>%
   select(-diff)
 
 # Descriptives table
-CAF_TOT_desc <- CAF_data %>% 
+CAF_TOT_desc_1row <- CAF_data %>% 
   summarise(total_n = n(),
             median_TOT_raw = round(median(TOT_raw), 2),
             mean_TOT_raw = round(mean(TOT_raw), 2),
@@ -310,13 +310,13 @@ CAF_TOT_desc <- CAF_data %>%
 
 # Add enough rows to descriptive table so that it can be combined with freq
 # table into single summary table.
-CAF_TOT_desc[nrow(CAF_TOT_desc) + (nrow(CAF_TOT_freq) - 1),] <- NA
+CAF_TOT_desc <- CAF_TOT_desc_1row %>% add_row(total_n = rep(NA_integer_, nrow(CAF_TOT_freq) - 1))
 CAF_summary <- bind_cols(CAF_TOT_freq, CAF_TOT_desc)
 
 # write summary table
 write_csv(
   CAF_summary,
-  here('OUTPUT-FILES/CHILD/SCHOOL-ENVIRON/CAF-cutoff-summary.csv'),
+  here('OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/CAF-cutoff-summary.csv'),
   na = ''
 )
 
@@ -405,7 +405,7 @@ MUS_TOT_freq <- MUS_data %>%
   select(-diff)
 
 # Descriptives table
-MUS_TOT_desc <- MUS_data %>% 
+MUS_TOT_desc_1row <- MUS_data %>% 
   summarise(total_n = n(),
             median_TOT_raw = round(median(TOT_raw), 2),
             mean_TOT_raw = round(mean(TOT_raw), 2),
@@ -413,13 +413,13 @@ MUS_TOT_desc <- MUS_data %>%
 
 # Add enough rows to descriptive table so that it can be combined with freq
 # table into single summary table.
-MUS_TOT_desc[nrow(MUS_TOT_desc) + (nrow(MUS_TOT_freq) - 1),] <- NA
+MUS_TOT_desc <- MUS_TOT_desc_1row %>% add_row(total_n = rep(NA_integer_, nrow(MUS_TOT_freq) - 1))
 MUS_summary <- bind_cols(MUS_TOT_freq, MUS_TOT_desc)
 
 # write summary table
 write_csv(
   MUS_summary,
-  here('OUTPUT-FILES/CHILD/SCHOOL-ENVIRON/MUS-cutoff-summary.csv'),
+  here('OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/MUS-cutoff-summary.csv'),
   na = ''
 )
 
@@ -509,7 +509,7 @@ PHY_TOT_freq <- PHY_data %>%
   select(-diff)
 
 # Descriptives table
-PHY_TOT_desc <- PHY_data %>% 
+PHY_TOT_desc_1row <- PHY_data %>% 
   summarise(total_n = n(),
             median_TOT_raw = round(median(TOT_raw), 2),
             mean_TOT_raw = round(mean(TOT_raw), 2),
@@ -517,13 +517,13 @@ PHY_TOT_desc <- PHY_data %>%
 
 # Add enough rows to descriptive table so that it can be combined with freq
 # table into single summary table.
-PHY_TOT_desc[nrow(PHY_TOT_desc) + (nrow(PHY_TOT_freq) - 1),] <- NA
+PHY_TOT_desc <- PHY_TOT_desc_1row %>% add_row(total_n = rep(NA_integer_, nrow(PHY_TOT_freq) - 1))
 PHY_summary <- bind_cols(PHY_TOT_freq, PHY_TOT_desc)
 
 # write summary table
 write_csv(
   PHY_summary,
-  here('OUTPUT-FILES/CHILD/SCHOOL-ENVIRON/PHY-cutoff-summary.csv'),
+  here('OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/PHY-cutoff-summary.csv'),
   na = ''
 )
 
@@ -612,7 +612,7 @@ REC_TOT_freq <- REC_data %>%
   select(-diff)
 
 # Descriptives table
-REC_TOT_desc <- REC_data %>% 
+REC_TOT_desc_1row <- REC_data %>% 
   summarise(total_n = n(),
             median_TOT_raw = round(median(TOT_raw), 2),
             mean_TOT_raw = round(mean(TOT_raw), 2),
@@ -620,13 +620,13 @@ REC_TOT_desc <- REC_data %>%
 
 # Add enough rows to descriptive table so that it can be combined with freq
 # table into single summary table.
-REC_TOT_desc[nrow(REC_TOT_desc) + (nrow(REC_TOT_freq) - 1),] <- NA
+REC_TOT_desc <- REC_TOT_desc_1row %>% add_row(total_n = rep(NA_integer_, nrow(REC_TOT_freq) - 1))
 REC_summary <- bind_cols(REC_TOT_freq, REC_TOT_desc)
 
 # write summary table
 write_csv(
   REC_summary,
-  here('OUTPUT-FILES/CHILD/SCHOOL-ENVIRON/REC-cutoff-summary.csv'),
+  here('OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/REC-cutoff-summary.csv'),
   na = ''
 )
 

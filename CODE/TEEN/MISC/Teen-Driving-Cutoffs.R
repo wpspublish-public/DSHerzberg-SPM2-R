@@ -160,7 +160,7 @@ teen_driving_self_TOT_freq <- teen_driving_data_self %>%
   select(-diff)
 
 # Descriptives table
-teen_driving_self_TOT_desc <- teen_driving_data_self %>% 
+teen_driving_self_TOT_desc_1row <- teen_driving_data_self %>% 
   summarise(total_n = n(),
             median_TOT_raw = round(median(TOT_raw), 2),
             mean_TOT_raw = round(mean(TOT_raw), 2),
@@ -168,13 +168,14 @@ teen_driving_self_TOT_desc <- teen_driving_data_self %>%
 
 # Add enough rows to descriptive table so that it can be combined with freq
 # table into single summary table.
-teen_driving_self_TOT_desc[nrow(teen_driving_self_TOT_desc) + (nrow(teen_driving_self_TOT_freq) - 1),] <- NA
+teen_driving_self_TOT_desc <- teen_driving_self_TOT_desc_1row %>% 
+  add_row(total_n = rep(NA_integer_, nrow(teen_driving_self_TOT_freq) - 1))
 teen_driving_self_summary <- bind_cols(teen_driving_self_TOT_freq, teen_driving_self_TOT_desc)
 
 # write summary table
 write_csv(
   teen_driving_self_summary,
-  here('OUTPUT-FILES/TEEN/MISC/teen-driving-self-cutoff-summary.csv'),
+  here('OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/teen-driving-self-cutoff-summary.csv'),
   na = ''
 )
 
@@ -200,7 +201,7 @@ teen_driving_home_TOT_freq <- teen_driving_data_home %>%
   select(-diff)
 
 # Descriptives table
-teen_driving_home_TOT_desc <- teen_driving_data_home %>% 
+teen_driving_home_TOT_desc_1row <- teen_driving_data_home %>% 
   summarise(total_n = n(),
             median_TOT_raw = round(median(TOT_raw), 2),
             mean_TOT_raw = round(mean(TOT_raw), 2),
@@ -208,13 +209,14 @@ teen_driving_home_TOT_desc <- teen_driving_data_home %>%
 
 # Add enough rows to descriptive table so that it can be combined with freq
 # table into single summary table.
-teen_driving_home_TOT_desc[nrow(teen_driving_home_TOT_desc) + (nrow(teen_driving_home_TOT_freq) - 1),] <- NA
+teen_driving_home_TOT_desc <- teen_driving_home_TOT_desc_1row %>% 
+  add_row(total_n = rep(NA_integer_, nrow(teen_driving_home_TOT_freq) - 1))
 teen_driving_home_summary <- bind_cols(teen_driving_home_TOT_freq, teen_driving_home_TOT_desc)
 
 # write summary table
 write_csv(
   teen_driving_home_summary,
-  here('OUTPUT-FILES/TEEN/MISC/teen-driving-home-cutoff-summary.csv'),
+  here('OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/teen-driving-home-cutoff-summary.csv'),
   na = ''
 )
 

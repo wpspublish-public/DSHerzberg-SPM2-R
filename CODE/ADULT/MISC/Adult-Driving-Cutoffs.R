@@ -157,7 +157,7 @@ adult_driving_self_TOT_freq <- adult_driving_data_self %>%
   select(-diff)
 
 # Descriptives table
-adult_driving_self_TOT_desc <- adult_driving_data_self %>% 
+adult_driving_self_TOT_desc_1row <- adult_driving_data_self %>% 
   summarise(total_n = n(),
             median_TOT_raw = round(median(TOT_raw), 2),
             mean_TOT_raw = round(mean(TOT_raw), 2),
@@ -165,13 +165,14 @@ adult_driving_self_TOT_desc <- adult_driving_data_self %>%
 
 # Add enough rows to descriptive table so that it can be combined with freq
 # table into single summary table.
-adult_driving_self_TOT_desc[nrow(adult_driving_self_TOT_desc) + (nrow(adult_driving_self_TOT_freq) - 1),] <- NA
+adult_driving_self_TOT_desc <- adult_driving_self_TOT_desc_1row %>% 
+  add_row(total_n = rep(NA_integer_, nrow(adult_driving_self_TOT_freq) - 1))
 adult_driving_self_summary <- bind_cols(adult_driving_self_TOT_freq, adult_driving_self_TOT_desc)
 
 # write summary table
 write_csv(
   adult_driving_self_summary,
-  here('OUTPUT-FILES/ADULT/MISC/adult-driving-self-cutoff-summary.csv'),
+  here('OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/adult-driving-self-cutoff-summary.csv'),
   na = ''
 )
 
@@ -197,7 +198,7 @@ adult_driving_other_TOT_freq <- adult_driving_data_other %>%
   select(-diff)
 
 # Descriptives table
-adult_driving_other_TOT_desc <- adult_driving_data_other %>% 
+adult_driving_other_TOT_desc_1row <- adult_driving_data_other %>% 
   summarise(total_n = n(),
             median_TOT_raw = round(median(TOT_raw), 2),
             mean_TOT_raw = round(mean(TOT_raw), 2),
@@ -205,13 +206,14 @@ adult_driving_other_TOT_desc <- adult_driving_data_other %>%
 
 # Add enough rows to descriptive table so that it can be combined with freq
 # table into single summary table.
-adult_driving_other_TOT_desc[nrow(adult_driving_other_TOT_desc) + (nrow(adult_driving_other_TOT_freq) - 1),] <- NA
+adult_driving_other_TOT_desc <- adult_driving_other_TOT_desc_1row %>% 
+  add_row(total_n = rep(NA_integer_, nrow(adult_driving_other_TOT_freq) - 1))
 adult_driving_other_summary <- bind_cols(adult_driving_other_TOT_freq, adult_driving_other_TOT_desc)
 
 # write summary table
 write_csv(
   adult_driving_other_summary,
-  here('OUTPUT-FILES/ADULT/MISC/adult-driving-other-cutoff-summary.csv'),
+  here('OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/adult-driving-other-cutoff-summary.csv'),
   na = ''
 )
 

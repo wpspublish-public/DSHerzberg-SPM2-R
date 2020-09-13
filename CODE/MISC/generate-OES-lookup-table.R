@@ -114,7 +114,7 @@ file_name_school_environ <- map_chr(form_IDs_school_environ$file, ~ str_c(.x, "-
 lookup_school_environ <- file_name_school_environ %>% map(
   ~ suppressMessages(read_csv(
     here(
-      str_c("OUTPUT-FILES/CHILD/SCHOOL-ENVIRON/", .x)
+      str_c("OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/", .x)
     )
   ))
 ) %>% 

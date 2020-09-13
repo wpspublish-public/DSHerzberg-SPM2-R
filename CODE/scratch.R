@@ -1,7 +1,10 @@
+suppressMessages(library(here))
+suppressMessages(library(tidyverse))
 
   
   
  
-test <- BUS_TOT_desc %>% add_row(total_n = rep(NA_integer_, nrow(BUS_TOT_freq) - 1)) 
+test <- tibble(TOT_raw = 15:60) %>% 
+  left_join(lookup_school_environ[[1]], by = "TOT_raw")
 
 

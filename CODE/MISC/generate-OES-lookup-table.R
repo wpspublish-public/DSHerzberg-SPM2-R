@@ -126,7 +126,20 @@ lookup_school_environ <- file_name_school_environ %>% map(~ suppressMessages(rea
   set_names(form_IDs_school_environ$file) %>%
   bind_rows(.id = "file") %>%
   select(file, TOT_raw, cutoff) %>%
+  # At this point the data object doesn't have all possible values for TOT_raw,
+  # because of the nature of the input files. complete() is used to fill in the
+  # missing rows, so that all possible values of TOT_raw, from 15 thru 60, are
+  # represented in rows.
   complete(file, TOT_raw = 15:60) %>%
+  # At this point, the cutoff column has a value only in the row corresponding
+  # to the actual cutoff raw score. To give all rows above and below the cutoff
+  # score a value on the interp_range variable, we first group the object by
+  # file, so that subsequent operations run "within" row groups defined by their
+  # value on file. We then use mutate(), across(), and fill_run(), to extend the
+  # existing value of the cutoff col to all raw score values above the existing
+  # value. Thus, within each file group, rows are now either "cutoff" or NA in
+  # the cutoff column, which represents those raw scores being either above or
+  # below the cutoff value.
   group_by(file) %>%
   mutate(across(cutoff,
                 ~ runner::fill_run(.))) %>%

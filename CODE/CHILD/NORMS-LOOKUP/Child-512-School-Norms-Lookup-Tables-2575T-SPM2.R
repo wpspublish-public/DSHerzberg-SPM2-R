@@ -329,7 +329,7 @@ all_lookup_pub <- all_lookup %>%
   # rename with desired final column names
   rename_at(vars(ends_with('_NT')), ~ gsub("_NT", "_raw", .)) %>% 
   # order columns left-to-right
-  select(T, all_lookup_col_names)
+  select(T, all_of(all_lookup_col_names))
 
 # write final print format raw-to-T lookup table to .csv
 write_csv(all_lookup_pub, here(

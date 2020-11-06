@@ -15,7 +15,7 @@ Child_512_Home_clin <-
     ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Child_512_Home,
+    all_of(All_items_Child_512_Home),
     q0010_other
   ) %>%
   rename(clin_dx = q0010_other) %>% 
@@ -122,7 +122,7 @@ Child_512_School_clin <-
     # ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Child_512_School,
+    all_of(All_items_Child_512_School),
     q0010_other
   ) %>%
   rename(clin_dx = q0010_other) %>% 

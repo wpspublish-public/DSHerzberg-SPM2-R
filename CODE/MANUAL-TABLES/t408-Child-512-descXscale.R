@@ -63,12 +63,16 @@ Child_512_Home_Clin_raw_desc <-
 
 # Combine stand, clin columns, add ES column
 
-Child_512_Home_raw_desc <- bind_cols(Child_512_Home_Stand_raw_desc,
-                                 Child_512_Home_Clin_raw_desc) %>%
-  select(-scale1) %>%
-  mutate(ES = abs((mean_Stand - mean_Clin) / ((sd_Stand + sd_Clin / 2)))) %>%
-  mutate_at(vars(mean_Stand, sd_Stand, mean_Clin, sd_Clin, ES), ~
-              (round(., 2)))
+Child_512_Home_raw_desc <- left_join(Child_512_Home_Stand_raw_desc,
+                                     Child_512_Home_Clin_raw_desc, by = "scale") %>%
+  select(-form.y) %>%
+  rename(form = form.x) %>% 
+  mutate(across(form, ~ case_when(.x == "Home Form Stand" ~ "Home Form")),
+         across(c(n_Stand, n_Clin), ~ case_when(row_number(.) == 1 ~ .x,
+                                                T ~ NA_real_)), 
+         ES = abs((mean_Stand - mean_Clin) / ((sd_Stand + sd_Clin / 2))), 
+         across(c(mean_Stand, sd_Stand, mean_Clin, sd_Clin, ES), ~
+              (round(., 2))))
 
 rm(list = ls(pattern = 'Clin'))
 rm(list = ls(pattern = 'Stand'))
@@ -135,12 +139,23 @@ Child_512_School_Clin_raw_desc <-
 
 # Combine stand, clin columns, add ES column
 
-Child_512_School_raw_desc <- bind_cols(Child_512_School_Stand_raw_desc,
-                                          Child_512_School_Clin_raw_desc) %>%
-  select(-scale1) %>%
-  mutate(ES = abs((mean_Stand - mean_Clin) / ((sd_Stand + sd_Clin / 2)))) %>%
-  mutate_at(vars(mean_Stand, sd_Stand, mean_Clin, sd_Clin, ES), ~
-              (round(., 2)))
+# Child_512_School_raw_desc <- bind_cols(Child_512_School_Stand_raw_desc,
+#                                           Child_512_School_Clin_raw_desc) %>%
+#   select(-scale1) %>%
+#   mutate(ES = abs((mean_Stand - mean_Clin) / ((sd_Stand + sd_Clin / 2)))) %>%
+#   mutate_at(vars(mean_Stand, sd_Stand, mean_Clin, sd_Clin, ES), ~
+#               (round(., 2)))
+
+Child_512_School_raw_desc <- left_join(Child_512_School_Stand_raw_desc,
+                                     Child_512_School_Clin_raw_desc, by = "scale") %>%
+  select(-form.y) %>%
+  rename(form = form.x) %>% 
+  mutate(across(form, ~ case_when(.x == "School Form Stand" ~ "School Form")),
+         across(c(n_Stand, n_Clin), ~ case_when(row_number(.) == 1 ~ .x,
+                                                T ~ NA_real_)), 
+         ES = abs((mean_Stand - mean_Clin) / ((sd_Stand + sd_Clin / 2))), 
+         across(c(mean_Stand, sd_Stand, mean_Clin, sd_Clin, ES), ~
+                  (round(., 2))))
 
 rm(list = ls(pattern = 'Clin'))
 rm(list = ls(pattern = 'Stand'))

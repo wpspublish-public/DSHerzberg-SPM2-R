@@ -199,7 +199,7 @@ lookup_all <- bind_rows(lookup,
  write_csv(
    lookup_all,
    here(
-     "OUTPUT-FILES/SCHOOL-ENVIRON-DRIVING/SPM2-OES-norms-lookup.csv"
+     "OUTPUT-FILES/OES-LOOKUP/SPM2-OES-norms-lookup.csv"
    ),
    na = ""
  )

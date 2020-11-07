@@ -22,7 +22,7 @@ IT_49_Home_Clin_shared_items <- bind_rows(
   )))
 ) %>% 
   arrange(IDNumber) %>% 
-  select(IT_49_names_item_cols_shared_with_IT_1030)
+  select(all_of(IT_49_names_item_cols_shared_with_IT_1030))
 
 IT_1030_Home_Clin_shared_items <- bind_rows(
   suppressMessages(as_tibble(read_csv(
@@ -33,7 +33,7 @@ IT_1030_Home_Clin_shared_items <- bind_rows(
   )))
 ) %>% 
   arrange(IDNumber) %>% 
-  select(IT_1030_names_item_cols_shared_with_IT_49)
+  select(all_of(IT_1030_names_item_cols_shared_with_IT_49))
 
 rename_IT_1030_col_in <- IT_1030_Home_Clin_shared_items
 

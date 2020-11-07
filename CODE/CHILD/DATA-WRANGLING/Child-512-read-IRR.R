@@ -16,7 +16,7 @@ Child_512_Home_IRR <-
     ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Child_512_Home
+    all_of(All_items_Child_512_Home)
   ) %>%
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(
@@ -122,7 +122,7 @@ Child_512_School_IRR <-
     # ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Child_512_School
+    all_of(All_items_Child_512_School)
   ) %>%
   # recode items from char to num (mutate_at applies funs to specific columns)
   mutate_at(
@@ -201,7 +201,7 @@ output_512 <- map_dfc(score_names,
   bind_cols(Child_512_School_IRR, .) %>% 
   arrange(IDNumber)
 
-# write outuput for analysis
+# write output for analysis
 
 write_csv(
   output_512,

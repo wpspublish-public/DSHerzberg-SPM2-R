@@ -205,17 +205,15 @@ Home_SPD_clin_t_desc <-
 
 # Combine stand, clin columns, add ES column
 
-Home_SPD_match_t_desc <- bind_cols(Home_SPD_matchStand_t_desc,
-                                   Home_SPD_clin_t_desc) %>%
+Home_SPD_match_t_desc <- left_join(Home_SPD_matchStand_t_desc,
+                                   Home_SPD_clin_t_desc, by = "scale") %>%
   mutate(ES = abs((mean_typ - mean_clin) / ((sd_typ + sd_clin / 2))),
          form_dx = case_when(
-           rownames(.) == "1" ~ 'Home-SPD',
-           T ~ NA_character_
-         )
-  ) %>%
-  mutate_at(vars(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
-              (round(., 2))) %>%
-  select(form_dx, everything(), -sample, -sample1)
+           row.names(.) == "1" ~ "Home-SPD"
+         ), 
+  across(c(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
+              (round(., 2)))) %>%
+  select(form_dx, everything(), -sample.x, -sample.y)
 
 rm(list = setdiff(ls(), c('match_dist_Home', 'Home_SPD_match_t_desc')))
 
@@ -403,17 +401,15 @@ School_SPD_clin_t_desc <-
 
 # Combine stand, clin columns, add ES column
 
-School_SPD_match_t_desc <- bind_cols(School_SPD_matchStand_t_desc,
-                                     School_SPD_clin_t_desc) %>%
+School_SPD_match_t_desc <- left_join(School_SPD_matchStand_t_desc,
+                                   School_SPD_clin_t_desc, by = "scale") %>%
   mutate(ES = abs((mean_typ - mean_clin) / ((sd_typ + sd_clin / 2))),
          form_dx = case_when(
-           rownames(.) == "1" ~ 'School-SPD',
-           T ~ NA_character_
-         )
-  ) %>%
-  mutate_at(vars(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
-              (round(., 2))) %>%
-  select(form_dx, everything(), -sample, -sample1)
+           row.names(.) == "1" ~ "School-SPD"
+         ),
+         across(c(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
+                  (round(., 2)))) %>%
+  select(form_dx, everything(), -sample.x, -sample.y)
 
 rm(list = setdiff(ls(), c(
   'match_dist_Home', 'Home_SPD_match_t_desc',
@@ -452,3 +448,4 @@ write_csv(SPD_match_t_desc,
             )
           ),
           na = '')
+

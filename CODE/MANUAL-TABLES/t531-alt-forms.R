@@ -17,7 +17,7 @@ IT_1030_Home_alt_form1_IT_1030_Home <-
     # ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_IT_1030_Home
+    all_of(All_items_IT_1030_Home)
   ) %>%
   mutate_at(
     All_items_IT_1030_Home,
@@ -64,7 +64,7 @@ IT_1030_Home_alt_form2_IT_49_Home <-
   suppressMessages(as_tibble(read_csv(
     here("INPUT-FILES/IT/ALT/SPM-2 InfantToddler 1030 Months Alt-form2.csv")
   ))) %>% 
-  select(IDNumber, StandForm, AgeInMonths, All_items_IT_49_Home) %>%
+  select(IDNumber, StandForm, AgeInMonths, all_of(All_items_IT_49_Home)) %>%
   mutate_at(
     All_items_IT_49_Home,
     ~ case_when(
@@ -126,7 +126,7 @@ Preschool_25_Home_alt_form1_Preschool_25_Home <-
     ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Preschool_25_Home
+    all_of(All_items_Preschool_25_Home)
   ) %>%
   mutate_at(
     All_items_Preschool_25_Home,
@@ -179,7 +179,7 @@ Preschool_25_Home_alt_form2_IT_1030_Home <-
   ))) %>%
   select(
     IDNumber,
-    All_items_IT_1030_Home
+    all_of(All_items_IT_1030_Home)
   ) %>%
   mutate_at(
     All_items_IT_1030_Home,
@@ -241,7 +241,7 @@ Child_512_Home_alt_form1_Child_512_Home <-
     ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Child_512_Home
+    all_of(All_items_Child_512_Home)
   ) %>%
   mutate_at(
     All_items_Child_512_Home,
@@ -292,7 +292,7 @@ Child_512_Home_alt_form2_Preschool_25_Home <-
   ))) %>%
   select(
     IDNumber,
-    All_items_Preschool_25_Home
+    all_of(All_items_Preschool_25_Home)
   ) %>%
   mutate_at(
     All_items_Preschool_25_Home,
@@ -354,7 +354,7 @@ Child_512_School_alt_form1_Child_512_School <-
     # ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Child_512_School
+    all_of(All_items_Child_512_School)
   ) %>%
   mutate_at(
     All_items_Child_512_School,
@@ -405,7 +405,7 @@ Child_512_School_alt_form2_Preschool_25_School <-
   ))) %>%
   select(
     IDNumber,
-    All_items_Preschool_25_School
+    all_of(All_items_Preschool_25_School)
   ) %>%
   mutate_at(
     All_items_Preschool_25_School,
@@ -468,7 +468,7 @@ Teen_1221_Home_alt_form1_Teen_1221_Home <-
     ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Teen_1221_Home
+    all_of(All_items_Teen_1221_Home)
   ) %>%
   mutate_at(
     All_items_Teen_1221_Home,
@@ -521,7 +521,7 @@ Teen_1221_Home_alt_form2_Child_512_Home <-
   ))) %>%
   select(
     IDNumber,
-    All_items_Child_512_Home
+    all_of(All_items_Child_512_Home)
   ) %>%
   mutate_at(
     All_items_Child_512_Home,
@@ -583,7 +583,7 @@ Teen_1221_School_alt_form1_Teen_1221_School <-
     # ParentHighestEducation,
     Ethnicity,
     Region,
-    All_items_Teen_1221_School
+    all_of(All_items_Teen_1221_School)
   ) %>%
   mutate_at(
     All_items_Teen_1221_School,
@@ -636,7 +636,7 @@ Teen_1221_School_alt_form2_Child_512_School <-
   ))) %>%
   select(
     IDNumber,
-    All_items_Child_512_School
+    all_of(All_items_Child_512_School)
   ) %>%
   mutate_at(
     All_items_Child_512_School,
@@ -699,7 +699,7 @@ Adult_Self_alt_form1_Adult_Self <-
     HighestEducation,
     Ethnicity,
     Region,
-    All_items_Adult_Self
+    all_of(All_items_Adult_Self)
   ) %>%
   mutate_at(
     All_items_Adult_Self,
@@ -752,7 +752,7 @@ Adult_Self_alt_form2_Teen_1221_Self <-
   ))) %>%
   select(
     IDNumber,
-    All_items_Teen_1221_Self
+    all_of(All_items_Teen_1221_Self)
   ) %>%
   mutate_at(
     All_items_Teen_1221_Self,
@@ -814,7 +814,7 @@ Adult_Other_alt_form1_Adult_Other <-
     HighestEducation,
     Ethnicity,
     Region,
-    All_items_Adult_Other
+    all_of(All_items_Adult_Other)
   ) %>%
   mutate_at(
     All_items_Adult_Other,
@@ -867,7 +867,7 @@ Adult_Other_alt_form2_Teen_1221_Home <-
   ))) %>%
   select(
     IDNumber,
-    All_items_Teen_1221_Home
+    all_of(All_items_Teen_1221_Home)
   ) %>%
   mutate_at(
     All_items_Teen_1221_Home,

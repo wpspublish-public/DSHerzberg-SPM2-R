@@ -1,0 +1,59 @@
+form_dx,group,Variable,Category,n
+Home-MH,MH,age_range,2 to 4 years,3
+,,"",5 to 8 years,9
+,,"",9 to 12 years,14
+,,"",12 to 13 years,7
+,,"",14 to 15 years,1
+,,"",16 to 17 years,4
+,,"",18 to 21 years,2
+,,Gender,Male,29
+,,"",Female,11
+,,ParentHighestEducation,Did not complete high school (no diploma),3
+,,"",High school graduate (including GED),7
+,,"",Some college or associate degree,7
+,,"",Bachelor's degree or higher,23
+,,Ethnicity,Hispanic,6
+,,"",Black,8
+,,"",White,26
+,Matched typical,age_range,2 to 4 years,3
+,,"",5 to 8 years,9
+,,"",9 to 12 years,14
+,,"",12 to 13 years,7
+,,"",14 to 15 years,1
+,,"",16 to 17 years,4
+,,"",18 to 21 years,2
+,,Gender,Male,29
+,,"",Female,11
+,,ParentHighestEducation,Did not complete high school (no diploma),3
+,,"",High school graduate (including GED),7
+,,"",Some college or associate degree,7
+,,"",Bachelor's degree or higher,23
+,,Ethnicity,Hispanic,6
+,,"",Black,8
+,,"",White,26
+School-MH,MH,age_range,2 to 4 years,2
+,,"",5 to 8 years,7
+,,"",9 to 12 years,18
+,,"",12 to 13 years,7
+,,"",14 to 15 years,7
+,,"",16 to 17 years,4
+,,"",18 to 21 years,2
+,,Gender,Male,31
+,,"",Female,16
+,,Ethnicity,Hispanic,5
+,,"",Black,10
+,,"",White,31
+,,"",Other,1
+,Matched typical,age_range,2 to 4 years,2
+,,"",5 to 8 years,7
+,,"",9 to 12 years,17
+,,"",12 to 13 years,7
+,,"",14 to 15 years,8
+,,"",16 to 17 years,4
+,,"",18 to 21 years,2
+,,Gender,Male,32
+,,"",Female,15
+,,Ethnicity,Hispanic,5
+,,"",Black,10
+,,"",White,31
+,,"",Other,1

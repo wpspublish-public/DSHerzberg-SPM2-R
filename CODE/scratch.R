@@ -1,118 +1,51 @@
-# SPM-2: read, process, and write Child 512 school stand data.
+## TEEN 1221 HOME DATA ---------------------------------------------
+source(here("CODE/READ-T-SCORES-PER-CASE/read-Teen-1221-Home-Stand.R"))
 
-suppressMessages(library(here)) # BEST WAY TO SPECIFY FILE PATHS
-suppressMessages(suppressWarnings(library(tidyverse)))
-suppressMessages(library(ggpmisc)) # EXTENSIONS TO ggplot2: ADD EQUATIONS AND FIT STATISTICS TO FITTED LINE PLOTS
-library(ggrepel) # MORE ggplot2 EXTENSIONS
-library(bestNormalize) # NORMALIZATION METHODS
-suppressMessages(library(psych)) # DESCRIPTIVE TABLES
+Teen_1221_Home_Stand <-  Teen_1221_Home_Stand  %>% 
+  select(IDNumber:clin_dx, contains('_NT'))
 
-# SCALE VECTORS WITH ITEM NAMES -------------------------------------------
-
-All_items_Child_512_School <- c("q0012", "q0013", "q0015", "q0016", "q0017", "q0020", "q0021", "q0023", "q0024", "q0025", 
-                                "q0027", "q0028", "q0030", "q0031", "q0034", "q0035", "q0036", "q0037", "q0038", "q0039", 
-                                "q0040", "q0042", "q0045", "q0046", "q0047", "q0049", "q0050", "q0051", "q0052", "q0053", 
-                                "q0056", "q0057", "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0067", 
-                                "q0068", "q0069", "q0072", "q0073", "q0074", "q0075", "q0077", "q0078", "q0079", "q0080", 
-                                "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0092", "q0093", "q0094", 
-                                "q0095", "q0096", "q0097", "q0099", "q0100", "q0101", "q0103", "q0104", "q0107", "q0108", 
-                                "q0109", "q0110", "q0112", "q0113", "q0114", "q0115", "q0118", "q0119", "q0120", "q0121")
-
-TOT_items_Child_512_School <- c("q0027", "q0028", "q0030", "q0031", "q0034", "q0035", "q0036", "q0037", "q0038", "q0039", 
-                                "q0040", "q0042", "q0045", "q0046", "q0047", "q0049", "q0050", "q0051", "q0052", "q0053", 
-                                "q0056", "q0057", "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0067", 
-                                "q0068", "q0069", "q0072", "q0073", "q0074", "q0075", "q0077", "q0078", "q0079", "q0080", 
-                                "q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0092", "q0093", "q0094", 
-                                "q0095", "q0096", "q0097", "q0099", "q0100", "q0101", "q0103", "q0104", "q0107", "q0108")
-
-SOC_items_Child_512_School <- c("q0012", "q0013", "q0015", "q0016", "q0017", "q0020", "q0021", "q0023", "q0024", "q0025")
-
-SOC_rev_items_Child_512_School <- c("q0012", "q0013", "q0015", "q0016", "q0017", "q0020", "q0021", "q0023", "q0024", "q0025")
-
-VIS_items_Child_512_School <- c("q0027", "q0028", "q0030", "q0031", "q0034", "q0035", "q0036", "q0037", "q0038", "q0039")
-
-HEA_items_Child_512_School <- c("q0040", "q0042", "q0045", "q0046", "q0047", "q0049", "q0050", "q0051", "q0052", "q0053")
-
-TOU_items_Child_512_School <- c("q0056", "q0057", "q0058", "q0060", "q0061", "q0063", "q0064", "q0065", "q0066", "q0067")
-
-TS_items_Child_512_School <- c("q0068", "q0069", "q0072", "q0073", "q0074", "q0075", "q0077", "q0078", "q0079", "q0080")
-
-BOD_items_Child_512_School <- c("q0082", "q0083", "q0084", "q0085", "q0086", "q0087", "q0089", "q0092", "q0093", "q0094")
-
-BAL_items_Child_512_School <- c("q0095", "q0096", "q0097", "q0099", "q0100", "q0101", "q0103", "q0104", "q0107", "q0108")
-
-PLA_items_Child_512_School <- c("q0109", "q0110", "q0112", "q0113", "q0114", "q0115", "q0118", "q0119", "q0120", "q0121")
-
-score_names <- c("TOT", "SOC", "VIS", "HEA", "TOU", "TS", "BOD", "BAL", "PLA")
-
-
-# READ DATA, RECODE ITEMS, CALC RAW SCORES --------------------------------
-
-Child_512_School_items <-
+# read IRR (Form B)
+Teen_1221_Home_B <- 
   suppressMessages(as_tibble(read_csv(
-    here("INPUT-FILES/CHILD/SPM-2 Child ages 512 School Report Questionnaire.csv")
-  ))) %>% select(
-    IDNumber,
-    Age,
-    # AgeGroup,
-    Gender,
-    # ParentHighestEducation,
-    Ethnicity,
-    Region,
-    all_of(All_items_Child_512_School)
-  ) %>%
-  # filter out 4 yo
-  # filter(Age >= 5) %>%
-  # recode items from char to num (mutate_at applies funs to specific columns)
-  mutate_at(
-    All_items_Child_512_School,
-    ~ case_when(
-      .x == "Never" ~ 1,
-      .x == "Occasionally" ~ 2,
-      .x == "Frequently" ~ 3,
-      .x == "Always" ~ 4,
-      TRUE ~ NA_real_
-    )
-  ) %>%
-  # recode reverse-scored items
-  mutate_at(
-    SOC_rev_items_Child_512_School,
-    ~ case_when(.x == 4 ~ 1,
-                .x == 3 ~ 2,
-                .x == 2 ~ 3,
-                .x == 1 ~ 4,
-                TRUE ~ NA_real_)
-  ) %>%
-  # Convert scored item vars to integers
-  mutate_at(All_items_Child_512_School,
-            ~ as.integer(.x)) %>%
-  # Add age_range var.
-  mutate(age_range = case_when(
-    Age <= 8 ~ "5 to 8 years",
-    TRUE ~ "9 to 12 years")
-  ) %>%
-  # select(-AgeGroup) %>%
-# Compute raw scores. Note use of `rowSums(.[TOT_items_Child_512_School])`: when used
-  # within a pipe, you can pass a vector of column names to `base::rowSums`, but you
-  # must wrap the column vector in a column-subsetting expression: `.[]`, where the
-  # dot is a token for the data in the pipe.
+    here('OUTPUT-FILES/TEEN/T-SCORES-PER-CASE/Teen-1221-Home-IRR-T-Scores-per-case.csv')
+  ))) %>% 
+  arrange(IDNumber) %>% 
+  select(IDNumber, contains('_NT'))
+
+Teen_1221_Home_IRR <- Teen_1221_Home_Stand %>% 
+  inner_join(
+    Teen_1221_Home_B,
+    by = 'IDNumber',
+    suffix = c('_Stand', '_IRR')
+  ) %>% 
+  mutate(TOT_NT_dif = abs(TOT_NT_Stand - TOT_NT_IRR)) %>% 
+  select(TOT_NT_dif, everything()) %>%  
+  arrange(TOT_NT_dif) %>% 
+  filter(TOT_NT_dif < 11)
+
+cor_cols <- Teen_1221_Home_IRR %>% 
+  select(contains('_NT'), -TOT_NT_dif)
+
+cor_row <- c('TOT_NT_S-TOT_NT_I', 'SOC_NT_S-SOC_NT_I', 'VIS_NT_S-VIS_NT_I',
+             'HEA_NT_S-HEA_NT_I', 'TOU_NT_S-TOU_NT_I', 'TS_NT_S-TS_NT_I',
+             'BOD_NT_S-BOD_NT_I', 'BAL_NT_S-BAL_NT_I', 'PLA_NT_S-PLA_NT_I')
+
+Teen_1221_Home_IRR_cor_table <-
+  corr.test(cor_cols)[['ci']] %>%
+  rownames_to_column(var = 'pair') %>%
+  filter(pair %in% cor_row) %>%
+  mutate(scale1 = str_sub(pair, 1, 3),
+         scale = str_replace(scale1, '_', '')) %>%
+  arrange(match(scale, scale_order)) %>%
   mutate(
-    TOT_raw = rowSums(.[TOT_items_Child_512_School]),
-    SOC_raw = rowSums(.[SOC_items_Child_512_School]),
-    VIS_raw = rowSums(.[VIS_items_Child_512_School]),
-    HEA_raw = rowSums(.[HEA_items_Child_512_School]),
-    TOU_raw = rowSums(.[TOU_items_Child_512_School]),
-    TS_raw = rowSums(.[TS_items_Child_512_School]),
-    BOD_raw = rowSums(.[BOD_items_Child_512_School]),
-    BAL_raw = rowSums(.[BAL_items_Child_512_School]),
-    PLA_raw = rowSums(.[PLA_items_Child_512_School])
+    form = case_when(rownames(.) == "1" ~ 'Teen-1221-Home',
+                     T ~ NA_character_),
+    n = case_when(rownames(.) == "1" ~ corr.test(cor_cols)[['n']],
+                  T ~ NA_real_)
   ) %>%
-  # Create data var
-  mutate(data = 'SM') %>%
-  select(IDNumber, data, everything()) %>%
-  # Exclude outliers on TOT_raw (also exlude by data source to equalize samples
-  # from diiferent data sources)
-  filter(TOT_raw < 200) %>%
-  # filter(!(TOT_raw >= 138 & data == 'Qual')) %>%
-  write_csv(here('INPUT-FILES/CHILD/SM-ONLY-NORMS-INPUT/Child-512-School-SM-only-norms-input.csv'),
-            na = "")
+  select(form, scale, n, r, p) %>%
+  mutate_if(is.numeric, ~ round(., 3))
+
+rm(list = setdiff(ls(), ls(pattern = 'table')))
+
+

@@ -580,23 +580,11 @@ Self_ASD_clin_t_desc <-
 
 # Combine stand, clin columns, add ES column
 
-# Self_ASD_match_t_desc <- bind_cols(Self_ASD_matchStand_t_desc,
-#                                    Self_ASD_clin_t_desc) %>%
-#   mutate(ES = abs((mean_typ - mean_clin) / ((sd_typ + sd_clin / 2))),
-#          form_dx = case_when(
-#            rownames(.) == "1" ~ 'Self-ASD',
-#            T ~ NA_character_
-#          )
-#   ) %>%
-#   mutate_at(vars(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
-#               (round(., 2))) %>%
-#   select(form_dx, everything(), -sample, -sample1)
-
-School_SPD_match_t_desc <- left_join(School_SPD_matchStand_t_desc,
-                                     School_SPD_clin_t_desc, by = "scale") %>%
+Self_ASD_match_t_desc <- left_join(Self_ASD_matchStand_t_desc,
+                                     Self_ASD_clin_t_desc, by = "scale") %>%
   mutate(ES = abs((mean_typ - mean_clin) / ((sd_typ + sd_clin / 2))),
          form_dx = case_when(
-           row.names(.) == "1" ~ "School-SPD"
+           row.names(.) == "1" ~ "Self-ASD"
          ),
          across(c(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
                   (round(., 2)))) %>%
@@ -642,3 +630,4 @@ write_csv(ASD_match_t_desc,
             )
           ),
           na = '')
+

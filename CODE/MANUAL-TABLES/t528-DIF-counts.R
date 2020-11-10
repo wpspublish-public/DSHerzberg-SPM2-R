@@ -743,6 +743,112 @@ Teen_1221_School_v_Teen_1221_Self_Clin_DIF_output <- Teen_1221_School_v_Teen_122
 rm(list = setdiff(ls(), ls(pattern = "output")))
 
 
+#### Adult-Self v Adult-Other -----------------------------------------------
+## STAND -------------------------------------------------------------------
+# read data, parse columns
+source(here("CODE/READ-T-SCORES-PER-CASE/read-Adult-Self-Stand.R"))
+source(here("CODE/READ-T-SCORES-PER-CASE/read-Adult-Other-Stand.R"))
+
+Adult_Self_Stand_DIF_comp <- Adult_Self_Stand %>% 
+  select(IDNumber, TOT_NT) %>% 
+  rename(TOT_NT_Adult_Self = TOT_NT)
+
+Adult_Other_Stand_DIF_comp <- Adult_Other_Stand %>% 
+  select(IDNumber, TOT_NT) %>% 
+  rename(TOT_NT_Adult_Other = TOT_NT)
+
+# create comp file, calc DIF score
+Adult_Self_v_Adult_Other_Stand_DIF <- Adult_Self_Stand_DIF_comp %>%
+  inner_join(Adult_Other_Stand_DIF_comp, by = "IDNumber") %>%
+  mutate(
+    DIF = TOT_NT_Adult_Self - TOT_NT_Adult_Other,
+    DIF_range = case_when(
+      DIF <= -15 ~ "<=-15 (Definite Difference)",
+      between(DIF,-14,-10) ~ "-10 to -14 (Probable Difference)",
+      between(DIF,-9, 9) ~ "-9 to 9 (No Difference)",
+      between(DIF, 10, 14) ~ "10 to 14 (Probable Difference)",
+      DIF >= 15 ~ ">=15 (Definite Difference)"
+    )
+  )
+
+DIF_range_order <- c("<=-15 (Definite Difference)", "-10 to -14 (Probable Difference)", 
+                     "-9 to 9 (No Difference)", "10 to 14 (Probable Difference)", 
+                     ">=15 (Definite Difference)")
+
+# get DIF_range freq counts
+Adult_Self_v_Adult_Other_Stand_DIF_output <- Adult_Self_v_Adult_Other_Stand_DIF %>%
+  select(DIF_range) %>%
+  gather("DIF_range") %>%
+  group_by(DIF_range) %>%
+  count(DIF_range) %>%
+  ungroup() %>%
+  arrange(match(DIF_range, DIF_range_order)) %>% 
+  mutate(
+    form1 = case_when(rownames(.) == "1" ~ 'Adult-Self',
+                      T ~ NA_character_),
+    form2 = case_when(rownames(.) == "1" ~ 'Adult-Other',
+                      T ~ NA_character_),
+    sample = case_when(rownames(.) == "1" ~ 'Stand',
+                       T ~ NA_character_),
+    pct_samp = round(((n / nrow(Adult_Self_v_Adult_Other_Stand_DIF)) * 100), 1)
+  ) %>%
+  select(form1, form2, sample, DIF_range, n, pct_samp)
+
+rm(list = setdiff(ls(), ls(pattern = "output")))
+
+## CLIN -------------------------------------------------------------------
+# read data, parse columns
+source(here("CODE/READ-T-SCORES-PER-CASE/read-Adult-Self-Clin.R"))
+source(here("CODE/READ-T-SCORES-PER-CASE/read-Adult-Other-Clin.R"))
+
+Adult_Self_Clin_DIF_comp <- Adult_Self_Clin %>% 
+  select(IDNumber, TOT_NT) %>% 
+  rename(TOT_NT_Adult_Self = TOT_NT)
+
+Adult_Other_Clin_DIF_comp <- Adult_Other_Clin %>% 
+  select(IDNumber, TOT_NT) %>% 
+  rename(TOT_NT_Adult_Other = TOT_NT)
+
+# create comp file, calc DIF score
+Adult_Self_v_Adult_Other_Clin_DIF <- Adult_Self_Clin_DIF_comp %>%
+  inner_join(Adult_Other_Clin_DIF_comp, by = "IDNumber") %>%
+  mutate(
+    DIF = TOT_NT_Adult_Self - TOT_NT_Adult_Other,
+    DIF_range = case_when(
+      DIF <= -15 ~ "<=-15 (Definite Difference)",
+      between(DIF,-14,-10) ~ "-10 to -14 (Probable Difference)",
+      between(DIF,-9, 9) ~ "-9 to 9 (No Difference)",
+      between(DIF, 10, 14) ~ "10 to 14 (Probable Difference)",
+      DIF >= 15 ~ ">=15 (Definite Difference)"
+    )
+  )
+
+DIF_range_order <- c("<=-15 (Definite Difference)", "-10 to -14 (Probable Difference)", 
+                     "-9 to 9 (No Difference)", "10 to 14 (Probable Difference)", 
+                     ">=15 (Definite Difference)")
+
+# get DIF_range freq counts
+Adult_Self_v_Adult_Other_Clin_DIF_output <- Adult_Self_v_Adult_Other_Clin_DIF %>%
+  select(DIF_range) %>%
+  gather("DIF_range") %>%
+  group_by(DIF_range) %>%
+  count(DIF_range) %>%
+  ungroup() %>%
+  arrange(match(DIF_range, DIF_range_order)) %>% 
+  mutate(
+    form1 = case_when(rownames(.) == "1" ~ 'Adult-Self',
+                      T ~ NA_character_),
+    form2 = case_when(rownames(.) == "1" ~ 'Adult-Other',
+                      T ~ NA_character_),
+    sample = case_when(rownames(.) == "1" ~ 'Clin',
+                       T ~ NA_character_),
+    pct_samp = round(((n / nrow(Adult_Self_v_Adult_Other_Clin_DIF)) * 100), 1)
+  ) %>%
+  select(form1, form2, sample, DIF_range, n, pct_samp)
+
+rm(list = setdiff(ls(), ls(pattern = "output")))
+
+
 ###### WRITE MANUAL TABLE OUTPUT -----------------------------------------------
 DIF_counts_ouput <- bind_rows(
   IT_49_Home_v_IT_Caregiver_Stand_DIF_output,

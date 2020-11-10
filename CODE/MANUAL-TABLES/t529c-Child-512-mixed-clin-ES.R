@@ -245,17 +245,16 @@ Child_512_Home_clin_t_desc <-
 
 # Combine stand, clin columns, add ES column
 
-Child_512_Home_match_t_desc <- bind_cols(Child_512_Home_matchStand_t_desc,
-                                      Child_512_Home_clin_t_desc) %>%
+Child_512_Home_match_t_desc <- left_join(Child_512_Home_matchStand_t_desc,
+                                         Child_512_Home_clin_t_desc, by = "scale") %>%
   mutate(ES = abs((mean_typ - mean_clin) / ((sd_typ + sd_clin / 2))),
          form = case_when(
-           scale == "SOC" ~ "Home",
-           T ~ NA_character_
-         )
-  ) %>%
-  mutate_at(vars(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
-              (round(., 2))) %>%
-  select(form, everything(), -sample, -sample1)
+           row.names(.) == "1" ~ "Home"
+         ), 
+         across(c(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
+                  (round(., 2)))) %>%
+  select(form, everything(), -sample.x, -sample.y)
+
 
 # ########### SCHOOL DATA ---------------------------------------------------
 
@@ -497,17 +496,16 @@ Child_512_School_clin_t_desc <-
 
 # Combine stand, clin columns, add ES column
 
-Child_512_School_match_t_desc <- bind_cols(Child_512_School_matchStand_t_desc,
-                                              Child_512_School_clin_t_desc) %>%
+Child_512_School_match_t_desc <- left_join(Child_512_School_matchStand_t_desc,
+                                         Child_512_School_clin_t_desc, by = "scale") %>%
   mutate(ES = abs((mean_typ - mean_clin) / ((sd_typ + sd_clin / 2))),
          form = case_when(
-          scale == "SOC" ~ "School",
-          T ~ NA_character_
-         )
-  ) %>%
-  mutate_at(vars(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
-              (round(., 2))) %>%
-  select(form, everything(), -sample, -sample1)
+           row.names(.) == "1" ~ "School"
+         ), 
+         across(c(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
+                  (round(., 2)))) %>%
+  select(form, everything(), -sample.x, -sample.y)
+
 
 # WRITE MANUAL TABLES -----------------------------------------------------
 

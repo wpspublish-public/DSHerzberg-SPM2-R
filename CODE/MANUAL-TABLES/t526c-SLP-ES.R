@@ -187,17 +187,15 @@ Home_SLP_clin_t_desc <-
 
 # Combine stand, clin columns, add ES column
 
-Home_SLP_match_t_desc <- bind_cols(Home_SLP_matchStand_t_desc,
-                                   Home_SLP_clin_t_desc) %>%
+Home_SLP_match_t_desc <- left_join(Home_SLP_matchStand_t_desc,
+                                   Home_SLP_clin_t_desc, by = "scale") %>%
   mutate(ES = abs((mean_typ - mean_clin) / ((sd_typ + sd_clin / 2))),
          form_dx = case_when(
-           rownames(.) == "1" ~ 'Home-SLP',
-           T ~ NA_character_
-         )
-  ) %>%
-  mutate_at(vars(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
-              (round(., 2))) %>%
-  select(form_dx, everything(), -sample, -sample1)
+           row.names(.) == "1" ~ "Home-SLP"
+         ),
+         across(c(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
+                  (round(., 2)))) %>%
+  select(form_dx, everything(), -sample.x, -sample.y)
 
 rm(list = setdiff(ls(), c('match_dist_Home', 'Home_SLP_match_t_desc')))
 
@@ -385,17 +383,15 @@ School_SLP_clin_t_desc <-
 
 # Combine stand, clin columns, add ES column
 
-School_SLP_match_t_desc <- bind_cols(School_SLP_matchStand_t_desc,
-                                     School_SLP_clin_t_desc) %>%
+School_SLP_match_t_desc <- left_join(School_SLP_matchStand_t_desc,
+                                     School_SLP_clin_t_desc, by = "scale") %>%
   mutate(ES = abs((mean_typ - mean_clin) / ((sd_typ + sd_clin / 2))),
          form_dx = case_when(
-           rownames(.) == "1" ~ 'School-SLP',
-           T ~ NA_character_
-         )
-  ) %>%
-  mutate_at(vars(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
-              (round(., 2))) %>%
-  select(form_dx, everything(), -sample, -sample1)
+           row.names(.) == "1" ~ "School-SLP"
+         ),
+         across(c(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
+                  (round(., 2)))) %>%
+  select(form_dx, everything(), -sample.x, -sample.y)
 
 rm(list = setdiff(ls(), c(
   'match_dist_Home', 'Home_SLP_match_t_desc',
@@ -584,19 +580,15 @@ Self_SLP_clin_t_desc <-
          mean_clin = mean,
          sd_clin = sd)
 
-# Combine stand, clin columns, add ES column
-
-Self_SLP_match_t_desc <- bind_cols(Self_SLP_matchStand_t_desc,
-                                   Self_SLP_clin_t_desc) %>%
+Self_SLP_match_t_desc <- left_join(Self_SLP_matchStand_t_desc,
+                                   Self_SLP_clin_t_desc, by = "scale") %>%
   mutate(ES = abs((mean_typ - mean_clin) / ((sd_typ + sd_clin / 2))),
          form_dx = case_when(
-           rownames(.) == "1" ~ 'Self-SLP',
-           T ~ NA_character_
-         )
-  ) %>%
-  mutate_at(vars(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
-              (round(., 2))) %>%
-  select(form_dx, everything(), -sample, -sample1)
+           row.names(.) == "1" ~ "Self-SLP"
+         ),
+         across(c(mean_typ, sd_typ, mean_clin, sd_clin, ES), ~
+                  (round(., 2)))) %>%
+  select(form_dx, everything(), -sample.x, -sample.y)
 
 rm(list = setdiff(ls(), c(
   'match_dist_Home', 'Home_SLP_match_t_desc',
@@ -638,3 +630,4 @@ write_csv(SLP_match_t_desc,
             )
           ),
           na = '')
+

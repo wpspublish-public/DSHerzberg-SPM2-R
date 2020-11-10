@@ -126,6 +126,12 @@ adult_driving_data_other <-
   # remove outliers
   filter(TOT_raw < 45)
 
+# write data
+write_csv(adult_driving_data_self, 
+          here('INPUT-FILES/CHILD/SCHOOL-ENVIRON-DRIVING-DATA/adult-driving-self-data.csv'))
+write_csv(adult_driving_data_other, 
+          here('INPUT-FILES/CHILD/SCHOOL-ENVIRON-DRIVING-DATA/adult-driving-other-data.csv'))
+
 # # Check for any dupIDs (anyDuplicated() returns row number of FIRST dup ID encountered)
 # anyDuplicated(adult_driving_data$IDNumber)
 # # Check for any NAs on IDNumber, returns TRUE if NA exist

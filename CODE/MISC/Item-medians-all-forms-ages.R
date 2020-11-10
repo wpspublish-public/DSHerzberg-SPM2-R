@@ -76,6 +76,21 @@ teen_self_driving_Stand <- suppressMessages(read_csv(
 
 rm(list = ls(pattern = "items"))
 
+# ADULT DRIVING
+adult_other_driving_Stand <- suppressMessages(read_csv(
+  here(
+    'INPUT-FILES/CHILD/SCHOOL-ENVIRON-DRIVING-DATA/adult-driving-other-data.csv'
+  )
+))
+
+adult_self_driving_Stand <- suppressMessages(read_csv(
+  here(
+    'INPUT-FILES/CHILD/SCHOOL-ENVIRON-DRIVING-DATA/adult-driving-self-data.csv'
+  )
+))
+
+rm(list = ls(pattern = "items"))
+
 ### BUILD DATA FRAME WITH FORM, ITEM, MEDIAN COLS ------------------------------
 
 data <- c(ls(pattern = "Stand"))
@@ -85,7 +100,7 @@ forms <- str_replace_all(str_sub(data, 1, -7), "_", "-")
 form_order <- c("IT-49-Home", "IT-1030-Home", "IT-Caregiver", "Preschool-25-Home", "Preschool-25-School", 
                 "Child-512-Home", "Child-512-School", "Teen-1221-Home", "Teen-1221-School", 
                 "Teen-1221-Self", "Adult-Other", "Adult-Self", "ART", "BUS", "CAF", "MUS", "PHY", "REC", 
-                "teen-home-driving", "teen-self-driving") 
+                "teen-home-driving", "teen-self-driving", "adult-other-driving", "adult-self-driving") 
 
 item_medians_stand <- list(mget(data),
                            forms) %>%
@@ -114,3 +129,4 @@ write_csv(
   ),
   na = ""
 )
+

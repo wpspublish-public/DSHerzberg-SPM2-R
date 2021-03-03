@@ -922,7 +922,17 @@ all_alt_raw <- bind_rows(
   Teen_1221_School_alt_form12_raw,
   Adult_Self_alt_form12_raw,
   Adult_Other_alt_form12_raw
-)
+) %>% 
+  arrange(IDNumber)
+# remove pennypacker cases
+# pp_id_nums <- suppressMessages(read_csv(
+#   here("INPUT-FILES/DATA_CLEANUP_FILES/pennypacker-spm2-id-nums.csv")
+# )) %>% rename(IDNumber = id)
+# 
+# pp_id_nums_alt <- pp_id_nums %>% filter(study == "alt")
+# 
+# all_alt_raw <- all_alt_raw %>%
+#   anti_join(pp_id_nums_alt, by = "IDNumber")
 
 cor_cols <- all_alt_raw %>% 
   select(contains("_raw"))

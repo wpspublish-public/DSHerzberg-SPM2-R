@@ -6,6 +6,8 @@ pp_id_nums <- suppressMessages(read_csv(
   here("INPUT-FILES/DATA_CLEANUP_FILES/pennypacker-spm2-id-nums.csv")
 )) %>% rename(IDNumber = id)
 
+pp_id_nums_alt <- pp_id_nums %>% filter(study == "alt")
+
 forms <- pp_id_nums %>% 
   select(form) %>% 
   as_vector() %>% 

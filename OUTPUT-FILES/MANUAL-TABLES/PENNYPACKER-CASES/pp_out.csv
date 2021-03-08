@@ -1,0 +1,11 @@
+n,scale,SOC_raw_alt2,VIS_raw_alt2,HEA_raw_alt2,TOU_raw_alt2,TS_raw_alt2,BOD_raw_alt2,BAL_raw_alt2,PLA_raw_alt2,TOT_raw_alt2,,,,
+54,SOC_raw_alt1,0.498,,,,,,,,,,,,0.498
+NA,VIS_raw_alt1,,0.602,,,,,,,,,,,0.602
+NA,HEA_raw_alt1,,,0.666,,,,,,,,,,0.666
+NA,TOU_raw_alt1,,,,0.701,,,,,,,,,0.681
+NA,TS_raw_alt1,,,,,0.857,,,,,,,,0.701
+NA,BOD_raw_alt1,,,,,,0.82,,,,,,,0.769
+NA,BAL_raw_alt1,,,,,,,0.681,,,,,,0.82
+NA,PLA_raw_alt1,,,,,,,,0.769,,,,,0.857
+NA,TOT_raw_alt1,,,,,,,,,0.845,,,,
+,,,,,,,,,,,,,,0.691

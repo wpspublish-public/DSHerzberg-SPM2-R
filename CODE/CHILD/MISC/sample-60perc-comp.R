@@ -37,3 +37,44 @@ write_csv(sample_60perc, here(
   "INPUT-FILES/CHILD/ALLDATA-DESAMP-NORMS-INPUT/CHILD-512-Home-allData-desamp-60perc.csv"
 ))
 
+# Comp raw-score descriptives between full sample and 60% sample
+T_per_case_full_sample <- read_csv(
+  here(
+    "OUTPUT-FILES/NORMS-OUTPUT-4080T/Child-512-Home-T-Scores-per-case-4080T.csv"
+  )
+)
+
+T_per_case_60perc_sample <- read_csv(
+  here(
+    "OUTPUT-FILES/NORMS-OUTPUT-4080T/Child-512-Home-T-Scores-per-case-4080T-60perc.csv"
+  )
+)
+
+raw_score_desc_full_sample <- T_per_case_full_sample %>% 
+  select(contains("raw")) %>%
+  describe(fast = TRUE) %>%
+  rownames_to_column(var = "scale") %>%
+  select(scale, n, mean, sd)
+
+raw_score_desc_60perc_sample <- T_per_case_60perc_sample %>% 
+  select(contains("raw")) %>%
+  describe(fast = TRUE) %>%
+  rownames_to_column(var = "scale") %>%
+  select(scale, n, mean, sd)
+
+raw_score_desc_comp <- raw_score_desc_full_sample %>%
+  left_join(
+    raw_score_desc_60perc_sample,
+    by = "scale",
+    suffix = c("_full", "_60perc")
+  ) %>%
+  mutate(ES = (mean_full - mean_60perc) /
+           ((sd_full + sd_60perc) / 2)) %>% 
+  mutate(across(where(is.numeric), ~ round(., 3)))
+
+# write .csv of raw score desc comp
+write_csv(raw_score_desc_comp, here(
+  "INPUT-FILES/CHILD/ALLDATA-DESAMP-NORMS-INPUT/CHILD-512-Home-allData-desamp-60perc.csv"
+))
+
+

@@ -1,6 +1,6 @@
 suppressMessages(library(here))
 suppressMessages(suppressWarnings(library(tidyverse)))
-library(ggrepel) # ggplot2 EXTENSIONS
+suppressMessages(library(psych))
 
 # read in final normative sample for child-home form.
 Child_512_Home_desamp <- read_csv(
@@ -15,27 +15,100 @@ sample_60perc <- Child_512_Home_desamp %>%
   group_by(Age, Gender, ParentHighestEducation, Ethnicity, Region) %>%
   sample_frac(0.6)
 
-# quick check on counts/distribution for each demo variables, across full sample
-# and 60% sample.
-table(Child_512_Home_desamp$Age)
-table(sample_60perc$Age)
-
-table(Child_512_Home_desamp$Gender)
-table(sample_60perc$Gender)
-
-table(Child_512_Home_desamp$ParentHighestEducation)
-table(sample_60perc$ParentHighestEducation)
-
-table(Child_512_Home_desamp$Ethnicity)
-table(sample_60perc$Ethnicity)
-
-table(Child_512_Home_desamp$Region)
-table(sample_60perc$Region)
-
 # write .csv of 60% sample for use in other procedures
 write_csv(sample_60perc, here(
   "INPUT-FILES/CHILD/ALLDATA-DESAMP-NORMS-INPUT/CHILD-512-Home-allData-desamp-60perc.csv"
 ))
+
+# Comp demos between full sample and 60% sample
+ageXgender_full <- Child_512_Home_desamp %>%
+  group_by(Age, Gender) %>%
+  summarise(n=n()) %>%
+  pivot_wider(names_from = Gender, values_from = n)
+
+ageXpeduc_full <- Child_512_Home_desamp %>%
+  group_by(Age, ParentHighestEducation) %>%
+  summarise(n=n()) %>%
+  pivot_wider(names_from = ParentHighestEducation, values_from = n)
+
+ageXethnic_full <- Child_512_Home_desamp %>%
+  group_by(Age, Ethnicity) %>%
+  summarise(n=n()) %>%
+  pivot_wider(names_from = Ethnicity, values_from = n)
+
+ageXregion_full <- Child_512_Home_desamp %>%
+  group_by(Age, Region) %>%
+  summarise(n=n()) %>%
+  pivot_wider(names_from = Region, values_from = n)
+
+demos_full <- list(ageXgender_full,
+                   ageXpeduc_full,
+                   ageXethnic_full,
+                   ageXregion_full) %>%
+  reduce(left_join, by = "Age") %>%
+  ungroup() %>%
+  mutate(
+    sample = case_when(row_number() == 1 ~ "full",
+                       TRUE ~ NA_character_),
+    n = case_when(
+      row_number() == 1 ~ nrow(Child_512_Home_desamp),
+      TRUE ~ NA_integer_
+    )
+  ) %>%
+  relocate(c(sample, n), .before = "Age")
+
+ageXgender_60_perc <- sample_60perc %>%
+  group_by(Age, Gender) %>%
+  summarise(n=n()) %>%
+  pivot_wider(names_from = Gender, values_from = n)
+
+ageXpeduc_60_perc <- sample_60perc %>%
+  group_by(Age, ParentHighestEducation) %>%
+  summarise(n=n()) %>%
+  pivot_wider(names_from = ParentHighestEducation, values_from = n)
+
+ageXethnic_60_perc <- sample_60perc %>%
+  group_by(Age, Ethnicity) %>%
+  summarise(n=n()) %>%
+  pivot_wider(names_from = Ethnicity, values_from = n)
+
+ageXregion_60_perc <- sample_60perc %>%
+  group_by(Age, Region) %>%
+  summarise(n=n()) %>%
+  pivot_wider(names_from = Region, values_from = n)
+
+demos_60_perc <- list(ageXgender_60_perc,
+                      ageXpeduc_60_perc,
+                      ageXethnic_60_perc,
+                      ageXregion_60_perc) %>%
+  reduce(left_join, by = "Age") %>%
+  ungroup() %>%
+  mutate(
+    sample = case_when(row_number() == 1 ~ "60_perc",
+                       TRUE ~ NA_character_),
+    n = case_when(
+      row_number() == 1 ~ nrow(sample_60perc),
+      TRUE ~ NA_integer_
+    )
+  ) %>%
+  relocate(c(sample, n), .before = "Age")
+
+demos_comp <- bind_rows(demos_full,
+                        demos_60_perc) %>%
+  mutate(across(sample,
+                ~ case_when(
+                  lag(sample) == sample ~ NA_character_, 
+                  TRUE ~ .x
+                )))
+
+# write .csv of demos comp
+write_csv(
+  demos_comp,
+  here(
+    "OUTPUT-FILES/CHILD/COMP-60PERC-SAMPLE/Child-512-Home-demos-full-60perc-comp.csv"
+  ),
+  na = ""
+)
 
 # Comp raw-score descriptives between full sample and 60% sample
 T_per_case_full_sample <- read_csv(
@@ -74,7 +147,7 @@ raw_score_desc_comp <- raw_score_desc_full_sample %>%
 
 # write .csv of raw score desc comp
 write_csv(raw_score_desc_comp, here(
-  "INPUT-FILES/CHILD/ALLDATA-DESAMP-NORMS-INPUT/CHILD-512-Home-allData-desamp-60perc.csv"
+  "OUTPUT-FILES/CHILD/COMP-60PERC-SAMPLE/Child-512-Home-raw-desc-full-60perc-comp.csv"
 ))
 
 

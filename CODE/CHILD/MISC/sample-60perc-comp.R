@@ -114,6 +114,12 @@ T_per_case_full_sample <- read_csv(
   )
 )
 
+# The file to be read in here is the t-scores per case for the 60perc sample
+# that was written out above as "CHILD-512-Home-allData-desamp-60perc.csv". It
+# needs to be generated from this latter file using the long script for creating
+# raw-to-T lookup tables. A specialized version of this script, just for this
+# purpose, has been saved as
+# "Child-512-Home-Norms-Lookup-Tables-4080T-60perc-SPM2.R"
 T_per_case_60perc_sample <- read_csv(
   here(
     "OUTPUT-FILES/NORMS-OUTPUT-4080T/Child-512-Home-T-Scores-per-case-4080T-60perc.csv"

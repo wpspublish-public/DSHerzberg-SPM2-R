@@ -1,24 +1,33 @@
 suppressMessages(library(here))
-suppressMessages(suppressWarnings(library(tidyverse)))
+suppressMessages(library(splitstackshape))
 suppressMessages(library(psych))
+suppressMessages(suppressWarnings(library(tidyverse)))
 
-# read in final normative sample for child-home form.
-Child_512_Home_desamp <- read_csv(
-  here(
-    "INPUT-FILES/CHILD/ALLDATA-DESAMP-NORMS-INPUT/CHILD-512-Home-allData-desamp.csv"
-    ))
+input_file_name <- "Child-512-Home-allData-desamp"
+input_file_path <- "CODE/MISC/CROSS-FORM-FRACTIONAL-SAMPLES/INPUT-FILES/"
+output_file_path <- "CODE/MISC/CROSS-FORM-FRACTIONAL-SAMPLES/OUTPUT-FILES/"
 
-# use dplyr::sample_frac() to get a 60% sample. By grouping on all demo vars, we
-# roughly preserve demographic proportions in smaller sample.
+sample_full <- suppressMessages(read_csv(here(str_c(
+  input_file_path, input_file_name, ".csv"
+))))
+
 set.seed(1234)
-sample_60perc <- Child_512_Home_desamp %>% 
-  group_by(Age, Gender, ParentHighestEducation, Ethnicity, Region) %>%
-  sample_frac(0.6)
+sample_60perc <- stratified(
+  sample_full,
+  c(
+    "Age",
+    "Gender",
+    "ParentHighestEducation",
+    "Ethnicity",
+    "Region"
+  ),
+  size = .6
+)
 
 # write .csv of 60% sample for use in other procedures
 write_csv(sample_60perc, here(
-  "INPUT-FILES/CHILD/ALLDATA-DESAMP-NORMS-INPUT/CHILD-512-Home-allData-desamp-60perc.csv"
-))
+  str_c(output_file_path)
+  ))
 
 # Comp demos between full sample and 60% sample
 # Prepare table of demographics counts for the full sample. We first call map()

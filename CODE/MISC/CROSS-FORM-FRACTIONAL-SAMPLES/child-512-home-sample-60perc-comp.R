@@ -24,64 +24,34 @@ sample_60perc <- stratified(
   size = .6
 )
 
-# write .csv of 60% sample for use in other procedures
 write_csv(sample_60perc, here(
-  str_c(output_file_path)
+  str_c(output_file_path, input_file_name, "-sample-60perc.csv")
   ))
 
-# Comp demos between full sample and 60% sample
-# Prepare table of demographics counts for the full sample. We first call map()
-# to return a list of four dfs, with the case counts by age and category for
-# each of the four demographic variables. We map over a vector holding the names
-# of these four demo vars. The input to this mapping procedure is the full
-# standardization sample. We group this input by age and the .x argument to
-# map(), that is, the currently iterated demo var. We can then call summarize()
-# to get the case counts (n()) for each category of the demo var, within each
-# ageyear. At this point the summary table is in nested format, where the
-# categories of the demo vars are nested with in each value of age, resulting in
-# a long table. We call pivot_wider() to transform the table into a more
-# conventional demographic table format, in which there is one row for each age
-# year, each category of the demographic variable has its own column, and the
-# cells contain the person counts for each crossing of age X demographic
-# category.
 demos_full <- map(
   c("Gender", "ParentHighestEducation", "Ethnicity", "Region"),
   ~
-    Child_512_Home_desamp %>%
-    group_by(Age, !!sym(.x)) %>%
-    summarize(n=n()) %>%
+    sample_full %>%
+    group_by(Age,!!sym(.x)) %>%
+    summarize(n = n()) %>%
     pivot_wider(names_from = !!sym(.x), values_from = n)
 ) %>%
-  # At this point the data object is list of data frames, all of which have
-  # identical values in the age column. We can use purrr:reduce() to iteratively
-  # apply left_join(), joining the tables together by the age column. The result
-  # is a single df with age column on the far left, and the columns of
-  # categories of the four demo vars proceeding to the right, each holding the
-  # person counts for each value of age.
   reduce(left_join, by = "Age") %>%
-  # We ungroup to facilitate a table structure that is more readdable. The
-  # mutate() call creates sample and n columns that are only filled in the top
-  # cell.
   ungroup() %>%
   mutate(
     sample = case_when(row_number() == 1 ~ "full",
                        TRUE ~ NA_character_),
-    n = case_when(
-      row_number() == 1 ~ nrow(Child_512_Home_desamp),
-      TRUE ~ NA_integer_
-    )
+    n = case_when(row_number() == 1 ~ nrow(sample_full),
+                  TRUE ~ NA_integer_)
   ) %>%
-  # relocate provides the desired column sequence in the output table.
   relocate(c(sample, n), .before = "Age")
 
-# documentation for code block below is analogous to that for previous (creation
-# of demos_full)
 demos_60_perc <- map(
   c("Gender", "ParentHighestEducation", "Ethnicity", "Region"),
   ~
     sample_60perc %>%
-    group_by(Age, !!sym(.x)) %>%
-    summarize(n=n()) %>%
+    group_by(Age,!!sym(.x)) %>%
+    summarize(n = n()) %>%
     pivot_wider(names_from = !!sym(.x), values_from = n)
 ) %>%
   reduce(left_join, by = "Age") %>%
@@ -89,32 +59,25 @@ demos_60_perc <- map(
   mutate(
     sample = case_when(row_number() == 1 ~ "60_perc",
                        TRUE ~ NA_character_),
-    n = case_when(
-      row_number() == 1 ~ nrow(sample_60perc),
-      TRUE ~ NA_integer_
-    )
+    n = case_when(row_number() == 1 ~ nrow(sample_60perc),
+                  TRUE ~ NA_integer_)
   ) %>%
   relocate(c(sample, n), .before = "Age")
 
-# Use bind_rows() to stack the tables from the full and 60_perc samples, and
-# mutate() the existing sample column to keep it readable, by having the sample
-# label only appear in the first row of the stacked table for each sample.
 demos_comp <- bind_rows(demos_full,
-                        demos_60_perc) %>%
-  mutate(across(sample,
-                ~ case_when(
-                  lag(sample) == sample ~ NA_character_, 
-                  TRUE ~ .x
-                )))
+                        demos_60_perc) 
 
-# write .csv of demos comp
-write_csv(
-  demos_comp,
-  here(
-    "OUTPUT-FILES/CHILD/COMP-60PERC-SAMPLE/Child-512-Home-demos-full-60perc-comp.csv"
-  ),
-  na = ""
-)
+write_csv(demos_comp, here(
+  str_c(
+    output_file_path,
+    input_file_name,
+    "-demos-full-60perc-comp.csv"
+  )
+),
+na = "")
+
+
+############START HERE
 
 # Comp raw-score descriptives between full sample and 60% sample
 T_per_case_full_sample <- read_csv(

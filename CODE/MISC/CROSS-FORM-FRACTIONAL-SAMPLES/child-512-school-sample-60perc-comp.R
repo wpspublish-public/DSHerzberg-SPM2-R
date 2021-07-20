@@ -3,7 +3,7 @@ suppressMessages(library(splitstackshape))
 suppressMessages(library(psych))
 suppressMessages(suppressWarnings(library(tidyverse)))
 
-input_file_name <- "Child-512-Home-allData-desamp"
+input_file_name <- "Child-512-School-allData-desamp"
 input_file_path <- "CODE/MISC/CROSS-FORM-FRACTIONAL-SAMPLES/INPUT-FILES/"
 output_file_path <- "CODE/MISC/CROSS-FORM-FRACTIONAL-SAMPLES/OUTPUT-FILES/"
 
@@ -17,7 +17,7 @@ sample_60perc <- stratified(
   c(
     "Age",
     "Gender",
-    "ParentHighestEducation",
+    # "ParentHighestEducation",
     "Ethnicity",
     "Region"
   ),
@@ -34,7 +34,8 @@ write_csv(sample_60perc, here(
 ))
 
 demos_full <- map(
-  c("Gender", "ParentHighestEducation", "Ethnicity", "Region"),
+  # c("Gender", "ParentHighestEducation", "Ethnicity", "Region"),
+  c("Gender", "Ethnicity", "Region"),
   ~
     sample_full %>%
     group_by(Age,!!sym(.x)) %>%
@@ -52,7 +53,8 @@ demos_full <- map(
   relocate(c(sample, n), .before = "Age")
 
 demos_60_perc <- map(
-  c("Gender", "ParentHighestEducation", "Ethnicity", "Region"),
+  # c("Gender", "ParentHighestEducation", "Ethnicity", "Region"),
+  c("Gender", "Ethnicity", "Region"),
   ~
     sample_60perc %>%
     group_by(Age,!!sym(.x)) %>%

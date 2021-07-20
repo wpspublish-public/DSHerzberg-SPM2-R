@@ -1,20 +1,38 @@
-demos_60_perc <- map(
-    c("Gender", "ParentHighestEducation", "Ethnicity", "Region"),
-  ~
-    sample_60perc %>%
-    group_by(Age, !!sym(.x)) %>%
-    summarize(n=n()) %>%
-    pivot_wider(names_from = !!sym(.x), values_from = n)
-  ) %>%
-  reduce(left_join, by = "Age") %>%
-  ungroup() %>%
-  mutate(
-    sample = case_when(row_number() == 1 ~ "60_perc",
-                       TRUE ~ NA_character_),
-    n = case_when(
-      row_number() == 1 ~ nrow(sample_60perc),
-      TRUE ~ NA_integer_
-    )
-  ) %>%
-  relocate(c(sample, n), .before = "Age")
 
+TOT_items <- c("q0027", "q0028", "q0029", "q0030", "q0031", "q0035", "q0036", "q0037", "q0038", "q0039", 
+                              "q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046", "q0047", "q0048", "q0050", 
+                              "q0053", "q0055", "q0057", "q0058", "q0059", "q0060", "q0061", "q0063", "q0064", "q0065", 
+                              "q0068", "q0070", "q0071", "q0072", "q0073", "q0075", "q0076", "q0077", "q0078", "q0079", 
+                              "q0081", "q0082", "q0083", "q0084", "q0086", "q0088", "q0089", "q0090", "q0091", "q0092", 
+                              "q0095", "q0096", "q0097", "q0098", "q0102", "q0103", "q0105", "q0106", "q0107", "q0108")
+
+SOC_items <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0023")
+
+VIS_items <- c("q0027", "q0028", "q0029", "q0030", "q0031", "q0035", "q0036", "q0037", "q0038", "q0039")
+
+HEA_items <- c("q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046", "q0047", "q0048", "q0050")
+
+TOU_items <- c("q0053", "q0055", "q0057", "q0058", "q0059", "q0060", "q0061", "q0063", "q0064", "q0065")
+
+TS_items <- c("q0068", "q0070", "q0071", "q0072", "q0073", "q0075", "q0076", "q0077", "q0078", "q0079")
+
+BOD_items <- c("q0081", "q0082", "q0083", "q0084", "q0086", "q0088", "q0089", "q0090", "q0091", "q0092")
+
+BAL_items <- c("q0095", "q0096", "q0097", "q0098", "q0102", "q0103", "q0105", "q0106", "q0107", "q0108")
+
+PLA_items <- c("q0111", "q0112", "q0113", "q0114", "q0115", "q0116", "q0117", "q0120", "q0121", "q0122")
+
+
+sample_full <- sample_full %>% 
+  mutate(
+  TOT_raw = rowSums(.[TOT_items]),
+  SOC_raw = rowSums(.[SOC_items]),
+  VIS_raw = rowSums(.[VIS_items]),
+  HEA_raw = rowSums(.[HEA_items]),
+  TOU_raw = rowSums(.[TOU_items]),
+  TS_raw = rowSums(.[TS_items]),
+  BOD_raw = rowSums(.[BOD_items]),
+  BAL_raw = rowSums(.[BAL_items]),
+  PLA_raw = rowSums(.[PLA_items])
+)
+  

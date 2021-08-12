@@ -1,38 +1,20 @@
+# COMBINED REPORT
 
-TOT_items <- c("q0027", "q0028", "q0029", "q0030", "q0031", "q0035", "q0036", "q0037", "q0038", "q0039", 
-                              "q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046", "q0047", "q0048", "q0050", 
-                              "q0053", "q0055", "q0057", "q0058", "q0059", "q0060", "q0061", "q0063", "q0064", "q0065", 
-                              "q0068", "q0070", "q0071", "q0072", "q0073", "q0075", "q0076", "q0077", "q0078", "q0079", 
-                              "q0081", "q0082", "q0083", "q0084", "q0086", "q0088", "q0089", "q0090", "q0091", "q0092", 
-                              "q0095", "q0096", "q0097", "q0098", "q0102", "q0103", "q0105", "q0106", "q0107", "q0108")
+suppressMessages(library(here))
+suppressMessages(suppressWarnings(library(tidyverse)))
 
-SOC_items <- c("q0014", "q0015", "q0016", "q0017", "q0018", "q0019", "q0020", "q0021", "q0022", "q0023")
+output_file_path <- "CODE/MISC/CROSS-FORM-FRACTIONAL-SAMPLES/OUTPUT-FILES/"
 
-VIS_items <- c("q0027", "q0028", "q0029", "q0030", "q0031", "q0035", "q0036", "q0037", "q0038", "q0039")
-
-HEA_items <- c("q0040", "q0041", "q0042", "q0043", "q0044", "q0045", "q0046", "q0047", "q0048", "q0050")
-
-TOU_items <- c("q0053", "q0055", "q0057", "q0058", "q0059", "q0060", "q0061", "q0063", "q0064", "q0065")
-
-TS_items <- c("q0068", "q0070", "q0071", "q0072", "q0073", "q0075", "q0076", "q0077", "q0078", "q0079")
-
-BOD_items <- c("q0081", "q0082", "q0083", "q0084", "q0086", "q0088", "q0089", "q0090", "q0091", "q0092")
-
-BAL_items <- c("q0095", "q0096", "q0097", "q0098", "q0102", "q0103", "q0105", "q0106", "q0107", "q0108")
-
-PLA_items <- c("q0111", "q0112", "q0113", "q0114", "q0115", "q0116", "q0117", "q0120", "q0121", "q0122")
-
-
-sample_full <- sample_full %>% 
-  mutate(
-  TOT_raw = rowSums(.[TOT_items]),
-  SOC_raw = rowSums(.[SOC_items]),
-  VIS_raw = rowSums(.[VIS_items]),
-  HEA_raw = rowSums(.[HEA_items]),
-  TOU_raw = rowSums(.[TOU_items]),
-  TS_raw = rowSums(.[TS_items]),
-  BOD_raw = rowSums(.[BOD_items]),
-  BAL_raw = rowSums(.[BAL_items]),
-  PLA_raw = rowSums(.[PLA_items])
+file_names <- c(
+  "IT-49-Home-",
+  "IT-1030-Home-",
+  "Preschool-25-Home-",
+  "Preschool-25-School-",
+  "Child-512-Home-",
+  "Child-512-School-",
+  "Teen-1221-Home-",
+  "Teen-1221-School-",
+  "Teen-1221-Self-",
+  "Adult-Self-",
+  "Adult-Other-"
 )
-  

@@ -3,18 +3,21 @@
 suppressMessages(library(here))
 suppressMessages(suppressWarnings(library(tidyverse)))
 
-output_file_path <- "CODE/MISC/CROSS-FORM-FRACTIONAL-SAMPLES/OUTPUT-FILES/"
+df <- tibble(x = 1:2, y = 3:4, z = 5:6) %>% 
+  rowwise() %>% 
+  mutate(mean_es = mean(c_across(x:z)))
 
-file_names <- c(
-  "IT-49-Home-",
-  "IT-1030-Home-",
-  "Preschool-25-Home-",
-  "Preschool-25-School-",
-  "Child-512-Home-",
-  "Child-512-School-",
-  "Teen-1221-Home-",
-  "Teen-1221-School-",
-  "Teen-1221-Self-",
-  "Adult-Self-",
-  "Adult-Other-"
-)
+temp1 <- splice(raw_desc_ESonly_by_form, raw_desc_reports_by_form_list)
+
+raw_desc_reports_by_form_list<- 
+  map(
+    file_names,
+    ~
+      suppressMessages(read_csv(here(str_c(
+        output_file_path_raw_desc, .x, "-allData-desamp-raw-desc-full-60perc-comp.csv"
+      ))))
+  ) %>% 
+  splice(raw_desc_ESonly_by_form, .) %>% 
+  set_names(c("mean_ES", file_names))
+
+

@@ -2,7 +2,7 @@ suppressPackageStartupMessages(library(here))
 suppressMessages(suppressWarnings(library(tidyverse)))
 suppressMessages(library(reportROC))
 
-# read conditional probabability input data for SPD, set binary predictors for
+# read conditional probability input data for SPD, set binary predictors for
 # different t-score cutpoints
 cond_prob_SPD_input <-
   suppressMessages(as_tibble(read_csv(
